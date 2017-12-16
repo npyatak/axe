@@ -1,0 +1,9 @@
+.inactive {
+	background-color: #777;
+}
+.inactive:hover {
+	background-color: #777;
+}
+.test_slider .slick-dots li:last-child {
+	font-size: 24px;
+}
