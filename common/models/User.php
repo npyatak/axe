@@ -27,11 +27,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['sid', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['sid', 'status', 'created_at', 'updated_at', 'test_result_id'], 'integer'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
             [['surname', 'name', 'image', 'ip', 'browser'], 'string', 'max' => 255],
             ['soc', 'string', 'max' => 2],
-            ['required', 'on'=>'missing_fields'],
+            [['test_result_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestResult::className(), 'targetAttribute' => ['test_result_id' => 'id']],
         ];
     }
 

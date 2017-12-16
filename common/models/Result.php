@@ -4,17 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "{{%result}}".
- *
- * @property integer $id
- * @property string $title
- * @property string $text
- * @property string $share_text
- * @property string $share_image
- *
- * @property UserResult[] $userResults
- */
 class Result extends \yii\db\ActiveRecord
 {
     public $shareImageFile;
@@ -55,9 +44,9 @@ class Result extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserResults()
+    public function getTestResults()
     {
-        return $this->hasMany(UserResult::className(), ['result_id' => 'id']);
+        return $this->hasMany(TestResult::className(), ['result_id' => 'id']);
     }
 
     public function afterDelete() {

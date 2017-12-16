@@ -4,7 +4,7 @@ namespace common\models;
 
 use Yii;
 
-class UserResult extends \yii\db\ActiveRecord
+class TestResult extends \yii\db\ActiveRecord
 {
     public $answersArr = [];
     /**
@@ -12,7 +12,7 @@ class UserResult extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'user_result';
+        return 'test_result';
     }
 
     public function behaviors()

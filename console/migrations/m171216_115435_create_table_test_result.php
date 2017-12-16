@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class m171216_115435_create_table_user_result extends Migration
+class m171216_115435_create_table_test_result extends Migration
 {
     public function safeUp()
     {
@@ -11,7 +11,7 @@ class m171216_115435_create_table_user_result extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%user_result}}', [
+        $this->createTable('{{%test_result}}', [
             'id' => $this->primaryKey(),
             'answers' => $this->text()->notNull(),
             'hash' => $this->string(255),
@@ -22,11 +22,11 @@ class m171216_115435_create_table_user_result extends Migration
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->addForeignKey("{user_result}_result_id_fkey", '{{%user_result}}', 'result_id', '{{%result}}', 'id', 'CASCADE', 'RESTRICT');
+        $this->addForeignKey("{test_result}_result_id_fkey", '{{%test_result}}', 'result_id', '{{%result}}', 'id', 'CASCADE', 'RESTRICT');
     }
 
     public function safeDown()
     {
-        $this->dropTable('{{%user_result}}');
+        $this->dropTable('{{%test_result}}');
     }
 }

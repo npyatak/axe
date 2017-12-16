@@ -14,7 +14,7 @@ use yii\web\NotFoundHttpException;
 
 use common\models\User;
 use common\models\Question;
-use common\models\UserResult;
+use common\models\TestResult;
 use common\models\Result;
 use common\models\Page;
 
@@ -78,26 +78,26 @@ class SiteController extends Controller
         $qestionQuery = Question::find()->orderBy('number');
 
         if($testResultId) {
-            $userResult = UserResult::findOne($testResultId);
-            if($userResult === null) {
+            $testResult = TestResult::findOne($testResultId);
+            if($testResult === null) {
                 throw new NotFoundHttpException('The requested page does not exist.');
             }
         } else {
-            $userResult = new UserResult;
+            $testResult = new TestResult;
         }
 
 
         $post = Yii::$app->request->post();
         if(Yii::$app->request->isAjax && !empty($post) && $post['question'] && $post['answer']) { 
-            $userResult->answersArr[] = ['q_id' => $post['question'], 'a_id' => $post['answer']];
-            $userResult->save();
+            $testResult->answersArr[] = ['q_id' => $post['question'], 'a_id' => $post['answer']];
+            $testResult->save();
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            if($qestionQuery->count() == count($userResult->answersArr)) {
+            if($qestionQuery->count() == count($testResult->answersArr)) {
                 return ['status' => 'redirect'];
                 // return $this->renderAjax('_test_result', [
-                //     'userResult' => $userResult,
+                //     'testResult' => $testResult,
                 // ]);
             }
 
@@ -108,8 +108,8 @@ class SiteController extends Controller
         $questions = $qestionQuery->joinWith('answers')->all();
 
         $initialSlide = 0;
-        if(!empty($userResult->answersArr)) {
-            $initialSlide = count($userResult->answersArr);
+        if(!empty($testResult->answersArr)) {
+            $initialSlide = count($testResult->answersArr);
         }
 
         return $this->render('test', [
@@ -122,10 +122,10 @@ class SiteController extends Controller
         $testResultId = Yii::$app->request->cookies->getValue('test_hash', null);
 
         if($testResultId) {
-            $userResult = UserResult::find()->where(['id' => $testResultId])->one();
+            $testResult = TestResult::find()->where(['id' => $testResultId])->one();
 
-            if($userResult !== null && $userResult->result_id) {
-                $result = Result::findOne($userResult->result_id);
+            if($testResult !== null && $testResult->result_id) {
+                $result = Result::findOne($testResult->result_id);
 
 
                 return $this->render('test_result', [
