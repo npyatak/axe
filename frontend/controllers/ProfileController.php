@@ -41,7 +41,18 @@ class ProfileController extends Controller
     }
 
     public function actionIndex() {
+        $user = null;
+        $result = null;
+        if(!Yii::$app->user->isGuest) {
+            $user = Yii::$app->user->identity;
+            if($user->test_result_id) {
+                $result = Result::findOne($user->test_result_id);
+            }
+        }
+
         return $this->render('index', [
+            'user' => $user,
+            'result' => $result,
         ]);
     }
 }

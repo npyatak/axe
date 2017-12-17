@@ -18,6 +18,7 @@ class m171215_103335_create_table_user extends Migration
             'name' => $this->string(),
             'surname' => $this->string(),
             'image' => $this->string(),
+            'city' => $this->string(),
             'status' => $this->integer(1)->notNull()->defaultValue(1),
             'ip' => $this->string(),
             'browser' => $this->string(),
@@ -27,8 +28,8 @@ class m171215_103335_create_table_user extends Migration
             'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->batchInsert('{{%user}}', ['name', 'surname', 'created_at', 'updated_at'], [
-            ['ivan', 'ivanov', time(), time()],
+        $this->batchInsert('{{%user}}', ['name', 'surname', 'image', 'city', 'created_at', 'updated_at'], [
+            ['ivan', 'ivanov', '/img/user.jpg', 'Moscow', time(), time()],
         ]);
     }
 

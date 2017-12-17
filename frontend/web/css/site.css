@@ -7,3 +7,11 @@
 .test_slider .slick-dots li:last-child {
 	font-size: 24px;
 }
+p.text {
+	color: #fffffe;
+	font-family: HelveticaNeueCyr;
+	font-size: 17px;
+}
+.marginTop20 {
+	margin-top: 20px;
+}

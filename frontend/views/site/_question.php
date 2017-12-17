@@ -3,7 +3,7 @@ use yii\helpers\Html;
 ?>
 
 <div>
-    <div class="test_slide">
+    <div class="test_slide" data-number="<?=$question->number;?>">
         <h3><?=$question->title;?></h3>
         <div class="test_checks">
 			<?=Html::hiddenInput('question', $question->id);?>

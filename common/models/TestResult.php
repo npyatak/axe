@@ -52,11 +52,6 @@ class TestResult extends \yii\db\ActiveRecord
     }
 
     public function afterSave($insert, $changedAttributes) {
-        $cookies = Yii::$app->response->cookies->add(new \yii\web\Cookie([
-            'name' => 'test_hash',
-            'value' => $this->id,
-        ]));
-
         if(Question::find()->count() == count($this->answersArr) && !$this->result_id) {
             $questionAnswers = Answer::find()->indexBy('id')->all();
             $scores = [];
@@ -76,7 +71,12 @@ class TestResult extends \yii\db\ActiveRecord
             $this->score = json_encode($scores);
 
             $this->save(false, ['result_id', 'score']);
-        }
+        } /*elseif($this->result_id) {            
+            $this->result_id = null;
+            $this->score = null;
+
+            $this->save(false, ['result_id', 'score']);
+        }*/
 
         return parent::afterSave($insert, $changedAttributes);
     }

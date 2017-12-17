@@ -49,6 +49,10 @@ use yii\helpers\Url;
 ';
 
 $script .= "
+    $(document).ready(function(e) {
+        ga('send', 'event', 'test_way', 'main');
+    });
+
     $(document).on('change', 'input:radio[name=\"answer\"]', function() {
         $(this).closest('.test_slide').find('.next_question_btn').removeClass('inactive');
     })
@@ -63,7 +67,8 @@ $script .= "
             type: 'POST',
             data: div.find('input').serialize(),
             success: function (data) {
-                console.log(data.status);
+                ga('send', 'event', 'test_way', 'question'+div.data('number'));;
+
                 if(data.status == 'redirect') {
                     window.location.href = '".Url::toRoute(['site/test-result'])."';
                 }

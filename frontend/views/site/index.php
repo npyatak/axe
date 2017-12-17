@@ -10,8 +10,8 @@
                         <br> Киберспортивной </p>
                 </div>
                 <div class="scr1_notebook">
-                    <img src="img/mac.png" alt="img">
-                    <a href="#" class="scr1_notebook_view "><img src="img/vdo.jpg" alt="img"><span class="play_btn"></span></a>
+                    <img src="/img/mac.png" alt="img">
+                    <a href="#" class="scr1_notebook_view "><img src="/img/vdo.jpg" alt="img"><span class="play_btn"></span></a>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     <!-- block -->
                     <div class="scr2_block">
                         <div class="scr2_block_img">
-                            <img src="img/21.png" alt="img">
+                            <img src="/img/21.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
                             <h4>Тест : </h4>
@@ -43,7 +43,7 @@
                     <!-- block -->
                     <div class="scr2_block">
                         <div class="scr2_block_img">
-                            <img src="img/22.png" alt="img">
+                            <img src="/img/22.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск Челленджа на лучший игровой момент  </h4>
@@ -57,7 +57,7 @@
                     <!-- block -->
                     <div class="scr2_block">
                         <div class="scr2_block_img">
-                            <img src="img/23.png" alt="img">
+                            <img src="/img/23.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск Кликбаттла </h4>
@@ -70,7 +70,7 @@
                     <!-- block -->
                     <div class="scr2_block">
                         <div class="scr2_block_img">
-                            <img src="img/24.png" alt="img">
+                            <img src="/img/24.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск анимированого тира </h4>
@@ -100,7 +100,7 @@
                 <div class="scr3_blocks">
                     <!-- block -->
                     <div class="scr3_block">
-                        <div class="scr3_block_img"><img src="img/game.jpg" alt="img"></div>
+                        <div class="scr3_block_img"><img src="/img/game.jpg" alt="img"></div>
                         <h3>What is Lorem Ipsum?</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         <a href="#" class="transition scr3_btn">Подробнее</a>
@@ -108,7 +108,7 @@
                     <!-- /block -->
                     <!-- block -->
                     <div class="scr3_block">
-                        <div class="scr3_block_img"><img src="img/game.jpg" alt="img"></div>
+                        <div class="scr3_block_img"><img src="/img/game.jpg" alt="img"></div>
                         <h3>What is Lorem Ipsum?</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         <a href="#" class="transition scr3_btn">Подробнее</a>
@@ -116,7 +116,7 @@
                     <!-- /block -->
                     <!-- block -->
                     <div class="scr3_block">
-                        <div class="scr3_block_img"><img src="img/game.jpg" alt="img"></div>
+                        <div class="scr3_block_img"><img src="/img/game.jpg" alt="img"></div>
                         <h3>What is Lorem Ipsum?</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         <a href="#" class="transition scr3_btn">Подробнее</a>

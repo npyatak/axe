@@ -87,13 +87,12 @@ return [
             'baseUrl' => '/',
             'rules' => [
                 '' => 'site/index',
-                
-                '<year:\d+>' => 'site/index',
-                '<year:\d+>/category/<alias:\w+>' => 'site/index',
 
-                '<year:\d+>/event/<alias>' => 'site/event',
-                '<action>' => 'site/<action>',
-                '<action:\w+>/<id:\d+>' => 'site/<action>',
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                '<controller:\w+>/<action>/<id:\d+>' => '<controller>/<action>',
+                
+                // '<action>' => 'site/<action>',
+                // '<action:\w+>/<id:\d+>' => 'site/<action>',
                 
                 //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                 //'<controller:\w+>/<action>/<id:\d+>' => '<controller>/<action>',

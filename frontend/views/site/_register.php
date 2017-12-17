@@ -1,28 +1,18 @@
+<?php
+use yii\helpers\Url;
+?>
 <div class="reg_screen_block">
-    <h3>Зарегистрируйтесь с помощью</h3>
     <p>	
-    	<a href="/login?service=fb&amp;ref=%2Ftest-result" class="soc_lnk eauth-service-link fb"  data-eauth-service="facebook">
+    	<a href="<?=Url::toRoute(['site/login', 'service' => 'fb']);?>" class="soc_lnk eauth-service-link fb"  data-eauth-service="facebook" data-event="test_way" data-param="registration_fb">
     		<i class="zmdi zmdi-facebook"></i>
     	</a> 
     	или 
-    	<a href="/login?service=vk&amp;ref=%2Ftest-result" class="soc_lnk eauth-service-link vk"  data-eauth-service="vkontakte">
+    	<a href="<?=Url::toRoute(['site/login', 'service' => 'vk']);?>" class="soc_lnk eauth-service-link vk"  data-eauth-service="vkontakte" data-event="test_way" data-param="registration_vk">
     		<i class="zmdi zmdi-vk"></i>
     	</a>
     </p>
     <div class="reg_screen_check">
-        <input type="checkbox" id="register_checkbox" name="reg" checked>
+        <input type="checkbox" id="register_checkbox" checked>
         <label for="register_checkbox">Я соглашаюсь <a href="#">с полными правилами</a> конкурса</label>
     </div>
 </div>
-
-<?php
-$script = "
-    $(document).on('click', '.soc_lnk', function(e) {
-        var div = $(this).closest('.test_slide');
-        if(!$('#register_checkbox').is(':checked')) {
-            return  false;
-        }
-    });
-";
-
-$this->registerJs($script, yii\web\View::POS_END);?>

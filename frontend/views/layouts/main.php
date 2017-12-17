@@ -24,15 +24,27 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+
+  <!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-111266919-1', 'auto');
+</script>
+<!-- End Google Analytics -->
+
 <div class="main_page_wrapper">
     <!-- header -->
     <header class="header">
         <div class="container">
             <div class="row">
                 <div class="screen_content clearfix">
-                    <div class="logo"><a href="<?=Url::home();?>"><img src="/img/logo.png" alt="img"></a></div>
+                    <div class="logo"><a href="http://www.axerussia.ru/" targer="_blank" data-event="logo_click" data-param="logo_axe"><img src="/img/logo.png" alt="img"></a></div>
                     <a href="javascript:void(0)" class="transition hidden_trigger"></a>
-                    <div class="right_logo"><img src="/img/logo2.png" alt="img"></div>
+                    <div class="right_logo"><a href="http://team.empire.gg/" target="_blank" data-event="logo_click" data-param="logo_TeamEmpire"><img src="/img/logo2.png" alt="img"></a></div>
                     <div class="nav_list_wrapper">
                         <ul class="nav_list">
                             <li><a href="#">Мир киберспорта</a></li>
@@ -69,12 +81,14 @@ AppAsset::register($this);
                     <div class="footer_soc_wrap">
                         <p>Поделиться:</p>
                         <ul class="footer_soc">
-                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-vk"></i></a></li>
+                            <li><a href="#" data-event="main_sharing" data-param="vk"><i class="zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="#" data-event="main_sharing" data-param="fb"><i class="zmdi zmdi-vk"></i></a></li>
                         </ul>
                     </div>
                     <div class="footer_sponsor">
-                        <p>При поддержке: <a href="#"><img src="/img/fs1.png" alt="img"></a> <a href="#"><img src="/img/fs2.png" alt="img"></a></p>
+                        <p>При поддержке: <a href="https://2x2tv.ru/" target="_blank" data-event="logo_click" data-param="logo_2-2"><img src="/img/fs1.png" alt="img"></a>
+                            <a href="https://matchtv.ru/" target="_blank" data-event="logo_click" data-param="logo_MatchTV"><img src="/img/fs2.png" alt="img"></a>
+                        </p>
                     </div>
                     <div class="copyright">
                         <p>© 2017 Unilever. Russia. Все права защищены</p>
@@ -85,6 +99,35 @@ AppAsset::register($this);
     </footer>
     <!-- /footer -->
 
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter47039403 = new Ya.Metrika({
+                    id:47039403,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47039403" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+    
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -29,7 +29,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return [
             [['sid', 'status', 'created_at', 'updated_at', 'test_result_id'], 'integer'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
-            [['surname', 'name', 'image', 'ip', 'browser'], 'string', 'max' => 255],
+            [['surname', 'name', 'image', 'city', 'ip', 'browser'], 'string', 'max' => 255],
             ['soc', 'string', 'max' => 2],
             [['test_result_id'], 'exist', 'skipOnError' => true, 'targetClass' => TestResult::className(), 'targetAttribute' => ['test_result_id' => 'id']],
         ];
@@ -48,6 +48,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'surname' => 'Фамилия',
             'status' => 'Статус',
             'image' => 'Аватар',
+            'city' => 'Город',
             'created_at' => 'Дата/Время создания',
             'updated_at' => 'Время последнего изменения',
             'ip' => 'IP адрес',

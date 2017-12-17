@@ -46,12 +46,6 @@ class SiteController extends Controller
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
         ];
     }
 
@@ -74,18 +68,30 @@ class SiteController extends Controller
     }
 
     public function actionTest() {
+        $qestionsCount = Question::find()->count();
         $testResultId = Yii::$app->request->cookies->getValue('test_hash', null);
-        $qestionQuery = Question::find()->orderBy('number');
 
-        if($testResultId) {
+        $flag = false;
+        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->test_result_id) {
+            $testResult = TestResult::findOne(Yii::$app->user->identity->test_result_id);
+        } elseif($testResultId !== null) {
             $testResult = TestResult::findOne($testResultId);
-            if($testResult === null) {
-                throw new NotFoundHttpException('The requested page does not exist.');
-            }
         } else {
-            $testResult = new TestResult;
+            $flag = true;
+        }
+        if($testResult === null || $qestionsCount == count($testResult->answersArr)) {
+            $flag = true;
         }
 
+        if($flag) {
+            $testResult = new TestResult;
+            $testResult->save();
+
+            $cookies = Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                'name' => 'test_hash',
+                'value' => $testResult->id,
+            ]));
+        }
 
         $post = Yii::$app->request->post();
         if(Yii::$app->request->isAjax && !empty($post) && $post['question'] && $post['answer']) { 
@@ -94,18 +100,14 @@ class SiteController extends Controller
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            if($qestionQuery->count() == count($testResult->answersArr)) {
+            if($qestionsCount == count($testResult->answersArr)) {
                 return ['status' => 'redirect'];
-                // return $this->renderAjax('_test_result', [
-                //     'testResult' => $testResult,
-                // ]);
             }
-
 
             return ['status' => 'success'];
         }
 
-        $questions = $qestionQuery->joinWith('answers')->all();
+        $questions = Question::find()->joinWith('answers')->orderBy('number')->all();
 
         $initialSlide = 0;
         if(!empty($testResult->answersArr)) {
@@ -144,11 +146,7 @@ class SiteController extends Controller
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
 
-            if($ref !== '' && $ref != '/login') {
-                $eauth->setRedirectUrl(Url::toRoute($ref));
-            } else {
-                $eauth->setRedirectUrl(Url::toRoute('profile/index'));
-            }
+            $eauth->setRedirectUrl(Url::toRoute('profile/index'));
             $eauth->setCancelUrl(Url::toRoute('site/login'));
 
             try {
@@ -161,6 +159,7 @@ class SiteController extends Controller
                         $user->name = $eauth->first_name;
                         $user->surname = $eauth->last_name;
                         if(isset($eauth->photo_url)) $user->image = $eauth->photo_url;
+                        if(isset($eauth->city)) $user->city = $eauth->city;
                         $user->test_result_id = Yii::$app->request->cookies->getValue('test_hash', null);
                         
                         $user->save();
@@ -204,7 +203,7 @@ class SiteController extends Controller
     public function actionLogout() {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect('/');
     }
 
     // public function actionMissingFields() {
