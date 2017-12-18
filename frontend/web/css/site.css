@@ -15,31 +15,3 @@ p.text {
 .marginTop20 {
 	margin-top: 20px;
 }
-/*Если ширина видимой области браузера больше 1600, то css стиль: html {zoom: 0.9;}
-Если больше 1440, но меньше или равно 1600, то css стиль: html {zoom: 0.85;}
-Если больше 1280, но меньше или равно 1440, то css стиль: html {zoom: 0.78;}
-Если больше 1024, но меньше или равно 1280, то css стиль: html {zoom: 0.75;}
-Если больше 768, но меньше или равно 1280, то css стиль: html {zoom: 0.7;}
-Если меньше или равно 768, то данного хака не нужно, либо: html {zoom: 1;}*/
-
-@media (min-width: 1600px) {
-    html {zoom: 0.9;}
-}
-@media (min-width: 1440px) {
-    html {zoom: 0.85;}
-}
-@media (min-width: 1280) {
-    html {zoom: 0.78;}
-}
-@media (min-width: 1024) {
-    html {zoom: 0.75;}
-}
-@media (min-width: 1600px) {
-    html {zoom: 0.9;}
-}
-@media (min-width: 768) {
-    html {zoom: 0.7;}
-}
-@media (max-width: 768) {
-    html {zoom: 1;}
-}
