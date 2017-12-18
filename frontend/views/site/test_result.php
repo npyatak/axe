@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-$share['url'] = Url::canonical();
+$share['url'] = Url::toRoute(['site/index', 'cybertest' => $result->id], true);
 $share['title_fb'] = $result->share_title_fb;
 $share['title_vk'] = $result->share_title_vk;
 $share['text'] = $result->share_text;
@@ -78,7 +78,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                     <?php else:?>
 
                     <?php endif;?>
-                    
+
                 <?php endif;?>
             </div>
         </div>
