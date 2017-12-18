@@ -4,9 +4,9 @@ use yii\helpers\Html;
 
 if($result) {
     $url = Url::toRoute(['site/test-result']);
-    $title = $result->title;
+    $title = $result->share_title_fb;
     $text = $result->share_text;
-    $image = $result->share_image;
+    $image = $result->share_fb_image;
 
     $this->registerMetaTag(['property' => 'og:description', 'content' => $text], 'og:description');
     $this->registerMetaTag(['property' => 'og:title', 'content' => $title], 'og:title');
@@ -66,8 +66,8 @@ if($result) {
                                     'class' => 'share',
                                     'data-type' => 'vk',
                                     'data-url' => Url::toRoute(['site/test-result']),
-                                    'data-title' => $title,
-                                    'data-image' => $image,
+                                    'data-title' => $result->share_title_vk,
+                                    'data-image' => $result->share_vk_image,
                                     'data-desc' => $text,
                                     'data-event' => 'test_way',
                                     'data-param' => 'share_lk_vk'

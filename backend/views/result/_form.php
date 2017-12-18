@@ -11,7 +11,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'text')->textarea() ?>
 
-    <?= $form->field($model, 'share_title')->textInput() ?>
+    <?= $form->field($model, 'share_title_fb')->textInput() ?>
+
+    <?= $form->field($model, 'share_title_vk')->textInput() ?>
     
     <?= $form->field($model, 'share_text')->textarea() ?>
 

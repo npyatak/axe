@@ -3,9 +3,9 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 $url = Url::canonical();
-$title = $result->title;
+$title = $result->share_title_fb;
 $text = $result->share_text;
-$image = $result->share_image;
+$image = $result->share_fb_image;
 
 $this->registerMetaTag(['property' => 'og:description', 'content' => $text], 'og:description');
 $this->registerMetaTag(['property' => 'og:title', 'content' => $title], 'og:title');
@@ -62,8 +62,8 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                                 'class' => 'share',
                                 'data-type' => 'vk',
                                 'data-url' => Url::toRoute(['site/test-result']),
-                                'data-title' => $title,
-                                'data-image' => $image,
+                                'data-title' => $result->share_title_vk,
+                                'data-image' => $result->share_vk_image,
                                 'data-desc' => $text,
                                 'data-event' => 'test_way',
                                 'data-param' => 'share_vk'

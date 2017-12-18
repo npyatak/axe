@@ -23,7 +23,7 @@ class Result extends \yii\db\ActiveRecord
     {
         return [
             [['text'], 'required'],
-            [['title', 'text', 'share_title', 'share_text', 'share_vk_image', 'share_fb_image'], 'string', 'max' => 255],
+            [['title', 'text', 'share_title_vk', 'share_title_fb', 'share_text', 'share_vk_image', 'share_fb_image'], 'string', 'max' => 255],
             [['shareVkImageFile', 'shareFbImageFile'], 'file', 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
         ];
     }
@@ -38,7 +38,8 @@ class Result extends \yii\db\ActiveRecord
             'title' => 'Заголовок',
             'text' => 'Текст',
             'share_text' => 'Текст поделиться',
-            'share_title' => 'Заголовок поделиться',
+            'share_title_fb' => 'Заголовок поделиться FB',
+            'share_title_vk' => 'Заголовок поделиться VK',
             'shareVkImageFile' => 'Изображение поделиться VK',
             'shareFbImageFile' => 'Изображение поделиться FB',
         ];

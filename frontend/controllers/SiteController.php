@@ -80,7 +80,7 @@ class SiteController extends Controller
         } else {
             $flag = true;
         }
-        if($testResult === null || $qestionsCount == count($testResult->answersArr)) {
+        if(!isset($testResult) || $testResult === null || $qestionsCount == count($testResult->answersArr)) {
             $flag = true;
         }
 
