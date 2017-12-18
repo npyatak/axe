@@ -122,6 +122,13 @@ AppAsset::register($this);
                                 $share['image_fb'] = Url::to($share['image_fb'], true);
                                 $share['image_vk'] = Url::to($share['image_vk'], true);
                             } ?>
+                            <?php
+                            $this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
+                            $this->registerMetaTag(['property' => 'og:title', 'content' => $share['title_fb']], 'og:title');
+                            $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb']], 'og:image');
+                            $this->registerMetaTag(['property' => 'og:url', 'content' => $share['url']], 'og:url');
+                            $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
+                            ?>
                             <li>
                                 <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
                                     'class' => 'share',
