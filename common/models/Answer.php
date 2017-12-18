@@ -4,16 +4,6 @@ namespace common\models;
 
 use Yii;
 
-/**
- * This is the model class for table "answer".
- *
- * @property integer $id
- * @property integer $question_id
- * @property string $title
- * @property integer $is_right
- *
- * @property Question $question
- */
 class Answer extends \yii\db\ActiveRecord
 {
     public $scoreArr;
@@ -32,7 +22,7 @@ class Answer extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'score'], 'required'],
-            [['question_id', 'is_right'], 'integer'],
+            [['question_id'], 'integer'],
             [['title', 'score'], 'string', 'max' => 255],
             [['question_id'], 'exist', 'skipOnError' => true, 'targetClass' => Question::className(), 'targetAttribute' => ['question_id' => 'id']],
         ];
