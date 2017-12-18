@@ -150,8 +150,14 @@ class SiteController extends Controller
     public function actionTestResult() {
         $testResultId = Yii::$app->request->cookies->getValue('test_hash', null);
 
+        if(!Yii::$app->user->isGuest) {
+            $user = Yii::$app->user->identity;
+            if($user->test_result_id) {
+                $testResultId = $user->test_result_id;
+            }
+        }
         if($testResultId) {
-            $testResult = TestResult::find()->where(['id' => $testResultId])->one();
+            $testResult = TestResult::findOne($testResultId);
 
             if($testResult !== null && $testResult->result_id) {
                 $result = Result::findOne($testResult->result_id);
