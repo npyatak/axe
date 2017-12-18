@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 
 if($result) {
-    $share['url'] = Url::toRoute(['site/index', 'cybertest' => $result->id]);
+    $share['url'] = Url::toRoute(['site/index', 'cybertest' => $result->id], true);
     $share['title_fb'] = $result->share_title_fb;
     $share['title_vk'] = $result->share_title_vk;
     $share['text'] = $result->share_text;

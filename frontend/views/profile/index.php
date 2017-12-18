@@ -3,7 +3,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 if($result) {
-    $share['url'] = Url::toRoute(['site/index', 'cybertest' => $result->id]);
+    $share['url'] = Url::toRoute(['site/index', 'cybertest' => $result->id], true);
     $share['title_fb'] = $result->share_title_fb;
     $share['title_vk'] = $result->share_title_vk;
     $share['text'] = $result->share_text;
@@ -58,23 +58,22 @@ if($result) {
                                 <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
                                     'class' => 'share',
                                     'data-type' => 'fb',
-                                    'data-url' => Url::toRoute(['site/test-result']),
-                                    'data-title' => $title,
-                                    'data-image' => $image,
-                                    'data-desc' => $text,
-                                    'data-event' => 'test_way',
-                                    'data-param' => 'share_lk_fb'
+                                    'data-url' => $share['url'].
+                                    'data-title' => $share['title_fb'],
+                                    'data-image' => $share['image_fb'],
+                                    'data-desc' => $share['text'],
+                                    'data-event' => 'main_sharing',
+                                    'data-param' => 'fb'
                                 ]); ?>
-
                                 <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
                                     'class' => 'share',
                                     'data-type' => 'vk',
-                                    'data-url' => Url::toRoute(['site/test-result']),
-                                    'data-title' => $result->share_title_vk,
-                                    'data-image' => $result->share_vk_image,
-                                    'data-desc' => $text,
-                                    'data-event' => 'test_way',
-                                    'data-param' => 'share_lk_vk'
+                                    'data-url' => $share['url'],
+                                    'data-title' => $share['title_vk'],
+                                    'data-image' => $share['image_vk'],
+                                    'data-desc' => $share['text'],
+                                    'data-event' => 'main_sharing',
+                                    'data-param' => 'vk'
                                 ]); ?>
                             </p>
                         </div>

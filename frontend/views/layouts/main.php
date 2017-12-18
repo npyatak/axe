@@ -120,8 +120,30 @@ AppAsset::register($this);
                                 $share = Yii::$app->params['share'];
                                 $share['url'] = Url::canonical();
                             } ?>
-                            <li><a href="#" data-event="main_sharing" data-param="vk"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#" data-event="main_sharing" data-param="fb"><i class="zmdi zmdi-vk"></i></a></li>
+                            <li>
+                                <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
+                                    'class' => 'share',
+                                    'data-type' => 'fb',
+                                    'data-url' => $share['url'],
+                                    'data-title' => $share['title_fb'],
+                                    'data-image' => $share['image_fb'],
+                                    'data-desc' => $share['text'],
+                                    'data-event' => 'main_sharing',
+                                    'data-param' => 'fb'
+                                ]); ?>
+                            </li>
+                            <li>
+                                <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
+                                    'class' => 'share',
+                                    'data-type' => 'vk',
+                                    'data-url' => $share['url'],
+                                    'data-title' => $share['title_vk'],
+                                    'data-image' => $share['image_vk'],
+                                    'data-desc' => $share['text'],
+                                    'data-event' => 'main_sharing',
+                                    'data-param' => 'vk'
+                                ]); ?>
+                            </li>
                         </ul>
                     </div>
                     <div class="footer_sponsor">

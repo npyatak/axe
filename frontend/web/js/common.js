@@ -169,34 +169,6 @@ $(document).ready(function() {
         maxWidth: "100%",
         maxHeight: "100%"
     });
-
-    // slick
-    $('.test_slider').slick({
-        infinite: false,
-        slidesToShow: 1,
-        arrows: false,
-        dots: true,
-        autoplay: false,
-        slidesToScroll: 1,
-        adaptiveHeight: true,
-        swipe: false,
-        draggable: false,
-        fade: true,
-        customPaging: function(slider, i) {
-            var thumb = $(slider.$slides[i]).data();
-            if (i < 9) {
-                return "0" + (i + 1);
-            } else {
-                return (i + 1);
-            }
-        },
-        cssEase: 'linear'
-    });
-
-    $(".next_question_btn").click(function() {
-        $('.test_slider').slick('slickNext');
-    });
-
 });
 
 
@@ -216,3 +188,52 @@ $(document).ready(function() {
 //         }
 //     }
 // });
+
+
+$(document).on('click', '.soc_lnk', function(e) {
+    var div = $(this).closest('.test_slide');
+    if(!$('#register_checkbox').is(':checked')) {
+        return  false;
+    }
+});
+
+$(document).on('change', '#register_checkbox', function(e) {
+    if(!$(this).is(':checked')) {
+        $(this).closest('.reg_screen_block').find('.soc_lnk').addClass('inactive');
+    } else {
+        $(this).closest('.reg_screen_block').find('.soc_lnk').removeClass('inactive');
+    }
+});
+
+$(document).on('click', 'a', function(e) {
+    if(typeof $(this).data('event') !== 'undefined') {
+        ga('send', 'event', $(this).data('event'), $(this).data('param'));
+    }
+});
+
+$('a.share').click(function(e) {
+    url = getShareUrl($(this));
+
+    window.open(url,'','toolbar=0,status=0,width=626,height=436');
+
+    return false;
+});
+
+function getShareUrl(obj) {
+    if(obj.data('type') == 'vk') {
+        url  = 'http://vkontakte.ru/share.php?';
+        url += 'url='          + encodeURIComponent(obj.data('url'));
+        url += '&title='       + encodeURIComponent(obj.data('title'));
+        url += '&text='        + encodeURIComponent(obj.data('desc'));
+        url += '&image='       + encodeURIComponent(obj.data('image'));
+        url += '&noparse=true';
+    } else if(obj.data('type') == 'fb') {
+        url  = 'http://www.facebook.com/sharer.php?s=100';
+        url += '&p[title]='     + encodeURIComponent(obj.data('title'));
+        url += '&p[url]='       + encodeURIComponent(obj.data('url'));
+        url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
+        url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
+    }
+
+    return url;
+}
