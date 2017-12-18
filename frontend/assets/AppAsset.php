@@ -13,13 +13,13 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css',
-        'css/libs.min.css',
-        'css/main.css',
-        'css/site.css',
+        'css/libs.min.css?v=18122017_1',
+        'css/main.css?v=18122017_1',
+        'css/site.css?v=18122017_1',
     ];
     public $js = [
-        'js/libs.min.js',
-        'js/common.js',
+        'js/libs.min.js?v=18122017_1',
+        'js/common.js?v=18122017_1',
     ];
     public $depends = [
         'yii\web\YiiAsset',

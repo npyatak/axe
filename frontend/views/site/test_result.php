@@ -2,15 +2,19 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-$url = Url::canonical();
-$title = $result->share_title_fb;
-$text = $result->share_text;
-$image = $result->share_fb_image;
+$share['url'] = Url::canonical();
+$share['title_fb'] = $result->share_title_fb;
+$share['title_vk'] = $result->share_title_vk;
+$share['text'] = $result->share_text;
+$share['image_fb'] = $result->shareFbImageUrl;
+$share['image_vk'] = $result->shareVkImageUrl;
 
-$this->registerMetaTag(['property' => 'og:description', 'content' => $text], 'og:description');
-$this->registerMetaTag(['property' => 'og:title', 'content' => $title], 'og:title');
-$this->registerMetaTag(['property' => 'og:image', 'content' => $image], 'og:image');
-$this->registerMetaTag(['property' => 'og:url', 'content' => $url], 'og:url');
+$this->params['share'] = $share;
+
+$this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
+$this->registerMetaTag(['property' => 'og:title', 'content' => $share['title_fb']], 'og:title');
+$this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb']], 'og:image');
+$this->registerMetaTag(['property' => 'og:url', 'content' => $share['url']], 'og:url');
 $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
 ?>
 
@@ -35,7 +39,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                     <!--</div>-->
                     <br>
                     <?=$this->render('_register');?>
-                <?php else:?>                    
+                <?php else:?>
                     <div class="rs_mb_descr">
                         <h5><b style="color: #ab9675;">Поделись</b> своим результатом с друзьями <br> и получите возможность выиграть один из 15 подарочных наборов AXE</h5>
                         <ul class="footer_soc">
@@ -43,22 +47,22 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                                 <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
                                     'class' => 'share',
                                     'data-type' => 'fb',
-                                    'data-url' => Url::toRoute(['site/test-result']),
-                                    'data-title' => $title,
-                                    'data-image' => $image,
-                                    'data-desc' => $text,
+                                    'data-url' => $share['url'],
+                                    'data-title' => $share['title_fb'],
+                                    'data-image' => $share['image_fb'],
+                                    'data-desc' => $share['text'],
                                     'data-event' => 'test_way',
-                                    'data-param' => 'share_fb'
+                                    'data-param' => 'fb'
                                 ]); ?>
                             </li>
                             <li>
                                 <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
                                     'class' => 'share',
                                     'data-type' => 'vk',
-                                    'data-url' => Url::toRoute(['site/test-result']),
-                                    'data-title' => $result->share_title_vk,
-                                    'data-image' => $result->share_vk_image,
-                                    'data-desc' => $text,
+                                    'data-url' => $share['url'],
+                                    'data-title' => $share['title_vk'],
+                                    'data-image' => $share['image_vk'],
+                                    'data-desc' => $share['text'],
                                     'data-event' => 'test_way',
                                     'data-param' => 'share_vk'
                                 ]); ?>
@@ -66,6 +70,15 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         </ul>
                         <p>Итоги конкурса будут подведены 12 февраля 2017 г.</p>
                     </div>
+
+                    <?php if($result->id == 3):?>
+                        <div class="rs_mb_img"><img src="/img/warrior.png" alt="img"></div>
+                    <?php elseif($result->id == 10):?>
+                        <div class="rs_mb_img"><img src="/img/warrior.png" alt="img"></div>
+                    <?php else:?>
+
+                    <?php endif;?>
+                    
                 <?php endif;?>
             </div>
         </div>

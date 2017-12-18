@@ -86,8 +86,10 @@ class SiteController extends Controller
         } else {
             $flag = true;
         }
-        if(!isset($testResult) || $testResult === null || $qestionsCount == count($testResult->answersArr)) {
+        if(!isset($testResult) || $testResult === null) {
             $flag = true;
+        } elseif($qestionsCount == count($testResult->answersArr)) {
+            return $this->redirect(Url::toRoute(['profile/index']));
         }
 
         if($flag) {
@@ -277,6 +279,12 @@ class SiteController extends Controller
 
         return $this->render('page', [
             'model' => $model
+        ]);
+    }
+
+    public function actionNews() {
+        return $this->render('news', [
+
         ]);
     }
 
