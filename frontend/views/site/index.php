@@ -36,7 +36,7 @@
                             <h4>Тест : </h4>
                             <h3>«Кем бы ты был в мире Киберспорта» </h3>
                             <p><b>Призы:</b> Среди поделившихся своим результатом будет разыграно 15 подарочных наборов AXE</p>
-                            <a href="/site/test" class="scr2_text_btn transition">Пройти тест</a>
+                            <a href="<?=Url::toRoute(['/site/test']);?>" class="scr2_text_btn transition">Пройти тест</a>
                         </div>
                     </div>
                     <!-- /block -->

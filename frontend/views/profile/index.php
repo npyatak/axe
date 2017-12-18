@@ -27,7 +27,9 @@ if($result) {
                         </div>
                         <div class="user_block_info">
                             <h4><?=$user->fullName;?></h4>
-                            <p><?=$user->city;?> <i class="zmdi zmdi-pin"></i></p>
+                            <?php if($user->city):?>
+                                <p><?=$user->city;?> <i class="zmdi zmdi-pin"></i></p>
+                            <?php endif;?>
                         </div>
                     </div>
                 <?php endif;?>

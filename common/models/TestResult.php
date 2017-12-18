@@ -71,6 +71,13 @@ class TestResult extends \yii\db\ActiveRecord
             $this->score = json_encode($scores);
 
             $this->save(false, ['result_id', 'score']);
+
+            if(!Yii::$app->user->isGuest) {
+                $user = Yii::$app->user->identity;
+                $user->test_result_id = $this->result_id;
+                
+                $user->save(false, ['test_result_id']);
+            }
         } /*elseif($this->result_id) {            
             $this->result_id = null;
             $this->score = null;

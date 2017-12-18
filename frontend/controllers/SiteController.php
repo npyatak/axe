@@ -72,9 +72,10 @@ class SiteController extends Controller
         $testResultId = Yii::$app->request->cookies->getValue('test_hash', null);
 
         $flag = false;
-        if(!Yii::$app->user->isGuest && Yii::$app->user->identity->test_result_id) {
-            $testResult = TestResult::findOne(Yii::$app->user->identity->test_result_id);
-        } elseif($testResultId !== null) {
+        // if(!Yii::$app->user->isGuest/* && Yii::$app->user->identity->test_result_id*/) {
+        //     $testResult = TestResult::findOne(Yii::$app->user->identity->test_result_id);
+        // } else
+        if($testResultId !== null) {
             $testResult = TestResult::findOne($testResultId);
         } else {
             $flag = true;
@@ -128,7 +129,6 @@ class SiteController extends Controller
 
             if($testResult !== null && $testResult->result_id) {
                 $result = Result::findOne($testResult->result_id);
-
 
                 return $this->render('test_result', [
                     'result' => $result,
