@@ -7,8 +7,8 @@ if($result) {
     $share['title_fb'] = $result->share_title_fb;
     $share['title_vk'] = $result->share_title_vk;
     $share['text'] = $result->share_text;
-    $share['image_fb'] = $result->share_fb_image;
-    $share['image_vk'] = $result->share_vk_image;
+    $share['image_fb'] = $result->shareFbImageUrl;
+    $share['image_vk'] = $result->shareVkImageUrl;
 
     $this->params['share'] = $share;
 
@@ -58,7 +58,7 @@ if($result) {
                                 <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
                                     'class' => 'share',
                                     'data-type' => 'fb',
-                                    'data-url' => $share['url'].
+                                    'data-url' => $share['url'],
                                     'data-title' => $share['title_fb'],
                                     'data-image' => $share['image_fb'],
                                     'data-desc' => $share['text'],
