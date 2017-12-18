@@ -15,6 +15,7 @@ use yii\web\NotFoundHttpException;
 use common\models\User;
 use common\models\Question;
 use common\models\Result;
+use common\models\TestResult;
 use common\models\Page;
 
 class ProfileController extends Controller
