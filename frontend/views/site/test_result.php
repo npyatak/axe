@@ -19,20 +19,32 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
         <div class="row">
             <div class="frame_block">
                 <div class="main_title">
-                    <h2><b><strong>Результаты теста</strong> <br> Кем бы ты был в мире киберспорта.</b></h2>
+                    <h2><b><strong>Результаты теста</strong> <br> &laquo;Кем бы ты был в мире киберспорта&raquo;</b></h2>
                 </div>
                 <h4><?=$result->title;?></h4>
                 <p><?=$result->text;?></p>
                                         
                 <?php if(Yii::$app->user->isGuest):?>
-                    <br>
-                    <p class="text marginTop20">
-                        Авторизуйтесь через одну из соцсетей и поделитесь своим результатом с друзьями
+                    <br><br><br><br>
+                    <!--<div class="reg_screen_check">-->
+                    <p style="font-size:120%;">
+                        <b style="color: #ab9675;">Авторизуйтесь</b> через одну из соцсетей, <b style="color: #ab9675;">поделитесь</b> своим результатом с друзьями
                         <br>
                         И получите возможность выиграть один из 15 подарочных наборов AXE
                     </p>
+                    <!--</div>-->
+                    <br>
                     <?=$this->render('_register');?>
                 <?php else:?>
+                		<br><br><br><br>
+                    <!--<div class="reg_screen_check">-->
+                    <p style="font-size:120%;">
+                        <b style="color: #ab9675;">Поделитесь</b> своим результатом с друзьями
+                        <br>
+                        И получите возможность выиграть один из 15 подарочных наборов AXE
+                    </p>
+                    <!--</div>-->
+                    <br>
                     <div class="ucb_challenge_share">
                         <p>Поделиться результатом: 
                             <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [

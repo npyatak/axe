@@ -9,7 +9,7 @@ use yii\helpers\Url;
                 <div class="test_screen_table">
                     <div class="test_screen_cell">
                         <div class="main_title">
-                            <h2><b><strong>тест:</strong> <br> "Кем бы ты был в мире киберспорта"</b><br>участвуйте в розыгрыше подарочных наборов Axe  </h2>
+                            <h2><b><strong>тест:</strong> <br> &laquo;Кем бы ты был в мире киберспорта&raquo;</b><br>участвуйте в розыгрыше подарочных наборов Axe  </h2>
                         </div>
                         <div class="test_slider">
                             <?php foreach ($questions as $question) {
