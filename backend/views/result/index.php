@@ -22,6 +22,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'id',
                 'title',
+                [
+                    'attribute' => 'share_vk_image',
+                    'format' => 'raw',
+                    'value' => function($data) {
+                        return Html::img($data->shareVkImageUrl, ['width' => '150px']);
+                    }
+                ],
+                [
+                    'attribute' => 'share_fb_image',
+                    'format' => 'raw',
+                    'value' => function($data) {
+                        return Html::img($data->shareFbImageUrl, ['width' => '150px']);
+                    }
+                ],
 
                 ['class' => 'yii\grid\ActionColumn'],
             ],

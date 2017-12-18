@@ -6,7 +6,8 @@ use Yii;
 
 class Result extends \yii\db\ActiveRecord
 {
-    public $shareImageFile;
+    public $shareVkImageFile;
+    public $shareFbImageFile;
     /**
      * @inheritdoc
      */
@@ -22,8 +23,8 @@ class Result extends \yii\db\ActiveRecord
     {
         return [
             [['text'], 'required'],
-            [['title', 'text', 'share_text', 'share_image'], 'string', 'max' => 255],
-            [['shareImageFile'], 'file', 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
+            [['title', 'text', 'share_title', 'share_text', 'share_vk_image', 'share_fb_image'], 'string', 'max' => 255],
+            [['shareVkImageFile', 'shareFbImageFile'], 'file', 'extensions'=>'jpg, jpeg, png', 'maxSize'=>1024 * 1024 * 5, 'mimeTypes' => 'image/jpg, image/jpeg, image/png'],
         ];
     }
 
@@ -37,7 +38,9 @@ class Result extends \yii\db\ActiveRecord
             'title' => 'Заголовок',
             'text' => 'Текст',
             'share_text' => 'Текст поделиться',
-            'shareImageFile' => 'Изображение поделиться',
+            'share_title' => 'Заголовок поделиться',
+            'shareVkImageFile' => 'Изображение поделиться VK',
+            'shareFbImageFile' => 'Изображение поделиться FB',
         ];
     }
 
@@ -51,8 +54,11 @@ class Result extends \yii\db\ActiveRecord
 
     public function afterDelete() {
         $path = $this->imageSrcPath;
-        if(file_exists($path.$this->share_image) && is_file($path.$this->share_image)) {
-            unlink($path.$this->share_image);
+        if(file_exists($path.$this->share_vk_image) && is_file($path.$this->share_vk_image)) {
+            unlink($path.$this->share_vk_image);
+        }
+        if(file_exists($path.$this->share_fb_image) && is_file($path.$this->share_fb_image)) {
+            unlink($path.$this->share_fb_image);
         }
         return parent::afterDelete();
     }
@@ -61,7 +67,11 @@ class Result extends \yii\db\ActiveRecord
         return __DIR__ . '/../../frontend/web/uploads/images/';
     }
 
-    public function getShareImageUrl() {
-        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/images/'.$this->share_image);
+    public function getShareVkImageUrl() {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/images/'.$this->share_vk_image);
+    }
+
+    public function getShareFbImageUrl() {
+        return Yii::$app->urlManagerFrontEnd->createAbsoluteUrl('/uploads/images/'.$this->share_fb_image);
     }
 }

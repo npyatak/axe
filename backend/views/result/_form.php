@@ -5,15 +5,19 @@ use yii\widgets\ActiveForm;
 
 <div class="form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'text')->textarea() ?>
 
+    <?= $form->field($model, 'share_title')->textInput() ?>
+    
     <?= $form->field($model, 'share_text')->textarea() ?>
 
-    <?= $form->field($model, 'shareImageFile')->fileInput() ?>
+    <?= $form->field($model, 'shareVkImageFile')->fileInput() ?>
+    
+    <?= $form->field($model, 'shareFbImageFile')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

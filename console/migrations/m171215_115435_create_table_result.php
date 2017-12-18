@@ -15,8 +15,10 @@ class m171215_115435_create_table_result extends Migration
             'id' => $this->primaryKey(),
             'title' => $this->string(255),
             'text' => $this->string(255)->notNull(),
+            'share_title' => $this->string(255),
             'share_text' => $this->string(255),
-            'share_image' => $this->string(255),
+            'share_vk_image' => $this->string(255),
+            'share_fb_image' => $this->string(255),
 
         ], $tableOptions);
 

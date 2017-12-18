@@ -40,21 +40,21 @@ class ResultController extends CController
         $model = new Result();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->shareImageFile = UploadedFile::getInstance($model, 'shareImageFile');
+            $images = ['share_vk_image' => 'shareVkImageFile', 'share_fb_image' => 'shareFbImageFile'];
+            foreach ($images as $attr => $fileAttr) {
+                $model->$fileAttr = UploadedFile::getInstance($model, $fileAttr);
 
-            if($model->shareImageFile) {
-                $path = $model->imageSrcPath;
-                if(!file_exists($path)) {
-                    mkdir($path, 0775, true);
-                }
-
-                $model->share_image = md5(time()).'.'.$model->shareImageFile->extension;
-                
-                if($model->save()) {
-                    if(isset($oldImage)) {
-                        unlink($oldImage);
+                if($model->$fileAttr) {
+                    $path = $model->imageSrcPath;
+                    if(!file_exists($path)) {
+                        mkdir($path, 0775, true);
                     }
-                    $model->shareImageFile->saveAs($path.$model->share_image);
+
+                    $model->$attr = md5(time()).'.'.$model->$fileAttr->extension;
+                    
+                    if($model->save(false, [$attr])) {
+                        $model->$fileAttr->saveAs($path.$model->$attr);
+                    }
                 }
             }
 
@@ -77,24 +77,27 @@ class ResultController extends CController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->shareImageFile = UploadedFile::getInstance($model, 'shareImageFile');
+            $images = ['share_vk_image' => 'shareVkImageFile', 'share_fb_image' => 'shareFbImageFile'];
+            foreach ($images as $attr => $fileAttr) {
+                $model->$fileAttr = UploadedFile::getInstance($model, $fileAttr);
 
-            if($model->shareImageFile) {
-                $path = $model->imageSrcPath;
-                if(!file_exists($path)) {
-                    mkdir($path, 0775, true);
-                }
-                if($model->share_image && file_exists($path.$model->share_image)) {
-                    $oldImage = $path.$model->share_image;
-                }
-
-                $model->share_image = md5(time()).'.'.$model->shareImageFile->extension;
-                
-                if($model->save()) {
-                    if(isset($oldImage)) {
-                        unlink($oldImage);
+                if($model->$fileAttr) {
+                    $path = $model->imageSrcPath;
+                    if(!file_exists($path)) {
+                        mkdir($path, 0775, true);
                     }
-                    $model->shareImageFile->saveAs($path.$model->share_image);
+                    if($model->$attr && file_exists($path.$model->$attr)) {
+                        $oldImage = $path.$model->$attr;
+                    }
+
+                    $model->$attr = md5(time().$fileAttr).'.'.$model->$fileAttr->extension;
+                    
+                    if($model->save(false, [$attr])) {
+                        if(isset($oldImage)) {
+                            unlink($oldImage);
+                        }
+                        $model->$fileAttr->saveAs($path.$model->$attr);
+                    }
                 }
             }
 
