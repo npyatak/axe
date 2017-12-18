@@ -47,12 +47,14 @@ ga('create', 'UA-111266919-1', 'auto');
                     <div class="right_logo"><a href="http://team.empire.gg/" target="_blank" data-event="logo_click" data-param="logo_TeamEmpire"><img src="/img/logo2.png" alt="img"></a></div>
                     <div class="nav_list_wrapper">
                         <ul class="nav_list">
--                            <li><a href="#">Мир киберспорта</a>
--                                <ul>
--                                    <li><a href="<?=Url::toRoute(['site/video']);?>">Новости с Любовью Киберспортивной</a></li>
--                                    <li><a href="<?=Url::toRoute(['site/news']);?>">Киберспортивные новости Матч ТВ</a></li>
--                                </ul>
--                            </li>
+                            <li><a href="<?=Url::toRoute(['site/video']);?>">Мир киберспорта</a>
+                            <?php if(false):?>
+                                <ul>
+                                    <li><a href="<?=Url::toRoute(['site/video']);?>">Новости с Любовью Киберспортивной</a></li>
+                                    <li><a href="<?=Url::toRoute(['site/news']);?>">Киберспортивные новости Матч ТВ</a></li>
+                                </ul>
+                                <?php endif;?>
+                            </li>
                             <li><a href="<?=Url::toRoute(['site/test']);?>">Участвовать</a></li>
                             <li><a href="<?=Url::toRoute(['profile/index']);?>">Личный кабинет</a></li>
                             <li><a href="http://www.axerussia.ru/" targer="_blank">Axe</a></li>
