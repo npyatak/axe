@@ -119,6 +119,8 @@ AppAsset::register($this);
                             } else {
                                 $share = Yii::$app->params['share'];
                                 $share['url'] = Url::canonical();
+                                $share['image_fb'] = Url::to($share['image_fb'], true);
+                                $share['image_vk'] = Url::to($share['image_vk'], true);
                             } ?>
                             <li>
                                 <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [

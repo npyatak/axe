@@ -15,3 +15,7 @@ p.text {
 .marginTop20 {
 	margin-top: 20px;
 }
+.user_block_photo img {
+	width: 70px;
+	height: 70px;
+}
