@@ -1,4 +1,6 @@
-
+<?php
+use yii\helpers\Html;
+?>
 <!-- screen1 -->
 <div class="screen1">
     <div class="container">
