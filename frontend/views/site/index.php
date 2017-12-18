@@ -1,5 +1,22 @@
 <?php
 use yii\helpers\Url;
+
+if($result) {
+    $share['url'] = Url::toRoute(['site/index', 'cybertest' => $result->id]);
+    $share['title_fb'] = $result->share_title_fb;
+    $share['title_vk'] = $result->share_title_vk;
+    $share['text'] = $result->share_text;
+    $share['image_fb'] = $result->share_fb_image;
+    $share['image_vk'] = $result->share_vk_image;
+
+    $this->params['share'] = $share;
+
+    $this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
+    $this->registerMetaTag(['property' => 'og:title', 'content' => $share['title_fb']], 'og:title');
+    $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb']], 'og:image');
+    $this->registerMetaTag(['property' => 'og:url', 'content' => $share['url']], 'og:url');
+    $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
+}
 ?>
 <!-- screen1 -->
 <div class="screen1">

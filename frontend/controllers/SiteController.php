@@ -61,12 +61,18 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex($cybertest = null)
     {
         $news = null;
+        $result = null;
+
+        if($cybertest) {
+            $result = Result::findOne($cybertest);
+        }
         
         return $this->render('index', [
             'news' => $news,
+            'result' => $result,
         ]);
     }
 
@@ -75,9 +81,6 @@ class SiteController extends Controller
         $testResultId = Yii::$app->request->cookies->getValue('test_hash', null);
 
         $flag = false;
-        // if(!Yii::$app->user->isGuest/* && Yii::$app->user->identity->test_result_id*/) {
-        //     $testResult = TestResult::findOne(Yii::$app->user->identity->test_result_id);
-        // } else
         if($testResultId !== null) {
             $testResult = TestResult::findOne($testResultId);
         } else {
@@ -122,6 +125,24 @@ class SiteController extends Controller
             'questions' => $questions,
             'initialSlide' => $initialSlide,
         ]);
+    }
+
+    public function actionRestartTest() {
+        if(!Yii::$app->user->isGuest) {
+            $user = Yii::$app->user->identity;
+            if($user->test_result_id) {
+                $testResult = TestResult::findOne($user->test_result_id);
+                if($testResult !== null) {
+                    $testResult->delete();
+                }
+                $user->test_result_id = null;
+                $user->save(false, ['test_result_id']);
+            }
+        }
+
+        Yii::$app->response->cookies->remove('test_hash');
+
+        return $this->redirect(Url::toRoute(['site/test']));
     }
 
     public function actionTestResult() {

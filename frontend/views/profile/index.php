@@ -3,15 +3,19 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
 if($result) {
-    $url = Url::toRoute(['site/test-result']);
-    $title = $result->share_title_fb;
-    $text = $result->share_text;
-    $image = $result->share_fb_image;
+    $share['url'] = Url::toRoute(['site/index', 'cybertest' => $result->id]);
+    $share['title_fb'] = $result->share_title_fb;
+    $share['title_vk'] = $result->share_title_vk;
+    $share['text'] = $result->share_text;
+    $share['image_fb'] = $result->share_fb_image;
+    $share['image_vk'] = $result->share_vk_image;
 
-    $this->registerMetaTag(['property' => 'og:description', 'content' => $text], 'og:description');
-    $this->registerMetaTag(['property' => 'og:title', 'content' => $title], 'og:title');
-    $this->registerMetaTag(['property' => 'og:image', 'content' => $image], 'og:image');
-    $this->registerMetaTag(['property' => 'og:url', 'content' => $url], 'og:url');
+    $this->params['share'] = $share;
+
+    $this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
+    $this->registerMetaTag(['property' => 'og:title', 'content' => $share['title_fb']], 'og:title');
+    $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb']], 'og:image');
+    $this->registerMetaTag(['property' => 'og:url', 'content' => $share['url']], 'og:url');
     $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
 }
 ?>
@@ -42,7 +46,7 @@ if($result) {
                             <div class="ucb_challenge_buttons">
                                 <?php if($user && $user->test_result_id):?>
                                 <a href="<?=Url::toRoute(['site/test-result']);?>" class="transition filed" data-event="test_way" data-param="result">Результат</a>
-                                <a href="<?=Url::toRoute(['site/test']);?>" class="transition" data-event="test_way" data-param="again">пройти еще раз</a>
+                                <a href="<?=Url::toRoute(['site/restart-test']);?>" class="transition" data-event="test_way" data-param="again">пройти еще раз</a>
                                 <?php else:?>
                                 <a href="<?=Url::toRoute(['site/test']);?>" class="transition">Пройти тест</a>
                                 <?php endif;?>
