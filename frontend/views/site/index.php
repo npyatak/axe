@@ -85,12 +85,14 @@ use yii\helpers\Url;
                     <!-- /block -->
                 </div>
                 <!-- blocks -->
-                <a href="#" class="scr2_bottom_button transition">Полные правила</a>
+                <a href="#full-rules" class="scr2_bottom_button fancybox transition">Полные правила</a>
             </div>
         </div>
     </div>
 </div>
 <!-- /screen2 -->
+
+<?php if($news):?>
 <!-- screen3 -->
 <div class="screen3">
     <div class="container">
@@ -130,3 +132,6 @@ use yii\helpers\Url;
     </div>
 </div>
 <!-- /screen3 -->
+<?php endif;?>
+
+<?=$this->render('_rules');?>

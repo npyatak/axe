@@ -35,40 +35,36 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                     <!--</div>-->
                     <br>
                     <?=$this->render('_register');?>
-                <?php else:?>
-                		<br><br><br><br>
-                    <!--<div class="reg_screen_check">-->
-                    <p style="font-size:120%;">
-                        <b style="color: #ab9675;">Поделитесь</b> своим результатом с друзьями
-                        <br>
-                        И получите возможность выиграть один из 15 подарочных наборов AXE
-                    </p>
-                    <!--</div>-->
-                    <br>
-                    <div class="ucb_challenge_share">
-                        <p>Поделиться результатом: 
-                            <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
-                                'class' => 'share',
-                                'data-type' => 'fb',
-                                'data-url' => Url::toRoute(['site/test-result']),
-                                'data-title' => $title,
-                                'data-image' => $image,
-                                'data-desc' => $text,
-                                'data-event' => 'test_way',
-                                'data-param' => 'share_fb'
-                            ]); ?>
-
-                            <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
-                                'class' => 'share',
-                                'data-type' => 'vk',
-                                'data-url' => Url::toRoute(['site/test-result']),
-                                'data-title' => $result->share_title_vk,
-                                'data-image' => $result->share_vk_image,
-                                'data-desc' => $text,
-                                'data-event' => 'test_way',
-                                'data-param' => 'share_vk'
-                            ]); ?>
-                        </p>
+                <?php else:?>                    
+                    <div class="rs_mb_descr">
+                        <h5><b style="color: #ab9675;">Поделись</b> своим результатом с друзьями <br> и получите возможность выиграть один из 15 подарочных наборов AXE</h5>
+                        <ul class="footer_soc">
+                            <li>
+                                <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
+                                    'class' => 'share',
+                                    'data-type' => 'fb',
+                                    'data-url' => Url::toRoute(['site/test-result']),
+                                    'data-title' => $title,
+                                    'data-image' => $image,
+                                    'data-desc' => $text,
+                                    'data-event' => 'test_way',
+                                    'data-param' => 'share_fb'
+                                ]); ?>
+                            </li>
+                            <li>
+                                <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
+                                    'class' => 'share',
+                                    'data-type' => 'vk',
+                                    'data-url' => Url::toRoute(['site/test-result']),
+                                    'data-title' => $result->share_title_vk,
+                                    'data-image' => $result->share_vk_image,
+                                    'data-desc' => $text,
+                                    'data-event' => 'test_way',
+                                    'data-param' => 'share_vk'
+                                ]); ?>
+                            </li>
+                        </ul>
+                        <p>Итоги конкурса будут подведены 12 февраля 2017 г.</p>
                     </div>
                 <?php endif;?>
             </div>

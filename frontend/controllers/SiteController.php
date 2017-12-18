@@ -63,7 +63,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $news = null;
+        
         return $this->render('index', [
+            'news' => $news,
         ]);
     }
 
@@ -198,6 +201,13 @@ class SiteController extends Controller
         }
 
         return $this->render('login');
+    }
+
+    public function actionVideo() {
+
+        return $this->render('video', [
+            'otherVideos' => null,
+        ]);
     }
 
     public function actionLogout() {
