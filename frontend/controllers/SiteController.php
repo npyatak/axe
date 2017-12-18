@@ -131,7 +131,7 @@ class SiteController extends Controller
 
     public function actionRestartTest() {
         if(!Yii::$app->user->isGuest) {
-            $user = Yii::$app->user->identity;
+            $user = User::findOne(Yii::$app->user->id);
             if($user->test_result_id) {
                 $testResult = TestResult::findOne($user->test_result_id);
                 if($testResult !== null) {

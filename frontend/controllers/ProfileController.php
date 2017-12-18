@@ -47,7 +47,7 @@ class ProfileController extends Controller
         if(!Yii::$app->user->isGuest) {
             $user = Yii::$app->user->identity;
             if($user->test_result_id) {
-                $testResult = TestResult::findOne($user->test_result_id);
+                $testResult = TestResult::findOne($testResultId);
                 if($testResult !== null && $testResult->result_id) {
                     $result = Result::findOne($testResult->result_id);
                 }
