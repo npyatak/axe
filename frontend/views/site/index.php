@@ -30,7 +30,7 @@ if($result) {
                 </div>
                 <div class="scr1_notebook">
                     <img src="/img/mac.png" alt="img">
-                    <a href="<?=Url::toRoute(['site/video']);?>" class="scr1_notebook_view "><img src="/img/vdo.jpg" alt="img"><span class="play_btn"></span></a>
+                    <a href="<?=Url::toRoute(['site/video']);?>" class="scr1_notebook_view "><img src="/img/vdo2.jpg" alt="img"><span class="play_btn"></span></a>
                 </div>
             </div>
         </div>

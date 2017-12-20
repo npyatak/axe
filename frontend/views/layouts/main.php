@@ -68,7 +68,7 @@ AppAsset::register($this);
         <div class="container">
             <div class="row">
                 <div class="screen_content clearfix">
-                    <div class="logo"><a href="http://www.axerussia.ru/" target="_blank" data-event="logo_click" data-param="logo_axe"><img src="/img/logo.png" alt="img"></a></div>
+                    <div class="logo"><!--<a href="https://www.axerussia.ru/?utm_source=GPMD&utm_medium=SP&utm_content=GPMD_SP&utm_campaign=AXE_SP_GPMD_DecFeb_&utm_term=" target="_blank" data-event="logo_click" data-param="logo_axe">--><a href="/"><img src="/img/logo.png" alt="img"></a></div>
                     <a href="javascript:void(0)" class="transition hidden_trigger"></a>
                     <div class="right_logo"><a href="http://team.empire.gg/" target="_blank" data-event="logo_click" data-param="logo_TeamEmpire"><img src="/img/logo2.png" alt="img"></a></div>
                     <div class="nav_list_wrapper">
@@ -83,7 +83,7 @@ AppAsset::register($this);
                             </li>
                             <li><a href="<?=Url::toRoute(['site/test']);?>">Участвовать</a></li>
                             <li><a href="<?=Url::toRoute(['profile/index']);?>">Личный кабинет</a></li>
-                            <li><a href="http://www.axerussia.ru/" target="_blank">Axe</a></li>
+                            <li><a href="https://www.axerussia.ru/?utm_source=GPMD&utm_medium=SP&utm_content=GPMD_SP&utm_campaign=AXE_SP_GPMD_DecFeb_&utm_term=" target="_blank">Axe</a></li>
                         </ul>
                     </div>
                 </div>
@@ -99,12 +99,12 @@ AppAsset::register($this);
         <div class="container">
             <div class="footer_images">
                 <div class="fli">
-                    <a href="http://www.axerussia.ru/" target="_blank">
+                    <a href="https://www.axerussia.ru/?utm_source=GPMD&utm_medium=SP&utm_content=GPMD_SP&utm_campaign=AXE_SP_GPMD_DecFeb_&utm_term=" target="_blank">
                         <img src="/img/fl.png" alt="img">
                     </a>
                 </div>
                 <div class="fri">
-                    <a href="http://www.axerussia.ru/" target="_blank">
+                    <a href="https://www.axerussia.ru/?utm_source=GPMD&utm_medium=SP&utm_content=GPMD_SP&utm_campaign=AXE_SP_GPMD_DecFeb_&utm_term=" target="_blank">
                         <img src="/img/fr.png" alt="img">
                     </a>
                 </div>

@@ -7,7 +7,7 @@
                 </div>
                 <div class="vb_wrapper">
                     <div class="vp_inner">
-                        <iframe src="https://www.youtube.com/embed/vHx7rv6R5tE"></iframe>
+                        <iframe src="https://www.youtube.com/embed/UpVFUFwBzl0?autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
