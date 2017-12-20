@@ -34,8 +34,8 @@ return [
         'session' => [
             'class' => 'yii\web\Session',
             'name' => 'advanced-frontend',
-            'cookieParams' => ['httponly' => true, 'lifetime' => 3600 * 24 * 30],
-            'timeout' => 3600 * 24 * 30, //session expire
+            'cookieParams' => ['httponly' => true, 'lifetime' => 3600 * 24 * 365],
+            'timeout' => 3600 * 24 * 365, //session expire
             'useCookies' => true,
         ],
         'log' => [

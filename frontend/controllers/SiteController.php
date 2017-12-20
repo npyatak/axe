@@ -89,7 +89,11 @@ class SiteController extends Controller
         if(!isset($testResult) || $testResult === null) {
             $flag = true;
         } elseif($qestionsCount == count($testResult->answersArr)) {
-            return $this->redirect(Url::toRoute(['profile/index']));
+            if(Yii::$app->user->isGuest) {
+                $flag = true;
+            } else {
+                return $this->redirect(Url::toRoute(['profile/index']));
+            }
         }
 
         if($flag) {
