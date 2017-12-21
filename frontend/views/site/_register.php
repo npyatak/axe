@@ -13,6 +13,6 @@ use yii\helpers\Url;
     </p>
     <div class="reg_screen_check">
         <input type="checkbox" id="register_checkbox" checked>
-        <label for="register_checkbox">Я соглашаюсь <a href="#">с полными правилами</a> конкурса</label>
+        <label for="register_checkbox">Я соглашаюсь <a href="#full-rules" class="fancybox">с полными правилами</a> конкурса</label>
     </div>
 </div>

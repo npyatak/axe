@@ -21,7 +21,7 @@ AppAsset::register($this);
     <!-- <meta name="viewport" content="width=980"> -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title>Открой для себя мир киберспорта вместе с AXE</title>
     <!-- <link rel="shortcut icon" href="img/fav.png" type="image/x-icon"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

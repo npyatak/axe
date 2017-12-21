@@ -62,7 +62,7 @@ if($result) {
                     <!-- block -->
                     <div class="scr2_block">
                         <div class="scr2_block_img">
-                            <img src="/img/22.png" alt="img">
+                            <img src="/img/22_3.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск Челленджа на лучший игровой момент  </h4>

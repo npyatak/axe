@@ -62,8 +62,8 @@ if($result) {
                                     'data-title' => $share['title_fb'],
                                     'data-image' => $share['image_fb'],
                                     'data-desc' => $share['text'],
-                                    'data-event' => 'main_sharing',
-                                    'data-param' => 'fb'
+                                    'data-event' => 'test_way',
+                                    'data-param' => 'share_fb_lk'
                                 ]); ?>
                                 <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
                                     'class' => 'share',
@@ -72,8 +72,8 @@ if($result) {
                                     'data-title' => $share['title_vk'],
                                     'data-image' => $share['image_vk'],
                                     'data-desc' => $share['text'],
-                                    'data-event' => 'main_sharing',
-                                    'data-param' => 'vk'
+                                    'data-event' => 'test_way',
+                                    'data-param' => 'share_vk_lk'
                                 ]); ?>
                             </p>
                         </div>
