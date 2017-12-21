@@ -22,7 +22,7 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true, 'lifetime' => 3600 * 24 * 365],
         ],
         'assetManager' => [
             'bundles' => [

@@ -24,19 +24,29 @@ if($result) {
     <div class="container">
         <div class="row">
             <div class="frame_block">
+                <div class="user_block_wrapper">
                 <?php if($user):?>
-                    <div class="user_block_wrapper">
-                        <div class="user_block_photo">
-                            <img src="<?=$user->image;?>" alt="img">
-                        </div>
-                        <div class="user_block_info">
-                            <h4><?=$user->fullName;?></h4>
-                            <?php if($user->city):?>
-                                <p><?=$user->city;?> <i class="zmdi zmdi-pin"></i></p>
-                            <?php endif;?>
-                        </div>
+                    <div class="user_block_photo">
+                        <img src="<?=$user->image;?>" alt="img">
+                    </div>
+                    <div class="user_block_info">
+                        <h4><?=$user->fullName;?></h4>
+                        <?php if($user->city):?>
+                            <p><?=$user->city;?> <i class="zmdi zmdi-pin"></i></p>
+                        <?php endif;?>
+                    </div>
+                <?php else:?>
+                    <div class="user_block_info">
+                        <span class="profile-social">Войти: </span>
+                        <a href="<?=Url::toRoute(['site/login', 'service' => 'fb']);?>" class="soc_lnk eauth-service-link fb"  data-eauth-service="facebook" data-event="login" data-param="login_fb">
+                            <i class="zmdi zmdi-facebook"></i>
+                        </a> 
+                        <a href="<?=Url::toRoute(['site/login', 'service' => 'vk']);?>" class="soc_lnk eauth-service-link vk"  data-eauth-service="vkontakte" data-event="login" data-param="login_vk">
+                            <i class="zmdi zmdi-vk"></i>
+                        </a>
                     </div>
                 <?php endif;?>
+                </div>
                 <div class="user_challanges">
                     <!-- block -->
                     <div class="user_challange_block filled">

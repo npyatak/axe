@@ -192,7 +192,7 @@ $(document).ready(function() {
 
 $(document).on('click', '.soc_lnk', function(e) {
     var div = $(this).closest('.test_slide');
-    if(!$('#register_checkbox').is(':checked')) {
+    if(div.length > 0 && !$('#register_checkbox').is(':checked')) {
         return  false;
     }
 });

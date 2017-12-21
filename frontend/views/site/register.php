@@ -1,4 +1,3 @@
-
 <div class="reg_screen">
     <div class="container">
         <div class="row">
@@ -13,3 +12,5 @@
         </div>
     </div>
 </div>
+
+<?=$this->render('_rules');?>

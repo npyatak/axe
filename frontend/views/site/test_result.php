@@ -27,20 +27,6 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                 </div>
                 <h4><?=$result->title;?></h4>
                 <p><?=$result->text;?></p>
-                
-                <?php if($result->id == 1):?>
-                        <!--<p><br/><img src="/img/pic/m1.png" alt="img"></p>-->
-                <?php elseif($result->id == 3):?>
-                
-                <?php elseif($result->id == 10):?>
-                <?php elseif($result->id == 10):?>
-                <?php elseif($result->id == 10):?>
-                        
-                <?php else:?>
-
-                <?php endif;?>
-                
-                
                                         
                 <?php if(Yii::$app->user->isGuest):?>
                     <br><br><br><br>
@@ -52,7 +38,9 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                     </p>
                     <!--</div>-->
                     <br>
-                    <?php if($result->id == 2):?>
+
+                    <div class="rs_mb_img"><img src="/img/pic/n<?=$result->id;?>.png" alt="img"></div>
+                    <!-- <?php if($result->id == 2):?>
                         <div class="rs_mb_img"><img src="/img/pic/n2.png" alt="img"></div>
                     <?php elseif($result->id == 3):?>
                         <div class="rs_mb_img"><img src="/img/pic/n3.png" alt="img"></div>
@@ -70,7 +58,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         <div class="rs_mb_img"><img src="/img/pic/n1.png" alt="img"></div>
                     <?php else:?>
 
-                    <?php endif;?>
+                    <?php endif;?> -->
                     <?=$this->render('_register');?>
                 <?php else:?>
                     <div class="rs_mb_descr">
@@ -104,7 +92,9 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         <p>Итоги конкурса будут подведены 12 февраля 2017 г.</p>
                     </div>
 
-                    <?php if($result->id == 2):?>
+                    <div class="rs_mb_img"><img src="/img/pic/n<?=$result->id;?>.png" alt="img"></div>
+
+                    <!-- <?php if($result->id == 2):?>
                         <div class="rs_mb_img"><img src="/img/pic/n2.png" alt="img"></div>
                     <?php elseif($result->id == 3):?>
                         <div class="rs_mb_img"><img src="/img/pic/n3.png" alt="img"></div>
@@ -122,7 +112,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         <div class="rs_mb_img"><img src="/img/pic/n1.png" alt="img"></div>
                     <?php else:?>
 
-                    <?php endif;?>
+                    <?php endif;?> -->
 
                 <?php endif;?>
             </div>
@@ -185,3 +175,5 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
         </div>
     </div>
 </div>
+
+<?=$this->render('_rules');?>
