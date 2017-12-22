@@ -177,13 +177,12 @@ class SiteController extends Controller
 
     public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
-        $ref = Yii::$app->getRequest()->getQueryParam('ref');
         
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
 
             $eauth->setRedirectUrl(Url::toRoute('site/test-result'));
-            $eauth->setCancelUrl(Url::toRoute('site/login'));
+            $eauth->setCancelUrl(Url::toRoute('profile/index'));
 
             try {
                 if ($eauth->authenticate()) {
@@ -217,7 +216,7 @@ class SiteController extends Controller
                     $user->browser = $_SERVER['HTTP_USER_AGENT'];
                     $user->save(false, ['ip', 'browser']);
 
-                    Yii::$app->user->login($user);
+                    Yii::$app->user->login($user, 3600 * 24 * 365);
                     // special redirect with closing popup window
                     $eauth->redirect();
                 } else {
