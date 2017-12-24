@@ -25,10 +25,10 @@ if ($popup) {
 ?>
 <div class="eauth" id="<?php echo $id; ?>">
 	<?php if($location == 'profile'):?>
-	    <a href="<?=Url::toRoute(['site/login', 'service' => 'fb']);?>" class="soc_lnk eauth-service-link fb"  data-eauth-service="facebook" data-event="login" data-param="login_fb">
+	    <a href="<?=Url::toRoute(['site/login', 'service' => 'fb', 'ref' => Url::current()]);?>" class="soc_lnk eauth-service-link fb"  data-eauth-service="facebook" data-event="login" data-param="login_fb">
 	        <i class="zmdi zmdi-facebook"></i>
 	    </a> 
-	    <a href="<?=Url::toRoute(['site/login', 'service' => 'vk']);?>" class="soc_lnk eauth-service-link vk"  data-eauth-service="vkontakte" data-event="login" data-param="login_vk">
+	    <a href="<?=Url::toRoute(['site/login', 'service' => 'vk', 'ref' => Url::current()]);?>" class="soc_lnk eauth-service-link vk"  data-eauth-service="vkontakte" data-event="login" data-param="login_vk">
 	        <i class="zmdi zmdi-vk"></i>
 	    </a>
 	<?php else:?>
