@@ -3,6 +3,7 @@ namespace frontend\widgets\social;
 //use common\models\User;
 
 class SocialWidget extends \nodge\eauth\Widget {
+	public $location;
 
     public function run() {
 		echo $this->render('widget', [
@@ -11,6 +12,7 @@ class SocialWidget extends \nodge\eauth\Widget {
 			'action' => $this->action,
 			'popup' => $this->popup,
 			'assetBundle' => $this->assetBundle,
+			'location' => $this->location,
 		]);
     }
 }

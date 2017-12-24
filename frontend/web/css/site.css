@@ -37,6 +37,16 @@ p.text {
 	height: 200px;
 	text-align: center;
 }
+.eauth {
+	display: inline;
+}
+.eauth-service-link {
+	padding: 0;
+}
+.eauth-service-link::before, .eauth-service-link::after {
+	display: none!important;
+}
+
 
 .reg_screen_text {
 	color: #fff;
