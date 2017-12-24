@@ -33,8 +33,12 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
-<img src="https://ad.mail.ru/i2349.gif" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
-<img src="https://ad.mail.ru/i2350.gif" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
+
+<?php if($_SERVER['HTTP_HOST'] != 'bothie.local'):?>
+    <img src="https://ad.mail.ru/i2349.gif" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
+    <img src="https://ad.mail.ru/i2350.gif" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
+<?php endif;?>
+
 <?php $this->beginBody() ?>
 <!-- modal thanks -->
 <div class="my-modal-thanks" id="myThanks">
@@ -171,46 +175,49 @@ AppAsset::register($this);
     </footer>
     <!-- /footer -->
 
-<!-- Google Analytics -->
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-ga('create', 'UA-111266919-1', 'auto');
-ga('send', 'pageview');
-</script>
-<!-- End Google Analytics -->
+<?php if($_SERVER['HTTP_HOST'] != 'axe.local'):?>
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter47039403 = new Ya.Metrika({
-                    id:47039403,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true
-                });
-            } catch(e) { }
-        });
+    ga('create', 'UA-111266919-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter47039403 = new Ya.Metrika({
+                        id:47039403,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true
+                    });
+                } catch(e) { }
+            });
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/47039403" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/47039403" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+<?php endif;?>
     
 <?php $this->endBody() ?>
 </body>

@@ -40,48 +40,48 @@ $(document).ready(function() {
     var bh = window.innerHeight;
 
     //E-mail Ajax Send
-    $("form").each(function() {
-        var it = $(this);
-        it.validate({
-            rules: {
-                phone: {
-                    required: true
-                }
-            },
-            messages: {},
-            errorPlacement: function(error, element) {},
-            submitHandler: function(form) {
-                var thisForm = $(form);
-                $.ajax({
-                    type: "POST",
-                    url: thisForm.attr("action"),
-                    data: thisForm.serialize()
-                }).done(function() {
-                    $.fancybox.close();
-                    $.fancybox({
-                        href: '#myThanks',
-                        wrapCSS: 'owrap',
-                        openEffect: "elastic",
-                        openMethod: "zoomIn",
-                        closeEffect: "elastic",
-                        closeMethod: "zoomOut",
-                    });
-                    setTimeout(function() {
-                        $.fancybox.close();
-                    }, 3000);
-                    it.trigger("reset");
-                });
-                return false;
-            },
-            success: function() {},
-            highlight: function(element, errorClass) {
-                $(element).addClass('error');
-            },
-            unhighlight: function(element, errorClass, validClass) {
-                $(element).removeClass('error');
-            }
-        })
-    });
+    // $("form").each(function() {
+    //     var it = $(this);
+    //     it.validate({
+    //         rules: {
+    //             phone: {
+    //                 required: true
+    //             }
+    //         },
+    //         messages: {},
+    //         errorPlacement: function(error, element) {},
+    //         submitHandler: function(form) {
+    //             var thisForm = $(form);
+    //             $.ajax({
+    //                 type: "POST",
+    //                 url: thisForm.attr("action"),
+    //                 data: thisForm.serialize()
+    //             }).done(function() {
+    //                 $.fancybox.close();
+    //                 $.fancybox({
+    //                     href: '#myThanks',
+    //                     wrapCSS: 'owrap',
+    //                     openEffect: "elastic",
+    //                     openMethod: "zoomIn",
+    //                     closeEffect: "elastic",
+    //                     closeMethod: "zoomOut",
+    //                 });
+    //                 setTimeout(function() {
+    //                     $.fancybox.close();
+    //                 }, 3000);
+    //                 it.trigger("reset");
+    //             });
+    //             return false;
+    //         },
+    //         success: function() {},
+    //         highlight: function(element, errorClass) {
+    //             $(element).addClass('error');
+    //         },
+    //         unhighlight: function(element, errorClass, validClass) {
+    //             $(element).removeClass('error');
+    //         }
+    //     })
+    // });
 
     //  scroll with offset
 

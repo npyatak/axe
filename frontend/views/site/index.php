@@ -56,7 +56,7 @@ if($result) {
                             <h3>«Кем бы ты был в мире Киберспорта» </h3>
                             <p><b>Призы:</b> Среди поделившихся своим результатом будет разыграно 15 подарочных наборов AXE</p>
                             <a href="<?=Url::toRoute(['/site/test']);?>" class="scr2_text_btn transition">Пройти тест</a>
-                        </div>
+                        </div>                     
                     </div>
                     <!-- /block -->
                     <!-- block -->
@@ -64,12 +64,21 @@ if($result) {
                         <div class="scr2_block_img">
                             <img src="/img/22_3.png" alt="img">
                         </div>
-                        <div class="scr2_block_text">
+                        <!-- <div class="scr2_block_text">
                             <h4>Запуск Челленджа на лучший игровой момент  </h4>
                             <h3>28 декабря 2017г  </h3>
                             <p><b>Призы:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB
                             </p>
-                            <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
+                        </div> -->
+                        <div class="scr2_block_text">
+                            <h4>Челлендж:  </h4>
+                            <h3>на лучший игровой момент</h3>
+                            <p><b>Главный приз:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB
+                            </p>
+                            <div class="ch_buttons">
+                                <a href="<?=Url::toRoute(['site/challenge-rules']);?>" class="scr2_text_btn transition">участвовать</a>
+                                <a href="<?=Url::toRoute(['site/challenge']);?>" class="scr2_bottom_button transition">галерея работ</a>
+                            </div>
                         </div>
                     </div>
                     <!-- /block -->
@@ -78,11 +87,19 @@ if($result) {
                         <div class="scr2_block_img">
                             <img src="/img/23.png" alt="img">
                         </div>
-                        <div class="scr2_block_text">
+                        <!-- <div class="scr2_block_text">
                             <h4>Запуск Кликбаттла </h4>
                             <h3>28 декабря 2017 г</h3>
                             <p><b>Призы:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
-                            <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
+                        </div> -->
+                        <div class="scr2_block_text">
+                            <h4>Клик-баттл: </h4>
+                            <h3>Тренируйся и выигрывай призы</h3>
+                            <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
+                            <div class="ch_buttons">
+                                <a href="<?=Url::toRoute(['site/clickbattle-reg']);?>" class="scr2_text_btn transition">участвовать</a>
+                                <a href="<?=Url::toRoute(['site/clickbattle-rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
+                            </div>
                         </div>
                     </div>
                     <!-- /block -->

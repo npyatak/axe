@@ -91,10 +91,11 @@ return [
             'rules' => [
                 '' => 'site/index',
 
+                '<action>' => 'site/<action>',
+                
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action>/<id:\d+>' => '<controller>/<action>',
                 
-                // '<action>' => 'site/<action>',
                 // '<action:\w+>/<id:\d+>' => 'site/<action>',
                 
                 //'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',

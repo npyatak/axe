@@ -11,8 +11,16 @@ namespace frontend\models\social;
 
 class VkOAuth2Service extends \nodge\eauth\services\VKontakteOAuth2Service {
 
+	const SCOPE_EMAIL = 'email';
+
+	protected $scopes = [self::SCOPE_EMAIL];
+
 	protected function fetchAttributes() {
 		$tokenData = $this->getAccessTokenData();
+
+		$access_token = $tokenData['access_token'];
+		$email = isset($tokenData['params']['email']) ? $tokenData['params']['email'] : '';
+
 		$info = $this->makeSignedRequest('users.get.json', [
 			'query' => [
 				'uids' => $tokenData['params']['user_id'],
@@ -28,6 +36,8 @@ class VkOAuth2Service extends \nodge\eauth\services\VKontakteOAuth2Service {
 		$this->attributes['name'] = $info['first_name'] . ' ' . $info['last_name'];
 		$this->attributes['url'] = 'http://vk.com/id' . $info['uid'];
 		$this->attributes['photo_url'] = $info['photo_medium'];
+		$this->attributes['email'] = $email;
+		$this->attributes['access_token'] = $access_token;
 
 		if (!empty($info['nickname'])) {
 			$this->attributes['username'] = $info['nickname'];

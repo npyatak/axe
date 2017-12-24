@@ -92,20 +92,58 @@ if($result) {
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                    <div class="user_challange_block">
+                    <!-- <div class="user_challange_block">
                         <div class="ucb_title">
                             <p>Запуск челенджа на лучший игровой момент
                                 <br><b>28 декабря 2017г </b>
                             </p>
                         </div>
+                    </div> -->
+                    <div class="user_challange_block filled">
+                        <div class="ucb_challenge">
+                            <h4>Челлендж :<br><b>на лучший игровой момент</b></h4>
+                            <p><b>Главный приз:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB </p>
+                            <div class="ucb_challenge_buttons">
+                                <?php if($user):?>
+                                    <a href="<?=Url::toRoute(['site/challenge', 'name' => $user->fullName]);?>" class="transition filed">Мои видео</a>
+                                    <a href="<?=Url::toRoute(['site/challenge']);?>" class="transition ">Голосовать</a>
+                                <?php else:?>
+                                    <a href="<?=Url::toRoute(['site/challenge-rules']);?>" class="transition filed">Участвовать</a>
+                                    <a href="<?=Url::toRoute(['site/challenge']);?>" class="transition ">Голосовать</a>
+                                <?php endif;?>
+                            </div>
+                        </div>
+                        <div class="ucb_challenge_share">
+                            <?php if($user):?>
+                            <div class="ucb_challenge_buttons">
+                                <a href="<?=Url::toRoute(['site/challenge-reg']);?>" class="transition">Запостить еще</a>
+                            </div>
+                            <?php endif;?>
+                        </div>
+                        <div class="clng_img"><img src="/img/clng2.png" alt="img"></div>
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                    <div class="user_challange_block">
+                    <!-- <div class="user_challange_block">
                         <div class="ucb_title">
                             <p>Запуск Кликбаттла
                                 <br><b>28 декабря 2017г </b></p>
                         </div>
+                    </div> -->
+                    <div class="user_challange_block filled">
+                        <div class="ucb_challenge">
+                            <h4>Клик-баттл :<br></h4>
+                            <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке </p>
+                            <div class="ucb_challenge_buttons">
+                                <?php if($user):?>
+                                    <a href="<?=Url::toRoute(['site/clickbattle']);?>" class="transition filed">Играть еще</a>
+                                    <a href="<?=Url::toRoute(['site/clickbattle-rating']);?>" class="transition ">Рейтинг участников</a>
+                                <?php else:?>
+                                    <a href="<?=Url::toRoute(['site/clickbattle-reg']);?>" class="transition filed">участвовать</a>
+                                <?php endif;?>
+                            </div>
+                        </div>
+                        <div class="clng_img"><img src="/img/clng3.png" alt="img"></div>
                     </div>
                     <!-- /block -->
                     <!-- block -->

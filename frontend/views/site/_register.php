@@ -3,11 +3,11 @@ use yii\helpers\Url;
 ?>
 <div class="reg_screen_block">
     <p>	
-    	<a href="<?=Url::toRoute(['site/login', 'service' => 'fb']);?>" class="soc_lnk eauth-service-link fb"  data-eauth-service="facebook" data-event="test_way" data-param="registration_fb">
+    	<a href="<?=Url::toRoute(['site/login', 'service' => 'fb', 'ref' => Url::current(), 'rules' => isset($rules) ? $rules : '']);?>" class="soc_lnk eauth-service-link fb"  data-eauth-service="facebook" data-event="test_way" data-param="registration_fb">
     		<i class="zmdi zmdi-facebook"></i>
     	</a> 
     	или 
-    	<a href="<?=Url::toRoute(['site/login', 'service' => 'vk']);?>" class="soc_lnk eauth-service-link vk"  data-eauth-service="vkontakte" data-event="test_way" data-param="registration_vk">
+    	<a href="<?=Url::toRoute(['site/login', 'service' => 'vk', 'ref' => Url::current(), 'rules' => isset($rules) ? $rules : '']);?>" class="soc_lnk eauth-service-link vk"  data-eauth-service="vkontakte" data-event="test_way" data-param="registration_vk">
     		<i class="zmdi zmdi-vk"></i>
     	</a>
     </p>

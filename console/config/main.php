@@ -28,7 +28,18 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+                'file' => [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'categories' => ['parser', 'googleApi'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/info.log',
+                ],
             ],
+        ],
+        'googleApi' => [
+            'class'                 => '\skeeks\yii2\googleApi\GoogleApiComponent',
+            'developer_key'         => 'AIzaSyCq5RWFKZeOtVFEQkqjYmvv7EATTqtsaSw',
         ],
     ],
     'params' => $params,

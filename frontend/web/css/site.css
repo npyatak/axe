@@ -24,3 +24,59 @@ p.text {
 	color: #eee;
 	line-height: 45px;
 }
+.help-block {
+	font-size: 16px;
+}
+.list-view {
+	margin: auto;
+	width: 50%;
+}
+.item-challenge {
+	display: inline-block;
+	width: 300px;
+	height: 200px;
+	text-align: center;
+}
+
+.reg_screen_text {
+	color: #fff;
+	font-family: BebasNeueRegular;
+	line-height: 20px;
+    letter-spacing: 1px;	
+}
+.reg_screen_input {
+	  color: #555;
+	font-family: HelveticaNeueCyr;
+	border: 1px solid #ab9675;
+    -webkit-border-radius: 27px;
+    border-radius: 27px;
+    padding-left:10px;
+}
+.ch_buttons {
+	margin-top: 5px;
+}
+.reg_screen_plus {
+	cursor: pointer;
+	padding: 5px 22px;
+    background-color: #ab9675;
+    border: 1px solid #ab9675;
+    -webkit-border-radius: 27px;
+    border-radius: 27px;
+    line-height: 31px;
+    color: #fff;
+	font-family: BebasNeueRegular;
+}
+.reg_screen_input_div {
+	font-size: 20px;
+}
+.reg_screen_plus:hover{color:#fff;background:#907B5A}
+.form_plus_param {
+	text-align: center;
+}
+#form_plus_number {display:none;}
+@media screen and (max-width:5000px)  {.reg_screen_text {font-size: 18px;} .reg_screen_plus {font-size: 18px;} .reg_screen_input {font-size: 16px;width: 350px;}}
+@media screen and (max-width:1600px)  {.reg_screen_text {font-size: 18px;} .reg_screen_plus {font-size: 18px;} .reg_screen_input {font-size: 16px;width: 316px;}}
+@media screen and (max-width:1450px)  {.reg_screen_text {font-size: 17px;} .reg_screen_plus {font-size: 17px;} .reg_screen_input {font-size: 15px;width: 282px;}}
+@media screen and (max-width:1280px)  {.reg_screen_text {font-size: 16px;} .reg_screen_plus {font-size: 16px;} .reg_screen_input {font-size: 14px;width: 248px;}}
+@media screen and (max-width:1100px)  {.reg_screen_text {font-size: 15px;} .reg_screen_plus {font-size: 15px;} .reg_screen_input {font-size: 13px;width: 214px;}}
+@media screen and (max-width:768px)   {.reg_screen_text {font-size: 14px;} .reg_screen_plus {font-size: 14px;} .reg_screen_input {font-size: 12px;width: 180px;}}

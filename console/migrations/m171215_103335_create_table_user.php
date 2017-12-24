@@ -17,6 +17,7 @@ class m171215_103335_create_table_user extends Migration
             'sid' => $this->bigInteger(),
             'name' => $this->string(),
             'surname' => $this->string(),
+            'email' => $this->string(),
             'image' => $this->string(),
             'city' => $this->string(),
             'status' => $this->integer(1)->notNull()->defaultValue(1),

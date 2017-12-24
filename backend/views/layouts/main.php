@@ -41,6 +41,7 @@ AppAsset::register($this);
         ['label' => 'Страницы', 'url' => ['/page']],
         ['label' => 'Вопросы', 'url' => ['/question']],
         ['label' => 'Результаты', 'url' => ['/result']],
+        ['label' => 'Челлендж', 'url' => ['/challenge']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Войти', 'url' => ['/site/login']];

@@ -11,12 +11,16 @@ use yii\helpers\Url;
 use yii\web\UploadedFile;
 use frontend\widgets\cropimage\helpers\Image;
 use yii\web\NotFoundHttpException;
+use yii\widgets\ActiveForm;
+use yii\web\Response;
 
 use common\models\User;
 use common\models\Question;
 use common\models\TestResult;
 use common\models\Result;
 use common\models\Page;
+use common\models\Challenge;
+use common\models\search\ChallengeSearch;
 
 /**
  * Site controller
@@ -175,19 +179,99 @@ class SiteController extends Controller
         return $this->redirect(['site/test']);
     }
 
+    public function actionChallengeRules() {
+        return $this->render('challenge-rules');
+    }
+
+    public function actionChallengeReg() {
+        $challenges = [];
+
+        $post = Yii::$app->request->post();
+        if(!Yii::$app->user->isGuest && !empty($post)) {
+            $user = Yii::$app->user->identity;
+            foreach ($post['Challenge'] as $data) {
+                $challenge = new Challenge;
+                $challenge->scenario = 'userNew';
+                $challenge->attributes = $data;
+                $challenges[] = $challenge;
+            }
+
+            if (Yii::$app->request->isAjax) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validateMultiple($challenges);
+            }
+
+            if(\yii\base\Model::validateMultiple($challenges)) {
+                $flag = true;
+                $transaction = Yii::$app->db->beginTransaction();
+
+                try {
+                    foreach ($challenges as $challenge) {
+                        if(!$flag) {
+                            break;
+                        } 
+                        $exp = explode('v=', $challenge->link);
+                        $challenge->access_key = $exp[1];
+                        $challenge->name = $user->fullName;
+                        $challenge->user_id = $user->id;
+                        $challenge->soc = Challenge::SOC_YOUTUBE;
+
+                        $flag = $challenge->save(false);
+                    }
+
+                    if ($flag) {
+                        $transaction->commit();
+                        return $this->redirect(Url::toRoute(['site/challenge-ok']));
+                    }
+                } catch (Exception $e) {
+                    $transaction->rollBack();
+                }
+            }
+        }
+
+        return $this->render('challenge-reg', [
+            'challenges' => !empty($challenges) ? $challenges : [new Challenge],
+        ]);
+    }
+
+    public function actionChallengeOk() {
+        return $this->render('challenge-ok');
+    }
+
+    public function actionChallenge($name = null) {
+        //$challenges = Challenge::find()->where(['status' => Challenge::STATUS_ACTIVE])
+        
+        $searchModel = new ChallengeSearch();
+        $params = Yii::$app->request->queryParams;
+        $params['ChallengeSearch']['status'] = Challenge::STATUS_ACTIVE;
+        $dataProvider = $searchModel->search($params);
+
+        //print_r($dataProvider->models);exit;
+
+        return $this->render('challenge', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
-        
+        $ref = Yii::$app->getRequest()->getQueryParam('ref');
+        $rules = Yii::$app->getRequest()->getQueryParam('rules');
+
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
 
             $eauth->setRedirectUrl(Url::toRoute('site/test-result'));
+            if($ref !== '') {
+                $eauth->setRedirectUrl(Url::to($ref));
+            }
             $eauth->setCancelUrl(Url::toRoute('profile/index'));
 
             try {
                 if ($eauth->authenticate()) {
                     $user = User::findByService($serviceName, $eauth->id);
-                    if(!$user) {
+                    if($user === null) {
                         $user = new User;
                         $user->soc = $serviceName;
                         $user->sid = $eauth->id;
@@ -195,26 +279,33 @@ class SiteController extends Controller
                         $user->surname = $eauth->last_name;
                         if(isset($eauth->photo_url)) $user->image = $eauth->photo_url;
                         if(isset($eauth->city)) $user->city = $eauth->city;
-                        $user->test_result_id = Yii::$app->request->cookies->getValue('test_hash', null);
+
+                        $test_result_id = Yii::$app->request->cookies->getValue('test_hash', null);
+                        if($test_result_id != null) {
+                            if(TestResult::findOne($test_result_id) != null) {
+                                $user->test_result_id = $test_result_id;
+                            }
+                        }
                         
                         $user->save();
                     } elseif($user->status === User::STATUS_BANNED) {
                         Yii::$app->getSession()->setFlash('error', 'Вы не можете войти. Ваш аккаунт заблокирован');
                         
                         $eauth->redirect($eauth->getCancelUrl());
-                    } /*elseif(!$user->name) {
-                        $user->name = $eauth->first_name;
-                        $user->surname = $eauth->last_name;
-                        if(isset($eauth->photo_url)) $user->image = $eauth->photo_url;
-                        if(isset($eauth->ig_id)) $user->ig_id = $eauth->ig_id;
-                        if(isset($eauth->ig_username)) $user->ig_username = $eauth->ig_username;
+                    } 
+                    if($rules != '') {
+                        $attr = 'rules_'.$rules;
+                        if($user->hasAttribute($attr)) {
+                            $user->$attr = 1;
+                            $user->save(false, [$attr]);
+                        }
+                    }
 
-                        $user->save();
-                    }*/
-
+                    if(isset($eauth->access_token)) $user->access_token = $eauth->access_token;
+                    if(isset($eauth->email)) $user->email = $eauth->email;
                     $user->ip = $_SERVER['REMOTE_ADDR'];
                     $user->browser = $_SERVER['HTTP_USER_AGENT'];
-                    $user->save(false, ['ip', 'browser']);
+                    $user->save(false);
 
                     Yii::$app->user->login($user, 3600 * 24 * 365);
                     // special redirect with closing popup window
@@ -248,34 +339,6 @@ class SiteController extends Controller
         return $this->redirect('/');
     }
 
-    // public function actionMissingFields() {
-    //     if(Yii::$app->user->isGuest) {
-    //         throw new NotFoundHttpException('The requested page does not exist.');
-    //     }
-
-    //     $user = Yii::$app->user->identity;
-
-    //     if($user->load(Yii::$app->request->post())) {
-    //         $user->setScenario('missing_fields');
-
-    //         if (Yii::$app->request->isAjax) {
-    //             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-    //             return \yii\widgets\ActiveForm::validate($user);
-    //         }
-
-    //         if($user->ig_username) {
-    //             $url = "https://www.instagram.com/$user->ig_username/?__a=1";
-    //             $json = json_decode(file_get_contents($url));
-
-    //             $user->ig_id = $json->user->id;
-
-    //             $user->save(false, ['ig_username', 'ig_id']);
-    //         }
-    //     }
-        
-    //     return $this->redirect(Yii::$app->request->referrer);
-    // }
-
     public function actionPage($url) {
         $model = Page::findByUrl($url);
         if($model === null || $model->status === Page::STATUS_INACTIVE) {
@@ -303,5 +366,35 @@ class SiteController extends Controller
         Yii::$app->getUser()->login($user);
 
         return $this->redirect('/');
+    }
+
+    public function actionVkParse($hashtag = 'house') {
+        if(Yii::$app->user->isGuest) {
+            return $this->redirect('profile/index');
+        }
+
+        $user = Yii::$app->user->identity;
+
+        $url = 'https://api.vk.com/method/video.search';
+        $params = [
+            'q' => $hashtag,
+            'extended' => 1,
+            //'count' => 3,
+            //'params[start_from]' => '6%2F-65395224_8404',
+            'fields' => 'profiles%20',
+            'v' => 5.69,
+            'access_token' => $user->access_token,
+        ];
+
+        $postParams = [];
+        foreach ($params as $key => $value) {
+            $postParams[] = $key.'='.$value; 
+        }
+        $url = $url.'?'.implode('&', $postParams);
+
+        $res = file_get_contents($url);
+
+        $res = json_decode($res);
+        print_r($res);
     }
 }
