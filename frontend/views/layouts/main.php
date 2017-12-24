@@ -33,6 +33,8 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<img src="https://ad.mail.ru/i2349.gif" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
+<img src="https://ad.mail.ru/i2350.gif" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
 <?php $this->beginBody() ?>
 <!-- modal thanks -->
 <div class="my-modal-thanks" id="myThanks">
@@ -177,6 +179,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-111266919-1', 'auto');
+ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 
