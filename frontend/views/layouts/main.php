@@ -184,7 +184,6 @@ AppAsset::register($this);
     <!-- /footer -->
 
 
-<?php if($_SERVER['HTTP_HOST'] != 'axe.local'):?>
     <!-- Google Analytics -->
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -197,6 +196,7 @@ AppAsset::register($this);
     </script>
     <!-- End Google Analytics -->
 
+<?php if($_SERVER['HTTP_HOST'] != 'axe.local'):?>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
         (function (d, w, c) {

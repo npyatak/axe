@@ -227,8 +227,8 @@ $(document).on('click', 'a.inactive, button.inactive', function(e) {
 $('a.share').click(function(e) {
     url = getShareUrl($(this));
 
-    //window.open(url,'','toolbar=0,status=0,width=626,height=436');
-    window.open(url,'','');
+    window.open(url,'','toolbar=0,status=0,width=626,height=436');
+    //window.open(url,'','');
 
     //window.location.href = '/profile';
     return false;
@@ -249,11 +249,14 @@ function getShareUrl(obj) {
         url += '&image='       + encodeURIComponent(obj.data('image'));
         url += '&noparse=true';
     } else if(obj.data('type') == 'fb') {
-        url  = 'http://www.facebook.com/sharer.php?s=100';
-        url += '&p[title]='     + encodeURIComponent(obj.data('title'));
-        url += '&p[url]='       + encodeURIComponent(obj.data('url'));
-        url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
-        url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
+        //url  = 'http://www.facebook.com/sharer.php?s=100';
+        url = 'https://www.facebook.com/sharer/sharer.php?';
+        // url += '&p[title]='     + encodeURIComponent(obj.data('title'));
+        // url += '&p[url]='       + encodeURIComponent(obj.data('url'));
+        // url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
+        // url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
+        url += 'u='       + encodeURIComponent(obj.data('url'));
+        url += 'title='   + encodeURIComponent(obj.data('title'));
     }
 
     return url;

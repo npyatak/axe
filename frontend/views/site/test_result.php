@@ -40,25 +40,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                     <br>
 
                     <div class="rs_mb_img"><img src="/img/pic/n<?=$result->id;?>.png" alt="img"></div>
-                    <!-- <?php if($result->id == 2):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n2.png" alt="img"></div>
-                    <?php elseif($result->id == 3):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n3.png" alt="img"></div>
-                    <?php elseif($result->id == 4):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n4.png" alt="img"></div>
-                    <?php elseif($result->id == 5):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n5.png" alt="img"></div>    
-                    <?php elseif($result->id == 6):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n6.png" alt="img"></div>    
-                    <?php elseif($result->id == 7):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n7.png" alt="img"></div>
-                    <?php elseif($result->id == 8):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n8.png" alt="img"></div>
-                    <?php elseif($result->id == 1):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n1.png" alt="img"></div>
-                    <?php else:?>
-
-                    <?php endif;?> -->
+                    
                     <?=$this->render('_register');?>
                 <?php else:?>
                     <div class="rs_mb_descr">
@@ -91,28 +73,12 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         </ul>
                         <p>Итоги конкурса будут подведены 12 февраля 2017 г.</p>
                     </div>
+                    <br/>
+                    <div class="ucb_challenge_buttons">
+                        <a href="<?=Url::toRoute(['profile/index']);?>" class="transition filed" data-event="test_way" data-param="result_lk">Личный кабинет</a>
+                    </div>
 
                     <div class="rs_mb_img"><img src="/img/pic/n<?=$result->id;?>.png" alt="img"></div>
-
-                    <!-- <?php if($result->id == 2):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n2.png" alt="img"></div>
-                    <?php elseif($result->id == 3):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n3.png" alt="img"></div>
-                    <?php elseif($result->id == 4):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n4.png" alt="img"></div>
-                    <?php elseif($result->id == 5):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n5.png" alt="img"></div>    
-                    <?php elseif($result->id == 6):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n6.png" alt="img"></div>    
-                    <?php elseif($result->id == 7):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n7.png" alt="img"></div>
-                    <?php elseif($result->id == 8):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n8.png" alt="img"></div>
-                    <?php elseif($result->id == 1):?>
-                        <div class="rs_mb_img"><img src="/img/pic/n1.png" alt="img"></div>
-                    <?php else:?>
-
-                    <?php endif;?> -->
 
                 <?php endif;?>
             </div>
