@@ -227,10 +227,10 @@ $(document).on('click', 'a.inactive, button.inactive', function(e) {
 $('a.share').click(function(e) {
     url = getShareUrl($(this));
 
-    window.open(url,'','toolbar=0,status=0,width=626,height=436');
+    //window.open(url,'','toolbar=0,status=0,width=626,height=436');
+    window.open(url,'','');
 
-    window.location.href = '/profile';
-
+    //window.location.href = '/profile';
     return false;
 });
 
