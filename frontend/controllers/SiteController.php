@@ -360,6 +360,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionRules() {
+        return $this->render('rules');
+    }
+
     public function actionLogin2($id = 1) {
         $user = User::findOne($id);
 
@@ -384,6 +388,7 @@ class SiteController extends Controller
             'fields' => 'profiles%20',
             'v' => 5.69,
             'access_token' => $user->access_token,
+            'redirect_uri' => 'https://oauth.vk.com/blank.html',
         ];
 
         $postParams = [];
@@ -393,8 +398,10 @@ class SiteController extends Controller
         $url = $url.'?'.implode('&', $postParams);
 
         $res = file_get_contents($url);
-
         $res = json_decode($res);
-        print_r($res);
+
+        foreach ($res->response->items as $item) {
+            # code...
+        }
     }
 }

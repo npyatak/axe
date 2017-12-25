@@ -7,7 +7,7 @@ use yii\helpers\Url;
             <div class="reg_screen_table">
                 <div class="reg_screen_cell">
                     <div class="main_title">
-                        <h2><b><strong>Спасибо!</strong> <br>После успешной модерации <br>видео появится в галерее работ</b><br> поделитесь своим видео и набирайте лайки</h2>
+                        <h2><b><strong>Спасибо!</strong> <br>После успешной модерации <br>видео появится в галерее работ</b><br> поделись своим видео и набирай лайки</h2>
                     </div>
                     
                     <br/>

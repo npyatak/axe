@@ -29,18 +29,18 @@ use yii\widgets\ActiveForm;
 		                    	<?php foreach ($challenges as $key => $challenge):?>
         							<?php $challenge->scenario = 'userNew';?>
 									<div class="reg_screen_input_div">
-										<div class="reg_screen_text form-group <?=$challenge->hasErrors("link") ? 'has-error' : '';?>">
+										<div class="reg_screen_text form-group <?=$challenge->hasErrors("link") ? 'has-error' : '';?>" data-number="<?=$key;?>">
 											<?= Html::activeLabel($challenge, "[$key]link", ['class' => 'reg_screen_text']) ?>
 											<?= Html::activeTextInput($challenge, "[$key]link", ['class' => 'reg_screen_input']) ?>
+    										<div class="remove">x</div>
 											<?= Html::error($challenge, "[$key]link", ['class' => 'help-block']);?>
 										</div>
-    									<?//= $form->field($challenge, '[]link', ['labelOptions' => ['class' => 'reg_screen_text']])->textInput(['class' => 'reg_screen_input']) ?>
 									</div>	
 								<?php endforeach;?>
 								</div>
 								<div class="reg_screen_block">
 							        <div class="ch_buttons">
-							            <a class="reg_screen_plus transition" id="form_plus_added">Добавить еще видео</a>
+							            <a class="reg_screen_plus transition" id="form_plus_added">Ещё одно видео</a>
 							        </div>
 					            </div>
 								<br/><br/>
@@ -49,8 +49,8 @@ use yii\widgets\ActiveForm;
 	                    		<?php $user = Yii::$app->user->identity;?>
 	                    		<?php if(!$user->rules_challenge):?>
 			                        <div class="reg_screen_check">
-			                            <input type="checkbox" id="rch1" name="reg" checked>
-			                            <label for="rch1">Я соглашаюсь <a href="#full-rules" class="fancybox">с полными правилами</a> конкурса</label>
+			                            <input type="checkbox" id="rules-check" name="reg" checked>
+			                            <label for="rules-check">Я соглашаюсь <a href="#full-rules" class="fancybox">с полными правилами</a> конкурса</label>
 			                        </div>
 			                        <br/><br/>
 			                    <?php endif;?>

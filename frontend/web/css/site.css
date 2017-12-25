@@ -46,6 +46,13 @@ p.text {
 .eauth-service-link::before, .eauth-service-link::after {
 	display: none!important;
 }
+.reg_screen_link .remove {
+	display: inline-block;
+	font-weight: bold;
+	vertical-align: bottom;
+	color: red;
+	cursor: pointer;
+}
 
 
 .reg_screen_text {
@@ -83,7 +90,6 @@ p.text {
 .form_plus_param {
 	text-align: center;
 }
-#form_plus_number {display:none;}
 @media screen and (max-width:5000px)  {.reg_screen_text {font-size: 18px;} .reg_screen_plus {font-size: 18px;} .reg_screen_input {font-size: 16px;width: 350px;}}
 @media screen and (max-width:1600px)  {.reg_screen_text {font-size: 18px;} .reg_screen_plus {font-size: 18px;} .reg_screen_input {font-size: 16px;width: 316px;}}
 @media screen and (max-width:1450px)  {.reg_screen_text {font-size: 17px;} .reg_screen_plus {font-size: 17px;} .reg_screen_input {font-size: 15px;width: 282px;}}

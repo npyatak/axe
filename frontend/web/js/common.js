@@ -205,10 +205,23 @@ $(document).on('change', '#register_checkbox', function(e) {
     }
 });
 
+$(document).on('change', '#rules-check', function(e) {
+    if(!$(this).is(':checked')) {
+        $(this).closest('.reg_screen_block').find('.scr2_text_btn').addClass('inactive');
+    } else {
+        $(this).closest('.reg_screen_block').find('.scr2_text_btn').removeClass('inactive');
+    }
+});
+
 $(document).on('click', 'a', function(e) {
     if(typeof $(this).data('event') !== 'undefined') {
         ga('send', 'event', $(this).data('event'), $(this).data('param'));
     }
+});
+
+$(document).on('click', 'a.inactive, button.inactive', function(e) {
+    e.preventDefault;
+    return false;
 });
 
 $('a.share').click(function(e) {
@@ -219,6 +232,12 @@ $('a.share').click(function(e) {
     window.location.href = '/profile';
 
     return false;
+});
+
+$(document).on('click', '.reg_screen_input_div .remove', function(e) {
+    if($(this).closest('.form-group').data('number') != 0) {
+        $(this).closest('.reg_screen_input_div').remove();
+    }
 });
 
 function getShareUrl(obj) {

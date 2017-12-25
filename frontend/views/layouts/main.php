@@ -79,15 +79,23 @@ AppAsset::register($this);
                     <div class="right_logo"><a href="http://team.empire.gg/" target="_blank" data-event="logo_click" data-param="logo_TeamEmpire"><img src="/img/logo2.png" alt="img"></a></div>
                     <div class="nav_list_wrapper">
                         <ul class="nav_list">
-                            <li><a href="<?=Url::toRoute(['site/video']);?>">Мир киберспорта</a>
-                            <?php if(false):?>
+                            <li>
+                                <a href="<?=Url::toRoute(['site/video']);?>">Мир киберспорта</a>
+                                <?php if(false):?>
                                 <ul>
                                     <li><a href="<?=Url::toRoute(['site/video']);?>">Новости с Любовью Киберспортивной</a></li>
                                     <li><a href="<?=Url::toRoute(['site/news']);?>">Киберспортивные новости Матч ТВ</a></li>
                                 </ul>
                                 <?php endif;?>
                             </li>
-                            <li><a href="<?=Url::toRoute(['site/test']);?>">Участвовать</a></li>
+                            <li>
+                                <a href="<?=Url::toRoute(['site/test']);?>">Участвовать</a>
+                                <ul>
+                                    <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
+                                    <li><a href="<?=Url::toRoute(['site/challenge']);?>">Челлендж</a></li>
+                                    <li><a href="<?=Url::toRoute(['site/clickbattle']);?>">Клик-баттл</a></li>
+                                </ul>
+                            </li>
                             <li><a href="<?=Url::toRoute(['profile/index']);?>">Личный кабинет</a></li>
                             <li><a href="https://www.axerussia.ru/?utm_source=GPMD&utm_medium=SP&utm_content=GPMD_SP&utm_campaign=AXE_SP_GPMD_DecFeb_&utm_term=" target="_blank">Axe</a></li>
                         </ul>

@@ -12,8 +12,9 @@ namespace frontend\models\social;
 class VkOAuth2Service extends \nodge\eauth\services\VKontakteOAuth2Service {
 
 	const SCOPE_EMAIL = 'email';
+	const SCOPE_VIDEO = 'video';
 
-	protected $scopes = [self::SCOPE_EMAIL];
+	protected $scopes = [self::SCOPE_EMAIL, self::SCOPE_VIDEO];
 
 	protected function fetchAttributes() {
 		$tokenData = $this->getAccessTokenData();

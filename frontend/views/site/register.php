@@ -13,4 +13,6 @@
     </div>
 </div>
 
-<?=$this->render('_rules');?>
+<div class="modal_rules" id="full-rules">
+    <?=$this->render('_rules');?>
+</div>

@@ -18,7 +18,7 @@ class ChallengeSearch extends Challenge
     public function rules()
     {
         return [
-            [['id', 'user_id', 'soc', 'likes', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'user_id', 'soc', 'likes', 'status', 'created_at', 'updated_at'], 'integer'],
             [['name', 'access_key'], 'safe'],
         ];
     }
@@ -62,6 +62,7 @@ class ChallengeSearch extends Challenge
             'user_id' => $this->user_id,
             'soc' => $this->soc,
             'likes' => $this->likes,
+            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

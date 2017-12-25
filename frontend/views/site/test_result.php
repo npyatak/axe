@@ -176,4 +176,6 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
     </div>
 </div>
 
-<?=$this->render('_rules');?>
+<div class="modal_rules" id="full-rules">
+    <?=$this->render('_rules');?>
+</div>
