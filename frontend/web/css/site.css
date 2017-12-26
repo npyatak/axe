@@ -53,6 +53,29 @@ p.text {
 	color: red;
 	cursor: pointer;
 }
+.button-brown {
+	display: inline-block;
+	vertical-align: top;
+	width: 144px;
+	height: 43px;
+	border: 1px solid #ab9675;
+	background-color: #ab9675;
+	-webkit-border-radius: 22px;
+	border-radius: 22px;
+	text-align: center;
+	line-height: 42px;
+	color: #fff;
+	font-family: BebasNeueRegular;
+	font-size: 18px;
+	margin-right: 15px;
+}
+.button-brown:hover {
+	background-color:#907B5A;
+	color: #fff;
+}
+.right {
+	float: right;
+}
 
 
 .reg_screen_text {

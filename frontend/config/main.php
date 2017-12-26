@@ -89,10 +89,8 @@ return [
             'showScriptName' => false,
             'baseUrl' => '/',
             'rules' => [
-                '' => 'site/index',
-
-                '<action>' => 'site/<action>',
-                
+                '' => 'site/index',                
+                '<controller:\w+>'=>'<controller>/index',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action>/<id:\d+>' => '<controller>/<action>',
                 

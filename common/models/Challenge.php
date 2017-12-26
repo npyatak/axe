@@ -16,6 +16,7 @@ class Challenge extends \yii\db\ActiveRecord
 
     public $link;
     public $video;
+    public $_lastUserVotes;
     /**
      * @inheritdoc
      */
@@ -38,9 +39,12 @@ class Challenge extends \yii\db\ActiveRecord
     {
         return [
             ['link', 'required', 'on' => 'userNew'],
+            ['link', 'url'],
+            ['link', 'checkLink'],
             [['user_id', 'soc', 'likes', 'created_at', 'updated_at', 'status'], 'integer'],
             [['name', 'platform', 'access_key', 'image'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            ['access_key', 'unique'],
         ];
     }
 
@@ -54,6 +58,11 @@ class Challenge extends \yii\db\ActiveRecord
         $exp = explode('v=', $this->link);
         if(!isset($exp[1])) {
             $this->addError($attribute, 'Указана не верная ссылка');
+        } else {
+            $count = self::find()->where(['access_key' => $exp[1]])->count();
+            if($count > 0) {
+                $this->addError($attribute, 'Это видео уже было загружено');
+            }
         }
     }
 
@@ -105,8 +114,27 @@ class Challenge extends \yii\db\ActiveRecord
                 # code...
                 break;
             case self::SOC_YOUTUBE:
-                return Url::to('https://www.youtube.com/watch?v='.$this->access_key);
+                return '//www.youtube.com/embed/'.$this->access_key;
+                //return Url::to('https://www.youtube.com/watch?v='.$this->access_key);
                 break;
+        }
+    }
+
+    public function userCanVote() {
+        if($this->_lastUserVotes === null) {
+            $this->_lastUserVotes = ChallengeVote::find()
+                ->select(['challenge_id', 'created_at'])
+                ->where(['user_id'=>Yii::$app->user->id])
+                ->orderBy('created_at DESC')
+                ->asArray()
+                ->indexBy('challenge_id')
+                ->all();
+        }
+
+        if(isset($this->_lastUserVotes[$this->id]) && $this->_lastUserVotes[$this->id]['created_at'] >= strtotime('today midnight')) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

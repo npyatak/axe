@@ -85,7 +85,7 @@ class ParserController extends Controller {
  //        Yii::info('VK parse '.$hashtag.'. New rows - '.$totalCount.'. Added videos: '.$newChallenges, 'parser');
  //    }
 
-    public function actionYoutube($hashtag = 'cat', $time = 1800) {
+    public function actionYoutube($hashtag = '#axegame', $time = 1800) {
         $youtube = new \Google_Service_YouTube(\Yii::$app->googleApi->client);
         
 

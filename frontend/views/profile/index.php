@@ -100,18 +100,18 @@ if($result) {
                             <p><b>Главный приз:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB </p>
                             <div class="ucb_challenge_buttons">
                                 <?php if($user):?>
-                                    <a href="<?=Url::toRoute(['site/challenge', 'name' => $user->fullName]);?>" class="transition filed">Мои видео</a>
-                                    <a href="<?=Url::toRoute(['site/challenge']);?>" class="transition ">Голосовать</a>
+                                    <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="transition filed">Мои видео</a>
+                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="transition ">Голосовать</a>
                                 <?php else:?>
-                                    <a href="<?=Url::toRoute(['site/challenge-rules']);?>" class="transition filed">Участвовать</a>
-                                    <a href="<?=Url::toRoute(['site/challenge']);?>" class="transition ">Голосовать</a>
+                                    <a href="<?=Url::toRoute(['challenge/rules']);?>" class="transition filed">Участвовать</a>
+                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="transition ">Голосовать</a>
                                 <?php endif;?>
                             </div>
                         </div>
                         <div class="ucb_challenge_share">
                             <?php if($user):?>
                             <div class="ucb_challenge_buttons">
-                                <a href="<?=Url::toRoute(['site/challenge-reg']);?>" class="transition">Запостить еще</a>
+                                <a href="<?=Url::toRoute(['challenge/reg']);?>" class="transition">Запостить еще</a>
                             </div>
                             <?php endif;?>
                         </div>
@@ -131,10 +131,10 @@ if($result) {
                             <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке </p>
                             <div class="ucb_challenge_buttons">
                                 <?php if($user):?>
-                                    <a href="<?=Url::toRoute(['site/clickbattle']);?>" class="transition filed">Играть еще</a>
-                                    <a href="<?=Url::toRoute(['site/clickbattle-rating']);?>" class="transition ">Рейтинг участников</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition filed">Играть еще</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition ">Рейтинг участников</a>
                                 <?php else:?>
-                                    <a href="<?=Url::toRoute(['site/clickbattle-reg']);?>" class="transition filed">участвовать</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="transition filed">участвовать</a>
                                 <?php endif;?>
                             </div>
                         </div>

@@ -20,7 +20,7 @@ class m171222_135435_create_table_challenge extends Migration
             'status' => $this->integer(1)->defaultValue(0),
 
             'platform' => $this->string(255),
-            'access_key' => $this->string(255),
+            'access_key' => $this->string(255)->unique(),
             'image' => $this->string(255),
             
             'created_at' => $this->integer()->notNull(),

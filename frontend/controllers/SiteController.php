@@ -19,8 +19,6 @@ use common\models\Question;
 use common\models\TestResult;
 use common\models\Result;
 use common\models\Page;
-use common\models\Challenge;
-use common\models\search\ChallengeSearch;
 
 /**
  * Site controller
@@ -179,81 +177,6 @@ class SiteController extends Controller
         return $this->redirect(['site/test']);
     }
 
-    public function actionChallengeRules() {
-        return $this->render('challenge-rules');
-    }
-
-    public function actionChallengeReg() {
-        $challenges = [];
-
-        $post = Yii::$app->request->post();
-        if(!Yii::$app->user->isGuest && !empty($post)) {
-            $user = Yii::$app->user->identity;
-            foreach ($post['Challenge'] as $data) {
-                $challenge = new Challenge;
-                $challenge->scenario = 'userNew';
-                $challenge->attributes = $data;
-                $challenges[] = $challenge;
-            }
-
-            if (Yii::$app->request->isAjax) {
-                Yii::$app->response->format = Response::FORMAT_JSON;
-                return ActiveForm::validateMultiple($challenges);
-            }
-
-            if(\yii\base\Model::validateMultiple($challenges)) {
-                $flag = true;
-                $transaction = Yii::$app->db->beginTransaction();
-
-                try {
-                    foreach ($challenges as $challenge) {
-                        if(!$flag) {
-                            break;
-                        } 
-                        $exp = explode('v=', $challenge->link);
-                        $challenge->access_key = $exp[1];
-                        $challenge->name = $user->fullName;
-                        $challenge->user_id = $user->id;
-                        $challenge->soc = Challenge::SOC_YOUTUBE;
-
-                        $flag = $challenge->save(false);
-                    }
-
-                    if ($flag) {
-                        $transaction->commit();
-                        return $this->redirect(Url::toRoute(['site/challenge-ok']));
-                    }
-                } catch (Exception $e) {
-                    $transaction->rollBack();
-                }
-            }
-        }
-
-        return $this->render('challenge-reg', [
-            'challenges' => !empty($challenges) ? $challenges : [new Challenge],
-        ]);
-    }
-
-    public function actionChallengeOk() {
-        return $this->render('challenge-ok');
-    }
-
-    public function actionChallenge($name = null) {
-        //$challenges = Challenge::find()->where(['status' => Challenge::STATUS_ACTIVE])
-        
-        $searchModel = new ChallengeSearch();
-        $params = Yii::$app->request->queryParams;
-        $params['ChallengeSearch']['status'] = Challenge::STATUS_ACTIVE;
-        $dataProvider = $searchModel->search($params);
-
-        //print_r($dataProvider->models);exit;
-
-        return $this->render('challenge', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
     public function actionLogin() {
         $serviceName = Yii::$app->getRequest()->getQueryParam('service');
         $ref = Yii::$app->getRequest()->getQueryParam('ref');
@@ -370,38 +293,5 @@ class SiteController extends Controller
         Yii::$app->getUser()->login($user);
 
         return $this->redirect('/');
-    }
-
-    public function actionVkParse($hashtag = 'house') {
-        if(Yii::$app->user->isGuest) {
-            return $this->redirect('profile/index');
-        }
-
-        $user = Yii::$app->user->identity;
-
-        $url = 'https://api.vk.com/method/video.search';
-        $params = [
-            'q' => $hashtag,
-            'extended' => 1,
-            //'count' => 3,
-            //'params[start_from]' => '6%2F-65395224_8404',
-            'fields' => 'profiles%20',
-            'v' => 5.69,
-            'access_token' => $user->access_token,
-            'redirect_uri' => 'https://oauth.vk.com/blank.html',
-        ];
-
-        $postParams = [];
-        foreach ($params as $key => $value) {
-            $postParams[] = $key.'='.$value; 
-        }
-        $url = $url.'?'.implode('&', $postParams);
-
-        $res = file_get_contents($url);
-        $res = json_decode($res);
-
-        foreach ($res->response->items as $item) {
-            # code...
-        }
     }
 }

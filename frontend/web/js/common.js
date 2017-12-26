@@ -249,14 +249,8 @@ function getShareUrl(obj) {
         url += '&image='       + encodeURIComponent(obj.data('image'));
         url += '&noparse=true';
     } else if(obj.data('type') == 'fb') {
-        //url  = 'http://www.facebook.com/sharer.php?s=100';
         url = 'https://www.facebook.com/sharer/sharer.php?';
-        // url += '&p[title]='     + encodeURIComponent(obj.data('title'));
-        // url += '&p[url]='       + encodeURIComponent(obj.data('url'));
-        // url += '&p[images][0]=' + encodeURIComponent(obj.data('image'));
-        // url += '&p[summary]='   + encodeURIComponent(obj.data('desc'));
-        url += 'u='       + encodeURIComponent(obj.data('url'));
-        url += 'title='   + encodeURIComponent(obj.data('title'));
+        url += 'u=' + encodeURIComponent(obj.data('url'));
     }
 
     return url;
