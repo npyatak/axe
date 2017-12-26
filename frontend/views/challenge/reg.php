@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
                     </div>
                 	<?php if(Yii::$app->user->isGuest):?>
                     	<div class="reg_screen_block">
-                    		<?=$this->render('_register', ['rules' => 'challenge']);?>
+                    		<?=$this->render('../site/_register', ['rules' => 'challenge']);?>
 	                    </div>
                 	<?php else:?>
     					<?php $form = ActiveForm::begin([
