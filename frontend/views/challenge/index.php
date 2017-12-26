@@ -21,7 +21,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                 </div>
                 <div class="ch_cp_sort clearfix">
                     <div class="ch_cp_sort_selects">
-                        <a href="<?=Url::current(['sort' => 'created_at']);?>" class="ch_cp_sort_btn <?=$sort == 'created_at' ? 'active' : '';?>">По дате <span><i class="zmdi zmdi-caret-right-circle"></i></span></a>
+                        <a href="<?=Url::current(['sort' => '-created_at']);?>" class="ch_cp_sort_btn <?=$sort == '-created_at' ? 'active' : '';?>">По дате <span><i class="zmdi zmdi-caret-right-circle"></i></span></a>
                         <a href="<?=Url::current(['sort' => '-likes']);?>" class="ch_cp_sort_btn <?=$sort == '-likes' ? 'active' : '';?>">По рейтингу <span><i class="zmdi zmdi-caret-down-circle"></i></span></a>
                     </div>
                     <form class="ch_cp_sort_form">

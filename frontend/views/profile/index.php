@@ -99,7 +99,7 @@ if($result) {
                             <h4>Челлендж :<br><b>на лучший игровой момент</b></h4>
                             <p><b>Главный приз:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB </p>
                             <div class="ucb_challenge_buttons">
-                                <?php if($user):?>
+                                <?php if($user && $user->rules_challenge):?>
                                     <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="transition filed">Мои видео</a>
                                     <a href="<?=Url::toRoute(['challenge/index']);?>" class="transition ">Голосовать</a>
                                 <?php else:?>
@@ -109,7 +109,7 @@ if($result) {
                             </div>
                         </div>
                         <div class="ucb_challenge_share">
-                            <?php if($user):?>
+                            <?php if($user && $user->rules_challenge):?>
                             <div class="ucb_challenge_buttons">
                                 <a href="<?=Url::toRoute(['challenge/reg']);?>" class="transition">Запостить еще</a>
                             </div>
@@ -130,7 +130,7 @@ if($result) {
                             <h4>Клик-баттл :<br></h4>
                             <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке </p>
                             <div class="ucb_challenge_buttons">
-                                <?php if($user):?>
+                                <?php if($user && $user->rules_clickbattle):?>
                                     <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition filed">Играть еще</a>
                                     <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition ">Рейтинг участников</a>
                                 <?php else:?>

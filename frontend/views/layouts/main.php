@@ -3,6 +3,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 
+use common\models\User;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?> 
@@ -33,6 +35,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body>
+<?php $user = Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id);?>
 
 <?php if($_SERVER['HTTP_HOST'] != 'bothie.local'):?>
     <img src="https://ad.mail.ru/i2349.gif" style="width:0;height:0;position:absolute;visibility:hidden;" alt=""/>
@@ -92,8 +95,16 @@ AppAsset::register($this);
                                 <a href="<?=Url::toRoute(['site/test']);?>">Участвовать</a>
                                 <ul>
                                     <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
-                                    <li><a href="<?=Url::toRoute(['site/challenge']);?>">Челлендж</a></li>
-                                    <li><a href="<?=Url::toRoute(['site/clickbattle']);?>">Клик-баттл</a></li>
+                                    <?php if($user && $user->rules_challenge):?>
+                                        <li><a href="<?=Url::toRoute(['challenge/index']);?>">Челлендж</a></li>
+                                    <?php else:?>
+                                        <li><a href="<?=Url::toRoute(['challenge/rules']);?>">Челлендж</a></li>
+                                    <?php endif;?>
+                                    <?php if($user && $user->rules_clickbattle):?>
+                                        <li><a href="<?=Url::toRoute(['clickbattle/index']);?>">Клик-баттл</a></li>
+                                    <?php else:?>
+                                        <li><a href="<?=Url::toRoute(['clickbattle/rules']);?>">Клик-баттл</a></li>
+                                    <?php endif;?>
                                 </ul>
                             </li>
                             <li><a href="<?=Url::toRoute(['profile/index']);?>">Личный кабинет</a></li>
