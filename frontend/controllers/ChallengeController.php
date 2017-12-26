@@ -34,8 +34,8 @@ class ChallengeController extends Controller
 
         $dataProvider = $searchModel->search($params);
         $dataProvider->sort = [
-            //'defaultOrder' => ['likes'=>SORT_DESC],
-            'defaultOrder' => ['created_at'=>SORT_DESC],
+            'defaultOrder' => ['likes'=>SORT_DESC],
+            //'defaultOrder' => ['created_at'=>SORT_DESC],
             'attributes' => ['created_at', 'likes'],
         ];
 
@@ -79,9 +79,6 @@ class ChallengeController extends Controller
                         if(!$flag) {
                             break;
                         } 
-                        $exp = explode('v=', $challenge->link);
-                        $challenge->access_key = $exp[1];
-                        $challenge->image = "https://img.youtube.com/vi/$exp[1]/hqdefault.jpg";
                         $challenge->name = $user->fullName;
                         $challenge->user_id = $user->id;
                         $challenge->soc = Challenge::SOC_YOUTUBE;

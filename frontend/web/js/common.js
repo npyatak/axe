@@ -191,6 +191,10 @@ $(document).ready(function() {
 
 
 $(document).on('click', '.soc_lnk', function(e) {
+    if($(this).hasClass('inactive')) {
+        e.preventDefault();
+        return false;
+    }
     var div = $(this).closest('.test_slide');
     if(div.length > 0 && !$('#register_checkbox').is(':checked')) {
         return  false;
@@ -220,7 +224,7 @@ $(document).on('click', 'a', function(e) {
 });
 
 $(document).on('click', 'a.inactive, button.inactive', function(e) {
-    e.preventDefault;
+    e.preventDefault();
     return false;
 });
 

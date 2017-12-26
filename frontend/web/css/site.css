@@ -4,6 +4,9 @@
 .inactive:hover {
 	background-color: #333;
 }
+.inactive .likes-count {
+	color: #808080;
+}
 .test_slider .slick-dots li:last-child {
 	font-size: 24px;
 }
@@ -73,10 +76,46 @@ p.text {
 	background-color:#907B5A;
 	color: #fff;
 }
-.right {
+.my-videos {
 	float: right;
 }
-
+.ch_cp_sort_block_modal_img {
+	width: 100%;
+    position: relative;
+    padding: 0;
+    padding-top: 56.2061%;
+}
+.ch_cp_sort_block_modal_img .video {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.vote-button {
+	background: url('../img/like.png') no-repeat 0 40%;
+}
+.ch_cp_sort_block_modal .vote-button {
+	background: url('../img/like2.png') no-repeat;
+}
+.vote-button .likes-count {
+	margin-left: 25px;
+}
+.ch_cp_sort_block_modal .vote-button .likes-count {
+	margin-left: 40px;
+}
+.vote-button:hover {
+	background-color: transparent;
+}
+.vote-button.inactive {
+	background: url('../img/like_inactive.png') no-repeat 0 40%;
+}
+.ch_cp_sort_block_modal .vote-button.inactive {
+	background: url('../img/like2_inactive.png') no-repeat;
+}
+@media screen and (max-width:420px){
+	.my-videos {float: none;}
+}
 
 .reg_screen_text {
 	color: #fff;

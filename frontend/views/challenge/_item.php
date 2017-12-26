@@ -7,7 +7,6 @@
 
     <?php else:?>
     <a class="vote-button <?=$model->userCanVote() ? '' : 'inactive';?>" data-id="<?=$model->id;?>" href="#">
-    	<img src="/img/like.png" alt="img"> 
     	<span class="likes-count"><?=$model->likes;?></span>
     </a>
     <?php endif;?>

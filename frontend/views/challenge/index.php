@@ -21,7 +21,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                 </div>
                 <div class="ch_cp_sort clearfix">
                     <div class="ch_cp_sort_selects">
-                        <a href="<?=Url::current(['sort' => '-created_at']);?>" class="ch_cp_sort_btn <?=$sort == '-created_at' ? 'active' : '';?>">По дате <span><i class="zmdi zmdi-caret-right-circle"></i></span></a>
+                        <a href="<?=Url::current(['sort' => $sort == '-created_at' ? 'created_at' : '-created_at']);?>" class="ch_cp_sort_btn <?=in_array($sort, ['-created_at', 'created_at']) ? 'active' : '';?>">По дате <span><i class="zmdi zmdi-caret-right-circle"></i></span></a>
                         <a href="<?=Url::current(['sort' => '-likes']);?>" class="ch_cp_sort_btn <?=$sort == '-likes' ? 'active' : '';?>">По рейтингу <span><i class="zmdi zmdi-caret-down-circle"></i></span></a>
                     </div>
                     <form class="ch_cp_sort_form">
@@ -29,7 +29,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         <button id="search-name"><i class="zmdi zmdi-search"></i></button>
                     </form>
                     <?php if($user && $user->rules_challenge):?>
-                        <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown right">Мои видео</a>
+                        <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown my-videos">Мои видео</a>
                     <?php endif;?>
                 </div>
 
@@ -45,7 +45,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                 <div class="ch_cp_sort_block_modal" id="ch_cp_modal1">
                     <a href="javascript:void(0)" class="ch_cp_modal_close"><img src="/img/close-btn.png" alt="img"></a>
                     <div class="ch_cp_sort_block_modal_img">
-                    	<iframe id="challengeVideo" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                    	<iframe id="challengeVideo" class="video" src="" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="ch_modal_footer clearfix">
                         <div class="footer_soc_wrap">

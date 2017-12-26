@@ -5,6 +5,7 @@ namespace frontend\widgets\social;
 class SocialWidget extends \nodge\eauth\Widget {
 	public $location;
 	public $rules;
+	public $assetBundle = 'frontend\assets\EauthAsset';
 
     public function run() {
 		echo $this->render('widget', [

@@ -55,15 +55,27 @@ class Challenge extends \yii\db\ActiveRecord
     }
 
     public function checkLink($attribute, $model) {
-        $exp = explode('v=', $this->link);
-        if(!isset($exp[1])) {
+        $urlParts = parse_url($this->link);
+        parse_str($urlParts['query'], $queryParts);
+        if(!isset($queryParts['v'])) {
             $this->addError($attribute, 'Указана не верная ссылка');
         } else {
-            $count = self::find()->where(['access_key' => $exp[1]])->count();
+            $count = self::find()->where(['access_key' => $queryParts['v']])->count();
             if($count > 0) {
                 $this->addError($attribute, 'Это видео уже было загружено');
             }
         }
+    }
+
+    public function beforeSave($insert) {
+        if($this->link) {
+            $urlParts = parse_url($this->link);
+            parse_str($urlParts['query'], $queryParts);
+            $this->access_key = $queryParts['v'];
+            $this->image = 'https://img.youtube.com/vi/'.$queryParts['v'].'/hqdefault.jpg';
+        }
+
+        return parent::beforeSave($insert);
     }
 
     /**
