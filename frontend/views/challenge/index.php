@@ -112,7 +112,6 @@ $script = "
     	//if($(this).parent().find('input').val() != '') {
     		//$(this).parent('form').submit();
     		var url = '".Url::current(['name' => null])."';
-            alert(url);
     		url += (url.indexOf('?') >= 0 ? '&' : '?') + 'name='+$(this).parent().find('input').val();
     		window.location.href = url;
     	//}
