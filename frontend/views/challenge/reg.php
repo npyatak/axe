@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
             <div class="reg_screen_table">
                 <div class="reg_screen_cell">
                     <div class="main_title">
-                        <h2><b><strong>Запости свои лучшие видео </strong>  <br>в виде youtube-ссылок  </b><br> и участвуй в розыгрыше Sony Playstation 4 Slim 500 GB<br/> и 15 подарочных наборов AXE</h2>
+                        <h2><b><strong>Зарегистрируйся и <br>запости свои лучшие видео </strong>  <br>в виде youtube-ссылок  </b><br> и участвуй в розыгрыше Sony Playstation 4 Slim 500 GB<br/> и 15 подарочных наборов AXE</h2>
                     </div>
                 	<?php if(Yii::$app->user->isGuest):?>
                     	<div class="reg_screen_block">
@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 										<div class="reg_screen_text form-group <?=$challenge->hasErrors("link") ? 'has-error' : '';?>" data-number="<?=$key;?>">
 											<?= Html::activeLabel($challenge, "[$key]link", ['class' => 'reg_screen_text']) ?>
 											<?= Html::activeTextInput($challenge, "[$key]link", ['class' => 'reg_screen_input']) ?>
-    										<div class="remove">x</div>
+    										<div class="remove"><img src="/img/x.png" alt="img"></div>
 											<?= Html::error($challenge, "[$key]link", ['class' => 'help-block']);?>
 										</div>
 									</div>	

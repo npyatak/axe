@@ -3,8 +3,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
-$share = Yii::$app->params['share'];
-$share['url'] = Url::canonical();
+$share = Yii::$app->params['shareChallenge'];
+$share['url'] = Url::current();
 $this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
 $this->registerMetaTag(['property' => 'og:title', 'content' => $share['title_fb']], 'og:title');
 $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb']], 'og:image');
@@ -17,7 +17,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
         <div class="row">
             <div class="frame_block">
                 <div class="main_title">
-                    <h2><b><strong>Голосование</strong> <br> за лучшие игровые моменты </b><br>и участвуйте в розыгрыше Sony Playstation 4 Slim 500 GB  и подарочных наборов AXE</h2>
+                    <h2><b><strong>Голосование</strong> <br> за лучшие игровые моменты </b><br>участвуйте в розыгрыше Sony Playstation 4 Slim 500 GB  и подарочных наборов AXE</h2>
                 </div>
                 <div class="ch_cp_sort clearfix">
                     <div class="ch_cp_sort_selects">
@@ -45,7 +45,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                 <div class="ch_cp_sort_block_modal" id="ch_cp_modal1">
                     <a href="javascript:void(0)" class="ch_cp_modal_close"><img src="/img/close-btn.png" alt="img"></a>
                     <div class="ch_cp_sort_block_modal_img">
-                    	<iframe id="challengeVideo" class="video" src="" frameborder="0" allowfullscreen></iframe>
+                    	<iframe id="challengeVideo" class="video" src="<?=$activeChallenge ? $activeChallenge->videoLink : '';?>" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class="ch_modal_footer clearfix">
                         <div class="footer_soc_wrap">
@@ -77,9 +77,13 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
 	                            </li>
                             </ul>
                         </div>
-                        <a href="#" class="vote-button">
-                        	<img src="/img/like2.png" alt="img"> <span class="likes-count"></span>
+                        <?php if(Yii::$app->user->isGuest):?>
+
+                        <?php else:?>
+                        <a class="vote-button <?=($activeChallenge && $activeChallenge->userCanVote()) ? '' : 'inactive';?>" data-id="<?=$activeChallenge ? $activeChallenge->id : '';?>" href="#">
+                            <span class="likes-count"><?=$activeChallenge ? $activeChallenge->likes : '';?></span>
                         </a>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>
@@ -98,7 +102,6 @@ $script = "
     		window.location.href = url;
     	//}
     });
-
     $('.ch_res_img_link').fancybox({
         showCloseButton: false,
         wrapCSS: 'res_wrap',
@@ -108,8 +111,15 @@ $script = "
         	var newLink = this.element.parent().find('.vote-button').clone();
         	newLink.find('img').attr('src', '/img/like2.png');
         	$('.ch_modal_footer').append(newLink);
-	   },
-    })
+	    },
+        afterLoad: function() {
+            history.pushState(null, null, this.element.data('url'));
+            $('.share').attr('data-url', this.element.data('url'));
+        },
+        beforeClose: function() {
+            history.pushState(null, null, '".Url::current(['id' => null])."');
+        }
+    });
 
     $('.ch_cp_modal_close').click(function(event) {
         $.fancybox.close();
@@ -127,7 +137,6 @@ $script = "
             url: '".Url::toRoute(['challenge/vote'])."',
             data: 'id='+id,
             success: function(data) {
-            	console.log(data.likes);
                 $('.vote-button[data-id=\''+id+'\']').addClass('inactive').find('span').html(data.likes);
             }
         });
@@ -136,5 +145,12 @@ $script = "
     });
     
 ";
+
+if($activeChallenge) {
+    $script .= "
+        $.fancybox.open('#ch_cp_modal1', {
+        showCloseButton: false});
+    ";
+}
 
 $this->registerJs($script, yii\web\View::POS_END);?>

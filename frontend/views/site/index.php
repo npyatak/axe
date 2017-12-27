@@ -119,7 +119,17 @@ if($result) {
                     <!-- /block -->
                 </div>
                 <!-- blocks -->
-                <a href="#full-rules" class="scr2_bottom_button fancybox transition">Полные правила</a>
+                 <div class="test_slide">
+                    <h3>Полные правила конкурса <br/>«Открой для себя мир киберспорта»:</h3>
+                </div>
+                           
+                <a href="#full-rules" class="scr2_bottom_button fancybox transition">Тест</a>
+                <br/>
+                <a href="#rules-challenge" class="scr2_bottom_button fancybox transition">Челлендж</a>
+                <br/>
+                <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition">Клик-баттл</a>
+                <br/>
+                <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Анимированный тир</a>
             </div>
         </div>
     </div>
@@ -170,4 +180,16 @@ if($result) {
 
 <div class="modal_rules" id="full-rules">
     <?=$this->render('_rules');?>
+</div>
+
+<div class="modal_rules" id="rules-challenge">
+    <?=$this->render('../challenge/_rules');?>
+</div>
+
+<div class="modal_rules" id="rules-clickbattle">
+    <?=$this->render('../clickbattle/_rules');?>
+</div>
+
+<div class="modal_rules" id="rules-shooting">
+    <?=$this->render('../shooting/_rules');?>
 </div>

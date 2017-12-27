@@ -1,4 +1,8 @@
-<a href="#ch_cp_modal1" class="ch_cp_sort_block_img ch_res_img_link" data-link="<?=$model->videoLink;?>" data-id="<?=$model->id;?>">
+<?php
+use yii\helpers\Url;
+?>
+
+<a href="#ch_cp_modal1" data-url="<?=Url::current(['id' => $model->id], true);?>" class="ch_cp_sort_block_img ch_res_img_link" data-link="<?=$model->videoLink;?>" data-id="<?=$model->id;?>">
 	<img src="<?=$model->image;?>" alt="img">
 </a>
 <div class="ch_cp_sort_block_text clearfix">

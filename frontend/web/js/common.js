@@ -195,10 +195,10 @@ $(document).on('click', '.soc_lnk', function(e) {
         e.preventDefault();
         return false;
     }
-    var div = $(this).closest('.test_slide');
-    if(div.length > 0 && !$('#register_checkbox').is(':checked')) {
-        return  false;
-    }
+    // var div = $(this).closest('.test_slide');
+    // if(div.length > 0 && !$('#register_checkbox').is(':checked')) {
+    //     return  false;
+    // }
 });
 
 $(document).on('change', '#register_checkbox', function(e) {

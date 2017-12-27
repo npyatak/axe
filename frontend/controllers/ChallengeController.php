@@ -23,7 +23,7 @@ use common\models\search\ChallengeSearch;
 class ChallengeController extends Controller
 {
 
-    public function actionIndex($name = null) {
+    public function actionIndex($name = null, $id = null) {
         //$challenges = Challenge::find()->where(['status' => Challenge::STATUS_ACTIVE])
         $sort = Yii::$app->getRequest()->getQueryParam('sort');
    
@@ -39,12 +39,18 @@ class ChallengeController extends Controller
             'attributes' => ['created_at', 'likes'],
         ];
 
+        $activeChallenge = false;
+        if($id) {
+            $activeChallenge = Challenge::findOne($id);
+        }
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'sort' => $sort,
             'name' => $name,
             'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
+            'activeChallenge' => $activeChallenge,
         ]);
     }
 
