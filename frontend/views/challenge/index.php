@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ListView;
 
 $share = Yii::$app->params['shareChallenge'];
-$share['url'] = Url::current();
+$share['url'] = Url::current([], true);
 $share['image_fb'] = Url::to($share['image_fb'], true);
 $share['image_vk'] = Url::to($share['image_vk'], true);
 $this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
