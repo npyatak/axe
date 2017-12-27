@@ -116,7 +116,7 @@ use yii\helpers\Url;
                     </div>
                     <br/>
                     <div class="cmb_buttons">
-                        <a href="#full-rules" class="scr2_text_btn transition fancybox">Полные правила</a>
+                        <a href="#rules-challenge" class="scr2_text_btn transition fancybox">Полные правила</a>
                     </div>
                 </div>
             </div>

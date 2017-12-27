@@ -5,6 +5,10 @@ namespace frontend\widgets\social;
 class SocialWidget extends \nodge\eauth\Widget {
 	public $location;
 	public $rules;
+
+	public $wrapper = 'div';
+	public $wrapperClass = 'eauth';
+
 	//public $assetBundle = 'frontend\assets\EauthAsset';
 
     public function run() {
@@ -16,6 +20,8 @@ class SocialWidget extends \nodge\eauth\Widget {
 			'assetBundle' => $this->assetBundle,
 			'location' => $this->location,
 			'rules' => $this->rules,
+			'wrapper' => $this->wrapper,
+			'wrapperClass' => $this->wrapperClass,
 		]);
     }
 }

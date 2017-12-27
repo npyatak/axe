@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
-<!-- reg -->
+
 <div class="reg_screen">
     <div class="container">
         <div class="row">
@@ -50,7 +50,7 @@ use yii\widgets\ActiveForm;
 	                    		<?php if(!$user->rules_challenge):?>
 			                        <div class="reg_screen_check">
 			                            <input type="checkbox" id="rules-check" name="reg" checked>
-			                            <label for="rules-check">Я соглашаюсь <a href="#full-rules" class="fancybox">с полными правилами</a> конкурса</label>
+			                            <label for="rules-check">Я соглашаюсь <a href="#rules-challenge" class="fancybox">с полными правилами</a> конкурса</label>
 			                        </div>
 			                        <br/><br/>
 			                    <?php endif;?>
@@ -65,7 +65,6 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 </div>
-<!-- /reg -->
 
 <?=$this->render('_rules');?>
 

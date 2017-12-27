@@ -11,42 +11,39 @@ use yii\widgets\ActiveForm;
 use yii\web\Response;
 
 use common\models\User;
-use common\models\Challenge;
-use common\models\ChallengeVote;
-use common\models\search\ChallengeSearch;
 
-class ChallengeController extends Controller
+class ClickbattleController extends Controller
 {
 
     public function actionIndex($name = null, $id = null) {
-        //$challenges = Challenge::find()->where(['status' => Challenge::STATUS_ACTIVE])
-        $sort = Yii::$app->getRequest()->getQueryParam('sort');
+        //$challenges = Clickbattle::find()->where(['status' => Clickbattle::STATUS_ACTIVE])
+        // $sort = Yii::$app->getRequest()->getQueryParam('sort');
    
-        $searchModel = new ChallengeSearch();
-        $params = Yii::$app->request->queryParams;
-        $params['ChallengeSearch']['status'] = Challenge::STATUS_ACTIVE;
-        $params['ChallengeSearch']['name'] = $name;
+        // $searchModel = new ClickbattleSearch();
+        // $params = Yii::$app->request->queryParams;
+        // $params['ClickbattleSearch']['status'] = Clickbattle::STATUS_ACTIVE;
+        // $params['ClickbattleSearch']['name'] = $name;
 
-        $dataProvider = $searchModel->search($params);
-        $dataProvider->sort = [
-            'defaultOrder' => ['likes'=>SORT_DESC],
-            //'defaultOrder' => ['created_at'=>SORT_DESC],
-            'attributes' => ['created_at', 'likes'],
-        ];
+        // $dataProvider = $searchModel->search($params);
+        // $dataProvider->sort = [
+        //     'defaultOrder' => ['likes'=>SORT_DESC],
+        //     //'defaultOrder' => ['created_at'=>SORT_DESC],
+        //     'attributes' => ['created_at', 'likes'],
+        // ];
 
-        $activeChallenge = false;
-        if($id) {
-            $activeChallenge = Challenge::findOne($id);
-        }
+        // $activeClickbattle = false;
+        // if($id) {
+        //     $activeClickbattle = Clickbattle::findOne($id);
+        // }
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'sort' => $sort,
-            'name' => $name,
-            'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
-            'activeChallenge' => $activeChallenge,
-        ]);
+        // return $this->render('index', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        //     'sort' => $sort,
+        //     'name' => $name,
+        //     'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
+        //     'activeClickbattle' => $activeClickbattle,
+        // ]);
     }
 
     public function actionRules() {
@@ -59,8 +56,8 @@ class ChallengeController extends Controller
         $post = Yii::$app->request->post();
         if(!Yii::$app->user->isGuest && !empty($post)) {
             $user = Yii::$app->user->identity;
-            foreach ($post['Challenge'] as $data) {
-                $challenge = new Challenge;
+            foreach ($post['Clickbattle'] as $data) {
+                $challenge = new Clickbattle;
                 $challenge->scenario = 'userNew';
                 $challenge->attributes = $data;
                 $challenges[] = $challenge;
@@ -82,7 +79,7 @@ class ChallengeController extends Controller
                         } 
                         $challenge->name = $user->fullName;
                         $challenge->user_id = $user->id;
-                        $challenge->soc = Challenge::SOC_YOUTUBE;
+                        $challenge->soc = Clickbattle::SOC_YOUTUBE;
 
                         $flag = $challenge->save();
                     }
@@ -102,7 +99,7 @@ class ChallengeController extends Controller
         }
 
         return $this->render('reg', [
-            'challenges' => !empty($challenges) ? $challenges : [new Challenge],
+            'challenges' => !empty($challenges) ? $challenges : [new Clickbattle],
         ]);
     }
 
@@ -113,11 +110,11 @@ class ChallengeController extends Controller
     public function actionVote($id) {        
         if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax) {
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            $challenge = Challenge::findOne($id);
+            $challenge = Clickbattle::findOne($id);
             if($challenge !== null && $challenge->userCanVote()) {
-                ChallengeVote::create($id);
+                ClickbattleVote::create($id);
 
-                $c = Challenge::find()->select('likes')->where(['id' => $id])->asArray()->one();
+                $c = Clickbattle::find()->select('likes')->where(['id' => $id])->asArray()->one();
                 return ['status' => 'success', 'likes' => $c['likes']];
             } else {
                 return ['status' => 'error'];
@@ -165,7 +162,7 @@ class ChallengeController extends Controller
 
         $addedCount = 0;
         foreach ($res->response->items as $item) {
-            $challenge = new Challenge;
+            $challenge = new Clickbattle;
 
             $exp = explode('?', $item->player);
             $exp = explode('/', $exp[0]);
@@ -183,10 +180,10 @@ class ChallengeController extends Controller
                 $challenge->name = $names[$item->owner_id];
             }
             
-            $challenge->soc = Challenge::SOC_VK;
+            $challenge->soc = Clickbattle::SOC_VK;
 
             $challenge->save();
-            if(Challenge::find()->where(['access_key' => $challenge->access_key])->one() === null) {
+            if(Clickbattle::find()->where(['access_key' => $challenge->access_key])->one() === null) {
                 $challenge->save();
                 $addedCount++;
             } 

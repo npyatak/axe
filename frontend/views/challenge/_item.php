@@ -7,11 +7,7 @@ use yii\helpers\Url;
 </a>
 <div class="ch_cp_sort_block_text clearfix">
     <p><?=$model->name;?></p>
-    <?php if(Yii::$app->user->isGuest):?>
-
-    <?php else:?>
-    <a class="vote-button <?=$model->userCanVote() ? '' : 'inactive';?>" data-id="<?=$model->id;?>" href="#">
+    <a class="vote-button <?=(!Yii::$app->user->isGuest && $model->userCanVote()) ? '' : 'inactive';?>" data-id="<?=$model->id;?>" href="#">
     	<span class="likes-count"><?=$model->likes;?></span>
     </a>
-    <?php endif;?>
 </div>

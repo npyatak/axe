@@ -32,7 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'video',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return Html::a($data->videoLink, $data->videoLink);
+                        return '<iframe id="challengeVideo" class="video" src="'.$data->videoLink.'" frameborder="0" allowfullscreen></iframe>';
+                        //return Html::a($data->videoLink, $data->videoLink);
                     }
                 ],
                 [

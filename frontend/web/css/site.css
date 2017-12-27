@@ -116,6 +116,11 @@ p.text {
 @media screen and (max-width:420px){
 	.my-videos {float: none;}
 }
+.footer_soc li a.soc_lnk {
+	margin: 0;
+}
+
+
 
 .reg_screen_text {
 	color: #fff;

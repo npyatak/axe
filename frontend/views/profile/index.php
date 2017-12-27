@@ -134,7 +134,7 @@ if($result) {
                                     <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition filed">Играть еще</a>
                                     <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition ">Рейтинг участников</a>
                                 <?php else:?>
-                                    <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="transition filed">участвовать</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/rules']);?>" class="transition filed">участвовать</a>
                                 <?php endif;?>
                             </div>
                         </div>

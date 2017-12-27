@@ -182,14 +182,8 @@ if($result) {
     <?=$this->render('_rules');?>
 </div>
 
-<div class="modal_rules" id="rules-challenge">
-    <?=$this->render('../challenge/_rules');?>
-</div>
+<?=$this->render('../challenge/_rules');?>
 
-<div class="modal_rules" id="rules-clickbattle">
-    <?=$this->render('../clickbattle/_rules');?>
-</div>
+<?=$this->render('../clickbattle/_rules');?>
 
-<div class="modal_rules" id="rules-shooting">
-    <?=$this->render('../shooting/_rules');?>
-</div>
+<?=$this->render('../shooting/_rules');?>

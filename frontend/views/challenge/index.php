@@ -5,6 +5,8 @@ use yii\widgets\ListView;
 
 $share = Yii::$app->params['shareChallenge'];
 $share['url'] = Url::current();
+$share['image_fb'] = Url::to($share['image_fb'], true);
+$share['image_vk'] = Url::to($share['image_vk'], true);
 $this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
 $this->registerMetaTag(['property' => 'og:title', 'content' => $share['title_fb']], 'og:title');
 $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb']], 'og:image');
@@ -24,13 +26,20 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         <a href="<?=Url::current(['sort' => $sort == '-created_at' ? 'created_at' : '-created_at']);?>" class="ch_cp_sort_btn <?=in_array($sort, ['-created_at', 'created_at']) ? 'active' : '';?>">По дате <span><i class="zmdi zmdi-caret-right-circle"></i></span></a>
                         <a href="<?=Url::current(['sort' => '-likes']);?>" class="ch_cp_sort_btn <?=$sort == '-likes' ? 'active' : '';?>">По рейтингу <span><i class="zmdi zmdi-caret-down-circle"></i></span></a>
                     </div>
-                    <form class="ch_cp_sort_form">
-                        <input type="text" placeholder="поиск по имени" value="<?=$name;?>">
-                        <button id="search-name"><i class="zmdi zmdi-search"></i></button>
-                    </form>
-                    <?php if($user && $user->rules_challenge):?>
-                        <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown my-videos">Мои видео</a>
-                    <?php endif;?>
+                    <div class="ch_cp_sort_form_wrapper">
+                        <div class="footer_soc_wrap">
+                            <?php if(!$user):?>
+                                <p>Голосовать:</p>
+                                <?= \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login', 'wrapper' => 'ul', 'wrapperClass' => 'footer_soc']);?>
+                            <?php elseif($user && $user->rules_challenge):?>
+                                <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown">Мои видео</a>
+                            <?php endif;?>
+                        </div>
+                        <form class="ch_cp_sort_form" novalidate="novalidate">
+                            <input type="text" placeholder="поиск по имени">
+                            <button><i class="zmdi zmdi-search"></i></button>
+                        </form>
+                    </div>
                 </div>
 
 				<?= ListView::widget([
@@ -49,41 +58,43 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                     </div>
                     <div class="ch_modal_footer clearfix">
                         <div class="footer_soc_wrap">
-                            <p>Поделитесь и зовите друзей:</p>
-                            <ul class="footer_soc">
-                            	<li>
-	                                <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
-	                                    'class' => 'share',
-	                                    'data-type' => 'fb',
-	                                    'data-url' => $share['url'],
-	                                    'data-title' => $share['title_fb'],
-	                                    'data-image' => $share['image_fb'],
-	                                    'data-desc' => $share['text'],
-	                                    'data-event' => 'test_way',
-	                                    'data-param' => 'share_fb_lk'
-	                                ]); ?>
-	                            </li>
-	                            <li>
-	                                <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
-	                                    'class' => 'share',
-	                                    'data-type' => 'vk',
-	                                    'data-url' => $share['url'],
-	                                    'data-title' => $share['title_vk'],
-	                                    'data-image' => $share['image_vk'],
-	                                    'data-desc' => $share['text'],
-	                                    'data-event' => 'test_way',
-	                                    'data-param' => 'share_vk_lk'
-	                                ]); ?>
-	                            </li>
-                            </ul>
+                            <?php if($user):?>
+                                <p>Поделитесь и зовите друзей:</p>
+                                <ul class="footer_soc">
+                                	<li>
+    	                                <?= Html::a('<i class="zmdi zmdi-facebook"></i>', '', [
+    	                                    'class' => 'share',
+    	                                    'data-type' => 'fb',
+    	                                    'data-url' => $share['url'],
+    	                                    'data-title' => $share['title_fb'],
+    	                                    'data-image' => $share['image_fb'],
+    	                                    'data-desc' => $share['text'],
+    	                                    'data-event' => 'test_way',
+    	                                    'data-param' => 'share_fb_lk'
+    	                                ]); ?>
+    	                            </li>
+    	                            <li>
+    	                                <?= Html::a('<i class="zmdi zmdi-vk"></i>', '', [
+    	                                    'class' => 'share',
+    	                                    'data-type' => 'vk',
+    	                                    'data-url' => $share['url'],
+    	                                    'data-title' => $share['title_vk'],
+    	                                    'data-image' => $share['image_vk'],
+    	                                    'data-desc' => $share['text'],
+    	                                    'data-event' => 'test_way',
+    	                                    'data-param' => 'share_vk_lk'
+    	                                ]); ?>
+    	                            </li>
+                                </ul>
+                            <?php else:?>
+                                <p>Войдите, чтобы проголосовать:</p>
+                                <?= \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login', 'wrapper' => 'ul', 'wrapperClass' => 'footer_soc']);?>
+                            <?php endif;?>
                         </div>
-                        <?php if(Yii::$app->user->isGuest):?>
 
-                        <?php else:?>
-                        <a class="vote-button <?=($activeChallenge && $activeChallenge->userCanVote()) ? '' : 'inactive';?>" data-id="<?=$activeChallenge ? $activeChallenge->id : '';?>" href="#">
+                        <a class="vote-button <?=($activeChallenge && $user && $activeChallenge->userCanVote()) ? '' : 'inactive';?>" data-id="<?=$activeChallenge ? $activeChallenge->id : '';?>" href="#">
                             <span class="likes-count"><?=$activeChallenge ? $activeChallenge->likes : '';?></span>
                         </a>
-                        <?php endif;?>
                     </div>
                 </div>
             </div>
