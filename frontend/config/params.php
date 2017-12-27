@@ -9,10 +9,10 @@ return [
 	    'image_vk' => '/img/vk_new1.jpg',
     ],
     'shareChallenge' => [
-    	'title_fb' => 'челендж фб',
-	    'title_vk' => 'ч вк',
-	    'text' => 'Участ.',
-	    'image_fb' => '/img/fb.jpg',
-	    'image_vk' => '/img/vk_new1.jpg',
+    	'title_fb' => 'Проголосуйте за лучший игровой момент в Челлендже AXE',
+	    'title_vk' => 'Проголосуйте за лучший игровой момент в Челлендже AXE',
+	    'text' => 'Участвуйте и выигрывайте призы: PlayStation 4 Slim и подарочные наборы AXE.',
+	    'image_fb' => '/img/fb_ch.jpg',
+	    'image_vk' => '/img/vk_ch.jpg',
     ],
 ];
