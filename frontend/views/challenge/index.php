@@ -39,8 +39,8 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                             <?php endif;?>
                         </div>
                         <form class="ch_cp_sort_form" novalidate="novalidate">
-                            <input type="text" placeholder="поиск по имени">
-                            <button><i class="zmdi zmdi-search"></i></button>
+                            <input type="text" placeholder="поиск по имени" value="<?=$name ? $name : '';?>">
+                            <button id="search-name"><i class="zmdi zmdi-search"></i></button>
                         </form>
                     </div>
                 </div>
@@ -112,6 +112,7 @@ $script = "
     	//if($(this).parent().find('input').val() != '') {
     		//$(this).parent('form').submit();
     		var url = '".Url::current(['name' => null])."';
+            alert(url);
     		url += (url.indexOf('?') >= 0 ? '&' : '?') + 'name='+$(this).parent().find('input').val();
     		window.location.href = url;
     	//}

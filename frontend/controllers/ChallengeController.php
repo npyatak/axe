@@ -33,7 +33,7 @@ class ChallengeController extends Controller
             //'defaultOrder' => ['created_at'=>SORT_DESC],
             'attributes' => ['created_at', 'likes'],
         ];
-
+        
         $activeChallenge = false;
         if($id) {
             $activeChallenge = Challenge::findOne($id);
