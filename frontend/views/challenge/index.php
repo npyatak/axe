@@ -7,6 +7,9 @@ $share = Yii::$app->params['shareChallenge'];
 $share['url'] = Url::current([], true);
 $share['image_fb'] = Url::to($share['image_fb'], true);
 $share['image_vk'] = Url::to($share['image_vk'], true);
+
+$this->params['share'] = $share;
+
 $this->registerMetaTag(['property' => 'og:description', 'content' => $share['text']], 'og:description');
 $this->registerMetaTag(['property' => 'og:title', 'content' => $share['title_fb']], 'og:title');
 $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb']], 'og:image');
