@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
                     <div class="main_title">
                         <h2>
                         	<?php if(Yii::$app->user->isGuest):?>
-                        		<b><strong>Зарегистрируйся и <br>запости свои лучшие видео </strong>  <br>в виде youtube-ссылок  </b><br> и участвуй в розыгрыше Sony Playstation 4 Slim 500 GB<br/> и 15 подарочных наборов AXE
+                        		<b><strong>авторизуйся и загрузи</strong>  <br>видео своего лучшего игрового момента</b><br> и поборись за sony playstation 4 slim 500gb
                         	<?php else:?>
 								<b><strong>ВСТАВЬ ССЫЛКУ</strong> <br>НА ВИДЕО ТВОЕГО ЛУЧШЕГО</b><br> ИГРОВОГО МОМЕНТА НА YOUTUBE
                         	<?php endif;?>
