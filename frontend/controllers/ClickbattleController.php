@@ -11,6 +11,7 @@ use yii\widgets\ActiveForm;
 use yii\web\Response;
 
 use common\models\User;
+use common\models\ClickbattleResult;
 
 class ClickbattleController extends Controller
 {
@@ -22,7 +23,7 @@ class ClickbattleController extends Controller
             $y = rand(0, 440);
             $data[$i] = ['x' => $x, 'y' => $y];
         }
-        
+
         return $this->render('index', [
             'data' => $data,
             'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
@@ -30,7 +31,9 @@ class ClickbattleController extends Controller
     }
 
     public function actionRules() {
-        return $this->render('rules');
+        return $this->render('rules', [
+            'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
+        ]);
     }
 
     public function actionReg() {
@@ -49,5 +52,10 @@ class ClickbattleController extends Controller
         return $this->render('rating', [
             'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
         ]);
+    }
+
+    public function actionCreate($user_id, $score) {
+        $res = new ClickbattleResult;
+        
     }
 }

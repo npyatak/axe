@@ -58,7 +58,7 @@ use yii\helpers\Url;
                     <!-- /block -->
                 </div>
                 <div class="cmb_buttons">
-                    <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition">Пройти тест</a>
+                    <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition"><?=$user && $user->rules_clickbattle ? 'Играть ещё' : 'Играть';?></a>
                     <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
                 </div>
                 <br/>
