@@ -259,7 +259,7 @@ class SiteController extends Controller
     public function actionLogout() {
         Yii::$app->user->logout();
 
-        return $this->redirect('/');
+        return $this->redirect(Url::toRoute(['site/index']));
     }
 
     public function actionPage($url) {

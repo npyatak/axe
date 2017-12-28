@@ -1,4 +1,5 @@
 <?php
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
@@ -13,7 +14,7 @@ use yii\widgets\ActiveForm;
                     </div>
                 	<?php if(Yii::$app->user->isGuest):?>
                     	<div class="reg_screen_block">
-                    		<?=$this->render('../site/_register', ['rules' => 'challenge']);?>
+                    		<?=$this->render('../site/_register', ['ref' => Url::current(), 'rules' => 'challenge']);?>
 	                    </div>
                 	<?php else:?>
     					<?php $form = ActiveForm::begin([

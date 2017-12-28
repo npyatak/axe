@@ -63,7 +63,7 @@ use yii\helpers\Url;
                 </div>
                 <br/>
                 <div class="cmb_buttons">
-                    <a href="#rules-clickbattle" class="scr2_text_btn transition">Полные правила</a>
+                    <a href="#rules-clickbattle" class="scr2_text_btn transition fancybox">Полные правила</a>
                 </div>
             </div>
             <!-- /click battle -->

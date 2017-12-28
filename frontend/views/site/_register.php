@@ -3,7 +3,7 @@ use yii\helpers\Url;
 ?>
 <div class="reg_screen_block">
     <p>
-        <?= \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login', 'rules' => isset($rules) ? $rules : null]);?>
+        <?= \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login', 'rules' => isset($rules) ? $rules : null, 'ref' => isset($ref) ? $ref : null]);?>
     </p>
     <div class="reg_screen_check">
         <input type="checkbox" id="register_checkbox" checked>

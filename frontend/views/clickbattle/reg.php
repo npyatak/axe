@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 	                        <h2><b><strong>Зарегистрируйся в проекте</strong> <br> участвуй в розыгрыше 2 топовых игровых мышек</b> <br> а также 5 подарочных наборов AXE</h2>
 	                    </div>
 	                    <div class="reg_screen_block">
-                    		<?=$this->render('../site/_register', ['rules' => 'clickbattle']);?>
+                    		<?=$this->render('../site/_register', ['ref' => Url::toRoute(['clickbattle/index']), 'rules' => 'clickbattle']);?>
 	                    </div>
                 	<?php else:?>
 	                    <div class="main_title">
