@@ -92,7 +92,7 @@ AppAsset::register($this);
                                 <?php endif;?>
                             </li>
                             <li>
-                                <a href="<?=Url::toRoute(['site/test']);?>">Участвовать</a>
+                                <a href="javascript:void(0);">Участвовать</a>
                                 <ul>
                                     <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
                                     <?php if($user && $user->rules_challenge):?>

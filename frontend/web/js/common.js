@@ -74,7 +74,7 @@ $(document).ready(function() {
 
 $(document).on('click', '.soc_lnk', function(e) {
     if($(this).hasClass('inactive')) {
-        e.preventDefault();
+        e.preventDefault;
         return false;
     }
     // var div = $(this).closest('.test_slide');

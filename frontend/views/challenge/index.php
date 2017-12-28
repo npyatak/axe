@@ -35,7 +35,11 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                                 <p>Голосовать:</p>
                                 <?= \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login', 'wrapper' => 'ul', 'wrapperClass' => 'footer_soc']);?>
                             <?php elseif($user && $user->rules_challenge):?>
-                                <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown">Мои видео</a>
+                                <?php if($name == $user->fullName):?>
+                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="button-brown black">Все видео</a>
+                                <?php else:?>
+                                    <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown">Мои видео</a>
+                                <?php endif;?>
                             <?php endif;?>
                         </div>
                         <form class="ch_cp_sort_form" novalidate="novalidate">
@@ -162,8 +166,7 @@ $script = "
 
 if($activeChallenge) {
     $script .= "
-        $.fancybox.open('#ch_cp_modal1', {
-        showCloseButton: false});
+        $('.ch_res_img_link[data-id=\''+$activeChallenge->id+'\']').trigger('click');
     ";
 }
 

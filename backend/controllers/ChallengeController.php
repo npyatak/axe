@@ -24,6 +24,10 @@ class ChallengeController extends CController
         $searchModel = new ChallengeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $dataProvider->sort = [
+            'defaultOrder' => ['status' => SORT_ASC, 'id' => SORT_DESC],
+        ];
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -34,9 +38,9 @@ class ChallengeController extends CController
         $model = $this->findModel($id);
         $model->status = $status;
 
-        $model->save();
+        return $model->save(false);
         
-        return $this->redirect(['index']);
+        //return $this->redirect(['index']);
     }
 
     /**

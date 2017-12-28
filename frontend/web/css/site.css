@@ -76,11 +76,15 @@ p.text {
 	background-color:#907B5A;
 	color: #fff;
 }
+.button-brown.black {
+	background-color: #000;
+}
 .my-videos {
 	float: right;
 }
 .ch_cp_sort_block_modal_img {
 	width: 100%;
+	min-width: 230px;
     position: relative;
     padding: 0;
     padding-top: 56.2061%;
@@ -118,6 +122,9 @@ p.text {
 }
 .footer_soc li a.soc_lnk {
 	margin: 0;
+}
+.ch_cp_sort_form {
+	width: initial;
 }
 
 

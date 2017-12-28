@@ -67,7 +67,6 @@ use yii\helpers\Url;
                     <a href="<?=Url::toRoute(['challenge/index']);?>" class="scr2_bottom_button transition">голосовать</a> -->
                     
                 </div>
-                <!--<h2>* размещая посты на youtube во ВКонтакте с хештегом #AXEgame, участник тем самым выражает согласие с <a>полными правилами</a> конкурса</h2>-->
             </div>
             <!-- /click battle -->
 

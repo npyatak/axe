@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php Pjax::begin(); ?>    
+    <?php Pjax::begin(['id' => 'grid-pjax']); ?>    
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
@@ -59,14 +59,22 @@ $this->params['breadcrumbs'][] = $this->title;
                             if($model->status == Challenge::STATUS_ACTIVE) {
                                 return '';
                             }
-                            return Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, ['title' => 'Одобрить']);
+                            return Html::a('<span class="glyphicon glyphicon-ok-sign"></span>', $url, [
+                                'class' => 'status-toggle', 
+                                'title' => 'Одобрить',
+                                'data-pjax' => 0,
+                            ]);
                         },
                         'ban' => function ($url, $model) {
                             $url = Url::toRoute(['/challenge/status', 'id'=>$model->id, 'status' => Challenge::STATUS_BANNED]);
                             if($model->status == Challenge::STATUS_BANNED) {
                                 return '';
                             }
-                            return Html::a('<span class="glyphicon glyphicon-remove-sign"></span>', $url, ['title' => 'Забанить']);
+                            return Html::a('<span class="glyphicon glyphicon-remove-sign"></span>', $url, [
+                                'class' => 'status-toggle', 
+                                'title' => 'Забанить',
+                                'data-pjax' => 0,
+                            ]);
                         },
                     ],
                 ],
@@ -74,3 +82,22 @@ $this->params['breadcrumbs'][] = $this->title;
         ]); ?>
     <?php Pjax::end(); ?>
 </div>
+    
+<?php
+$script = "
+    $(document).on('click', '.status-toggle', function(e) {
+        var obj = $(this);
+
+        $.ajax({
+            url: obj.attr('href'),
+            type: 'POST',
+            success: function(result) {
+                $.pjax.reload({container:'#grid-pjax'});
+            }
+        });
+
+        return false;
+    });
+";
+
+$this->registerJs($script, yii\web\View::POS_END);?>

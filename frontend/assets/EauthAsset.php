@@ -9,8 +9,6 @@ use nodge\eauth\assets\WidgetAssetBundle;
  */
 class EauthAsset extends WidgetAssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
     public $css = [
 
     ];
