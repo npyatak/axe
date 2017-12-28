@@ -55,27 +55,40 @@ class Challenge extends \yii\db\ActiveRecord
     }
 
     public function checkLink($attribute, $model) {
-        $urlParts = parse_url($this->link);
-        parse_str($urlParts['query'], $queryParts);
-        if(!isset($queryParts['v'])) {
+        $key = $this->parseUrl();
+
+        if(!$key) {
             $this->addError($attribute, 'Указана не верная ссылка');
-        } else {
-            $count = self::find()->where(['access_key' => $queryParts['v']])->count();
-            if($count > 0) {
-                $this->addError($attribute, 'Это видео уже было загружено');
-            }
+        } elseif(self::find()->where(['access_key' => $key])->count() > 0) {
+            $this->addError($attribute, 'Это видео уже было загружено');
         }
     }
 
     public function beforeSave($insert) {
         if($this->link) {
-            $urlParts = parse_url($this->link);
-            parse_str($urlParts['query'], $queryParts);
-            $this->access_key = $queryParts['v'];
-            $this->image = 'https://img.youtube.com/vi/'.$queryParts['v'].'/hqdefault.jpg';
+            $key = $this->parseUrl();
+            $this->access_key = $key;
+            $this->image = 'https://img.youtube.com/vi/'.$key.'/hqdefault.jpg';
         }
 
         return parent::beforeSave($insert);
+    }
+
+    public function parseUrl() {
+        $key = null;
+        $urlParts = parse_url(trim($this->link));
+
+        if($urlParts['host'] == 'youtube.com') {
+            parse_str($urlParts['query'], $queryParts);
+
+            if(isset($queryParts['v'])) {
+                $key = $queryParts['v'];
+            }
+        } elseif($urlParts['host'] == 'youtu.be') {
+            $key = str_replace("/", "", $urlParts['path']);
+        }
+
+        return $key;
     }
 
     /**
@@ -135,11 +148,12 @@ class Challenge extends \yii\db\ActiveRecord
     public function userCanVote() {
         if($this->_lastUserVotes === null) {
             $this->_lastUserVotes = ChallengeVote::find()
-                //->select(['challenge_id', 'created_at'])
+                ->select(['challenge_id', 'max(created_at) as created_at'])
                 ->where(['user_id'=>Yii::$app->user->id])
                 ->orderBy('created_at DESC')
                 ->asArray()
                 ->indexBy('challenge_id')
+                ->groupBy('challenge_id')
                 ->all();
         }
 
