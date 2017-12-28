@@ -98,7 +98,7 @@ if(!(Yii::$app->controller->id === 'clickbattle' && Yii::$app->controller->actio
                                 <ul>
                                     <li><a href="<?=Url::toRoute(['site/test']);?>">Тест</a></li>
                                     <?php if($user && $user->rules_challenge):?>
-                                        <li><a href="<?=Url::toRoute(['challenge/index']);?>">Челлендж</a></li>
+                                        <li><a href="<?=Url::toRoute(['challenge/index']);?>" data-event="challenge_way" data-param="menu">Челлендж</a></li>
                                     <?php else:?>
                                         <li><a href="<?=Url::toRoute(['challenge/rules']);?>">Челлендж</a></li>
                                     <?php endif;?>

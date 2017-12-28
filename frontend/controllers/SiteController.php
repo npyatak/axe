@@ -71,10 +71,16 @@ class SiteController extends Controller
         if($cybertest) {
             $result = Result::findOne($cybertest);
         }
+
+        $mainPageVideoId = Yii::$app->params['mainPageVideoId'];
+        $videos = Yii::$app->params['videos'];
+        $video = $videos[$mainPageVideoId];
         
         return $this->render('index', [
             'news' => $news,
             'result' => $result,
+            'mainPageVideoId' => $mainPageVideoId,
+            'video' => $video,
         ]);
     }
 
@@ -249,10 +255,17 @@ class SiteController extends Controller
         return $this->render('login');
     }
 
-    public function actionVideo() {
+    public function actionVideo($id = 1) {
+        $videos = Yii::$app->params['videos'];
+        if(!isset($videos[$id])) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+        $video = $videos[$id];
+        unset($videos[$id]);
 
         return $this->render('video', [
-            'otherVideos' => null,
+            'otherVideos' => $videos,
+            'video' => $video,
         ]);
     }
 

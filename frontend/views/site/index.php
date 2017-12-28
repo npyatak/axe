@@ -24,13 +24,12 @@ if($result) {
         <div class="row">
             <div class="frame_block">
                 <div class="scr1_frame_block_text">
-                    <h2><span>01</span> смотреть</h2>
-                    <p>Новости с Любовью
-                        <br> Киберспортивной </p>
+                    <h2><span>0<?=$mainPageVideoId;?></span> смотреть</h2>
+                    <p><?=$video['title'];?></p>
                 </div>
                 <div class="scr1_notebook">
                     <img src="/img/mac.png" alt="img">
-                    <a href="<?=Url::toRoute(['site/video']);?>" class="scr1_notebook_view "><img src="/img/vdo2.jpg" alt="img"><span class="play_btn"></span></a>
+                    <a href="<?=Url::toRoute(['site/video', 'id' => $mainPageVideoId]);?>" class="scr1_notebook_view "><img src="<?=$video['img'];?>" alt="img"><span class="play_btn"></span></a>
                 </div>
             </div>
         </div>
@@ -76,8 +75,8 @@ if($result) {
                             <p><b>Главный приз:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB
                             </p>
                             <div class="ch_buttons">
-                                <a href="<?=Url::toRoute(['challenge/rules']);?>" class="scr2_text_btn transition">участвовать</a>
-                                <a href="<?=Url::toRoute(['challenge/index']);?>" class="scr2_bottom_button transition">галерея работ</a>
+                                <a href="<?=Url::toRoute(['challenge/rules']);?>" class="scr2_text_btn transition" data-event="challenge_way" data-param="fullrules">участвовать</a>
+                                <a href="<?=Url::toRoute(['challenge/index']);?>" class="scr2_bottom_button transition" data-event="challenge_way" data-param="main">галерея работ</a>
                             </div>
                         </div>
                     </div>

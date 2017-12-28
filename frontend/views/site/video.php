@@ -3,97 +3,27 @@
         <div class="row">
             <div class="main_video_news">
                 <div class="main_title">
-                    <h2><b><strong>новости</strong> <br> с любовью киберспортивной</b></h2>
+                    <h2><?=$video['title'];?></h2>
                 </div>
                 <div class="vb_wrapper">
                     <div class="vp_inner">
-                        <iframe src="https://www.youtube.com/embed/UpVFUFwBzl0?autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                        <iframe src="<?=$video['src'];?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
             
             <?php if($otherVideos):?>
             <div class="additional_video">
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <?php foreach ($otherVideos as $key => $v):?>
+                    <div class="article_video_block">
+                        <a href="<?=$v['src'];?>" class="avb_video video_btn">
+                            <img src="<?=$v['img'];?>" alt="img">
+                        </a>
+                        <div class="av_text">
+                            <p><b>Выпуск <?=$key;?></b> <?=$v['title'];?></p>
+                        </div>
                     </div>
-                </div>
-                <!-- /article -->
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <!-- /article -->
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <!-- /article -->
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                /article
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <!-- /article -->
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <!-- /article -->
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <!-- /article -->
-                <!-- article -->
-                <div class="article_video_block">
-                    <a href="https://www.youtube.com/embed/7QHKQs6SFOw" class="avb_video video_btn">
-                        <img src="img/vd.jpg" alt="img">
-                    </a>
-                    <div class="av_text">
-                        <p><b>What is Lorem Ipsum?</b> Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
-                </div>
-                <!-- /article -->
+                <?php endforeach;?>
             </div>
             <?php endif;?>
         </div>

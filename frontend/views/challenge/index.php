@@ -22,7 +22,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
         <div class="row">
             <div class="frame_block">
                 <div class="main_title">
-                    <h2><b><strong>Голосование</strong> <br> за лучшие игровые моменты </b><br>участвуйте в розыгрыше Sony Playstation 4 Slim 500 GB  и подарочных наборов AXE</h2>
+                    <h2><b><strong>Голосование</strong> <br> за лучший игровой момент </b><br>участвуй в розыгрыше Sony Playstation 4 Slim 500 GB</h2>
                 </div>
                 <div class="ch_cp_sort clearfix">
                     <div class="ch_cp_sort_selects">
