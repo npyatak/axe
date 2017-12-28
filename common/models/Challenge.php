@@ -135,7 +135,7 @@ class Challenge extends \yii\db\ActiveRecord
     public function userCanVote() {
         if($this->_lastUserVotes === null) {
             $this->_lastUserVotes = ChallengeVote::find()
-                ->select(['challenge_id', 'created_at'])
+                //->select(['challenge_id', 'created_at'])
                 ->where(['user_id'=>Yii::$app->user->id])
                 ->orderBy('created_at DESC')
                 ->asArray()

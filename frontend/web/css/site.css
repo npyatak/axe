@@ -126,6 +126,9 @@ p.text {
 .ch_cp_sort_form {
 	width: initial;
 }
+#cb_game_table2, #cb_game_table3, #cb_game_table4, .game_block {
+	display: none;
+}
 
 
 

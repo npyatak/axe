@@ -27,6 +27,8 @@ if ($popup) {
 <?php $arr = [];
 if($ref) {
 	$arr['ref'] = $ref;
+} else {
+	$arr['ref'] = Url::current();
 }
 if($rules) {
 	$arr['rules'] = $rules;
