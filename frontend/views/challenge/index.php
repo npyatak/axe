@@ -16,11 +16,6 @@ $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb'
 $this->registerMetaTag(['property' => 'og:url', 'content' => $share['url']], 'og:url');
 $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
 ?>
-Клик по Мои видео “challenge_way” “my_video”
-    Клик по Все видео “challenge_way” “all_video”
-    Клик по какому-то видео “challenge_way” “video_click”
-Клик по шерингу видео и на странице и в попапе “challenge_way” “share_fb” или “share_vk”
-Клик по лайку и на странице и в попапе “challenge_way” “like” 
 
 <div class="ch_competition_page">
     <div class="container">
