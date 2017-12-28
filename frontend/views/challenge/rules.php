@@ -69,8 +69,8 @@ use yii\helpers\Url;
                     <!-- /block -->
                 </div>
                 <div class="cmb_buttons">
-                    <a href="<?=Url::toRoute(['challenge/reg']);?>" class="scr2_text_btn transition">Участвовать</a>
-                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="scr2_bottom_button transition">Голосовать</a> 
+                    <a href="<?=Url::toRoute(['challenge/reg']);?>" class="scr2_text_btn transition" data-event="challenge_way" data-param="main_rules">Участвовать</a>
+                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="scr2_bottom_button transition" data-event="challenge_way" data-param="vote_main">Голосовать</a> 
                     
                 </div>
             </div>
@@ -115,12 +115,12 @@ use yii\helpers\Url;
                     А также <b>подарочные наборы AXE</b> за 2 и 3 место!</p>
                     <br/>
                     <div class="cmb_buttons">
-                        <a href="<?=Url::toRoute(['challenge/reg']);?>" class="scr2_text_btn transition">Участвовать</a>
-                        <a href="<?=Url::toRoute(['challenge/index']);?>" class="scr2_bottom_button transition">голосовать</a>
+                        <a href="<?=Url::toRoute(['challenge/reg']);?>" class="scr2_text_btn transition" data-event="challenge_way" data-param="main_rules">Участвовать</a>
+                        <a href="<?=Url::toRoute(['challenge/index']);?>" class="scr2_bottom_button transition" data-event="challenge_way" data-param="vote_main">голосовать</a>
                     </div>
                     <br/>
                     <div class="cmb_buttons">
-                        <a href="#rules-challenge" class="scr2_text_btn transition fancybox">Полные правила</a>
+                        <a href="#rules-challenge" class="scr2_text_btn transition fancybox" data-event="challenge_way" data-param="fullrules">Полные правила</a>
                     </div>
                 </div>
             </div>

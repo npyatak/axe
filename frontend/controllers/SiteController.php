@@ -261,10 +261,10 @@ class SiteController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
         $video = $videos[$id];
-        unset($videos[$id]);
+        //unset($videos[$id]);
 
         return $this->render('video', [
-            'otherVideos' => $videos,
+            'videos' => $videos,
             'video' => $video,
         ]);
     }

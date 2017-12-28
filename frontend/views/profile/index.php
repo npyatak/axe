@@ -83,18 +83,18 @@ if($result) {
                             <p><b>Главный приз:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB </p>
                             <div class="ucb_challenge_buttons">
                                 <?php if($user && $user->rules_challenge):?>
-                                    <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="transition filed">Мои видео</a>
-                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="transition ">Голосовать</a>
+                                    <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="transition filed" data-event="challenge_way" data-param="my_video_lk">Мои видео</a>
+                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="transition " data-event="challenge_way" data-param="vote_lk">Голосовать</a>
                                 <?php else:?>
-                                    <a href="<?=Url::toRoute(['challenge/rules']);?>" class="transition filed">Участвовать</a>
-                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="transition ">Голосовать</a>
+                                    <a href="<?=Url::toRoute(['challenge/rules']);?>" class="transition filed" data-event="challenge_way" data-param="main_lk">Участвовать</a>
+                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="transition" data-event="challenge_way" data-param="vote_lk">Голосовать</a>
                                 <?php endif;?>
                             </div>
                         </div>
                         <div class="ucb_challenge_share">
                             <?php if($user && $user->rules_challenge):?>
                             <div class="ucb_challenge_buttons">
-                                <a href="<?=Url::toRoute(['challenge/reg']);?>" class="transition">Запостить еще</a>
+                                <a href="<?=Url::toRoute(['challenge/reg']);?>" class="transition" data-event="challenge_way" data-param="more_lk">Запостить еще</a>
                             </div>
                             <?php endif;?>
                         </div>

@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Url;
+?>
 <div class="video_news_screen">
     <div class="container">
         <div class="row">
@@ -12,11 +15,11 @@
                 </div>
             </div>
             
-            <?php if($otherVideos):?>
+            <?php if($videos):?>
             <div class="additional_video">
-                <?php foreach ($otherVideos as $key => $v):?>
+                <?php foreach ($videos as $key => $v):?>
                     <div class="article_video_block">
-                        <a href="<?=$v['src'];?>" class="avb_video video_btn">
+                        <a href="<?=Url::toRoute(['site/video', 'id' => $key]);?>" class="avb_video video_btn">
                             <img src="<?=$v['img'];?>" alt="img">
                         </a>
                         <div class="av_text">

@@ -16,6 +16,11 @@ $this->registerMetaTag(['property' => 'og:image', 'content' => $share['image_fb'
 $this->registerMetaTag(['property' => 'og:url', 'content' => $share['url']], 'og:url');
 $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:type');
 ?>
+Клик по Мои видео “challenge_way” “my_video”
+    Клик по Все видео “challenge_way” “all_video”
+    Клик по какому-то видео “challenge_way” “video_click”
+Клик по шерингу видео и на странице и в попапе “challenge_way” “share_fb” или “share_vk”
+Клик по лайку и на странице и в попапе “challenge_way” “like” 
 
 <div class="ch_competition_page">
     <div class="container">
@@ -36,9 +41,9 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                                 <?= \frontend\widgets\social\SocialWidget::widget(['action' => 'site/login', 'wrapper' => 'ul', 'wrapperClass' => 'footer_soc']);?>
                             <?php elseif($user && $user->rules_challenge):?>
                                 <?php if($name == $user->fullName):?>
-                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="button-brown black">Все видео</a>
+                                    <a href="<?=Url::toRoute(['challenge/index']);?>" class="button-brown black" data-event="challenge_way" data-param="all_video">Все видео</a>
                                 <?php else:?>
-                                    <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown">Мои видео</a>
+                                    <a href="<?=Url::toRoute(['challenge/index', 'name' => $user->fullName]);?>" class="button-brown" data-event="challenge_way" data-param="my_video">Мои видео</a>
                                 <?php endif;?>
                             <?php endif;?>
                         </div>
@@ -76,8 +81,8 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
     	                                    'data-title' => $share['title_fb'],
     	                                    'data-image' => $share['image_fb'],
     	                                    'data-desc' => $share['text'],
-    	                                    'data-event' => 'test_way',
-    	                                    'data-param' => 'share_fb_lk'
+    	                                    'data-event' => 'challenge_way',
+    	                                    'data-param' => 'share_fb'
     	                                ]); ?>
     	                            </li>
     	                            <li>
@@ -88,8 +93,8 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
     	                                    'data-title' => $share['title_vk'],
     	                                    'data-image' => $share['image_vk'],
     	                                    'data-desc' => $share['text'],
-    	                                    'data-event' => 'test_way',
-    	                                    'data-param' => 'share_vk_lk'
+    	                                    'data-event' => 'challenge_way',
+    	                                    'data-param' => 'share_vk'
     	                                ]); ?>
     	                            </li>
                                 </ul>
@@ -99,7 +104,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                             <?php endif;?>
                         </div>
 
-                        <a class="vote-button <?=($activeChallenge && $user && $activeChallenge->userCanVote()) ? '' : 'inactive';?>" data-id="<?=$activeChallenge ? $activeChallenge->id : '';?>" href="#">
+                        <a class="vote-button <?=($activeChallenge && $user && $activeChallenge->userCanVote()) ? '' : 'inactive';?>" data-id="<?=$activeChallenge ? $activeChallenge->id : '';?>" href="#"  data-event="challenge_way" data-param="like">
                             <span class="likes-count"><?=$activeChallenge ? $activeChallenge->likes : '';?></span>
                         </a>
                     </div>

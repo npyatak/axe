@@ -57,12 +57,12 @@ use yii\widgets\ActiveForm;
 	                    		<?php if(!$user->rules_challenge):?>
 			                        <div class="reg_screen_check">
 			                            <input type="checkbox" id="rules-check" name="reg" checked>
-			                            <label for="rules-check">Я соглашаюсь <a href="#rules-challenge" class="fancybox">с полными правилами</a> конкурса</label>
+			                            <label for="rules-check">Я соглашаюсь <a href="#rules-challenge" class="fancybox" data-event="challenge_way" data-param="fullrules_submit">с полными правилами</a> конкурса</label>
 			                        </div>
 			                        <br/><br/>
 			                    <?php endif;?>
 		                        <div class="ch_buttons">
-		                        	<?= Html::submitButton('запостить', ['class' => 'scr2_text_btn transition']) ?>
+		                        	<?= Html::submitButton('запостить', ['class' => 'scr2_text_btn transition', ' data-event' => 'clickbattle_way', 'data-param' => 'fullrules_submit']) ?>
 		                        </div>
 		                    </div>
 		                <?php ActiveForm::end(); ?>
