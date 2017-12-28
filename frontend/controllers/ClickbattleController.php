@@ -16,8 +16,15 @@ class ClickbattleController extends Controller
 {
 
     public function actionIndex() {
-
+        $data = [];
+        for ($i=1; $i <= 3 ; $i++) { 
+            $x = rand(0, 950);
+            $y = rand(0, 440);
+            $data[$i] = ['x' => $x, 'y' => $y];
+        }
+        
         return $this->render('index', [
+            'data' => $data,
             'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
         ]);
     }

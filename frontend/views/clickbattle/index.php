@@ -3,7 +3,7 @@ use yii\helpers\Url;
 
 \frontend\assets\ClickbattleAsset::register($this);
 ?>
-
+<?php //данные в переменной $data ?>
 <div class="clickbattle_page">
     <div class="container">
         <div class="row">
