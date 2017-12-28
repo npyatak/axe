@@ -5,7 +5,9 @@ use frontend\assets\AppAsset;
 
 use common\models\User;
 
-AppAsset::register($this);
+if(!(Yii::$app->controller->id === 'clickbattle' && Yii::$app->controller->action->id === 'index')) {
+    AppAsset::register($this);
+}
 ?>
 <?php $this->beginPage() ?> 
 <!DOCTYPE html>

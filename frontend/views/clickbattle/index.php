@@ -1,8 +1,7 @@
 <?php
 use yii\helpers\Url;
 
-$this->registerCssFile(Url::toRoute('css/main_clicker.css'));
-$this->registerJsFile('/js/phaser.min.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+\frontend\assets\ClickbattleAsset::register($this);
 ?>
 
 <div class="clickbattle_page">

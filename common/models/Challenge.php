@@ -77,14 +77,14 @@ class Challenge extends \yii\db\ActiveRecord
     public function parseUrl() {
         $key = null;
         $urlParts = parse_url(trim($this->link));
-
-        if($urlParts['host'] == 'youtube.com') {
+        
+        if(in_array($urlParts['host'], ['youtube.com', 'www.youtube.com'])) {
             parse_str($urlParts['query'], $queryParts);
 
             if(isset($queryParts['v'])) {
                 $key = $queryParts['v'];
             }
-        } elseif($urlParts['host'] == 'youtu.be') {
+        } elseif(in_array($urlParts['host'], ['youtu.be', 'www.youtu.be'])) {
             $key = str_replace("/", "", $urlParts['path']);
         }
 
