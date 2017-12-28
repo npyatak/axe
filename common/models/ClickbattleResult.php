@@ -57,6 +57,13 @@ class ClickbattleResult extends \yii\db\ActiveRecord
     //     return parent::afterSave($insert, $changedAttributes);
     // }
 
+    public function beforeSave($insert) {
+        $this->ip = $_SERVER['REMOTE_ADDR'];
+
+        return parent::beforeSave($insert);
+    }
+                    
+
     /**
      * @return \yii\db\ActiveQuery
      */

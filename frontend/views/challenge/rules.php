@@ -7,7 +7,9 @@ use yii\helpers\Url;
             <!-- click battle -->
             <div class="click_battle_main">
                 <div class="main_title">
-                    <h2><b><strong>Челлендж #AXEBEST</strong> <br>на лучший игровой момент</b></h2>
+                    <h2>
+                        <b><strong>Челлендж #AXEBEST</strong> <br>на лучший игровой момент</b>
+                    </h2>
                 </div>
                 <div class="cm_blocks">
                     <!-- block -->
@@ -17,9 +19,12 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/cm1.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Зарегистрируйся и запости</strong> <br> свой лучший игровой момент</b>
+                            <p>
+                                <b>
+                                    <strong>Зарегистрируйся и запости</strong> <br> свой лучший игровой момент
+                                </b>
                                 <br>в виде youtube-ссылки
-                                <!--<br>и дождись модерации--></p>
+                            </p>
                         </div>
                     </div>
                     <!-- /block -->
@@ -30,9 +35,9 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/ch2.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Размести видео </strong> <br>во ВКонтакте <!--<br/>с лучшим игровым моментом-->  </b>
-                            <br/>указав хештег #AXEBEST в названии</a>
-                            <!--<br/>такие посты автоматически попадут в проект*</a>-->
+                            <p>
+                                <b><strong>Размести видео </strong> <br>во ВКонтакте</b>
+                                <br/>указав хештег #AXEBEST в названии
                             </p>
                         </div>
                     </div>
@@ -44,20 +49,21 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/ch3.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Дождись модерации</strong> <br/>и зови друзей голосовать в конкурсе
-                            <!--<br>поделись своими работами в соц. сетях</p>-->
+                            <p>
+                                <b><strong>Дождись модерации</strong> <br/>и зови друзей голосовать в конкурсе</b>
+                            </p>
                         </div>
                     </div>
-                    <!-- /block -->
-                    <!-- block -->
                     <div class="cm_block">
                         <div class="cmb_num">
                             <p>03</p>
                         </div>
                         <div class="cmb_img"><img src="/img/ch4.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Выигрывай призы</strong> <br>Sony PlayStation 4 Slim 500 ГБ</b>
-                                <br>и подарочные наборы AXE</p>
+                            <p>
+                                <b><strong>Выигрывай призы</strong> <br>Sony PlayStation 4 Slim 500 ГБ</b>
+                                <br>и подарочные наборы AXE
+                            </p>
                         </div>
                     </div>
                     <!-- /block -->

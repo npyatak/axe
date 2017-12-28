@@ -48,14 +48,32 @@ class ClickbattleController extends Controller
     }
 
     public function actionRating() {
+        $user = null;
+        $userResult = null;
+        if(!Yii::$app->user->isGuest) {
+            $user = User::findOne(Yii::$app->user->id);
+            $userResult = ClickbattleResult::find()->where(['user_id' => $user->id])->orderBy('score')->one();
+        }
+
+        $results = ClickbattleResult::find()
+            ->select(['user.*', 'clickbattle_result.*', 'max(clickbattle_result.score) as score'])
+            ->joinWith('user')
+            ->groupBy('user_id')
+            ->orderBy('score')
+            //->asArray()
+            ->all();
 
         return $this->render('rating', [
-            'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
+            'user' =>  $user,
+            'userResult' => $userResult,
+            'results' => $results,
         ]);
     }
 
     public function actionCreate($user_id, $score) {
         $res = new ClickbattleResult;
-        
+        $res->score = $score;
+        $res->user_id = $user_id;
+        $res->save();
     }
 }
