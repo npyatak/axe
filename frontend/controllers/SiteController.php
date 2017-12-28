@@ -184,9 +184,9 @@ class SiteController extends Controller
 
         if (isset($serviceName)) {
             $eauth = Yii::$app->get('eauth')->getIdentity($serviceName);
-
-            $eauth->setRedirectUrl(Url::toRoute('site/test-result'));
-            if($ref !== '') {
+            //$eauth->setRedirectUrl(Url::toRoute('site/test-result'));
+            $eauth->setRedirectUrl(Url::toRoute('site/index'));
+            if($ref && $ref !== '') {
                 $eauth->setRedirectUrl(Url::to($ref));
             }
             $eauth->setCancelUrl(Url::toRoute('profile/index'));

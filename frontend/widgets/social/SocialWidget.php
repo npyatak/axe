@@ -10,7 +10,7 @@ class SocialWidget extends \nodge\eauth\Widget {
 	public $wrapper = 'div';
 	public $wrapperClass = 'eauth';
 
-	public $assetBundle = 'frontend\assets\EauthAsset';
+	//public $assetBundle = 'frontend\assets\EauthAsset';
 
     public function run() {
 		echo $this->render('widget', [
