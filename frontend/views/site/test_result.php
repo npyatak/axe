@@ -115,7 +115,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск Кликбаттла </h4>
-                            <h3>28 декабря 2017 г</h3>
+                            <h3>30 декабря 2017 г</h3>
                             <p><b>Призы:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
                             <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
                         </div>

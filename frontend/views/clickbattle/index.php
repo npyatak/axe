@@ -4,6 +4,7 @@ use yii\helpers\Url;
 \frontend\assets\ClickbattleAsset::register($this);
 ?>
 <?php //данные в переменной $data ?>
+
 <div class="clickbattle_page">
     <div class="container">
         <div class="row">
@@ -36,9 +37,9 @@ use yii\helpers\Url;
                                 <!-- block -->
                                 <div class="enemy_block">
                                     <div class="enemy_block_img">
-                                        <img src="/img/monster.png" alt="img">
+                                        <img src="/img/weapon.png" alt="img">
                                     </div>
-                                    <a onclick="openBeginWindow('monster')" class="enemy_block_button transition">Выбрать</a>
+                                    <a onclick="openBeginWindow('weapon')" class="enemy_block_button transition">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                             </div>
@@ -53,7 +54,7 @@ use yii\helpers\Url;
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                    <div class="game_block" id="game_block" style="background: url(/img/space.jpg) center no-repeat; background-size: cover;">
+                    <div class="game_block" id="game_block">
                         <!--<div class="bame_el game_el1" style="top: 290px; left:  107px;"><img src="/img/gl1.png" alt="img"></div>
                         <div class="bame_el game_el2" style="top: 164px; right: 112px"><img src="/img/gl2.png" alt="img"></div>-->
                         <div class="bame_el game_el3" style="top: 73px; right: 212px"><img src="/img/shot.png" alt="img"></div>
@@ -193,7 +194,7 @@ use yii\helpers\Url;
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                    <div class="cb_game_table" id="cb_game_table4" style="background: url(/img/res_bg.jpg) center no-repeat; background-size: cover;">
+                    <div class="cb_game_table" id="cb_game_table4">
                         <div class="cb_game_cell">
                             <div class="cb_game_reslt">
                                 <div class="cb_reslt_heading">
@@ -231,24 +232,32 @@ use yii\helpers\Url;
     <script type="text/javascript">
 
         const radius = 20;
-        const timeInterval = 1000;
-        const endGameTime = 12000;
-        var clickEnabled = true,
+        const halfImageWidth = 35;
+        const delayInterval = 800;
+        const targetLifeDurationInterval = 800;
+        const timerTextInterval = 1000;
+        const endGameTime = 120000;
+
+        var appearTargetTimerId,
+            clickEnabled = false,
+            currentTime = 0,
+            delayAnimationSetTimeoutId,
             distance,
+            endGameSetTimeoutId,
             explosions,
             game,
             icon,
-            isClicked = true,
             isFirst = true,
             music,
+            number,
             object1,
             object2,
             score = 0,
-            setTimeoutId,
             audio,
             stat,
             time,
-            timerId,
+            timerTextIntervalId,
+            totalElapsedMilliSeconds,
             turnOffSound = true,
             tween1,
             tween2,
@@ -287,9 +296,15 @@ use yii\helpers\Url;
             //  string by which we'll identify the image later in our code.
 
             //  The second parameter is the URL of the image (relative)
+            if (icon === 'tank') {
+                game.load.image('background', '/img/tank_bg.jpg');
+            } else if (icon === 'axe') {
+                game.load.image('background', '/img/res_bg.jpg');
+            } else if (icon === 'weapon') {
+                game.load.image('background', '/img/space.jpg');
+            }
             game.load.image(icon + '1', '/img/' + icon + '1.png');
             game.load.image(icon + '2', '/img/' + icon + '2.png');
-            game.load.image('background', '/img/space.jpg');
             game.load.image('soundOn', '/img/sound_on.png');
             game.load.image('soundOff', '/img/sound_off.png');
             game.load.spritesheet('boom', '/img/explosion.png', 64, 64, 23);
@@ -307,49 +322,56 @@ use yii\helpers\Url;
             audio.events.onInputDown.add(switchSound, this);
             music = game.add.audio('ak47');
 
-            timerId = setInterval(function () {
-                if (isFirst) {
-                    object1.kill();
-                    object2 = game.add.sprite(Math.abs(game.world.randomX) + 20, Math.abs(game.world.randomY) + 20, icon + '2');
-                    object2.width = 40;
-                    object2.height = 40;
-                    object2.alpha = 0;
-                    tween2 = game.add.tween(object2).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, true);
-                    object2.inputEnabled = true;
-                    game.physics.arcade.enable(object2);
-                    x1 = object2.centerX;
-                    y1 = object2.centerY;
-                } else {
-                    object2.kill();
-                    object1 = game.add.sprite(Math.abs(game.world.randomX) + 20, Math.abs(game.world.randomY) + 20, icon + '1');
-                    object1.width = 40;
-                    object1.height = 40;
-                    object1.alpha = 0;
-                    tween1 = game.add.tween(object1).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, true);
-                    x1 = object1.centerX;
-                    y1 = object1.centerY;
-                }
-                isFirst = !isFirst;
-                time.setText((game.time.totalElapsedSeconds().toFixed(0)) + ' СЕК');
-                clickEnabled = true;
-            }, timeInterval);
+            // Seconds pass after game start
+            timerTextIntervalId = setInterval(function () {
+                currentTime++;
+                time.setText(currentTime + ' СЕК');
+            }, timerTextInterval);
 
-            setTimeoutId = setTimeout(function () {
+            // Creating target1 or target2
+            var create = function () {
+                appearTargetTimerId = setInterval(function () {
+                    createTarget();
+                    update();
+                    clearInterval(appearTargetTimerId);
+                }, targetLifeDurationInterval);
+            }
+
+            // Delay between target1 and target2
+            var update = function () {
+                delayAnimationSetTimeoutId = setTimeout(function () {
+                    create();
+                }, delayInterval);
+            }
+
+            // Game over timeout
+            endGameSetTimeoutId = setTimeout(function () {
                 game.destroy();
-                clearInterval(timerId);
-                clearTimeout(setTimeoutId);
+                clearInterval(appearTargetTimerId);
+                clearInterval(timerTextIntervalId);
+                clearTimeout(delayAnimationSetTimeoutId);
+                clearTimeout(endGameSetTimeoutId);
                 $(".game_block").hide();
+                if (icon === 'tank') {
+                    $("#cb_game_table4").css({'background': 'url(/img/tank_bg.jpg) center no-repeat', 'background-size': 'cover'});
+                } else if (icon === 'axe') {
+                    $("#cb_game_table4").css({'background': 'url(/img/res_bg.jpg) center no-repeat', 'background-size': 'cover'});
+                } else if (icon === 'weapon') {
+                    $("#cb_game_table4").css({'background': 'url(/img/space.jpg) center no-repeat', 'background-size': 'cover'});
+                }
                 $("#cb_game_table4").css('display', 'table');
                 $("#score").text(score + ' баллов');
                 score = 0;
+                currentTime = 0;
             }, endGameTime);
 
-            object1 = game.add.sprite(Math.abs(game.world.randomX) + 20, Math.abs(game.world.randomY) + 20, icon + '1');
-            object1.width = 40;
-            object1.height = 40;
+            //Creates target1 at the beginning of the game
+            object1 = game.add.sprite(Math.abs(game.world.randomX) - halfImageWidth, Math.abs(game.world.randomY) - halfImageWidth, icon + '1');
             object1.alpha = 0;
-            tween1 = game.add.tween(object1).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, true);
+            tween1 = game.add.tween(object1).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
             object1.inputEnabled = true;
+            object1.events.onInputDown.add(onDown);
+            update();
 
             x1 = object1.centerX;
             y1 = object1.centerY;
@@ -376,6 +398,30 @@ use yii\helpers\Url;
 
         }
 
+        // Creating target
+        function createTarget() {
+            if (isFirst) {
+                object1.kill();
+                object2 = game.add.sprite(250 - halfImageWidth, 333 - halfImageWidth, icon + '2');
+                object2.alpha = 0;
+                tween2 = game.add.tween(object2).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
+                object2.inputEnabled = true;
+                game.physics.arcade.enable(object2);
+                x1 = object2.centerX;
+                y1 = object2.centerY;
+            } else {
+                object2.kill();
+                object1 = game.add.sprite(440 - halfImageWidth, 190 - halfImageWidth, icon + '1');
+                object1.alpha = 0;
+                tween1 = game.add.tween(object1).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
+                x1 = object1.centerX;
+                y1 = object1.centerY;
+            }
+            isFirst = !isFirst;
+            clickEnabled = true;
+        }
+
+        // Sound control
         function switchSound() {
             if (turnOffSound) {
                 audio.key = "soundOff";
@@ -390,37 +436,53 @@ use yii\helpers\Url;
             }
         }
 
+        // Get distance
         function getDistance(x, y, x1, y1) {
             return Math.sqrt(Math.pow(x - x1, 2) + Math.pow(y - y1, 2)).toFixed();
         }
 
+        // On click target
         function onDown(object) {
-            if (clickEnabled) {
-                x = Math.floor(object.position.x);
-                y = Math.floor(object.position.y);
-                distance = +getDistance(x, y, x1, y1);
+            number = totalElapsedMilliSeconds / targetLifeDurationInterval;
+            number = number - number % 1;
+            if ((object1 || object2) || number % 2 === 0) {
+                var targetNumber = totalElapsedMilliSeconds / (2 * targetLifeDurationInterval) + 1;
+                 targetNumber = targetNumber - targetNumber%1;
+                 console.log(targetNumber);
 
-                if (distance <= radius) {
-                    music.play();
-                    score += (radius - distance);
-                    stat.setText(score + ' БАЛЛОВ');
-                    var explosionAnimation = explosions.getFirstExists(false);
-                    explosionAnimation.reset(x1, y1);
-                    explosionAnimation.play('boom', 30, false, true);
+                if (clickEnabled) {
+                    x = Math.floor(object.position.x);
+                    y = Math.floor(object.position.y);
+                    distance = +getDistance(x, y, x1, y1);
+                    if (distance <= radius) {
+                        music.play();
+                        score += (radius - distance);
+                        stat.setText(score + ' БАЛЛОВ');
+                        var explosionAnimation = explosions.getFirstExists(false);
+                        explosionAnimation.reset(x1, y1);
+                        explosionAnimation.play('boom', 30, false, true);
+                        clickEnabled = false;
+                    }
+                } else {
+                    if (distance <= radius) {
+                        score -= 2;
+                        stat.setText(score + ' БАЛЛОВ');
+                    }
                 }
 
-                isClicked = true;
-                clickEnabled = false;
             } else {
-                if (distance <= radius) {
-                    score -= 2;
-                    stat.setText(score + ' БАЛЛОВ');
-                }
+                x = undefined;
+                y = undefined;
+                x1 = undefined;
+                y1 = undefined;
+                distance = undefined;
+                score -= 2;
+                stat.setText(score + ' БАЛЛОВ');
             }
         }
 
         function update () {
-
+            totalElapsedMilliSeconds = game.time.totalElapsedSeconds();
         }
 
         function render () {
