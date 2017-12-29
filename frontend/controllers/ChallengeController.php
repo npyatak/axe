@@ -33,6 +33,9 @@ class ChallengeController extends Controller
             //'defaultOrder' => ['created_at'=>SORT_DESC],
             'attributes' => ['created_at', 'likes'],
         ];
+        $dataProvider->pagination = [
+            'pageSize' => 18,
+        ];
         
         $activeChallenge = false;
         if($id) {

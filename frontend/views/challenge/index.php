@@ -2,6 +2,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ListView;
+use kop\y2sp\ScrollPager;
 
 $share = Yii::$app->params['shareChallenge'];
 $share['url'] = Url::current([], true);
@@ -22,7 +23,8 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
         <div class="row">
             <div class="frame_block">
                 <div class="main_title">
-                    <h2><b><strong>Голосование</strong> <br> за лучший игровой момент </b><br>участвуй в розыгрыше Sony Playstation 4 Slim 500 GB</h2>
+                    <h2><b><strong>Голосуй</strong> <br> за лучший игровой момент </b><br>участвуй в розыгрыше Sony Playstation 4 Slim 500 GB</h2>
+                    <p style="color: #ffe;">Один пользователь может проголосовать за любое понравившееся видео один раз в день</p>
                 </div>
                 <div class="ch_cp_sort clearfix">
                     <div class="ch_cp_sort_selects">
@@ -49,14 +51,28 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                     </div>
                 </div>
 
-				<?= ListView::widget([
-				    'dataProvider' => $dataProvider,
-				    'layout' => '{items}',
-				    'itemOptions' => ['class' => 'ch_cp_sort_block'],
-				    'itemView' => '_item',
-				    'options' => ['class' => 'ch_cp_sort_blocks'],
-				    'pager' => ['class' => \kop\y2sp\ScrollPager::className()],
-				]);?>
+                <?= ListView::widget([
+                    'dataProvider' => $dataProvider,
+                    'layout' => "{items} {pager}",
+                    'itemOptions' => ['class' => 'ch_cp_sort_block'],
+                    'itemView' => '_item',
+                    'options' => ['class' => 'ch_cp_sort_blocks'],
+                    'pager' => [
+                        'class' => ScrollPager::className(), 
+                        'container' => '.ch_cp_sort_blocks',
+                        'item' => '.ch_cp_sort_block',
+                        'negativeMargin' => 100,
+                        'delay' => 10,
+                        'paginationSelector' => '.ch_cp_sort_blocks .pagination',
+                        'enabledExtensions' => [
+                            //ScrollPager::EXTENSION_TRIGGER,
+                            //ScrollPager::EXTENSION_SPINNER,
+                            ScrollPager::EXTENSION_NONE_LEFT,
+                            //ScrollPager::EXTENSION_PAGING,
+                            //ScrollPager::EXTENSION_HISTORY
+                        ]
+                    ],
+                ]);?>
 
                 <div class="ch_cp_sort_block_modal" id="ch_cp_modal1">
                     <a href="javascript:void(0)" class="ch_cp_modal_close"><img src="/img/close-btn.png" alt="img"></a>
