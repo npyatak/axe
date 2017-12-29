@@ -19,7 +19,11 @@ use kop\y2sp\ScrollPager;
                         </h2>
                     </div>
                     <div class="cmb_buttons">
-                    	<a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition"><?=$user && $user->rules_clickbattle ? 'Играть ещё' : 'Играть';?></a>
+                        <?php if($user && $user->rules_clickbattle):?>
+                    	   <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="scr2_text_btn transition">Играть ещё</a>
+                        <?php else:?>
+                           <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition">Играть</a>
+                        <?php endif;?>
                     	<a href="<?=Url::toRoute(['profile/index']);?>" class="scr2_bottom_button transition">Личный кабинет</a>
             		</div>
             		<br/><br/>
