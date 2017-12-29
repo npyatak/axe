@@ -133,6 +133,10 @@ p.text {
 	color: #ffe;
 	font-size: 18px;
 }
+.ch_res_block_img img {
+	width: 70px;
+	height: 70px;
+}
 
 
 
