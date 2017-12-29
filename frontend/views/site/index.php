@@ -24,7 +24,7 @@ if($result) {
         <div class="row">
             <div class="frame_block">
                 <div class="scr1_frame_block_text">
-                    <h2><span>0<?=$mainPageVideoId;?></span> смотреть</h2>
+                    <h2><span>01</span> смотреть</h2>
                     <p><?=$video['title'];?></p>
                 </div>
                 <div class="scr1_notebook">
