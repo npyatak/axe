@@ -9,9 +9,11 @@ use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
 use yii\widgets\ActiveForm;
 use yii\web\Response;
+use yii\data\ActiveDataProvider;
 
 use common\models\User;
 use common\models\ClickbattleResult;
+use common\models\search\ClickbattleResultSearch;
 
 class ClickbattleController extends Controller
 {
@@ -55,18 +57,30 @@ class ClickbattleController extends Controller
             $userResult = ClickbattleResult::find()->where(['user_id' => $user->id])->orderBy('score')->one();
         }
 
-        $results = ClickbattleResult::find()
-            ->select(['user.*', 'clickbattle_result.*', 'max(clickbattle_result.score) as score'])
-            ->joinWith('user')
-            ->groupBy('user_id')
-            ->orderBy('score')
-            //->asArray()
-            ->all();
+        $dataProvider = new ActiveDataProvider([
+            'query' => ClickbattleResult::find()
+                ->select(['user.name', 'user.surname', 'user.city', 'clickbattle_result.*', 'max(clickbattle_result.score) as maxScore'])
+                ->joinWith('user')
+                ->groupBy('user_id')
+                ->orderBy('maxScore'),
+            'totalCount' => ClickbattleResult::find()
+                ->select(['clickbattle_result.*', 'max(clickbattle_result.score) as maxScore'])
+                ->groupBy('user_id')
+                ->orderBy('maxScore')
+                ->count(),
+            'sort' => [
+                'defaultOrder' => ['score'=>SORT_DESC],
+                'attributes' => ['created_at', 'score'],
+            ],
+            'pagination' => [
+                'pageSize' => 36,
+            ],
+        ]);
 
         return $this->render('rating', [
             'user' =>  $user,
             'userResult' => $userResult,
-            'results' => $results,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

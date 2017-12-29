@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Url;
+use yii\widgets\ListView;
+use kop\y2sp\ScrollPager;
 ?>
 <div class="personal_page">
     <div class="container">
@@ -10,7 +12,7 @@ use yii\helpers\Url;
                     <div class="main_title">
                         <h2>
                             <?php if($user && $userResult):?>
-                                <b><strong>Рейтинг Клик</strong>-баттла<br>Вы набрали<br> XXXX баллов</b>
+                                <b><strong>Рейтинг Клик</strong>-баттла<br>Вы набрали<br> <?=$userResult->score;?> баллов</b>
                             <?php else:?>
                                 <b><strong>Рейтинг Клик</strong>-баттла</b>
                             <?php endif;?>
@@ -21,33 +23,25 @@ use yii\helpers\Url;
                     	<a href="<?=Url::toRoute(['profile/index']);?>" class="scr2_bottom_button transition">Личный кабинет</a>
             		</div>
             		<br/><br/>
-                    <?php if($results):?>
-                        <div class="ch_res_blocks">
-                            <?php foreach ($results as $result):?>
-                                <div class="ch_res_block">
-                                    <div class="ch_res_block_img">
-                                        <img src="<?=$result->user->image;?>" alt="img">
-                                    </div>
-                                    <div class="user_block_info">
-                                        <h4><?=$result->user->fullName;?></h4>
-                                        <?php if($result->user->city):?>
-                                            <p>Moscow <i class="zmdi zmdi-pin"></i></p>
-                                        <?php endif;?>
-                                        <h5><?=$result->score;?> баллов</h5>
-                                    </div>
-                                </div>
-                            <?php endforeach;?>
-                        </div>
-                    <?php endif;?>
-                    <!-- res_pagi -->
-                    <div class="res_pagi_wrapper">
-                        <ul class="res_pagination">
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                        </ul>
-                    </div>
-                    <!-- /res_pagi -->
+
+                    <?= ListView::widget([
+                        'dataProvider' => $dataProvider,
+                        'layout' => "{items} {pager}",
+                        'itemOptions' => ['class' => 'ch_res_block'],
+                        'itemView' => '_item_rating',
+                        'options' => ['class' => 'ch_res_blocks'],
+                        'pager' => [
+                            'class' => ScrollPager::className(), 
+                            'container' => '.ch_res_blocks',
+                            'item' => '.ch_res_block',
+                            'negativeMargin' => 50,
+                            'delay' => 10,
+                            'paginationSelector' => '.ch_res_blocks .pagination',
+                            'enabledExtensions' => [
+                                ScrollPager::EXTENSION_NONE_LEFT,
+                            ]
+                        ],
+                    ]);?>
                 </div>
             </div>
         </div>
