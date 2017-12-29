@@ -170,6 +170,6 @@ p.text {
 @media screen and (max-width:5000px)  {.reg_screen_text {font-size: 18px;} .reg_screen_plus {font-size: 18px;} .reg_screen_input {font-size: 16px;width: 350px;}}
 @media screen and (max-width:1600px)  {.reg_screen_text {font-size: 18px;} .reg_screen_plus {font-size: 18px;} .reg_screen_input {font-size: 16px;width: 316px;}}
 @media screen and (max-width:1450px)  {.reg_screen_text {font-size: 17px;} .reg_screen_plus {font-size: 17px;} .reg_screen_input {font-size: 15px;width: 282px;}}
-@media screen and (max-width:1280px)  {.reg_screen_text {font-size: 16px;} .reg_screen_plus {font-size: 16px;} .reg_screen_input {font-size: 14px;width: 248px;}}
-@media screen and (max-width:1100px)  {.reg_screen_text {font-size: 15px;} .reg_screen_plus {font-size: 15px;} .reg_screen_input {font-size: 13px;width: 214px;}}
+@media screen and (max-width:1280px)  {.reg_screen_text {font-size: 16px;} .reg_screen_plus {font-size: 16px;} .reg_screen_input {font-size: 14px;width: 235px;}}
+@media screen and (max-width:1100px)  {.reg_screen_text {font-size: 15px;} .reg_screen_plus {font-size: 15px;} .reg_screen_input {font-size: 13px;width: 224px;}}
 @media screen and (max-width:768px)   {.reg_screen_text {font-size: 14px;} .reg_screen_plus {font-size: 14px;} .reg_screen_input {font-size: 12px;width: 180px;}}

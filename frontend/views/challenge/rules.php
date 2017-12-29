@@ -90,7 +90,7 @@ use yii\helpers\Url;
                 @media screen and (max-width:1450px)  {.rules_content {width:800px} .rules_content h3 {margin-bottom:10px;font-size:28px} .rules_content h3 b{font-size:35px;font-weight:400}}
                 @media screen and (max-width:1280px)  {.rules_content {width:800px} .rules_content h3 {margin-bottom:10px;font-size:28px} .rules_content h3 b{font-size:35px;font-weight:400}}
                 @media screen and (max-width:1100px)  {.rules_content {width:600px} .rules_content h3 {margin-bottom:10px;font-size:28px} .rules_content h3 b{font-size:35px;font-weight:400}}
-                @media screen and (max-width:768px)   {.rules_content {width:400px} .rules_content h3 {margin-bottom:10px;font-size:28px} .rules_content h3 b{font-size:35px;font-weight:400}}
+                @media screen and (max-width:768px)   {.rules_content {width:320px} .rules_content h3 {margin-bottom:10px;font-size:28px} .rules_content h3 b{font-size:35px;font-weight:400}}
             </style>
             <div class="main_video_news">
                 <div class="rules_content">

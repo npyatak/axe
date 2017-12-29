@@ -67,8 +67,42 @@ use yii\widgets\ActiveForm;
 		                    </div>
 		                <?php ActiveForm::end(); ?>
 		            <?php endif;?>
+		            
+		            
+		            <style>
+		            		.qa_text {position: relative;vertical-align:top;margin: auto;text-align: center;}
+		            		.q_text {
+		            			text-shadow: 0 3px 1px rgba(0,0,0,.64);
+    									color: #ab9675;
+    									font-family: BebasNeueBold;
+		            		}
+		            		.q_text a {
+		            			
+		            			color: #fff;
+    									text-decoration: underline;
+    									font-family: BebasNeueBold;
+		            		}
+		            		.q_text span {
+		            			
+		            			color: #fff;
+    									font-family: BebasNeueBold;
+		            		}
+		            		@media screen and (max-width:5000px)  {.qa_text {width: 600px; font-size: 22px;} .q_text a span {font-size: 22px;} }
+										@media screen and (max-width:1600px)  {.qa_text {width: 500px; font-size: 20px;} .q_text a span {font-size: 20px;} }
+										@media screen and (max-width:1450px)  {.qa_text {width: 450px; font-size: 18px;} .q_text a span {font-size: 18px;} }
+										@media screen and (max-width:1280px)  {.qa_text {width: 400px; font-size: 16px;} .q_text a span {font-size: 16px;} }
+										@media screen and (max-width:1100px)  {.qa_text {width: 350px; font-size: 16px;} .q_text a span {font-size: 16px;} }
+										@media screen and (max-width:768px)   {.qa_text {width: 300px; font-size: 16px;} .q_text a span {font-size: 16px;} }
+		            </style>
+		            <br/>
+		            <br/>
+		            <div class="qa_text">
+                		<label class="q_text">А если вы уже опубликовали свой лучший игровой момент по хэштегу <span>#AXEBEST</span> во &laquo;ВКонтакте&raquo; – найдите своё видео в <a href="/challenge">галерее работ</a>, используя поиск по нику.</label>
                 </div>
+                </div>
+                
             </div>
+            
         </div>
     </div>
 </div>

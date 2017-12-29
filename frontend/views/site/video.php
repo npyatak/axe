@@ -6,7 +6,7 @@ use yii\helpers\Url;
         <div class="row">
             <div class="main_video_news">
                 <div class="main_title">
-                    <h2><?=$video['title'];?></h2>
+                    <h2><?=$video['title'];?><b><br/><?=$video['sub_title'];?></b></h2>
                 </div>
                 <div class="vb_wrapper">
                     <div class="vp_inner">

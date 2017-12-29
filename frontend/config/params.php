@@ -16,8 +16,8 @@ return [
 	    'image_vk' => '/img/vk_ch.jpg',
     ],
     'videos' => [
-        1 => ['src' => 'https://www.youtube.com/embed/UpVFUFwBzl0?autoplay=1', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной.', 'img' => '/img/vdo2.jpg'],
-        2 => ['src' => 'https://www.youtube.com/embed/udx9F89_q4E?autoplay=1', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной.', 'img' => '/img/vdo2.jpg'],
+        1 => ['src' => 'https://www.youtube.com/embed/UpVFUFwBzl0?autoplay=1', 'sub_title' => 'Выпуск 1', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo2.jpg'],
+        2 => ['src' => 'https://www.youtube.com/embed/udx9F89_q4E?autoplay=1', 'sub_title' => 'Выпуск 2', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo2.jpg'],
     ], 
     'mainPageVideoId' => 2,
 ];
