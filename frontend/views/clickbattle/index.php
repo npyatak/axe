@@ -3,14 +3,13 @@ use yii\helpers\Url;
 
 \frontend\assets\ClickbattleAsset::register($this);
 ?>
-<?php //данные в переменной $data ?>
 
 <div class="clickbattle_page">
     <div class="container">
         <div class="row">
             <div class="frame_block">
                 <div class="main_title">
-                    <h2><b><strong>Клик-баттл</strong></b></h2>
+                    <h2><b><strong>Кликбатл</strong></b></h2>
                 </div>
                 <div class="clickbattle_game_wrapper">
                     <!-- block -->
@@ -73,127 +72,6 @@ use yii\helpers\Url;
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                    <div class="cb_game_table" id="cb_game_table3" style="background: url(/img/tank_bg.jpg) center no-repeat; background-size: cover;">
-                        <div class="cb_game_cell">
-                            <div class="cb_game_res">
-                                <h4>Рейтинг участников <br> <b>топ 10</b></h4>
-                                <div class="cb_game_res_blocks">
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                    <!-- block -->
-                                    <div class="ch_res_block">
-                                        <div class="ch_res_block_img">
-                                            <img src="/img/vinner.jpg" alt="img">
-                                        </div>
-                                        <div class="user_block_info">
-                                            <h4>viktor tsoy</h4>
-                                            <h5>5689 баллов</h5>
-                                        </div>
-                                    </div>
-                                    <!-- /block -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /block -->
-                    <!-- block -->
                     <div class="cb_game_table" id="cb_game_table4">
                         <div class="cb_game_cell">
                             <div class="cb_game_reslt">
@@ -203,7 +81,7 @@ use yii\helpers\Url;
                                 </div>
                                 <div class="cb_reslt_buttons">
                                     <a onclick="tryAgain()" class="transition cb_reslt_button hovered">Попробовать еще раз</a>
-                                    <a onclick="showRanking()" class="transition cb_reslt_button">Рейтинг участников</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition cb_reslt_button">Рейтинг участников</a>
                                 </div>
                             </div>
                         </div>
@@ -230,13 +108,12 @@ use yii\helpers\Url;
     </div>
 
     <script type="text/javascript">
-
-        const radius = 20;
-        const halfImageWidth = 35;
-        const delayInterval = 800;
-        const targetLifeDurationInterval = 800;
+        const radius = <?=$params['radius'];?>;
+        const halfImageWidth = <?=$params['halfImageWidth'];?>;
+        const delayInterval = <?=$params['delayInterval'];?>;
+        const targetLifeDurationInterval = <?=$params['targetLifeDurationInterval'];?>;
         const timerTextInterval = 1000;
-        const endGameTime = 120000;
+        const endGameTime = <?=$params['endGameTime'];?>;
 
         var appearTargetTimerId,
             clickEnabled = false,
@@ -283,10 +160,10 @@ use yii\helpers\Url;
             $("#cb_game_table1").css('display', 'table');
         }
 
-        function showRanking() {
+        /*function showRanking() {
             $("#cb_game_table4").hide();
             $("#cb_game_table3").css('display', 'table');
-        }
+        }*/
 
         function preload() {
 
@@ -361,20 +238,23 @@ use yii\helpers\Url;
                 }
                 $("#cb_game_table4").css('display', 'table');
                 $("#score").text(score + ' баллов');
-                score = 0;
-                currentTime = 0;
+
+                $.ajax({
+                    type: 'POST',
+                    data: 'score='+score,
+                    success: function (data) {
+                        score = 0;
+                        currentTime = 0;
+                    },
+                })
             }, endGameTime);
 
-            //Creates target1 at the beginning of the game
-            object1 = game.add.sprite(Math.abs(game.world.randomX) - halfImageWidth, Math.abs(game.world.randomY) - halfImageWidth, icon + '1');
-            object1.alpha = 0;
-            tween1 = game.add.tween(object1).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
-            object1.inputEnabled = true;
-            object1.events.onInputDown.add(onDown);
-            update();
-
-            x1 = object1.centerX;
-            y1 = object1.centerY;
+            // Creating first target after the game starts
+            createTarget();
+            var init = setTimeout(function () {
+                create();
+                clearTimeout(init);
+            }, 800);
 
             game.input.onDown.add(onDown, this);
 
@@ -383,8 +263,6 @@ use yii\helpers\Url;
 
             stat = game.add.text($("#cb_game_table1").outerWidth() - 100, 40, '0 БАЛЛОВ', statStyle);
             time = game.add.text($("#cb_game_table1").outerWidth() - 100, 65, '0 СЕК', timeStyle);
-
-            game.physics.arcade.enable(object1);
 
             //  Explosion pool
             explosions = game.add.group();
@@ -401,23 +279,25 @@ use yii\helpers\Url;
         // Creating target
         function createTarget() {
             if (isFirst) {
-                object1.kill();
-                object2 = game.add.sprite(250 - halfImageWidth, 333 - halfImageWidth, icon + '2');
+                object1 && object1.kill();
+                object2 = game.add.sprite(Math.abs(game.world.randomX) - halfImageWidth, Math.abs(game.world.randomY) - halfImageWidth, icon + '2');
                 object2.alpha = 0;
                 tween2 = game.add.tween(object2).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
                 object2.inputEnabled = true;
                 game.physics.arcade.enable(object2);
                 x1 = object2.centerX;
                 y1 = object2.centerY;
+                isFirst = false;
             } else {
-                object2.kill();
-                object1 = game.add.sprite(440 - halfImageWidth, 190 - halfImageWidth, icon + '1');
+                object2 && object2.kill();
+                object1 = game.add.sprite(Math.abs(game.world.randomX) - halfImageWidth, Math.abs(game.world.randomY) - halfImageWidth, icon + '1');
                 object1.alpha = 0;
                 tween1 = game.add.tween(object1).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
+                game.physics.arcade.enable(object1);
                 x1 = object1.centerX;
                 y1 = object1.centerY;
+                isFirst = true;
             }
-            isFirst = !isFirst;
             clickEnabled = true;
         }
 
@@ -445,7 +325,7 @@ use yii\helpers\Url;
         function onDown(object) {
             number = totalElapsedMilliSeconds / targetLifeDurationInterval;
             number = number - number % 1;
-            if ((object1 || object2) || number % 2 === 0) {
+            if (number % 2 === 0) {
                 var targetNumber = totalElapsedMilliSeconds / (2 * targetLifeDurationInterval) + 1;
                  targetNumber = targetNumber - targetNumber%1;
                  console.log(targetNumber);
@@ -471,18 +351,13 @@ use yii\helpers\Url;
                 }
 
             } else {
-                x = undefined;
-                y = undefined;
-                x1 = undefined;
-                y1 = undefined;
-                distance = undefined;
                 score -= 2;
                 stat.setText(score + ' БАЛЛОВ');
             }
         }
 
         function update () {
-            totalElapsedMilliSeconds = game.time.totalElapsedSeconds();
+            totalElapsedMilliSeconds = game.time.totalElapsedSeconds() * 1000;
         }
 
         function render () {

@@ -26,9 +26,22 @@ class ClickbattleController extends Controller
             $data[$i] = ['x' => $x, 'y' => $y];
         }
 
-        foreach ($results as $key => $result) {
-            $key++;
+        // foreach ($results as $key => $result) {
+        //     $key++;
             
+        // }
+
+        if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($_POST['score'])) {
+            $result = new ClickbattleResult;
+            $score = $_POST['score'] < 0 ? 0 : $_POST['score'];
+            $result->score = $score;
+            $result->client_score = $score;
+            $result->user_id = Yii::$app->user->id;
+
+            $result->save();
+
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ['success'];
         }
 
         return $this->render('index', [

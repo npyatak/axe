@@ -21,7 +21,7 @@ return [
     ], 
     'mainPageVideoId' => 2,
 
-    'clockbattle' => [
+    'clickbattle' => [
         'endGameTime' => 120000,
         //ограничение игры по времени 120 сек.
         'delayInterval' => 800,
