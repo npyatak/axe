@@ -10,7 +10,7 @@ use yii\helpers\Url;
         <div class="row">
             <div class="frame_block">
                 <div class="main_title">
-                    <h2><b><strong>Кликбатл</strong></b></h2>
+                    <h2><b><strong>Клик-баттл</strong></b></h2>
                 </div>
                 <div class="clickbattle_game_wrapper">
                     <!-- block -->

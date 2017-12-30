@@ -86,12 +86,12 @@ if($result) {
                         <div class="scr2_block_img">
                             <img src="/img/23.png" alt="img">
                         </div>
-                        <div class="scr2_block_text">
+                        <!-- <div class="scr2_block_text">
                             <h4>Запуск Кликбаттла </h4>
                             <h3>30 декабря 2017 г</h3>
                             <p><b>Призы:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
-                        </div>
-                        <!-- <div class="scr2_block_text">
+                        </div> -->
+                        <div class="scr2_block_text">
                             <h4>Клик-баттл: </h4>
                             <h3>Тренируйся и выигрывай призы</h3>
                             <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
@@ -99,7 +99,7 @@ if($result) {
                                 <a href="<?=Url::toRoute(['clickbattle/rules']);?>" class="scr2_text_btn transition">участвовать</a>
                                 <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                     <!-- /block -->
                     <!-- block -->
@@ -125,9 +125,9 @@ if($result) {
                 <a href="#full-rules" class="scr2_bottom_button fancybox transition">Тест</a>
                 <br/>
                 <a href="#rules-challenge" class="scr2_bottom_button fancybox transition">Челлендж</a>
-                <!-- <br/>
-                <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition">Клик-баттл</a>
                 <br/>
+                <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition">Клик-баттл</a>
+                <!---<br/>
                 <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Анимированный тир</a> -->
             </div>
         </div>

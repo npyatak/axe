@@ -128,7 +128,7 @@ class ChallengeController extends Controller
         }
     }
 
-    public function actionVkParse($hashtag = '#axegame') {
+    public function actionVkParse($hashtag = '#axebest') {
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['profile/index']));
         }

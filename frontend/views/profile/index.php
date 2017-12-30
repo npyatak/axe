@@ -102,13 +102,13 @@ if($result) {
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                    <div class="user_challange_block">
+                    <!-- <div class="user_challange_block">
                         <div class="ucb_title">
                             <p>Запуск Кликбаттла
                                 <br><b>30 декабря 2017г </b></p>
                         </div>
-                    </div>
-                    <!-- <div class="user_challange_block filled">
+                    </div> -->
+                    <div class="user_challange_block filled">
                         <div class="ucb_challenge">
                             <h4>Клик-баттл :<br></h4>
                             <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке </p>
@@ -122,7 +122,7 @@ if($result) {
                             </div>
                         </div>
                         <div class="clng_img"><img src="/img/clng3.png" alt="img"></div>
-                    </div> -->
+                    </div>
                     <!-- /block -->
                     <!-- block -->
                     <div class="user_challange_block">

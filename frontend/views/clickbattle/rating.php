@@ -12,7 +12,7 @@ use kop\y2sp\ScrollPager;
                     <div class="main_title">
                         <h2>
                             <?php if($user && $userResult):?>
-                                <b><strong>Рейтинг Клик</strong>-баттла<br>Вы набрали<br> <?=$userResult->score;?> баллов</b>
+                                <b><strong>Рейтинг Клик</strong>-баттла<br>Вы набрали<br> <?=$userResult;?> баллов</b>
                             <?php else:?>
                                 <b><strong>Рейтинг Клик</strong>-баттла</b>
                             <?php endif;?>

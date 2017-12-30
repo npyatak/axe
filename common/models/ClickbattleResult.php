@@ -6,7 +6,7 @@ use Yii;
 
 class ClickbattleResult extends \yii\db\ActiveRecord
 {
-    public $maxScore;
+    public $totalScore;
     /**
      * @inheritdoc
      */
