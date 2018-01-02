@@ -72,12 +72,4 @@ class ClickbattleResult extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
-
-    public static function create($challenge_id) {
-        $model = new self;
-        $model->user_id = Yii::$app->user->id;
-        $model->challenge_id = $challenge_id;
-
-        $model->save();
-    }
 }

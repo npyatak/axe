@@ -21,6 +21,7 @@ class ClickbattleAsset extends AssetBundle
         'js/libs.min.js?v=27122017_1',
         'js/common.js?v=27122017_1',
         'js/phaser.min.js',
+        'js/clickbattle.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

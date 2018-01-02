@@ -19,35 +19,76 @@ class ClickbattleController extends Controller
 {
 
     public function actionIndex() {
+        if(Yii::$app->user->isGuest) {
+            return $this->redirect(Url::toRoute(['clickbattle/reg']));
+        }
+
+        $params = Yii::$app->params['clickbattle'];
         $data = [];
-        for ($i=1; $i <= 3 ; $i++) { 
+        for ($i=0; $i <= 10 ; $i++) { 
             $x = rand(20, 930);
             $y = rand(20, 420);
             $data[$i] = ['x' => $x, 'y' => $y];
         }
 
-        // foreach ($results as $key => $result) {
-        //     $key++;
-            
-        // }
+        $post = Yii::$app->request->post();
+        if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($post)) {
+            $targets = json_decode($post['targets']);
+            $clicks = json_decode($post['clicks']);
 
-        if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($_POST['score'])) {
-            $result = new ClickbattleResult;
-            $score = $_POST['score'] < 0 ? 0 : $_POST['score'];
-            $result->score = $score;
-            $result->client_score = $score;
-            $result->user_id = Yii::$app->user->id;
+            $targetArr = [];
+            foreach ($targets as $key => $t) {
+                if(isset($t->time)) {
+                    $targetArr[$t->time] = ['x' => $t->x, 'y' => $t->y];
+                }
+            }
 
-            $result->save();
+            $score = 0;
+            foreach ($clicks as $time => $coords) {
+                $flag = true;
+                $targetTime = $coords->t;
+
+                if($time >= $targetTime && $time <= $targetTime + $params['targetLifeDurationInterval']) {
+                    if(isset($targetArr[$targetTime])) {
+                        $x = (int)$targetArr[$targetTime]['x'] - 20;
+                        $y = (int)$targetArr[$targetTime]['y'] + 20;
+                        /*(x-x1)^2 + (y-y1)^2 <= R^2, где R - радиус окружности, который заносим в константы, по умолчанию радиус равен 20.
+                        То значит попал, количество баллов в плюс равно:
+                        округление до целых от квадратного корня из (x-x1)^2 + (y-y1)^2,
+                        то есть грубо у нас от 0 до 20 баллов за попадание с дискретностью в единицу.*/
+                        $distance = round(sqrt(pow(($x - (int)$coords->x), 2) + pow(($y - (int)$coords->y), 2)));
+
+                        if($distance <= $params['radius']) {
+                            $flag = false;
+                            $score += $params['radius'] - $distance;
+                        }
+                    }
+                }
+                if($flag) {
+                    $score -= 2;
+                }
+            }
+
+            if($score < 0) {
+                $score = 0;
+            } elseif($score > 1500) {
+                $score = 1500;
+            }
+
+            $res = new ClickbattleResult;
+            $res->score = $score;
+            //$res->client_score = $post['client_score'];
+            $res->user_id = Yii::$app->user->id;
+            $res->save();
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ['success'];
+            return ['status' => 'success', 'score' => $score];
         }
 
         return $this->render('index', [
             'data' => $data,
             'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
-            'params' => Yii::$app->params['clickbattle'],
+            'params' => $params,
         ]);
     }
 
