@@ -22,7 +22,7 @@ class ClickbattleController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['clickbattle/reg']));
         }
-        
+
         $params = Yii::$app->params['clickbattle'];
         $data = [];
         for ($i=0; $i <= 10 ; $i++) { 
@@ -59,8 +59,6 @@ class ClickbattleController extends Controller
                         $distance = round(sqrt(pow(($x - (int)$coords->x), 2) + pow(($y - (int)$coords->y), 2)));
 
                         if($distance <= $params['radius']) {
-                            print_r('x = '.(int)$coords->x.', y = '.(int)$coords->y.', x1 = '.$x.', y1 = '.$y);
-                            echo '<br>';
                             $flag = false;
                             $score += $params['radius'] - $distance;
                         }

@@ -30,27 +30,21 @@ var appearTargetTimerId,
     x1,
     y1;
 
-function openBeginWindow(iconType) {
-    icon = iconType;
+$('.enemy_block_button').on('click', function(e) {
+    icon = $(this).data('icon');
     $("#cb_game_table1").hide();
     $("#cb_game_table2").css('display', 'table');
-}
 
-function loadGame() {
+    return false;
+});
+
+$('.start_bame_btn').on('click', function(e) {
     $("#cb_game_table2").hide();
     $(".game_block").css('display', 'table');
     game = new Phaser.Game($("#cb_game_table1").outerWidth(), $("#cb_game_table1").outerHeight(), Phaser.AUTO, 'game_block', { preload: preload, create: create, update: update});
-}
 
-function tryAgain() {
-    $("#cb_game_table4").hide();
-    $("#cb_game_table1").css('display', 'table');
-}
-
-/*function showRanking() {
-    $("#cb_game_table4").hide();
-    $("#cb_game_table3").css('display', 'table');
-}*/
+    return false;
+});
 
 function preload() {
     if (icon === 'tank') {
@@ -203,7 +197,6 @@ function onDown(object) {
         if (clickEnabled) {
             distance = getDistance(x, y, x1, y1);
             if (distance <= radius) {
-                console.log('x = '+x+', y = '+y+', x1 = '+x1+', y1 = '+y1);
                 flag = false;
                 music.play();
                 score += (radius - distance);
