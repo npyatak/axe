@@ -22,7 +22,7 @@ use yii\helpers\Url;
                                     <div class="enemy_block_img">
                                         <img src="/img/tank.png" alt="img">
                                     </div>
-                                    <a onclick="openBeginWindow('tank')" class="enemy_block_button transition">Выбрать</a>
+                                    <a href="#" onclick="openBeginWindow('tank')" class="enemy_block_button transition">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                                 <!-- block -->
@@ -30,7 +30,7 @@ use yii\helpers\Url;
                                     <div class="enemy_block_img">
                                         <img src="/img/axe.png" alt="img">
                                     </div>
-                                    <a onclick="openBeginWindow('axe')" class="enemy_block_button transition">Выбрать</a>
+                                    <a href="#" onclick="openBeginWindow('axe')" class="enemy_block_button transition">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                                 <!-- block -->
@@ -38,7 +38,7 @@ use yii\helpers\Url;
                                     <div class="enemy_block_img">
                                         <img src="/img/weapon.png" alt="img">
                                     </div>
-                                    <a onclick="openBeginWindow('weapon')" class="enemy_block_button transition">Выбрать</a>
+                                    <a href="#" onclick="openBeginWindow('weapon')" class="enemy_block_button transition">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                             </div>
@@ -48,7 +48,7 @@ use yii\helpers\Url;
                     <!-- block -->
                     <div class="cb_game_table" id="cb_game_table2" style="background: url(/img/bg_game.jpg) center no-repeat; background-size: cover;">
                         <div class="cb_game_cell">
-                            <a onclick="loadGame()" class="transition start_bame_btn">Нажмите чтобы начать</a>
+                            <a href="#" onclick="loadGame()" class="transition start_bame_btn">Нажмите чтобы начать</a>
                         </div>
                     </div>
                     <!-- /block -->
@@ -102,7 +102,7 @@ use yii\helpers\Url;
         const delayInterval = parseInt(<?=$params['delayInterval'];?>);
         const targetLifeDurationInterval = parseInt(<?=$params['targetLifeDurationInterval'];?>);
         const timerTextInterval = 1000;
-        const endGameTime = 10000;//<?=$params['endGameTime'];?>;
+        const endGameTime = <?=$params['endGameTime'];?>;
 
         var targets = <?=json_encode($data);?>;
     </script>

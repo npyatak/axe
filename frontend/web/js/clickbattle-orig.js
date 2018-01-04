@@ -197,11 +197,14 @@ function onDown(object) {
 
     x = Math.floor(object.position.x);
     y = Math.floor(object.position.y);
+    var flag = true;
     
     if (totalElapsedMilliSeconds >= targetTime && targetTime + targetLifeDurationInterval > totalElapsedMilliSeconds) {
         if (clickEnabled) {
-            distance = +getDistance(x, y, x1, y1);
+            distance = getDistance(x, y, x1, y1);
             if (distance <= radius) {
+                console.log('x = '+x+', y = '+y+', x1 = '+x1+', y1 = '+y1);
+                flag = false;
                 music.play();
                 score += (radius - distance);
                 var explosionAnimation = explosions.getFirstExists(false);
@@ -209,12 +212,10 @@ function onDown(object) {
                 explosionAnimation.play('boom', 30, false, true);
                 clickEnabled = false;
             }
-        } else {
-            if (distance <= radius) {
-                score -= 2;
-            }
         }
-    } else {
+    } 
+    
+    if(flag) {
         score -= 2;
     }
     stat.setText(getScoreText(score));

@@ -22,7 +22,7 @@ class ClickbattleController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['clickbattle/reg']));
         }
-
+        
         $params = Yii::$app->params['clickbattle'];
         $data = [];
         for ($i=0; $i <= 10 ; $i++) { 
@@ -50,8 +50,8 @@ class ClickbattleController extends Controller
 
                 if($time >= $targetTime && $time <= $targetTime + $params['targetLifeDurationInterval']) {
                     if(isset($targetArr[$targetTime])) {
-                        $x = (int)$targetArr[$targetTime]['x'] - 20;
-                        $y = (int)$targetArr[$targetTime]['y'] + 20;
+                        $x = floatval($targetArr[$targetTime]['x']) - 20;
+                        $y = floatval($targetArr[$targetTime]['y']) + 20;
                         /*(x-x1)^2 + (y-y1)^2 <= R^2, где R - радиус окружности, который заносим в константы, по умолчанию радиус равен 20.
                         То значит попал, количество баллов в плюс равно:
                         округление до целых от квадратного корня из (x-x1)^2 + (y-y1)^2,
@@ -59,6 +59,8 @@ class ClickbattleController extends Controller
                         $distance = round(sqrt(pow(($x - (int)$coords->x), 2) + pow(($y - (int)$coords->y), 2)));
 
                         if($distance <= $params['radius']) {
+                            print_r('x = '.(int)$coords->x.', y = '.(int)$coords->y.', x1 = '.$x.', y1 = '.$y);
+                            echo '<br>';
                             $flag = false;
                             $score += $params['radius'] - $distance;
                         }
@@ -77,7 +79,7 @@ class ClickbattleController extends Controller
 
             $res = new ClickbattleResult;
             $res->score = $score;
-            //$res->client_score = $post['client_score'];
+            $res->client_score = $post['client_score'];
             $res->user_id = Yii::$app->user->id;
             $res->save();
 
