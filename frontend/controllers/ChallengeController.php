@@ -191,7 +191,7 @@ class ChallengeController extends Controller
                     $challenge->name = $names[$item->owner_id];
                 }
                 
-                $challenge->soc = Challenge::SOC_VK;
+                $challenge->soc = Challenge::SOC_YOUTUBE;
 
                 $challenge->save();
                 if(Challenge::find()->where(['access_key' => $challenge->access_key])->one() === null) {
