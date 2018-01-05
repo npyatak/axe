@@ -2,6 +2,7 @@
 use yii\helpers\Url;
 use yii\widgets\ListView;
 use kop\y2sp\ScrollPager;
+use common\models\ClickbattleResult;
 ?>
 <div class="personal_page">
     <div class="container">
@@ -12,7 +13,7 @@ use kop\y2sp\ScrollPager;
                     <div class="main_title">
                         <h2>
                             <?php if($user && $userResult):?>
-                                <b><strong>Рейтинг Клик</strong>-баттла<br>Вы набрали<br> <?=$userResult;?> баллов</b>
+                                <b><strong>Рейтинг Клик</strong>-баттла<br>Вы набрали<br> <?=$userResult;?> <?=ClickbattleResult::getScoreText($userResult);?></b>
                             <?php else:?>
                                 <b><strong>Рейтинг Клик</strong>-баттла</b>
                             <?php endif;?>

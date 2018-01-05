@@ -7,5 +7,5 @@
     <?php if($model->user->city):?>
         <p><?=$model->user->city;?> <i class="zmdi zmdi-pin"></i></p>
     <?php endif;?>
-    <h5><?=$model->totalScore;?> баллов</h5>
+    <h5><?=$model->totalScore;?> <?=$model->scoreText;?></h5>
 </div>

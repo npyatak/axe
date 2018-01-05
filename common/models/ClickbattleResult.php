@@ -72,4 +72,17 @@ class ClickbattleResult extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+    public function getScoreText($score = null) {
+        $score = $score ?: $this->score;
+        $arr = str_split($score);
+        $lastDigit = end($arr);
+        if($lastDigit == 1) {
+            return 'балл';
+        } elseif(in_array($lastDigit, [2, 3, 4])) {
+            return 'балла';
+        } else {
+            return 'баллов';
+        }
+    }
 }

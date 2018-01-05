@@ -150,7 +150,8 @@ function create() {
 function createTarget() {
     update();
     object1 && object1.kill();
-    object1 = game.add.sprite(targets[tNumber]['x'] - halfImageWidth, targets[tNumber]['y'] - halfImageWidth, icon + '2');
+    iconNumber = Math.floor((Math.random() * 2) + 1).toString();
+    object1 = game.add.sprite(targets[tNumber]['x'] - halfImageWidth, targets[tNumber]['y'] - halfImageWidth, icon + iconNumber);
     object1.alpha = 0;
     tween2 = game.add.tween(object1).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
     object1.inputEnabled = true;
