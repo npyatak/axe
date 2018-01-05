@@ -211,13 +211,20 @@ class Challenge extends \yii\db\ActiveRecord
         }
         
         $user = Yii::$app->user->identity;
+        $access_token = $user->access_token;
+        if(!$access_token) {
+            $someUser = User::find()->where(['not', 'access_token', null])->orderBy('created_at DESC')->asArray()->one();
+            if($someUser !== null) {
+                $access_token = $someUser['access_token'];
+            }
+        }
 
         $url = 'https://api.vk.com/method/video.get';
         $params = [
             'videos' => $userId_videoId,
             //'extended' => 1,
             'v' => 5.69,
-            'access_token' => $user->access_token,
+            'access_token' => $access_token,
         ];
 
         $postParams = [];
