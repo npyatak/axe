@@ -30,7 +30,6 @@ class ClickbattleController extends Controller
             $y = rand(20, 420);
             $data[$i] = ['x' => $x, 'y' => $y];
         }
-        print_r(count($data));exit;
 
         $post = Yii::$app->request->post();
         if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($post)) {
