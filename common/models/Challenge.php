@@ -213,7 +213,7 @@ class Challenge extends \yii\db\ActiveRecord
         $user = Yii::$app->user->identity;
         $access_token = $user->access_token;
         if(!$access_token) {
-            $someUser = User::find()->where(['not', 'access_token', null])->orderBy('created_at DESC')->asArray()->one();
+            $someUser = User::find()->where(['not', ['access_token' => null]])->orderBy('created_at DESC')->asArray()->one();
             if($someUser !== null) {
                 $access_token = $someUser['access_token'];
             }
