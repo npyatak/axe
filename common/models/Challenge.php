@@ -103,7 +103,15 @@ class Challenge extends \yii\db\ActiveRecord
                         $this->link = $info->player;
                         $this->parseUrl();
                     } else {
-                        $key = $info->player;
+                        $urlParts = parse_url(trim($info->player));
+                        parse_str($urlParts['query'], $queryParts);
+                        $query = ['oid' => $queryParts['oid'], 'id' => $queryParts['id'], 'hash' => $queryParts['hash']];
+
+                        $params = [];
+                        foreach ($query as $key => $value) {
+                            $params[] = $key.'='.$value; 
+                        }
+                        $key = implode('&', $params);
 
                         $sizes = ['photo_800', 'photo_640', 'photo_320', 'photo_160'];
                         foreach ($sizes as $size) {
@@ -116,7 +124,6 @@ class Challenge extends \yii\db\ActiveRecord
                     }
                 }
             }
-            //print_r($exp);exit;
             //https://vk.com/video186707629_456239211
             //https://vk.com/video-37160097_456239728
             //<iframe src="//vk.com/video_ext.php?oid=-37160097&id=456239728&hash=89fc8e0ab5b17394&hd=2" width="853" height="480" frameborder="0" allowfullscreen></iframe>
@@ -171,11 +178,10 @@ class Challenge extends \yii\db\ActiveRecord
     public function getVideoLink() {
         switch ($this->soc) {
             case self::SOC_VK:
-                return $this->access_key;
+                return '//vk.com/video_ext.php?'.$this->access_key;
                 break;
             case self::SOC_YOUTUBE:
                 return '//www.youtube.com/embed/'.$this->access_key;
-                //return Url::to('https://www.youtube.com/watch?v='.$this->access_key);
                 break;
         }
     }
