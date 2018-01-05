@@ -22,9 +22,9 @@ return [
     'mainPageVideoId' => 2,
 
     'clickbattle' => [
-        'endGameTime' => 10000,
+        'endGameTime' => 120000,
         //ограничение игры по времени 120 сек.
-        'delayInterval' => 1000,
+        'delayInterval' => 800,
         //это время в миллисекундах от момента появления одной картинки, до её пропадания
         'targetLifeDurationInterval' => 1000,
         //это время от момента пропадания картинки до появления новой.

@@ -25,11 +25,12 @@ class ClickbattleController extends Controller
 
         $params = Yii::$app->params['clickbattle'];
         $data = [];
-        for ($i=0; $i <= ($params['endGameTime'] / 2000 + 10); $i++) { 
+        for ($i=0; $i <= ($params['endGameTime'] / (2 * $params['delayInterval']) + 10); $i++) { 
             $x = rand(20, 930);
             $y = rand(20, 420);
             $data[$i] = ['x' => $x, 'y' => $y];
         }
+        print_r(count($data));exit;
 
         $post = Yii::$app->request->post();
         if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($post)) {
