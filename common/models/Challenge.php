@@ -265,7 +265,6 @@ class Challenge extends \yii\db\ActiveRecord
         $url = 'https://api.vk.com/method/wall.getById';
         $params = [
             'posts' => $userId_postId,
-            //'extended' => 1,
             'v' => 5.69,
             'access_token' => $access_token,
         ];
@@ -283,7 +282,6 @@ class Challenge extends \yii\db\ActiveRecord
             foreach ($res->response[0]->attachments as $attachment) {
                 if($attachment->type == 'video') {
                     $this->link = 'https://vk.com/video'.$attachment->video->owner_id.'_'.$attachment->video->id;
-                    print_r($this->link);exit;
                     return true;
                 }
             }
