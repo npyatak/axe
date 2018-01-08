@@ -94,40 +94,49 @@ class Challenge extends \yii\db\ActiveRecord
             }
         } elseif(in_array($urlParts['host'], ['youtu.be', 'www.youtu.be'])) {
             $key = str_replace("/", "", $urlParts['path']);
-        } elseif(in_array($urlParts['host'], ['vk.com', 'www.vk.com']) && strripos($this->link, 'video')) {
-            $exp = explode('video', $urlParts['path']);
-            if(isset($exp[1])) {
-                $info = $this->vkVideoInfo($exp[1]);
-                if($info) {
-                    if(isset($info->platform) && $info->platform == 'YouTube') {
-                        $this->link = $info->player;
-                        $this->parseUrl();
-                    } else {
-                        $urlParts = parse_url(trim($info->player));
-                        parse_str($urlParts['query'], $queryParts);
-                        $query = ['oid' => $queryParts['oid'], 'id' => $queryParts['id'], 'hash' => $queryParts['hash']];
+        } elseif(in_array($urlParts['host'], ['vk.com', 'www.vk.com'])) {
+            if(strripos($this->link, 'video')) {                
+                //https://vk.com/video186707629_456239211
+                //https://vk.com/video-37160097_456239728
+                $exp = explode('video', $urlParts['path']);
+                if(isset($exp[1])) {
+                    $info = $this->vkVideoInfo($exp[1]);
+                    if($info) {
+                        if(isset($info->platform) && $info->platform == 'YouTube') {
+                            $this->link = $info->player;
+                            $this->parseUrl();
+                        } else {
+                            $urlParts = parse_url(trim($info->player));
+                            parse_str($urlParts['query'], $queryParts);
+                            $query = ['oid' => $queryParts['oid'], 'id' => $queryParts['id'], 'hash' => $queryParts['hash']];
 
-                        $params = [];
-                        foreach ($query as $key => $value) {
-                            $params[] = $key.'='.$value; 
-                        }
-                        $key = implode('&', $params);
-
-                        $sizes = ['photo_800', 'photo_640', 'photo_320', 'photo_160'];
-                        foreach ($sizes as $size) {
-                            if(isset($info->$size)) {
-                                $this->image = $info->$size;
-                                break;
+                            $params = [];
+                            foreach ($query as $key => $value) {
+                                $params[] = $key.'='.$value; 
                             }
+                            $key = implode('&', $params);
+
+                            $sizes = ['photo_800', 'photo_640', 'photo_320', 'photo_160'];
+                            foreach ($sizes as $size) {
+                                if(isset($info->$size)) {
+                                    $this->image = $info->$size;
+                                    break;
+                                }
+                            }
+                            $this->soc = self::SOC_VK;
                         }
-                        $this->soc = self::SOC_VK;
+                    }
+                } 
+            } elseif(strripos($this->link, 'wall')) {
+                //https://vk.com/wall7921410_1837
+                $exp = explode('wall', $urlParts['path']);
+                if(isset($exp[1])) {
+                    $info = $this->vkWallInfo($exp[1]);
+                    if($info) {
+                        $this->parseUrl();
                     }
                 }
             }
-            //https://vk.com/video186707629_456239211
-            //https://vk.com/video-37160097_456239728
-            //<iframe src="//vk.com/video_ext.php?oid=-37160097&id=456239728&hash=89fc8e0ab5b17394&hd=2" width="853" height="480" frameborder="0" allowfullscreen></iframe>
-            //<iframe width="607" height="360" src="https://www.youtube.com/embed/GgJwglipbqA" frameborder="0" allowfullscreen></iframe>
         }
 
         return $key;
@@ -237,5 +246,49 @@ class Challenge extends \yii\db\ActiveRecord
         $res = json_decode($res);
 
         return (isset($res->response->items) && !empty($res->response->items)) ? $res->response->items[0] : null;
+    }
+
+    public function vkWallInfo($userId_postId) {
+        if(Yii::$app->user->isGuest) {
+            return false;
+        }
+        
+        $user = Yii::$app->user->identity;
+        $access_token = $user->access_token;
+        if(!$access_token) {
+            $someUser = User::find()->where(['not', ['access_token' => null]])->orderBy('updated_at DESC')->asArray()->one();
+            if($someUser !== null) {
+                $access_token = $someUser['access_token'];
+            }
+        }
+
+        $url = 'https://api.vk.com/method/wall.getById';
+        $params = [
+            'posts' => $userId_postId,
+            //'extended' => 1,
+            'v' => 5.69,
+            'access_token' => $access_token,
+        ];
+
+        $postParams = [];
+        foreach ($params as $key => $value) {
+            $postParams[] = $key.'='.$value; 
+        }
+        $url = $url.'?'.implode('&', $postParams);
+
+        $res = file_get_contents($url);
+        $res = json_decode($res);
+
+        if(isset($res->response) && isset($res->response[0]) && isset($res->response[0]->attachments)) {
+            foreach ($res->response[0]->attachments as $attachment) {
+                if($attachment->type == 'video') {
+                    $this->link = 'https://vk.com/video'.$attachment->video->owner_id.'_'.$attachment->video->id;
+                    print_r($this->link);exit;
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
