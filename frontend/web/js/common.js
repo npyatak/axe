@@ -125,16 +125,28 @@ $(document).on('click', '.reg_screen_input_div .remove', function(e) {
 });
 
 function getShareUrl(obj) {
+    var split = obj.data('url').split('?');
+    var link;
+    if(typeof split[1] != "undefined") {
+        link = obj.data('url')+'&';
+    } else {
+        link = obj.data('url')+'?';
+    }
+
     if(obj.data('type') == 'vk') {
+        link += 'utm_medium=display&utm_source=vk_share&utm_campaign=L-Unilever_Axe_CS_GO_Major_jan2018_CH1104_BH0045_RU&utm_term=initiative&utm_content=share';
+        
         url  = 'http://vkontakte.ru/share.php?';
-        url += 'url='          + encodeURIComponent(obj.data('url'));
+        url += 'url='          + encodeURIComponent(link);
         url += '&title='       + encodeURIComponent(obj.data('title'));
         url += '&text='        + encodeURIComponent(obj.data('desc'));
         url += '&image='       + encodeURIComponent(obj.data('image'));
         url += '&noparse=true';
     } else if(obj.data('type') == 'fb') {
+        link += 'utm_medium=display&utm_source=FB_share&utm_campaign=L-Unilever_Axe_CS_GO_Major_jan2018_CH1104_BH0045_RU&utm_term=initiative&utm_content=share';
+        
         url = 'https://www.facebook.com/sharer/sharer.php?';
-        url += 'u=' + encodeURIComponent(obj.data('url'));
+        url += 'u=' + encodeURIComponent(link);
     }
 
     return url;
