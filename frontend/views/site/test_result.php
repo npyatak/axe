@@ -100,11 +100,11 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                             <img src="/img/22_3.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
-                            <h4>Запуск Челленджа на лучший игровой момент  </h4>
-                            <h3>28 декабря 2017г  </h3>
+                            <h4>Челлендж</h4>
+                            <h3>на лучший игровой момент</h3>
                             <p><b>Призы:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB
                             </p>
-                            <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
+                            <a href="/challenge/rules" class="scr2_text_btn transition">Участвовать</a>
                         </div>
                     </div>
                     <!-- /block -->
@@ -114,10 +114,10 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                             <img src="/img/23.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
-                            <h4>Запуск Кликбаттла </h4>
-                            <h3>30 декабря 2017 г</h3>
+                            <h4>Клик-баттл </h4>
+                            <h3>Усердно тренируйся и выигрывай призы</h3>
                             <p><b>Призы:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
-                            <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
+                            <a href="/clickbattle/rules" class="scr2_text_btn transition">Играть</a>
                         </div>
                     </div>
                     <!-- /block -->
@@ -128,9 +128,10 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск анимированого тира </h4>
-                            <h3>15 января 2018 г </h3>
+                            <h3>17 января 2018 г <br/>&nbsp;</h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
                             </p>
+                            <p>&nbsp;</p>
                             <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
                         </div>
                     </div>

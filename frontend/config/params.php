@@ -18,15 +18,17 @@ return [
     'videos' => [
         1 => ['src' => 'https://www.youtube.com/embed/UpVFUFwBzl0?autoplay=1', 'sub_title' => 'Выпуск 1', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo2.jpg'],
         2 => ['src' => 'https://www.youtube.com/embed/udx9F89_q4E?autoplay=1', 'sub_title' => 'Выпуск 2', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v2.jpg'],
+        3 => ['src' => 'https://www.youtube.com/embed/hct3ON6faYE?autoplay=1', 'sub_title' => 'Выпуск 3', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v3.jpg'],
+        
     ], 
-    'mainPageVideoId' => 2,
+    'mainPageVideoId' => 3,
 
     'clickbattle' => [
         'endGameTime' => 60000,
         //ограничение игры по времени 120 сек.
-        'delayInterval' => 600,
+        'delayInterval' => 800,
         //это время в миллисекундах от момента появления одной картинки, до её пропадания
-        'targetLifeDurationInterval' => 600,
+        'targetLifeDurationInterval' => 800,
         //это время от момента пропадания картинки до появления новой.
         'radius' => 20,
         //это радиус круга в пикселах в который и нужно попадать на png-картинке “враге”, которая сама по себе 70-70.

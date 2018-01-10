@@ -1007,7 +1007,7 @@ e-mail не существует, заблокирован или почтово
 на основании положений действующего законодательства Российской Федерации.</p>
 
 <p>11.3.
-Контакты для связи с Организатором: <a href="mailto:axe@promo-group.org" target="_blank">maccoffe@promo-group.org</a>.</p>
+Контакты для связи с Организатором: <a href="mailto:axe@promo-group.org" target="_blank">axe@promo-group.org</a>.</p>
 
 </div>
 </div>

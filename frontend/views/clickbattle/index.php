@@ -16,7 +16,7 @@ use yii\helpers\Url;
                     <div class="cb_game_table" id="cb_game_table1" style="background: url(/img/bg_game.jpg) center no-repeat; background-size: cover;">
                         <div class="cb_game_cell">
                             <div class="enemy_blocks">
-                                <h4>Выберите «врага» для тренировки</h4>
+                                <h4>Танки, Орки или М-16?<br/><b>Выбери что тебе по душе и сделай как можно больше точных кликов</b></h4>
                                 <!-- block -->
                                 <div class="enemy_block">
                                     <div class="enemy_block_img">
@@ -88,7 +88,7 @@ use yii\helpers\Url;
                     <div class="clickbattle_bottom_text">
                         <p>Играй, зарабатывай баллы и выигрывай топовые игровые мышки, а так же
                             <br> подарочные наборы AXE. </p>
-                        <p><b>Итоги конкурса будут подведены 22 января 2018 г. </b></p>
+                        <p><b>Итоги конкурса будут подведены не позднее «14» февраля 2018 г. </b></p>
                     </div>
                     <div class="clickbattle_bottom_img"><img src="/img/mouse.png" alt="img"></div>
                 </div>

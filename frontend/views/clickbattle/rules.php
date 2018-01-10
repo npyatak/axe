@@ -8,7 +8,7 @@ use yii\helpers\Url;
             <!-- click battle -->
             <div class="click_battle_main">
                 <div class="main_title">
-                    <h2><b><strong>клик</strong>-баттл</b><br/>Тренируйся и выигрывай призы</h2>
+                    <h2><b><strong>Настоящий киберспортсмен <br/>должен уметь быстро и метко кликать</strong></b><br/><b>клик-баттл</b><br/>Усердно тренируйся и выигрывай призы</h2>
                 </div>
                 <div class="cm_blocks">
                     <!-- block -->
@@ -40,7 +40,7 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/cm3.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Покажи свою меткость </strong> <br>и набирай баллы  </b></p>
+                            <p><b><strong>Покажи, как быстро и метко </strong> <br>ты умеешь кликать  </b></p>
                         </div>
                     </div>
                     <!-- /block -->
@@ -51,7 +51,7 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/cm4.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Призы</strong> <br>топовые игровые мышки</b>
+                            <p><b><strong>Выиграй призы</strong> <br>топовые игровые мышки</b>
                                 <br>а также 5 подарочных наборов AXE</p>
                         </div>
                     </div>
