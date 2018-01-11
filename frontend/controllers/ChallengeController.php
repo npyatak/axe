@@ -211,7 +211,8 @@ class ChallengeController extends Controller
 
             echo 'Найдено видео: '.count($res->response->items).' Добавлено новых: '.$addedCount;
         } else {
-            echo 'Что-то пошло не так';
+            echo 'Что-то пошло не так. Ответ сервера: ';
+            print_r($res);
         }
     }
 }
