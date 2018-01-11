@@ -96,7 +96,7 @@ if($result) {
                             <h3>Тренируйся и выигрывай призы</h3>
                             <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
                             <div class="ch_buttons">
-                                <a href="<?=Url::toRoute(['clickbattle/rules']);?>" class="scr2_text_btn transition">участвовать</a>
+                                <a href="<?=Url::toRoute(['clickbattle/rules']);?>" class="scr2_text_btn transition" data-event="cliker_way" data-param="main">участвовать</a>
                                 <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
                             </div>
                         </div>
@@ -126,7 +126,7 @@ if($result) {
                 <br/>
                 <a href="#rules-challenge" class="scr2_bottom_button fancybox transition">Челлендж</a>
                 <br/>
-                <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition">Клик-баттл</a>
+                <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition" data-event="cliker_way" data-param="fullrules">Клик-баттл</a>
                 <!---<br/>
                 <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Анимированный тир</a> -->
             </div>

@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 	                    <div class="reg_screen_block">
 	                        <div class="reg_screen_check">
 	                            <input type="checkbox" id="rch1" name="reg" checked>
-	                            <label for="rch1">Я соглашаюсь <a href="#rules-clickbattle" class="fancybox" data-event="clickbattle_way" data-param="fullrules_submit">с полными правилами</a> конкурса</label>
+	                            <label for="rch1">Я соглашаюсь <a href="#rules-clickbattle" class="fancybox" data-event="cliker_way" data-param="fullrules_submit">с полными правилами</a> конкурса</label>
 	                        </div>
 	                        <br/><br/>
 	                        <div class="ch_buttons">

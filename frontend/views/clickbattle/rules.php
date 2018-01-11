@@ -57,13 +57,17 @@ use yii\helpers\Url;
                     </div>
                     <!-- /block -->
                 </div>
-                <div class="cmb_buttons">
-                    <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition"><?=$user && $user->rules_clickbattle ? 'Играть ещё' : 'Играть';?></a>
-                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
+                <div class="cmb_buttons"> 
+                    <?php if($user && $user->rules_clickbattle):?>
+                        <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition" data-event="cliker_way" data-param="play_again">Играть ещё</a>
+                    <?php else:?>
+                        <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition" data-event="cliker_way" data-param="play">Играть</a>
+                    <?php endif;?>
+                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="scr2_bottom_button transition" data-event="cliker_way" data-param="rating_rules">рейтинг участников</a>
                 </div>
                 <br/>
                 <div class="cmb_buttons">
-                    <a href="#rules-clickbattle" class="scr2_text_btn transition fancybox">Полные правила</a>
+                    <a href="#rules-clickbattle" class="scr2_text_btn transition fancybox" data-event="cliker_way" data-param="fullrules">Полные правила</a>
                 </div>
             </div>
             <!-- /click battle -->

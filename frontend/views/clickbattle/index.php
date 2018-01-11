@@ -22,7 +22,7 @@ use yii\helpers\Url;
                                     <div class="enemy_block_img">
                                         <img src="/img/tank.png" alt="img">
                                     </div>
-                                    <a href="#" data-icon="tank" class="enemy_block_button transition">Выбрать</a>
+                                    <a href="#" data-icon="tank" class="enemy_block_button transition" data-event="clicker_way" data-param="play_tank">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                                 <!-- block -->
@@ -30,7 +30,7 @@ use yii\helpers\Url;
                                     <div class="enemy_block_img">
                                         <img src="/img/axe.png" alt="img">
                                     </div>
-                                    <a href="#" data-icon="axe" class="enemy_block_button transition">Выбрать</a>
+                                    <a href="#" data-icon="axe" class="enemy_block_button transition" data-event="clicker_way" data-param="play_ork">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                                 <!-- block -->
@@ -38,7 +38,7 @@ use yii\helpers\Url;
                                     <div class="enemy_block_img">
                                         <img src="/img/weapon.png" alt="img">
                                     </div>
-                                    <a href="#" data-icon="weapon" class="enemy_block_button transition">Выбрать</a>
+                                    <a href="#" data-icon="weapon" class="enemy_block_button transition" data-event="clicker_way" data-param="play_ak47">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                             </div>
@@ -56,7 +56,7 @@ use yii\helpers\Url;
                     <div class="game_block" id="game_block">
                         <!--<div class="bame_el game_el1" style="top: 290px; left:  107px;"><img src="/img/gl1.png" alt="img"></div>
                         <div class="bame_el game_el2" style="top: 164px; right: 112px"><img src="/img/gl2.png" alt="img"></div>-->
-                        <div class="bame_el game_el3" style="top: 73px; right: 212px"><img src="/img/shot.png" alt="img"></div>
+                        <!-- <div class="bame_el game_el3" style="top: 73px; right: 212px"><img src="/img/shot.png" alt="img"></div> -->
 
                     </div>
                     <!-- /block -->
@@ -69,8 +69,8 @@ use yii\helpers\Url;
                                     <p>Ты заработал <b id="score"></b></p>
                                 </div>
                                 <div class="cb_reslt_buttons">
-                                    <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition cb_reslt_button hovered">Попробовать еще раз</a>
-                                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition cb_reslt_button">Рейтинг участников</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition cb_reslt_button hovered" data-event="clicker_way" data-param="play_again_game">Попробовать еще раз</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition cb_reslt_button" data-event="clicker_way" data-param="rating_game">Рейтинг участников</a>
                                 </div>
                             </div>
                         </div>
@@ -105,5 +105,10 @@ use yii\helpers\Url;
         const endGameTime = <?=$params['endGameTime'];?>;
 
         var targets = <?=json_encode($data);?>;
+
+        $(document).ready(function(e) {
+            ga('send', 'event', 'cliker_way', 'game');
+        });
     </script>
 </div>
+

@@ -21,11 +21,11 @@ use common\models\ClickbattleResult;
                     </div>
                     <div class="cmb_buttons">
                         <?php if($user && $user->rules_clickbattle):?>
-                    	   <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="scr2_text_btn transition">Играть ещё</a>
+                    	   <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="scr2_text_btn transition" data-event="clicker_way" data-param="play_again_rating">Играть ещё</a>
                         <?php else:?>
-                           <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition">Играть</a>
+                           <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition" data-event="clicker_way" data-param="play_rating">Играть</a>
                         <?php endif;?>
-                    	<a href="<?=Url::toRoute(['profile/index']);?>" class="scr2_bottom_button transition">Личный кабинет</a>
+                    	<a href="<?=Url::toRoute(['profile/index']);?>" class="scr2_bottom_button transition" data-event="clicker_way" data-param="lk_rating">Личный кабинет</a>
             		</div>
             		<br/><br/>
 

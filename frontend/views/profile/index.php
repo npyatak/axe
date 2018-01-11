@@ -114,8 +114,8 @@ if($result) {
                             <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке </p>
                             <div class="ucb_challenge_buttons">
                                 <?php if($user && $user->rules_clickbattle):?>
-                                    <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition filed">Играть еще</a>
-                                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition ">Рейтинг участников</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition filed" data-event="clicker_way" data-param="play_again_lk">Играть еще</a>
+                                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition" data-event="clicker_way" data-param="rating_lk">Рейтинг участников</a>
                                 <?php else:?>
                                     <a href="<?=Url::toRoute(['clickbattle/rules']);?>" class="transition filed">участвовать</a>
                                 <?php endif;?>
