@@ -16,7 +16,14 @@ use yii\helpers\Url;
                     <div class="cb_game_table" id="cb_game_table1" style="background: url(/img/bg_game.jpg) center no-repeat; background-size: cover;">
                         <div class="cb_game_cell">
                             <div class="enemy_blocks">
-                                <h4>Танки, Орки или М-16?<br/><b>Выбери что тебе по душе и сделай как можно больше точных кликов</b></h4>
+                            		<style>
+                            			.second_text_click {
+																	    color: #fff;
+																	    font-family: BebasNeueRegular;
+																	    font-size: 22px;
+																	}
+                            		</style>
+                                <h4>Танки, Орки или М-16?<br/><span class="second_text_click">Выбери что тебе по душе и сделай как можно больше точных кликов</span></h4>
                                 <!-- block -->
                                 <div class="enemy_block">
                                     <div class="enemy_block_img">
@@ -65,8 +72,20 @@ use yii\helpers\Url;
                         <div class="cb_game_cell">
                             <div class="cb_game_reslt">
                                 <div class="cb_reslt_heading">
-                                    <h4>Game Over</h4>
+                                    <h4>TO BE CONTINUED...</h4>
                                     <p>Ты заработал <b id="score"></b></p>
+                                    <style>
+                            						.second_text_click_end {
+																	    			color: #777;
+																	    			font-size: 24px;
+																				}
+																				.second_text_click_end2 {
+																	    			color: #777;
+																	    			font-size: 18px;
+																				}
+                            				</style>
+                                    <p><span class="second_text_click_end">Чем больше попыток – тем выше шансы получить главный приз</span></p>
+                                    <p><span class="second_text_click_end2">в рейтинге баллы суммируются по всем твоим играм</span></p>
                                 </div>
                                 <div class="cb_reslt_buttons">
                                     <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition cb_reslt_button hovered">Попробовать еще раз</a>
@@ -86,9 +105,9 @@ use yii\helpers\Url;
                 <!-- /warning message -->
                 <div class="clickbattle_bottom">
                     <div class="clickbattle_bottom_text">
-                        <p>Играй, зарабатывай баллы и выигрывай топовые игровые мышки, а так же
-                            <br> подарочные наборы AXE. </p>
-                        <p><b>Итоги конкурса будут подведены не позднее «14» февраля 2018 г. </b></p>
+                        <p>Играй, зарабатывай баллы и выигрывай топовые игровые мышки 
+                            <br> и другие ценные призы </p>
+                        <p><b>Итоги конкурса будут подведены не позднее «14» февраля 2018 г </b></p>
                     </div>
                     <div class="clickbattle_bottom_img"><img src="/img/mouse.png" alt="img"></div>
                 </div>

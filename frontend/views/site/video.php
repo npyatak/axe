@@ -12,9 +12,18 @@ use yii\helpers\Url;
                     <div class="vp_inner">
                         <iframe src="<?=$video['src'];?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
+                    <style>
+                    	.ch_buttons {
+                    		text-align:center;
+                    	}
+                    </style>
+                    <br/>
+                    <div class="ch_buttons">
+            						<a href="/profile" class="scr2_text_btn transition" data-event="challenge_way" data-param="takepart_vid">Выигрывай призы от AXE</a>
+            				</div>
                 </div>
+                
             </div>
-            
             <?php if($videos):?>
             <div class="additional_video">
                 <?php foreach ($videos as $key => $v):?>
