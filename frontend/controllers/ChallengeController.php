@@ -154,7 +154,7 @@ class ChallengeController extends Controller
             $postParams[] = $key.'='.$value; 
         }
         $url = $url.'?'.implode('&', $postParams);
-
+print_r($url);exit;
         $res = file_get_contents($url);
         $res = json_decode($res);
 
