@@ -61,10 +61,7 @@ use yii\helpers\Url;
                     <!-- /block -->
                     <!-- block -->
                     <div class="game_block" id="game_block">
-                        <!--<div class="bame_el game_el1" style="top: 290px; left:  107px;"><img src="/img/gl1.png" alt="img"></div>
-                        <div class="bame_el game_el2" style="top: 164px; right: 112px"><img src="/img/gl2.png" alt="img"></div>-->
                         <!-- <div class="bame_el game_el3" style="top: 73px; right: 212px"><img src="/img/shot.png" alt="img"></div> -->
-
                     </div>
                     <!-- /block -->
                     <!-- block -->

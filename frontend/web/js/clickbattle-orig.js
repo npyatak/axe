@@ -214,6 +214,8 @@ function onDown(object) {
     }
     stat.setText(getScoreText(score));
 
+    $('#game_block').append('<div class="bame_el game_el3" style="top: '+y+'px; left: '+x+'px"><img src="/img/shot.png" alt="img"></div>');
+
     var click = {'x': x, 'y': y, 't': targetTime};   
     clicks[totalElapsedMilliSeconds - (totalElapsedMilliSeconds%1)] = click;
 }
