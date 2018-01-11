@@ -145,8 +145,8 @@ class ChallengeController extends Controller
             'v' => 5.69,
             'access_token' => $user->access_token,
             'redirect_uri' => 'https://oauth.vk.com/blank.html',
-            'filters' => 'youtube',
-            'sort' => 0,
+            // 'filters' => 'youtube',
+            // 'sort' => 0,
         ];
 
         $postParams = [];
@@ -154,53 +154,64 @@ class ChallengeController extends Controller
             $postParams[] = $key.'='.$value; 
         }
         $url = $url.'?'.implode('&', $postParams);
-print_r($url);exit;
+
         $res = file_get_contents($url);
         $res = json_decode($res);
 
-        $names = [];
-        $addedCount = 0;
-        if($res->response->profiles) {
-            foreach ($res->response->profiles as $profile) {
-                $names[$profile->id] = $profile->first_name.' '.$profile->last_name;
+        if(isset($res->response)) {
+            $names = [];
+            $addedCount = 0;
+            if($res->response->profiles) {
+                foreach ($res->response->profiles as $profile) {
+                    $names[$profile->id] = $profile->first_name.' '.$profile->last_name;
+                }
             }
-        }
-        if($res->response->groups) {
-            foreach ($res->response->groups as $group) {
-                $names[$group->id] = $group->name;
+            if($res->response->groups) {
+                foreach ($res->response->groups as $group) {
+                    $names[$group->id] = $group->name;
+                }
             }
-        }
 
-        if($res->response->items) {
-            foreach ($res->response->items as $item) {
-                $challenge = new Challenge;
+            if($res->response->items) {
+                foreach ($res->response->items as $item) {
+                    $challenge = new Challenge;
 
-                $exp = explode('?', $item->player);
-                $exp = explode('/', $exp[0]);
-                $challenge->access_key = end($exp);
-
-                $sizes = ['photo_800', 'photo_640', 'photo_320', 'photo_160'];
-                foreach ($sizes as $size) {
-                    if(isset($item->$size)) {
-                        $challenge->image = $item->$size;
-                        break;
+                    if(isset($item->platform) && $item->platform == 'YouTube') {
+                        $challenge->link = $item->player;
+                    } else {
+                        $challenge->link = 'https://vk.com/video'.$item->owner_id.'_'.$item->id;
                     }
-                }
-                
-                if($item->owner_id && isset($names[$item->owner_id])) {
-                    $challenge->name = $names[$item->owner_id];
-                }
-                
-                $challenge->soc = Challenge::SOC_YOUTUBE;
+                    // $exp = explode('?', $item->player);
+                    // $exp = explode('/', $exp[0]);
+                    // $challenge->access_key = end($exp);
 
-                $challenge->save();
-                if(Challenge::find()->where(['access_key' => $challenge->access_key])->one() === null) {
-                    $challenge->save();
-                    $addedCount++;
-                } 
+                    $sizes = ['photo_800', 'photo_640', 'photo_320', 'photo_160'];
+                    foreach ($sizes as $size) {
+                        if(isset($item->$size)) {
+                            $challenge->image = $item->$size;
+                            break;
+                        }
+                    }
+                    
+                    if($item->owner_id && isset($names[$item->owner_id])) {
+                        $challenge->name = $names[$item->owner_id];
+                    }
+                    
+                    //$challenge->soc = Challenge::SOC_YOUTUBE;
+
+                    if($challenge->save()) {
+                        $addedCount++;
+                    }
+                    // if(Challenge::find()->where(['access_key' => $challenge->access_key])->one() === null) {
+                    //     $challenge->save();
+                    //     $addedCount++;
+                    // } 
+                }
             }
-        }
 
-        echo 'Найдено видео: '.count($res->response->items).' Добавлено новых: '.$addedCount;
+            echo 'Найдено видео: '.count($res->response->items).' Добавлено новых: '.$addedCount;
+        } else {
+            echo 'Что-то пошло не так';
+        }
     }
 }

@@ -115,6 +115,9 @@ class ClickbattleController extends Controller
         if(!Yii::$app->user->isGuest) {
             $user = User::findOne(Yii::$app->user->id);
             $userResult = ClickbattleResult::find()->where(['user_id' => $user->id])->asArray()->sum('score');
+            
+            $results = ClickbattleResult::find()->asArray()->select(['sum(score) as score', 'user_id'])->groupBy('user_id')->orderBy('score DESC')->indexBy('user_id')->all();
+            $userPlace = array_search($user->id, array_keys($results)) + 1;
         }
 
         $dataProvider = new ActiveDataProvider([
@@ -141,6 +144,7 @@ class ClickbattleController extends Controller
             'user' =>  $user,
             'userResult' => $userResult,
             'dataProvider' => $dataProvider,
+            'userPlace' => $userPlace,
         ]);
     }
 

@@ -14,6 +14,7 @@ use common\models\ClickbattleResult;
                         <h2>
                             <?php if($user && $userResult):?>
                                 <b><strong>Рейтинг <br>Клик-баттла</strong><br>У тебя <?=$userResult;?> <?=ClickbattleResult::getScoreText($userResult);?></b>
+                                <br><strong><?=$userPlace;?> место</strong>
                                 <br>Попробуй сыграть еще раз <br>баллы суммируются по всем твоим играм
                             <?php else:?>
                                 <b><strong>Рейтинг Клик</strong>-баттла</b>
