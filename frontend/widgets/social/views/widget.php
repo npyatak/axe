@@ -46,9 +46,11 @@ if($rules) {
 	        <i class="zmdi zmdi-vk"></i>
 	    </a>
 	<?=$wrapper == 'ul' ? '</li>' : '';?>
+	<?php if(false):?>
 	<?=$wrapper == 'ul' ? '<li>' : '';?>
 	    <a href="<?=Url::toRoute(['site/login', 'service' => 'go'] + $arr);?>" class="soc_lnk eauth-service-link go"  data-eauth-service="google" data-event="<?=$location == 'profile' ? 'login' : 'test_way';?>" data-param="<?=$location == 'profile' ? 'login_go' : 'registration_go';?>">
 	        <i class="zmdi zmdi-google-old"></i>
 	    </a>
 	<?=$wrapper == 'ul' ? '</li>' : '';?>
+	<?php endif;?>
 </<?=$wrapper;?>>

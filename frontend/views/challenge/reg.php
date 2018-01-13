@@ -52,6 +52,8 @@ use yii\widgets\ActiveForm;
 							            <a class="reg_screen_plus transition" id="form_plus_added">Ещё одно видео</a>
 							        </div>
 					            </div>
+
+								<?php if(false):?>
 								<br/>
 		                    	<div class="input-rows qa_text">
 		                    		<p class="q_text">Или загрузите файл видео</p>
@@ -62,6 +64,7 @@ use yii\widgets\ActiveForm;
 										</div>
 									</div>
 								</div>
+								<?php endif;?>
 								<br/><br/>
 		                    </div>
 	                    	<div class="reg_screen_block">
