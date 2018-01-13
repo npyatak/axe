@@ -77,8 +77,8 @@ return [
                 'go' => [
                     // register your app here: https://code.google.com/apis/console/
                     'class' => 'frontend\models\social\GoOAuth2Service',
-                    'clientId' => '1065853793664-6dj4umpq4j2fefn8gjtl167ncp6etpoj.apps.googleusercontent.com',
-                    'clientSecret' => '2rumQHWr_B98h1kyI1cT5ZwK',
+                    'clientId' => '608347128309-l8f905qpjorb9gpo8k8po24e9ckqk0hd.apps.googleusercontent.com',
+                    'clientSecret' => 'nLszf2a287Ve9PB-FpZLajNI',
                     'title' => 'Google',
                 ],
             ],
