@@ -128,7 +128,7 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск анимированого тира </h4>
-                            <h3>17 января 2018 г <br/>&nbsp;</h3>
+                            <h3>19 января 2018 г <br/>&nbsp;</h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
                             </p>
                             <p>&nbsp;</p>

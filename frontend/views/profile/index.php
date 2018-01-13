@@ -128,7 +128,7 @@ if($result) {
                     <div class="user_challange_block">
                         <div class="ucb_title">
                             <p>Запуск анимированого тира
-                                <br><b>15 января 2018г </b></p>
+                                <br><b>19 января 2018г </b></p>
                         </div>
                     </div>
                     <!-- /block -->
