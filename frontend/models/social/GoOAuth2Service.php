@@ -15,6 +15,8 @@ class GoOAuth2Service extends \nodge\eauth\services\GoogleOAuth2Service
         $this->attributes['id'] = $info['id'];
         $this->attributes['name'] = $info['name'];
         $this->attributes['email'] = $info['email'];
+        $this->attributes['first_name'] = $info['given_name']; // first name
+        $this->attributes['last_name'] = $info['family_name']; // last name
 
         if (!empty($info['link'])) {
             $this->attributes['url'] = $info['link'];
