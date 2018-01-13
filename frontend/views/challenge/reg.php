@@ -27,8 +27,10 @@ use yii\widgets\ActiveForm;
     						'enableClientValidation' => false,
     						'enableAjaxValidation' => true,
     						'options' => [
+    							'method' => 'post',
     							'class' => 'form_plus_param',
-    							'id' => 'challenge-form'
+    							'id' => 'challenge-form',
+    							'enctype' => 'multipart/form-data',
     						]
     					]); ?>
 		                    <div class="reg_screen_link">
@@ -50,6 +52,16 @@ use yii\widgets\ActiveForm;
 							            <a class="reg_screen_plus transition" id="form_plus_added">Ещё одно видео</a>
 							        </div>
 					            </div>
+								<br/>
+		                    	<div class="input-rows qa_text">
+		                    		<p class="q_text">Или загрузите файл видео</p>
+									<div class="reg_screen_input_div">
+										<div class="reg_screen_text form-group <?=$challenge->hasErrors("videoFile") ? 'has-error' : '';?>" data-number="<?=$key;?>">
+											<?= Html::activeFileInput($challenge, "[$key]videoFile", ['class' => 'reg_screen_input', 'style' => 'margin: auto;']) ?>
+    										<?= Html::error($challenge, "[$key]videoFile", ['class' => 'help-block']);?>
+										</div>
+									</div>
+								</div>
 								<br/><br/>
 		                    </div>
 	                    	<div class="reg_screen_block">
@@ -62,7 +74,7 @@ use yii\widgets\ActiveForm;
 			                        <br/><br/>
 			                    <?php endif;?>
 		                        <div class="ch_buttons">
-		                        	<?= Html::submitButton('запостить', ['class' => 'scr2_text_btn transition', ' data-event' => 'clickbattle_way', 'data-param' => 'fullrules_submit']) ?>
+		                        	<?= Html::submitButton('запостить', ['class' => 'scr2_text_btn transition', ' data-event' => 'challenge_way', 'data-param' => 'fullrules_submit']) ?>
 		                        </div>
 		                    </div>
 		                <?php ActiveForm::end(); ?>

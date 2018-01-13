@@ -123,7 +123,7 @@ use yii\helpers\Url;
         var targets = <?=json_encode($data);?>;
 
         $(document).ready(function(e) {
-            ga('send', 'event', 'cliker_way', 'game');
+            ga('send', 'event', 'clicker_way', 'game');
         });
     </script>
 </div>

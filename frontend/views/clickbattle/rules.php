@@ -59,15 +59,15 @@ use yii\helpers\Url;
                 </div>
                 <div class="cmb_buttons"> 
                     <?php if($user && $user->rules_clickbattle):?>
-                        <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition" data-event="cliker_way" data-param="play_again">Играть ещё</a>
+                        <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition" data-event="clicker_way" data-param="play_again">Играть ещё</a>
                     <?php else:?>
-                        <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition" data-event="cliker_way" data-param="play">Играть</a>
+                        <a href="<?=Url::toRoute(['clickbattle/reg']);?>" class="scr2_text_btn transition" data-event="clicker_way" data-param="play">Играть</a>
                     <?php endif;?>
-                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="scr2_bottom_button transition" data-event="cliker_way" data-param="rating_rules">рейтинг участников</a>
+                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="scr2_bottom_button transition" data-event="clicker_way" data-param="rating_rules">рейтинг участников</a>
                 </div>
                 <br/>
                 <div class="cmb_buttons">
-                    <a href="#rules-clickbattle" class="scr2_text_btn transition fancybox" data-event="cliker_way" data-param="fullrules">Полные правила</a>
+                    <a href="#rules-clickbattle" class="scr2_text_btn transition fancybox" data-event="clicker_way" data-param="fullrules">Полные правила</a>
                 </div>
             </div>
             <!-- /click battle -->

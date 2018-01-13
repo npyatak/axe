@@ -9,6 +9,7 @@ use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
 use yii\widgets\ActiveForm;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 use common\models\User;
 use common\models\Challenge;
@@ -66,6 +67,13 @@ class ChallengeController extends Controller
                 $challenge = new Challenge;
                 $challenge->scenario = 'userNew';
                 $challenge->attributes = $data;
+                if(isset($data['videoFile'])) {
+                    $challenge->videoFile = UploadedFile::getInstanceByName('Challenge[0][videoFile]');
+                    if($challenge->videoFile) {
+                        unset($challenge['link']);
+                        $challenge->scenario = 'videoUpload';
+                    }
+                }
                 $challenges[] = $challenge;
             }
 
@@ -85,7 +93,6 @@ class ChallengeController extends Controller
                         } 
                         $challenge->name = $user->fullName;
                         $challenge->user_id = $user->id;
-                        $challenge->soc = Challenge::SOC_YOUTUBE;
 
                         $flag = $challenge->save();
                     }

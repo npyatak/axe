@@ -3,7 +3,7 @@ use yii\helpers\Url;
 ?>
 
 <div class="challenge-item">
-	<a href="#ch_cp_modal1" data-url="<?=Url::current(['id' => $model->id], true);?>" class="ch_cp_sort_block_img ch_res_img_link" data-link="<?=$model->videoLink;?>" data-id="<?=$model->id;?>"  data-event="challenge_way" data-param="video_click">
+	<a href="#ch_cp_modal1" data-url="<?=Url::current(['id' => $model->id], true);?>" class="ch_cp_sort_block_img ch_res_img_link" data-link="<?=$model->videoLink;?>" data-id="<?=$model->id;?>" data-event="challenge_way" data-param="video_click">
 		<img src="<?=$model->image;?>" alt="img">
 	</a>
 	<div class="ch_cp_sort_block_text clearfix">

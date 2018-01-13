@@ -139,7 +139,7 @@ $script = "
     $('.ch_res_img_link').fancybox({
         showCloseButton: false,
         wrapCSS: 'res_wrap',
-        afterShow: function(){
+        afterShow: function() {
         	$('#challengeVideo').attr('src', this.element.data('link'));
         	$('.ch_modal_footer .vote-button').remove();
         	var newLink = this.element.parent().find('.vote-button').clone();

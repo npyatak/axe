@@ -17,6 +17,7 @@ class Challenge extends \yii\db\ActiveRecord
     public $link;
     public $video;
     public $_lastUserVotes;
+    public $videoFile;
     /**
      * @inheritdoc
      */
@@ -45,12 +46,14 @@ class Challenge extends \yii\db\ActiveRecord
             [['name', 'platform', 'access_key', 'image'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             ['access_key', 'unique'],
+            [['videoFile'], 'file','skipOnEmpty' => false, 'maxSize' => 1024 * 1024 * 30, 'extensions' => 'mp4,3gp,mov,m4v,mpeg,mpg', 'checkExtensionByMimeType' => true],
         ];
     }
 
     public function scenarios() {
         $scenarios = parent::scenarios();
         $scenarios['userNew'] = ['link'];
+        $scenarios['videoUpload'] = ['videoFile'];
         return $scenarios;
     }
 
@@ -71,8 +74,16 @@ class Challenge extends \yii\db\ActiveRecord
             if($this->soc == self::SOC_YOUTUBE) {
                 $this->image = 'https://img.youtube.com/vi/'.$key.'/hqdefault.jpg';
             }
-        }
+        } elseif($this->videoFile) {                     
+            $path = $this->videoSrcPath;
+            if(!file_exists($path)) {
+                mkdir($path, 0775, true);
+            }
 
+            $this->access_key = md5(time()).'.'.$this->videoFile->extension;
+            
+            $this->videoFile->saveAs($path.$this->access_key);
+        }
         return parent::beforeSave($insert);
     }
 
@@ -192,6 +203,10 @@ class Challenge extends \yii\db\ActiveRecord
             case self::SOC_YOUTUBE:
                 return '//www.youtube.com/embed/'.$this->access_key;
                 break;
+
+            default:
+                return '/uploads/video/'.$this->access_key;
+                break;
         }
     }
 
@@ -288,5 +303,9 @@ class Challenge extends \yii\db\ActiveRecord
         }
 
         return false;
+    }
+
+    public function getVideoSrcPath() {
+        return __DIR__ . '/../../frontend/web/uploads/video/';
     }
 }
