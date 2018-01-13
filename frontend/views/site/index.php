@@ -109,7 +109,7 @@ if($result) {
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск анимированого тира </h4>
-                            <h3>15 января 2018 г </h3>
+                            <h3>19 января 2018 г </h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
                             </p>
                             <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
