@@ -77,8 +77,8 @@ return [
                 'go' => [
                     // register your app here: https://code.google.com/apis/console/
                     'class' => 'frontend\models\social\GoOAuth2Service',
-                    'clientId' => 'axegame-191818',
-                    'clientSecret' => '1065853793664',
+                    'clientId' => '1065853793664-6dj4umpq4j2fefn8gjtl167ncp6etpoj.apps.googleusercontent.com',
+                    'clientSecret' => '2rumQHWr_B98h1kyI1cT5ZwK',
                     'title' => 'Google',
                 ],
             ],
