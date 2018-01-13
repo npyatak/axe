@@ -22,6 +22,7 @@ class ChallengeVote extends \yii\db\ActiveRecord
         return [
             [['user_id', 'challenge_id'], 'required'],
             [['user_id', 'challenge_id', 'created_at'], 'integer'],
+            [['ip', 'browser'], 'string'],
             [['challenge_id'], 'exist', 'skipOnError' => true, 'targetClass' => Challenge::className(), 'targetAttribute' => ['challenge_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -47,6 +48,13 @@ class ChallengeVote extends \yii\db\ActiveRecord
             'challenge_id' => 'Пост',
             'created_at' => 'Дата/Время',
         ];
+    }
+
+    public function beforeSave($insert) {
+        $this->ip = $_SERVER['REMOTE_ADDR'];
+        $this->browser = $_SERVER['HTTP_USER_AGENT'];
+
+        return parent::beforeSave($insert);
     }
 
     public function afterSave($insert, $changedAttributes) {

@@ -22,6 +22,9 @@ class ClickbattleController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['clickbattle/reg']));
         }
+        $user = User::findOne(Yii::$app->user->id);
+        $user->rules_clickbattle = 1;
+        $user->save(false, ['rules_clickbattle']);
 
         $params = Yii::$app->params['clickbattle'];
         $data = [];
@@ -87,7 +90,7 @@ class ClickbattleController extends Controller
 
         return $this->render('index', [
             'data' => $data,
-            'user' => Yii::$app->user->isGuest ? null : User::findOne(Yii::$app->user->id),
+            'user' => $user,
             'params' => $params,
         ]);
     }
