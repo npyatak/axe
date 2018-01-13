@@ -4,6 +4,7 @@ namespace frontend\models\social;
 class GoOAuth2Service extends \nodge\eauth\services\GoogleOAuth2Service
 {
 
+    protected $scopes = [self::SCOPE_USERINFO_PROFILE, self::SCOPE_USERINFO_EMAIL];
     /**
      *
      * @see GoogleOAuth2Service::fetchAttributes()
