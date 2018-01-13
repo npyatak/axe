@@ -209,6 +209,7 @@ class ChallengeController extends Controller
                     if($challenge->save()) {
                         $addedCount++;
                     }
+                    
                     // if(Challenge::find()->where(['access_key' => $challenge->access_key])->one() === null) {
                     //     $challenge->save();
                     //     $addedCount++;

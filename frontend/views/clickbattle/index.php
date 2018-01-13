@@ -121,10 +121,13 @@ use yii\helpers\Url;
         const endGameTime = <?=$params['endGameTime'];?>;
 
         var targets = <?=json_encode($data);?>;
-
-        $(document).ready(function(e) {
-            ga('send', 'event', 'clicker_way', 'game');
-        });
     </script>
 </div>
 
+<?php $script = "
+    $(document).ready(function(e) {
+        ga('send', 'event', 'clicker_way', 'game');
+    });
+";
+
+$this->registerJs($script, yii\web\View::POS_END);?>
