@@ -66,6 +66,7 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.add.sprite(0, 0, 'background');
 
+    music = game.add.audio('ak47');
     var cookieSound = Cookies.get("sound");
     if(typeof cookieSound !== 'undefined' && cookieSound == 0) {       
         music.volume = 0;
@@ -77,7 +78,6 @@ function create() {
     audio.inputEnabled = true;
     audio.input.useHandCursor = true;
     audio.events.onInputDown.add(switchSound, this);
-    music = game.add.audio('ak47');
 
     // Seconds pass after game start
     timerTextIntervalId = setInterval(function () {
