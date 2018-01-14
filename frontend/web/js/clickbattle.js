@@ -1,1 +1,249 @@
-var _0x4bef=["\x63\x6C\x69\x63\x6B","\x69\x63\x6F\x6E","\x64\x61\x74\x61","\x68\x69\x64\x65","\x23\x63\x62\x5F\x67\x61\x6D\x65\x5F\x74\x61\x62\x6C\x65\x31","\x64\x69\x73\x70\x6C\x61\x79","\x74\x61\x62\x6C\x65","\x63\x73\x73","\x23\x63\x62\x5F\x67\x61\x6D\x65\x5F\x74\x61\x62\x6C\x65\x32","\x6F\x6E","\x2E\x65\x6E\x65\x6D\x79\x5F\x62\x6C\x6F\x63\x6B\x5F\x62\x75\x74\x74\x6F\x6E","\x2E\x67\x61\x6D\x65\x5F\x62\x6C\x6F\x63\x6B","\x6F\x75\x74\x65\x72\x57\x69\x64\x74\x68","\x6F\x75\x74\x65\x72\x48\x65\x69\x67\x68\x74","\x67\x61\x6D\x65\x5F\x62\x6C\x6F\x63\x6B","\x2E\x73\x74\x61\x72\x74\x5F\x62\x61\x6D\x65\x5F\x62\x74\x6E","\x74\x61\x6E\x6B","\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x2F\x69\x6D\x67\x2F\x74\x61\x6E\x6B\x5F\x62\x67\x2E\x6A\x70\x67","\x69\x6D\x61\x67\x65","\x6C\x6F\x61\x64","\x61\x78\x65","\x2F\x69\x6D\x67\x2F\x72\x65\x73\x5F\x62\x67\x2E\x6A\x70\x67","\x77\x65\x61\x70\x6F\x6E","\x2F\x69\x6D\x67\x2F\x73\x70\x61\x63\x65\x2E\x6A\x70\x67","\x31","\x2F\x69\x6D\x67\x2F","\x31\x2E\x70\x6E\x67","\x32","\x32\x2E\x70\x6E\x67","\x73\x6F\x75\x6E\x64\x4F\x6E","\x2F\x69\x6D\x67\x2F\x73\x6F\x75\x6E\x64\x5F\x6F\x6E\x2E\x70\x6E\x67","\x73\x6F\x75\x6E\x64\x4F\x66\x66","\x2F\x69\x6D\x67\x2F\x73\x6F\x75\x6E\x64\x5F\x6F\x66\x66\x2E\x70\x6E\x67","\x62\x6F\x6F\x6D","\x2F\x69\x6D\x67\x2F\x65\x78\x70\x6C\x6F\x73\x69\x6F\x6E\x2E\x70\x6E\x67","\x73\x70\x72\x69\x74\x65\x73\x68\x65\x65\x74","\x61\x6B\x34\x37","\x2F\x61\x75\x64\x69\x6F\x2F\x61\x6B\x34\x37\x2E\x6D\x70\x33","\x61\x75\x64\x69\x6F","\x50\x68\x79\x73\x69\x63\x73","\x73\x74\x61\x72\x74\x53\x79\x73\x74\x65\x6D","\x70\x68\x79\x73\x69\x63\x73","\x73\x70\x72\x69\x74\x65","\x61\x64\x64","\x69\x6E\x70\x75\x74\x45\x6E\x61\x62\x6C\x65\x64","\x75\x73\x65\x48\x61\x6E\x64\x43\x75\x72\x73\x6F\x72","\x69\x6E\x70\x75\x74","\x6F\x6E\x49\x6E\x70\x75\x74\x44\x6F\x77\x6E","\x65\x76\x65\x6E\x74\x73","\x20\u0421\u0415\u041A","\x73\x65\x74\x54\x65\x78\x74","\x64\x65\x73\x74\x72\x6F\x79","\x75\x72\x6C\x28\x2F\x69\x6D\x67\x2F\x74\x61\x6E\x6B\x5F\x62\x67\x2E\x6A\x70\x67\x29\x20\x63\x65\x6E\x74\x65\x72\x20\x6E\x6F\x2D\x72\x65\x70\x65\x61\x74","\x63\x6F\x76\x65\x72","\x23\x63\x62\x5F\x67\x61\x6D\x65\x5F\x74\x61\x62\x6C\x65\x34","\x75\x72\x6C\x28\x2F\x69\x6D\x67\x2F\x72\x65\x73\x5F\x62\x67\x2E\x6A\x70\x67\x29\x20\x63\x65\x6E\x74\x65\x72\x20\x6E\x6F\x2D\x72\x65\x70\x65\x61\x74","\x75\x72\x6C\x28\x2F\x69\x6D\x67\x2F\x73\x70\x61\x63\x65\x2E\x6A\x70\x67\x29\x20\x63\x65\x6E\x74\x65\x72\x20\x6E\x6F\x2D\x72\x65\x70\x65\x61\x74","\x74\x65\x78\x74","\x23\x73\x63\x6F\x72\x65","\x50\x4F\x53\x54","\x63\x6C\x69\x65\x6E\x74\x5F\x73\x63\x6F\x72\x65\x3D","\x26\x63\x6C\x69\x63\x6B\x73\x3D","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x26\x74\x61\x72\x67\x65\x74\x73\x3D","\x61\x6A\x61\x78","\x6F\x6E\x44\x6F\x77\x6E","\x32\x30\x70\x78\x20\x42\x65\x62\x61\x73\x4E\x65\x75\x65\x52\x65\x67\x75\x6C\x61\x72","\x23\x61\x62\x39\x36\x37\x35","\x6E\x6F\x72\x6D\x61\x6C","\x23\x66\x66\x66\x66\x66\x66","\x30\x20\u0411\u0410\u041B\u041B\u041E\u0412","\x30\x20\u0421\u0415\u041A","\x67\x72\x6F\x75\x70","\x63\x72\x65\x61\x74\x65","\x73\x65\x74\x54\x6F","\x61\x6E\x63\x68\x6F\x72","\x61\x6E\x69\x6D\x61\x74\x69\x6F\x6E\x73","\x6B\x69\x6C\x6C","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72","\x78","\x79","\x61\x6C\x70\x68\x61","\x4C\x69\x6E\x65\x61\x72","\x45\x61\x73\x69\x6E\x67","\x74\x6F","\x74\x77\x65\x65\x6E","\x65\x6E\x61\x62\x6C\x65","\x61\x72\x63\x61\x64\x65","\x63\x65\x6E\x74\x65\x72\x58","\x63\x65\x6E\x74\x65\x72\x59","\x6B\x65\x79","\x6C\x6F\x61\x64\x54\x65\x78\x74\x75\x72\x65","\x76\x6F\x6C\x75\x6D\x65","\x74\x6F\x46\x69\x78\x65\x64","\x70\x6F\x77","\x73\x71\x72\x74","\x74\x69\x6D\x65","\x70\x6F\x73\x69\x74\x69\x6F\x6E","\x70\x6C\x61\x79","\x67\x65\x74\x46\x69\x72\x73\x74\x45\x78\x69\x73\x74\x73","\x72\x65\x73\x65\x74","\x3C\x64\x69\x76\x20\x63\x6C\x61\x73\x73\x3D\x22\x62\x61\x6D\x65\x5F\x65\x6C\x20\x67\x61\x6D\x65\x5F\x65\x6C\x33\x22\x20\x73\x74\x79\x6C\x65\x3D\x22\x74\x6F\x70\x3A\x20","\x70\x78\x3B\x20\x6C\x65\x66\x74\x3A\x20","\x70\x78\x22\x3E\x3C\x69\x6D\x67\x20\x73\x72\x63\x3D\x22\x2F\x69\x6D\x67\x2F\x73\x68\x6F\x74\x2E\x70\x6E\x67\x22\x20\x61\x6C\x74\x3D\x22\x69\x6D\x67\x22\x3E\x3C\x2F\x64\x69\x76\x3E","\x61\x70\x70\x65\x6E\x64","\x23\x67\x61\x6D\x65\x5F\x62\x6C\x6F\x63\x6B","\x74\x6F\x74\x61\x6C\x45\x6C\x61\x70\x73\x65\x64\x53\x65\x63\x6F\x6E\x64\x73","\x70\x6F\x70","","\x73\x70\x6C\x69\x74","\x20\u0411\u0410\u041B\u041B\u041E\u0412","\x20\u0411\u0410\u041B\u041B","\x20\u0411\u0410\u041B\u041B\u0410"];var appearTargetTimerId,clickEnabled=false,currentTime=0,delayAnimationSetTimeoutId,distance,endGameSetTimeoutId,explosions,game,icon,isFirst=true,music,number,tNumber=0,currentTarget,targetsResult=[],object1,object2,score=0,audio,stat,time,timerTextIntervalId,totalElapsedMilliSeconds,turnOffSound=true,tween1,tween2,x,y,x1,y1;$(_0x4bef[10])[_0x4bef[9]](_0x4bef[0],function(_0xf408x1f){icon= $(this)[_0x4bef[2]](_0x4bef[1]);$(_0x4bef[4])[_0x4bef[3]]();$(_0x4bef[8])[_0x4bef[7]](_0x4bef[5],_0x4bef[6]);return false});$(_0x4bef[15])[_0x4bef[9]](_0x4bef[0],function(_0xf408x1f){$(_0x4bef[8])[_0x4bef[3]]();$(_0x4bef[11])[_0x4bef[7]](_0x4bef[5],_0x4bef[6]);game=  new Phaser.Game($(_0x4bef[4])[_0x4bef[12]](),$(_0x4bef[4])[_0x4bef[13]](),Phaser.AUTO,_0x4bef[14],{preload:preload,create:create,update:update});return false});function preload(){if(icon=== _0x4bef[16]){game[_0x4bef[20]][_0x4bef[19]](_0x4bef[17],_0x4bef[18])}else {if(icon=== _0x4bef[21]){game[_0x4bef[20]][_0x4bef[19]](_0x4bef[17],_0x4bef[22])}else {if(icon=== _0x4bef[23]){game[_0x4bef[20]][_0x4bef[19]](_0x4bef[17],_0x4bef[24])}}};game[_0x4bef[20]][_0x4bef[19]](icon+ _0x4bef[25],_0x4bef[26]+ icon+ _0x4bef[27]);game[_0x4bef[20]][_0x4bef[19]](icon+ _0x4bef[28],_0x4bef[26]+ icon+ _0x4bef[29]);game[_0x4bef[20]][_0x4bef[19]](_0x4bef[30],_0x4bef[31]);game[_0x4bef[20]][_0x4bef[19]](_0x4bef[32],_0x4bef[33]);game[_0x4bef[20]][_0x4bef[36]](_0x4bef[34],_0x4bef[35],64,64,23);game[_0x4bef[20]][_0x4bef[39]](_0x4bef[37],_0x4bef[38])}function create(){game[_0x4bef[42]][_0x4bef[41]](Phaser[_0x4bef[40]].ARCADE);game[_0x4bef[44]][_0x4bef[43]](0,0,_0x4bef[17]);audio= game[_0x4bef[44]][_0x4bef[43]]($(_0x4bef[4])[_0x4bef[12]]()- 100,15,_0x4bef[30]);audio[_0x4bef[45]]= true;audio[_0x4bef[47]][_0x4bef[46]]= true;audio[_0x4bef[49]][_0x4bef[48]][_0x4bef[44]](switchSound,this);music= game[_0x4bef[44]][_0x4bef[39]](_0x4bef[37]);timerTextIntervalId= setInterval(function(){currentTime++;time[_0x4bef[51]](currentTime+ _0x4bef[50])},timerTextInterval);var create=function(){appearTargetTimerId= setInterval(function(){createTarget();update();clearInterval(appearTargetTimerId)},targetLifeDurationInterval)};var update=function(){delayAnimationSetTimeoutId= setTimeout(function(){create()},delayInterval)};endGameSetTimeoutId= setTimeout(function(){game[_0x4bef[52]]();clearInterval(appearTargetTimerId);clearInterval(timerTextIntervalId);clearTimeout(delayAnimationSetTimeoutId);clearTimeout(endGameSetTimeoutId);$(_0x4bef[11])[_0x4bef[3]]();if(icon=== _0x4bef[16]){$(_0x4bef[55])[_0x4bef[7]]({"\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64":_0x4bef[53],"\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x73\x69\x7A\x65":_0x4bef[54]})}else {if(icon=== _0x4bef[21]){$(_0x4bef[55])[_0x4bef[7]]({"\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64":_0x4bef[56],"\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x73\x69\x7A\x65":_0x4bef[54]})}else {if(icon=== _0x4bef[23]){$(_0x4bef[55])[_0x4bef[7]]({"\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64":_0x4bef[57],"\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x2D\x73\x69\x7A\x65":_0x4bef[54]})}}};$(_0x4bef[55])[_0x4bef[7]](_0x4bef[5],_0x4bef[6]);$(_0x4bef[59])[_0x4bef[58]](getScoreText(score));$[_0x4bef[65]]({type:_0x4bef[60],data:_0x4bef[61]+ score+ _0x4bef[62]+ JSON[_0x4bef[63]](clicks)+ _0x4bef[64]+ JSON[_0x4bef[63]](targetsResult),success:function(_0xf408x23){score= 0;currentTime= 0}})},endGameTime);createTarget();var _0xf408x24=setTimeout(function(){create();clearTimeout(_0xf408x24)},800);game[_0x4bef[47]][_0x4bef[66]][_0x4bef[44]](onDown,this);var _0xf408x25={font:_0x4bef[67],fill:_0x4bef[68],lineHeight:_0x4bef[69]};var _0xf408x26={font:_0x4bef[67],fill:_0x4bef[70],lineHeight:_0x4bef[69]};stat= game[_0x4bef[44]][_0x4bef[58]]($(_0x4bef[4])[_0x4bef[12]]()- 100,40,_0x4bef[71],_0xf408x25);time= game[_0x4bef[44]][_0x4bef[58]]($(_0x4bef[4])[_0x4bef[12]]()- 100,65,_0x4bef[72],_0xf408x26);explosions= game[_0x4bef[44]][_0x4bef[73]]();for(var _0xf408x27=0;_0xf408x27< 10;_0xf408x27++){var _0xf408x28=explosions[_0x4bef[74]](0,0,_0x4bef[34],[0],false);_0xf408x28[_0x4bef[76]][_0x4bef[75]](0.5,0.5);_0xf408x28[_0x4bef[77]][_0x4bef[44]](_0x4bef[34])}}function createTarget(){update();object1&& object1[_0x4bef[78]]();iconNumber= Math[_0x4bef[80]]((Math[_0x4bef[79]]()* 2)+ 1).toString();object1= game[_0x4bef[44]][_0x4bef[43]](targets[tNumber][_0x4bef[81]]- halfImageWidth,targets[tNumber][_0x4bef[82]]- halfImageWidth,icon+ iconNumber);object1[_0x4bef[83]]= 0;tween2= game[_0x4bef[44]][_0x4bef[87]](object1)[_0x4bef[86]]({alpha:1},targetLifeDurationInterval/ 2,Phaser[_0x4bef[85]][_0x4bef[84]].None,true,0,0,true);object1[_0x4bef[45]]= true;game[_0x4bef[42]][_0x4bef[89]][_0x4bef[88]](object1);x1= object1[_0x4bef[90]];y1= object1[_0x4bef[91]];currentTarget= tNumber;targetsResult[tNumber]= {"\x74\x69\x6D\x65":totalElapsedMilliSeconds- (totalElapsedMilliSeconds% 1),"\x78":x1+ 20,"\x79":y1- 20};tNumber= tNumber+ 1;clickEnabled= true}function switchSound(){if(turnOffSound){audio[_0x4bef[92]]= _0x4bef[32];audio[_0x4bef[93]](_0x4bef[32],0);music[_0x4bef[94]]= 0;turnOffSound= false}else {audio[_0x4bef[92]]= _0x4bef[30];audio[_0x4bef[93]](_0x4bef[30],0);music[_0x4bef[94]]= 1;turnOffSound= true}}function getDistance(x,y,x1,y1){return Math[_0x4bef[97]](Math[_0x4bef[96]](x- x1,2)+ Math[_0x4bef[96]](y- y1,2))[_0x4bef[95]]()}var clicks={};function onDown(_0xf408x2e){targetTime= targetsResult[currentTarget][_0x4bef[98]];x= Math[_0x4bef[80]](_0xf408x2e[_0x4bef[99]][_0x4bef[81]]);y= Math[_0x4bef[80]](_0xf408x2e[_0x4bef[99]][_0x4bef[82]]);var _0xf408x2f=true;if(totalElapsedMilliSeconds>= targetTime&& targetTime+ targetLifeDurationInterval> totalElapsedMilliSeconds){if(clickEnabled){distance= getDistance(x,y,x1,y1);if(distance<= radius){_0xf408x2f= false;music[_0x4bef[100]]();score+= (radius- distance);var _0xf408x28=explosions[_0x4bef[101]](false);_0xf408x28[_0x4bef[102]](x1,y1);_0xf408x28[_0x4bef[100]](_0x4bef[34],30,false,true);clickEnabled= false}}};if(_0xf408x2f){score-= 2};stat[_0x4bef[51]](getScoreText(score));shotX= x- 3;shotY= y- 6;$(_0x4bef[107])[_0x4bef[106]](_0x4bef[103]+ shotY+ _0x4bef[104]+ shotX+ _0x4bef[105]);var _0xf408x30={"\x78":x,"\x79":y,"\x74":targetTime};clicks[totalElapsedMilliSeconds- (totalElapsedMilliSeconds% 1)]= _0xf408x30}function update(){totalElapsedMilliSeconds= game[_0x4bef[98]][_0x4bef[108]]()* 1000}function getScoreText(score){var _0xf408x32=score.toString()[_0x4bef[111]](_0x4bef[110])[_0x4bef[109]]();var _0xf408x33=_0x4bef[112];if(_0xf408x32== 1){_0xf408x33= _0x4bef[113]}else {if(_0xf408x32== 2|| _0xf408x32== 3|| _0xf408x32== 4){_0xf408x33= _0x4bef[114]}};return score+ _0xf408x33}
+//http://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx
+var appearTargetTimerId,
+    clickEnabled = false,
+    currentTime = 0,
+    delayAnimationSetTimeoutId,
+    distance,
+    endGameSetTimeoutId,
+    explosions,
+    game,
+    icon,
+    isFirst = true,
+    music,
+    number,
+    tNumber = 0,
+    currentTarget,
+    targetsResult = [],
+    object1,
+    object2,
+    score = 0,
+    audio,
+    stat,
+    time,
+    timerTextIntervalId,
+    totalElapsedMilliSeconds,
+    turnOffSound = true,
+    tween1,
+    tween2,
+    x,
+    y,
+    x1,
+    y1;
+
+$('.enemy_block_button').on('click', function(e) {
+    icon = $(this).data('icon');
+    $("#cb_game_table1").hide();
+    $("#cb_game_table2").css('display', 'table');
+
+    return false;
+});
+
+$('.start_bame_btn').on('click', function(e) {
+    $("#cb_game_table2").hide();
+    $(".game_block").css('display', 'table');
+    game = new Phaser.Game($("#cb_game_table1").outerWidth(), $("#cb_game_table1").outerHeight(), Phaser.AUTO, 'game_block', { preload: preload, create: create, update: update});
+
+    return false;
+});
+
+function preload() {
+    if (icon === 'tank') {
+        game.load.image('background', '/img/tank_bg.jpg');
+    } else if (icon === 'axe') {
+        game.load.image('background', '/img/res_bg.jpg');
+    } else if (icon === 'weapon') {
+        game.load.image('background', '/img/space.jpg');
+    }
+    game.load.image(icon + '1', '/img/' + icon + '1.png');
+    game.load.image(icon + '2', '/img/' + icon + '2.png');
+    game.load.image('soundOn', '/img/sound_on.png');
+    game.load.image('soundOff', '/img/sound_off.png');
+    game.load.spritesheet('boom', '/img/explosion.png', 64, 64, 23);
+    game.load.audio('ak47', '/audio/ak47.mp3');
+}
+
+function create() {
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.add.sprite(0, 0, 'background');
+
+    var cookieSound = Cookies.get("sound");
+    if(typeof cookieSound !== 'undefined' && cookieSound == 0) {       
+        music.volume = 0;
+        turnOffSound = false;
+    } else {
+        audio = game.add.sprite($("#cb_game_table1").outerWidth() - 100, 15, 'soundOn');
+    }
+
+    audio.inputEnabled = true;
+    audio.input.useHandCursor = true;
+    audio.events.onInputDown.add(switchSound, this);
+    music = game.add.audio('ak47');
+
+    // Seconds pass after game start
+    timerTextIntervalId = setInterval(function () {
+        currentTime++;
+        time.setText(currentTime + ' СЕК');
+    }, timerTextInterval);
+
+    // Creating target1 or target2
+    var create = function () {
+        appearTargetTimerId = setInterval(function () {
+            createTarget();
+            update();
+            clearInterval(appearTargetTimerId);
+        }, targetLifeDurationInterval);
+    }
+
+    // Delay between target1 and target2
+    var update = function () {
+        delayAnimationSetTimeoutId = setTimeout(function () {
+            create();
+        }, delayInterval);
+    }
+
+    // Game over timeout
+    endGameSetTimeoutId = setTimeout(function () {
+        game.destroy();
+        clearInterval(appearTargetTimerId);
+        clearInterval(timerTextIntervalId);
+        clearTimeout(delayAnimationSetTimeoutId);
+        clearTimeout(endGameSetTimeoutId);
+        $(".game_block").hide();
+        if (icon === 'tank') {
+            $("#cb_game_table4").css({'background': 'url(/img/tank_bg.jpg) center no-repeat', 'background-size': 'cover'});
+        } else if (icon === 'axe') {
+            $("#cb_game_table4").css({'background': 'url(/img/res_bg.jpg) center no-repeat', 'background-size': 'cover'});
+        } else if (icon === 'weapon') {
+            $("#cb_game_table4").css({'background': 'url(/img/space.jpg) center no-repeat', 'background-size': 'cover'});
+        }
+        $("#cb_game_table4").css('display', 'table');
+        $("#score").text(getScoreText(score));
+
+        $.ajax({
+            type: 'POST',
+            data: 'client_score='+score+'&clicks='+JSON.stringify(clicks)+'&targets='+JSON.stringify(targetsResult),
+            success: function (data) {
+                score = 0;
+                currentTime = 0;
+            },
+        })
+    }, endGameTime);
+
+    // Creating first target after the game starts
+    createTarget();
+    var init = setTimeout(function () {
+        create();
+        clearTimeout(init);
+    }, 800);
+
+    game.input.onDown.add(onDown, this);
+
+    var statStyle = { font: "20px BebasNeueRegular", fill: "#ab9675", lineHeight: 'normal' };
+    var timeStyle = { font: "20px BebasNeueRegular", fill: "#ffffff", lineHeight: 'normal' };
+
+    stat = game.add.text($("#cb_game_table1").outerWidth() - 100, 40, '0 БАЛЛОВ', statStyle);
+    time = game.add.text($("#cb_game_table1").outerWidth() - 100, 65, '0 СЕК', timeStyle);
+
+    //  Explosion pool
+    explosions = game.add.group();
+
+    for (var i = 0; i < 10; i++) {
+        var explosionAnimation = explosions.create(0, 0, 'boom', [0], false);
+        explosionAnimation.anchor.setTo(0.5, 0.5);
+        explosionAnimation.animations.add('boom');
+    }
+
+}
+
+function createTarget() {
+    update();
+    object1 && object1.kill();
+    iconNumber = Math.floor((Math.random() * 2) + 1).toString();
+    object1 = game.add.sprite(targets[tNumber]['x'] - halfImageWidth, targets[tNumber]['y'] - halfImageWidth, icon + iconNumber);
+    object1.alpha = 0;
+    tween2 = game.add.tween(object1).to( { alpha: 1 }, targetLifeDurationInterval / 2, Phaser.Easing.Linear.None, true, 0, 0, true);
+    object1.inputEnabled = true;
+    game.physics.arcade.enable(object1);
+    x1 = object1.centerX;
+    y1 = object1.centerY;
+    currentTarget = tNumber;
+
+    targetsResult[tNumber] = {'time': totalElapsedMilliSeconds - (totalElapsedMilliSeconds % 1), 'x': x1 + 20, 'y': y1 - 20};
+    tNumber = tNumber + 1;
+    clickEnabled = true;
+}
+
+// Sound control
+function switchSound() {
+    if (turnOffSound) {
+        audio.key = "soundOff";
+        audio.loadTexture("soundOff", 0);
+        music.volume = 0;
+        turnOffSound = false;
+        Cookies.set("sound", 0);
+    } else {
+        audio.key = "soundOn";
+        audio.loadTexture("soundOn", 0);
+        music.volume = 1;
+        turnOffSound = true;
+        Cookies.set("sound", 1);
+    }
+}
+
+// Get distance
+function getDistance(x, y, x1, y1) {
+    return Math.sqrt(Math.pow(x - x1, 2) + Math.pow(y - y1, 2)).toFixed();
+}
+
+var clicks = {};
+// On click target
+function onDown(object) {
+    targetTime = targetsResult[currentTarget].time;
+
+    x = Math.floor(object.position.x);
+    y = Math.floor(object.position.y);
+    var flag = true;
+    
+    if (totalElapsedMilliSeconds >= targetTime && targetTime + targetLifeDurationInterval > totalElapsedMilliSeconds) {
+        if (clickEnabled) {
+            distance = getDistance(x, y, x1, y1);
+            if (distance <= radius) {
+                flag = false;
+                music.play();
+                score += (radius - distance);
+                var explosionAnimation = explosions.getFirstExists(false);
+                explosionAnimation.reset(x1, y1);
+                explosionAnimation.play('boom', 30, false, true);
+                clickEnabled = false;
+            }
+        }
+    } 
+    
+    if(flag) {
+        score -= 2;
+    }
+    stat.setText(getScoreText(score));
+
+    shotX = x - 3;
+    shotY = y - 6;
+    $('#game_block').append('<div class="bame_el game_el3" style="top: '+shotY+'px; left: '+shotX+'px"><img src="/img/shot.png" alt="img"></div>');
+
+    var click = {'x': x, 'y': y, 't': targetTime};   
+    clicks[totalElapsedMilliSeconds - (totalElapsedMilliSeconds%1)] = click;
+}
+
+function update () {
+    totalElapsedMilliSeconds = game.time.totalElapsedSeconds() * 1000;
+}
+
+function getScoreText(score) {    
+    var lastone = score.toString().split('').pop();
+    var str = ' БАЛЛОВ';
+    if(lastone == 1) {
+        str = ' БАЛЛ';
+    } else if(lastone == 2 || lastone == 3 || lastone == 4) {
+        str = ' БАЛЛА';
+    }
+
+    return score + str;
+}
