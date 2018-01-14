@@ -12,21 +12,21 @@ use yii\web\Response;
 use yii\data\ActiveDataProvider;
 
 use common\models\User;
-use common\models\ClickbattleResult;
-use common\models\search\ClickbattleResultSearch;
+use common\models\ShootingResult;
+use common\models\search\ShootingResultSearch;
 
-class ClickbattleController extends Controller
+class ShootingController extends Controller
 {
 
     public function actionIndex() {
         if(Yii::$app->user->isGuest) {
-            return $this->redirect(Url::toRoute(['clickbattle/reg']));
+            return $this->redirect(Url::toRoute(['shooting/reg']));
         }
         $user = User::findOne(Yii::$app->user->id);
-        $user->rules_clickbattle = 1;
-        $user->save(false, ['rules_clickbattle']);
+        $user->rules_shooting = 1;
+        $user->save(false, ['rules_shooting']);
 
-        $params = Yii::$app->params['clickbattle'];
+        $params = Yii::$app->params['shooting'];
         $data = [];
         for ($i=0; $i <= ($params['endGameTime'] / (2 * $params['delayInterval']) + 10); $i++) { 
             $x = rand(20, 930);
@@ -78,7 +78,7 @@ class ClickbattleController extends Controller
                 $score = 1500;
             }
 
-            $res = new ClickbattleResult;
+            $res = new ShootingResult;
             $res->score = $score;
             $res->client_score = $post['client_score'];
             $res->user_id = Yii::$app->user->id;
@@ -113,20 +113,20 @@ class ClickbattleController extends Controller
         $userResult = null;
         if(!Yii::$app->user->isGuest) {
             $user = User::findOne(Yii::$app->user->id);
-            $userResult = ClickbattleResult::find()->where(['user_id' => $user->id])->asArray()->sum('score');
+            $userResult = ShootingResult::find()->where(['user_id' => $user->id])->asArray()->sum('score');
             
-            $results = ClickbattleResult::find()->asArray()->select(['sum(score) as score', 'user_id'])->groupBy('user_id')->orderBy('score DESC')->indexBy('user_id')->all();
+            $results = ShootingResult::find()->asArray()->select(['sum(score) as score', 'user_id'])->groupBy('user_id')->orderBy('score DESC')->indexBy('user_id')->all();
             $userPlace = array_search($user->id, array_keys($results)) + 1;
         }
 
         $dataProvider = new ActiveDataProvider([
-            'query' => ClickbattleResult::find()
-                ->select(['user.name', 'user.surname', 'user.city', 'clickbattle_result.*', 'sum(clickbattle_result.score) as totalScore'])
+            'query' => ShootingResult::find()
+                ->select(['user.name', 'user.surname', 'user.city', 'shooting_result.*', 'sum(shooting_result.score) as totalScore'])
                 ->joinWith('user')
                 ->groupBy('user_id')
                 ->orderBy('totalScore'),
-            'totalCount' => ClickbattleResult::find()
-                ->select(['clickbattle_result.*', 'sum(clickbattle_result.score) as totalScore'])
+            'totalCount' => ShootingResult::find()
+                ->select(['shooting_result.*', 'sum(shooting_result.score) as totalScore'])
                 ->groupBy('user_id')
                 ->orderBy('totalScore')
                 ->count(),
@@ -148,7 +148,7 @@ class ClickbattleController extends Controller
     }
 
     public function actionCreate($user_id, $score) {
-        $res = new ClickbattleResult;
+        $res = new ShootingResult;
         $res->score = $score;
         $res->user_id = $user_id;
         $res->save();
