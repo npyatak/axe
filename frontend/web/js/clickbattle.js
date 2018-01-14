@@ -71,6 +71,7 @@ function create() {
     if(typeof cookieSound !== 'undefined' && cookieSound == 0) {       
         music.volume = 0;
         turnOffSound = false;
+        audio = game.add.sprite($("#cb_game_table1").outerWidth() - 100, 15, 'soundOff');
     } else {
         audio = game.add.sprite($("#cb_game_table1").outerWidth() - 100, 15, 'soundOn');
     }
