@@ -53,7 +53,6 @@ use yii\widgets\ActiveForm;
 							        </div>
 					            </div>
 
-								<?php if(false):?>
 								<br/>
 		                    	<div class="input-rows qa_text">
 		                    		<p class="q_text">Или загрузите файл видео</p>
@@ -64,7 +63,6 @@ use yii\widgets\ActiveForm;
 										</div>
 									</div>
 								</div>
-								<?php endif;?>
 								<br/><br/>
 		                    </div>
 	                    	<div class="reg_screen_block">

@@ -101,7 +101,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     }
 
     public static function findByService($soc, $sid) {
-        return static::findOne(['soc' => $soc, 'sid' => $sid]);
+        return static::find()->where(['soc' => $soc, 'sid' => $sid])->one();
     }
 
     public function getFullName() {
