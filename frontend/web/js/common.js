@@ -39,7 +39,7 @@ $(document).ready(function() {
 
     $(".fancybox").fancybox({
         // margin: 0
-        // scrolling: 'yes',
+        scrolling: 'yes',
         // fixed: false,
         // autoCenter: true,
         // centerOnScroll: true,

@@ -151,6 +151,7 @@ $script = "
             $('.share').attr('data-url', this.element.data('url'));
         },
         beforeClose: function() {
+            $('#challengeVideo').attr('src', '');
             history.pushState(null, null, '".Url::current(['id' => null])."');
         }
     });
