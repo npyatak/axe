@@ -174,6 +174,7 @@ $script = "
                 $('#challengeVideo').hide();
                 $('.ch_cp_sort_block_modal_img').addClass('localPlayer');
                 $('#localPlayer').show();
+                $('#localPlayer_html5_api').show();
                 player.src(this.element.data('link'));
             }
         	
