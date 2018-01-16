@@ -140,7 +140,7 @@ p.text {
 	width: 70px;
 	height: 70px;
 }
-#localPlayer {
+#localPlayer, #localPlayer_html5_api {
 	width: 100%!important;
 	height: 100%!important;
 }

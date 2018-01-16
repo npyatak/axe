@@ -93,9 +93,10 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                                 //'preload' => 'auto',
                                 'id' => 'localPlayer',
                             ],
+                            //'jsOptions' => "{}",
                             'tags' => [
                                 'source' => [
-                                    ['src' => $activeChallenge && !$activeChallenge->soc ? $activeChallenge->videoLink : ''],
+                                    ['src' => $activeChallenge && !$activeChallenge->soc ? $activeChallenge->videoLink : '', 'type' => 'video/mp4'],
                                 ],
                             ],
                             'multipleResolutions' => false,
@@ -159,7 +160,7 @@ $script = "
     	//}
     });
 
-    //var player = window.videojs.players.localPlayer
+    var player = videojs('localPlayer');
 
     $('.ch_res_img_link').fancybox({
         showCloseButton: false,
@@ -173,7 +174,7 @@ $script = "
                 $('#challengeVideo').hide();
                 $('.ch_cp_sort_block_modal_img').addClass('localPlayer');
                 $('#localPlayer').show();
-                //player.src(this.element.data('link'));
+                player.src(this.element.data('link'));
             }
         	
             $('.ch_modal_footer .vote-button').remove();
@@ -187,7 +188,7 @@ $script = "
         },
         beforeClose: function() {
             $('#challengeVideo').attr('src', '');
-            //player.src('');
+            player.src('');
             history.pushState(null, null, '".Url::current(['id' => null])."');
         }
     });
