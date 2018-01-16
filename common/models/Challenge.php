@@ -46,7 +46,7 @@ class Challenge extends \yii\db\ActiveRecord
             [['name', 'platform', 'access_key', 'image'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             ['access_key', 'unique'],
-            [['videoFile'], 'file','skipOnEmpty' => true, 'maxSize' => 1024 * 1024 * 20, 'extensions' => 'mp4,3gp,mov,m4v,mpeg,mpg', 'checkExtensionByMimeType' => false],
+            [['videoFile'], 'file','skipOnEmpty' => true, 'maxSize' => 1024 * 1024 * 20, 'extensions' => 'mp4,3gp,mov,m4v,mpeg,mpg', 'checkExtensionByMimeType' => false, 'tooBig' => 'Максимальный размер видео 20Мб'],
         ];
     }
 
