@@ -24,6 +24,7 @@ class ClickbattleResult extends \yii\db\ActiveRecord
             [['user_id'], 'required'],
             [['user_id', 'created_at', 'client_score', 'score'], 'integer'],
             [['ip'], 'string', 'max' => 255],
+            [['targets', 'clicks'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }

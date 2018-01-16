@@ -169,7 +169,7 @@ function createTarget() {
     y1 = object1.centerY;
     currentTarget = tNumber;
 
-    targetsResult[tNumber] = {'time': totalElapsedMilliSeconds - (totalElapsedMilliSeconds % 1), 'x': x1 + 20, 'y': y1 - 20};
+    targetsResult[tNumber] = {'time': totalElapsedMilliSeconds - (totalElapsedMilliSeconds % 1), 'x': x1 - 15, 'y': y1 + 15};
     tNumber = tNumber + 1;
     clickEnabled = true;
 }

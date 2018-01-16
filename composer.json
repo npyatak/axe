@@ -26,7 +26,7 @@
         "nodge/yii2-eauth": "~2.0",
         "skeeks/yii2-google-api": "*",
         "kop/yii2-scroll-pager": "dev-master",
-        "wbraganca/yii2-videojs-widget": "~1.0"
+        "perminder-klair/yii2-videojs": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

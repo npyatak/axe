@@ -34,10 +34,10 @@ use yii\widgets\ActiveForm;
     						]
     					]); ?>
 		                    <div class="reg_screen_link">
-		                    	<div class="input-rows">
+		                    	<div class="input-rows links">
 		                    	<?php foreach ($challenges as $key => $challenge):?>
         							<?php $challenge->scenario = 'userNew';?>
-									<div class="reg_screen_input_div">
+									<div class="reg_screen_input_div user-link">
 										<div class="reg_screen_text form-group <?=$challenge->hasErrors("link") ? 'has-error' : '';?>" data-number="<?=$key;?>">
 											<?= Html::activeLabel($challenge, "[$key]link", ['class' => 'reg_screen_text']) ?>
 											<?= Html::activeTextInput($challenge, "[$key]link", ['class' => 'reg_screen_input']) ?>
@@ -125,14 +125,14 @@ use yii\widgets\ActiveForm;
 <?php
 $script = "
 	$(document).on('click', '#form_plus_added', function(e) {
-		var newInput = $('.reg_screen_input_div:first').clone();
+		var newInput = $('.user-link:first').clone();
 
 		newInput.find('input').val('');
 		newInput.find('.help-block').html('');
-		var count = $('.reg_screen_input_div').length;
+		var count = $('.user-link').length;
 		var newHtml = newInput.html().replace(/0/g, count);
 		newInput.html(newHtml);
-		$('.input-rows').append(newInput);
+		$('.input-rows.links').append(newInput);
 	});
 ";
 

@@ -76,8 +76,31 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
 
                 <div class="ch_cp_sort_block_modal" id="ch_cp_modal1">
                     <a href="javascript:void(0)" class="ch_cp_modal_close"><img src="/img/close-btn.png" alt="img"></a>
-                    <div class="ch_cp_sort_block_modal_img">
-                    	<iframe id="challengeVideo" class="video" src="<?=$activeChallenge ? $activeChallenge->videoLink : '';?>" frameborder="0" allowfullscreen></iframe>
+                    <div class="ch_cp_sort_block_modal_img <?=$activeChallenge && !$activeChallenge->soc ? 'localPlayer' : '';?>">
+                    	<iframe id="challengeVideo" 
+                            class="video"
+                            style="<?=$activeChallenge && !$activeChallenge->soc ? 'display: none;' : '';?>" 
+                            <?php if($activeChallenge && $activeChallenge->soc) {
+                                echo 'src="'.$activeChallenge->videoLink.'"';
+                            }?>
+                            frameborder="0" allowfullscreen>
+                        </iframe>
+                        
+                        <?= \kato\VideojsWidget::widget([
+                            'options' => [
+                                'style' => $activeChallenge && !$activeChallenge->soc ? '' : 'display: none;',
+                                'poster' => '/img/file_pic.png',
+                                'controls' => true,
+                                //'preload' => 'auto',
+                                'id' => 'localPlayer',
+                            ],
+                            'tags' => [
+                                'source' => [
+                                    ['src' => $activeChallenge && !$activeChallenge->soc ? $activeChallenge->videoLink : ''],
+                                ],
+                            ],
+                            'multipleResolutions' => false,
+                        ]); ?>
                     </div>
                     <div class="ch_modal_footer clearfix">
                         <div class="footer_soc_wrap">
@@ -136,12 +159,25 @@ $script = "
     		window.location.href = url;
     	//}
     });
+
+    //var player = window.videojs.players.localPlayer
+
     $('.ch_res_img_link').fancybox({
         showCloseButton: false,
         wrapCSS: 'res_wrap',
         afterShow: function() {
-        	$('#challengeVideo').attr('src', this.element.data('link'));
-        	$('.ch_modal_footer .vote-button').remove();
+            if(this.element.data('player') == 'ext') {
+               $('#localPlayer').hide();
+               $('.ch_cp_sort_block_modal_img').removeClass('localPlayer');
+        	   $('#challengeVideo').attr('src', this.element.data('link')).show();
+            } else {
+                $('#challengeVideo').hide();
+                $('.ch_cp_sort_block_modal_img').addClass('localPlayer');
+                $('#localPlayer').show();
+                //player.src(this.element.data('link'));
+            }
+        	
+            $('.ch_modal_footer .vote-button').remove();
         	var newLink = this.element.parent().find('.vote-button').clone();
         	newLink.find('img').attr('src', '/img/like2.png');
         	$('.ch_modal_footer').append(newLink);
@@ -152,6 +188,7 @@ $script = "
         },
         beforeClose: function() {
             $('#challengeVideo').attr('src', '');
+            //player.src('');
             history.pushState(null, null, '".Url::current(['id' => null])."');
         }
     });

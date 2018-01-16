@@ -53,8 +53,8 @@ class ClickbattleController extends Controller
 
                 if($time >= $targetTime && $time <= $targetTime + $params['targetLifeDurationInterval']) {
                     if(isset($targetArr[$targetTime])) {
-                        $x = floatval($targetArr[$targetTime]['x']) - 20;
-                        $y = floatval($targetArr[$targetTime]['y']) + 20;
+                        $x = floatval($targetArr[$targetTime]['x']) + 15;
+                        $y = floatval($targetArr[$targetTime]['y']) - 15;
                         /*(x-x1)^2 + (y-y1)^2 <= R^2, где R - радиус окружности, который заносим в константы, по умолчанию радиус равен 20.
                         То значит попал, количество баллов в плюс равно:
                         округление до целых от квадратного корня из (x-x1)^2 + (y-y1)^2,
@@ -82,6 +82,8 @@ class ClickbattleController extends Controller
             $res->score = $score;
             $res->client_score = $post['client_score'];
             $res->user_id = Yii::$app->user->id;
+            $res->targets = $post['targets'];
+            $res->clicks = $post['clicks'];
             $res->save();
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

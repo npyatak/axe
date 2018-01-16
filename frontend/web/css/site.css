@@ -140,9 +140,9 @@ p.text {
 	width: 70px;
 	height: 70px;
 }
-.video-js {
-	width: 100%;
-	height: 100%;
+#localPlayer {
+	width: 100%!important;
+	height: 100%!important;
 }
 .bame_el {
 	z-index: 0;
