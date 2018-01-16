@@ -89,7 +89,6 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                         <?= \kato\VideojsWidget::widget([
                             'options' => [
                                 'style' => $activeChallenge && !$activeChallenge->soc ? '' : 'display: none;',
-                                'poster' => '/img/file_pic.png',
                                 'controls' => true,
                                 //'preload' => 'auto',
                                 'id' => 'localPlayer',

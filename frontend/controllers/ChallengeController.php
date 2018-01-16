@@ -75,6 +75,9 @@ class ChallengeController extends Controller
                     }
                 }
                 $challenges[] = $challenge;
+                if($challenge->scenario == 'videoUpload') {
+                    break;
+                }
             }
 
             if (Yii::$app->request->isAjax) {
