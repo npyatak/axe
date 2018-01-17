@@ -12,7 +12,7 @@ use yii\helpers\Url;
 		data-event="challenge_way" 
 		data-param="video_click"
 	>
-		<img src="<?=$model->image ? $model->image : '/img/file_pic.png';?>" alt="img">
+		<img src="<?=$model->image ? $model->image : '/img/file_pic.png';?>" style="<?=$model->image ? '' : 'width: 350px;';?>">
 	</a>
 	<div class="ch_cp_sort_block_text clearfix">
 	    <p><?=$model->name;?></p>
