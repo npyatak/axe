@@ -27,7 +27,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['sid', 'status', 'created_at', 'updated_at', 'test_result_id', 'rules_test', 'rules_challenge', 'rules_clickbattle', 'rules_shooting'], 'integer'],
+            [['sid', 'status', 'created_at', 'updated_at', 'test_result_id', 'rules_test', 'rules_challenge', 'rules_clickbattle', 'rules_shooting', 'clickbattle_ban'], 'integer'],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_BANNED]],
             [['surname', 'name', 'image', 'city', 'ip', 'browser', 'email'], 'string', 'max' => 255],
             ['soc', 'string', 'max' => 2],

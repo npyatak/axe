@@ -125,6 +125,7 @@ class ClickbattleController extends Controller
             'query' => ClickbattleResult::find()
                 ->select(['user.name', 'user.surname', 'user.city', 'clickbattle_result.*', 'sum(clickbattle_result.score) as totalScore'])
                 ->joinWith('user')
+                ->where(['user.clickbattle_ban' => null])
                 ->groupBy('user_id')
                 ->orderBy('totalScore'),
             'totalCount' => ClickbattleResult::find()
@@ -137,7 +138,7 @@ class ClickbattleController extends Controller
                 'attributes' => ['created_at', 'totalScore'],
             ],
             'pagination' => [
-                'pageSize' => 36,
+                'pageSize' => 72,
             ],
         ]);
 
