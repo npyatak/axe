@@ -53,7 +53,7 @@ class ChallengeController extends Controller
         $dataProvider = new ArrayDataProvider([
             'allModels' => $data,
             'pagination' => [
-                'pageSize' => 18,
+                'pageSize' => 30,
             ],
             'sort' => [
                 'defaultOrder' => ['likes'=>SORT_DESC],
