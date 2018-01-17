@@ -21,6 +21,7 @@ class ChallengeController extends Controller
 {
 
     public function actionIndex($name = null, $id = null) {
+        $pageSize = 30;
         $sort = Yii::$app->getRequest()->getQueryParam('sort');
    
         $searchModel = new ChallengeSearch();
@@ -41,6 +42,12 @@ class ChallengeController extends Controller
         if($id) {
             $activeChallenge = Challenge::findOne($id);
 
+            if($activeChallenge !== null) {
+                $dataProviderAll->pagination = [
+                    //'pageSize' => $pageSize - 1,
+                ];
+            }
+
             $params['ChallengeSearch']['name'] = null;
             $params['ChallengeSearch']['id'] = $id;
             $dataProviderActive = $searchModel->search($params);
@@ -53,10 +60,10 @@ class ChallengeController extends Controller
         $dataProvider = new ArrayDataProvider([
             'allModels' => $data,
             'pagination' => [
-                'pageSize' => 30,
+                'pageSize' => $pageSize,
             ],
             'sort' => [
-                'defaultOrder' => ['likes'=>SORT_DESC],
+                //'defaultOrder' => ['likes'=>SORT_DESC],
                 'attributes' => ['created_at', 'likes'],
             ] 
         ]);
