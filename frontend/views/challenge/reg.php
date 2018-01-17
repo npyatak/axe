@@ -55,7 +55,7 @@ use yii\widgets\ActiveForm;
 
 								<br/>
 		                    	<div class="input-rows qa_text">
-		                    		<p class="q_text">Или загрузите файл видео</p>
+		                    		<p class="q_text">Или<br/> загрузи видео-файл <br/>(не более 20 Мб):</p>
 									<div class="reg_screen_input_div">
 										<div class="reg_screen_text form-group <?=$challenge->hasErrors("videoFile") ? 'has-error' : '';?>" data-number="<?=$key;?>">
 											<?= Html::activeFileInput($challenge, "[$key]videoFile", ['class' => 'reg_screen_input', 'style' => 'margin: auto;']) ?>
