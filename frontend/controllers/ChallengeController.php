@@ -10,6 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\widgets\ActiveForm;
 use yii\web\Response;
 use yii\web\UploadedFile;
+use yii\data\ArrayDataProvider;
 
 use common\models\User;
 use common\models\Challenge;
@@ -20,7 +21,7 @@ class ChallengeController extends Controller
 {
 
     public function actionIndex($name = null, $id = null) {
-        //$challenges = Challenge::find()->where(['status' => Challenge::STATUS_ACTIVE])
+        $pageSize = 18;
         $sort = Yii::$app->getRequest()->getQueryParam('sort');
    
         $searchModel = new ChallengeSearch();
@@ -28,20 +29,36 @@ class ChallengeController extends Controller
         $params['ChallengeSearch']['status'] = Challenge::STATUS_ACTIVE;
         $params['ChallengeSearch']['name'] = $name;
 
-        $dataProvider = $searchModel->search($params);
-        $dataProvider->sort = [
+        $dataProviderAll = $searchModel->search($params);
+        $dataProviderAll->sort = [
             'defaultOrder' => ['likes'=>SORT_DESC],
-            //'defaultOrder' => ['created_at'=>SORT_DESC],
             'attributes' => ['created_at', 'likes'],
         ];
-        $dataProvider->pagination = [
-            'pageSize' => 18,
+        $dataProviderAll->pagination = [
+            'pageSize' => $pageSize,
         ];
         
         $activeChallenge = false;
         if($id) {
             $activeChallenge = Challenge::findOne($id);
+            if($activeChallenge !== null) {
+                $dataProviderAll->pagination = [
+                    'pageSize' => $pageSize - 1,
+                ];
+            }
+
+            $params['ChallengeSearch']['name'] = null;
+            $params['ChallengeSearch']['id'] = $id;
+            $dataProviderActive = $searchModel->search($params);
+
+            $data = array_merge($dataProviderActive->getModels(), $dataProviderAll->getModels());
+        } else {
+            $data = $dataProviderAll->getModels();
         }
+
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $data
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
