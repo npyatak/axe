@@ -30,10 +30,10 @@ class ChallengeController extends Controller
         $params['ChallengeSearch']['name'] = $name;
 
         $dataProviderAll = $searchModel->search($params);
-        // $dataProviderAll->sort = [
-        //     'defaultOrder' => ['likes'=>SORT_DESC],
-        //     'attributes' => ['created_at', 'likes'],
-        // ];
+        $dataProviderAll->sort = [
+            'defaultOrder' => ['likes'=>SORT_DESC],
+            'attributes' => ['created_at', 'likes'],
+        ];
         $dataProviderAll->pagination = [
             //'pageSize' => $pageSize,
         ];
