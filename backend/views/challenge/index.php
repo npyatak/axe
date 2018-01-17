@@ -32,8 +32,25 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'video',
                     'format' => 'raw',
                     'value' => function($data) {
-                        return '<iframe class="video" src="'.$data->videoLink.'" frameborder="0" allowfullscreen></iframe>';
-                        //return Html::a($data->videoLink, $data->videoLink);
+                        if($data->soc === null) {
+                            return \kato\VideojsWidget::widget([
+                                'options' => [
+                                    'style' => 'width: 300px;',
+                                    'controls' => true,
+                                    //'preload' => 'auto',
+                                    'id' => 'localPlayer',
+                                    'autoplay' => false,
+                                ],
+                                'tags' => [
+                                    'source' => [
+                                        ['src' => $data->videoLink, 'type' => 'video/mp4'],
+                                    ],
+                                ],
+                                'multipleResolutions' => false,
+                            ]);
+                        } else {
+                            return '<iframe class="video" src="'.$data->videoLink.'" frameborder="0" allowfullscreen></iframe>';
+                        }
                     }
                 ],
                 [
