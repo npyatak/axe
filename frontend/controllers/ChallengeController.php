@@ -35,7 +35,7 @@ class ChallengeController extends Controller
             'attributes' => ['created_at', 'likes'],
         ];
         $dataProvider->pagination = [
-            'pageSize' => 60,
+            'pageSize' => 100,
         ];
         
         $activeChallenge = false;
