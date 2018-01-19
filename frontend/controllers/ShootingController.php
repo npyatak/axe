@@ -38,7 +38,7 @@ class ShootingController extends Controller
                 $score = 0;
             }
             $res->score = $score;
-            $res->client_score = $score;
+            $res->client_score = $post['client_score'];
             $res->user_id = Yii::$app->user->id;
             $res->save();
 

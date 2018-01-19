@@ -24,7 +24,7 @@ class ShootingResult extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'required'],
             [['user_id', 'created_at', 'client_score', 'score'], 'integer'],
-            [['ip'], 'string', 'max' => 255],
+            [['ip'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             //[['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'uncheckedMessage' => 'Пожалуйста, подтвердите, что вы не робот']
         ];
@@ -61,7 +61,7 @@ class ShootingResult extends \yii\db\ActiveRecord
     // }
 
     public function beforeSave($insert) {
-        $this->ip = $_SERVER['REMOTE_ADDR'];
+        $this->ip = $_SERVER['REMOTE_ADDR'].' '.$_SERVER['HTTP_USER_AGENT'];
 
         return parent::beforeSave($insert);
     }
