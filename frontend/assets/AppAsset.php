@@ -16,12 +16,10 @@ class AppAsset extends AssetBundle
         'css/libs.min.css?v=10012018_1',
         'css/main.css?v=10012018_1',
         'css/site.css?v=10012018_1',
-        'css/shooting.css?v=10012018_1',
     ];
     public $js = [
         'js/libs.min.js?v=10012018_1',
         'js/common.js?v=10012018_1',
-        'js/shooting.js?v=10012018_1',
     ];
     public $depends = [
         'yii\web\YiiAsset',

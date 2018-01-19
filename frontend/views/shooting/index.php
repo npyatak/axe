@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Url;
+
+\frontend\assets\ShootingAsset::register($this);
 ?>
 
 <div class="shot_screen_game">
@@ -118,13 +120,13 @@ use yii\helpers\Url;
 	</div>
 </div>
 <script type="text/javascript">
-	const timeGame = 120000;//время игры
-	const timeLifeWarrior = 1000;//время отображения warrior
-	const timeBeforeShowWarrior = 500;//время перед отображением следующего warrior
-	const timeAnimationShowWarrior = 200;//время анимации появления warrior
-	const timeAnimationHideWarrior = 200;//время анимации скрытия warrior
-	const pointsPlus = 10;//очков за верный выстрел
-	const pointsMinus = -10;//очков за не верный выстрел
+	const timeGame = <?=$params['timeGame'];?>//время игры
+	const timeLifeWarrior = <?=$params['timeLifeWarrior'];?>//время отображения warrior
+	const timeBeforeShowWarrior = <?=$params['timeBeforeShowWarrior'];?>//время перед отображением следующего warrior
+	const timeAnimationShowWarrior = <?=$params['timeAnimationShowWarrior'];?>//время анимации появления warrior
+	const timeAnimationHideWarrior = <?=$params['timeAnimationHideWarrior'];?>//время анимации скрытия warrior
+	const pointsPlus = <?=$params['pointsPlus'];?>//очков за верный выстрел
+	const pointsMinus = <?=$params['pointsMinus'];?>//очков за не верный выстрел
 </script>
 <?php $script = "
 	$(document).ready(function(e) {

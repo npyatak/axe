@@ -7,6 +7,7 @@ use Yii;
 class ShootingResult extends \yii\db\ActiveRecord
 {
     public $totalScore;
+    //public $reCaptcha;
     /**
      * @inheritdoc
      */
@@ -25,6 +26,7 @@ class ShootingResult extends \yii\db\ActiveRecord
             [['user_id', 'created_at', 'client_score', 'score'], 'integer'],
             [['ip'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            //[['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'uncheckedMessage' => 'Пожалуйста, подтвердите, что вы не робот']
         ];
     }
 

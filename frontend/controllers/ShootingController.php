@@ -27,69 +27,26 @@ class ShootingController extends Controller
         $user->save(false, ['rules_shooting']);
 
         $params = Yii::$app->params['shooting'];
-        $data = [];
-        for ($i=0; $i <= ($params['endGameTime'] / (2 * $params['delayInterval']) + 10); $i++) { 
-            $x = rand(20, 930);
-            $y = rand(20, 420);
-            $data[$i] = ['x' => $x, 'y' => $y];
-        }
 
         $post = Yii::$app->request->post();
-        if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($post)) {
-            $targets = json_decode($post['targets']);
-            $clicks = json_decode($post['clicks']);
-
-            $targetArr = [];
-            foreach ($targets as $key => $t) {
-                if(isset($t->time)) {
-                    $targetArr[$t->time] = ['x' => $t->x, 'y' => $t->y];
-                }
-            }
-
-            $score = 0;
-            foreach ($clicks as $time => $coords) {
-                $flag = true;
-                $targetTime = $coords->t;
-
-                if($time >= $targetTime && $time <= $targetTime + $params['targetLifeDurationInterval']) {
-                    if(isset($targetArr[$targetTime])) {
-                        $x = floatval($targetArr[$targetTime]['x']) - 20;
-                        $y = floatval($targetArr[$targetTime]['y']) + 20;
-                        /*(x-x1)^2 + (y-y1)^2 <= R^2, где R - радиус окружности, который заносим в константы, по умолчанию радиус равен 20.
-                        То значит попал, количество баллов в плюс равно:
-                        округление до целых от квадратного корня из (x-x1)^2 + (y-y1)^2,
-                        то есть грубо у нас от 0 до 20 баллов за попадание с дискретностью в единицу.*/
-                        $distance = round(sqrt(pow(($x - (int)$coords->x), 2) + pow(($y - (int)$coords->y), 2)));
-
-                        if($distance <= $params['radius']) {
-                            $flag = false;
-                            $score += $params['radius'] - $distance;
-                        }
-                    }
-                }
-                if($flag) {
-                    $score -= 2;
-                }
-            }
-
-            if($score < 0) {
-                $score = 0;
-            } elseif($score > 1500) {
-                $score = 1500;
-            }
-
+        if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($post) && $post['client_score']) {
             $res = new ShootingResult;
+            $score = $post['client_score'];
+            if($score > 1000) {
+                $score = 1000;
+            } elseif ($score < 0) {
+                $score = 0;
+            }
             $res->score = $score;
-            $res->client_score = $post['client_score'];
+            $res->client_score = $score;
             $res->user_id = Yii::$app->user->id;
             $res->save();
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ['status' => 'success', 'score' => $score];
+            return ['status' => 'success'];
         }
 
         return $this->render('index', [
-            'data' => $data,
             'user' => $user,
             'params' => $params,
         ]);
@@ -113,9 +70,15 @@ class ShootingController extends Controller
         $userResult = null;
         if(!Yii::$app->user->isGuest) {
             $user = User::findOne(Yii::$app->user->id);
-            $userResult = ShootingResult::find()->where(['user_id' => $user->id])->asArray()->sum('score');
+            $userResult = ShootingResult::find()->where(['user_id' => $user->id])->asArray()->sum('score');       
             
-            $results = ShootingResult::find()->asArray()->select(['sum(score) as score', 'user_id'])->groupBy('user_id')->orderBy('score DESC')->indexBy('user_id')->all();
+            $results = ShootingResult::find()->asArray()
+                ->joinWith('user')
+                ->where(['user.clickbattle_ban' => null])
+                ->select(['sum(score) as score', 'user_id'])
+                ->groupBy('user_id')->orderBy('score DESC')
+                ->indexBy('user_id')
+                ->all();
             $userPlace = array_search($user->id, array_keys($results)) + 1;
         }
 
@@ -123,6 +86,7 @@ class ShootingController extends Controller
             'query' => ShootingResult::find()
                 ->select(['user.name', 'user.surname', 'user.city', 'shooting_result.*', 'sum(shooting_result.score) as totalScore'])
                 ->joinWith('user')
+                ->where(['user.clickbattle_ban' => null])
                 ->groupBy('user_id')
                 ->orderBy('totalScore'),
             'totalCount' => ShootingResult::find()

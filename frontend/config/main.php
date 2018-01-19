@@ -24,6 +24,12 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true, 'expire' => 3600 * 24 * 365],
         ],
+        'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
+            'siteKey' => '6LfAiiEUAAAAABkXoY9x31xnxi4_BPwz5wn7Tk5F',
+            'secret' => '6LfAiiEUAAAAAOaClCyM4rccuKqT4uM8lvJJiHgS',
+        ],
         'assetManager' => [
             'bundles' => [
                 'yii\web\JqueryAsset' => [
