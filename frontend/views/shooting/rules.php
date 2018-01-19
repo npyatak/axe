@@ -8,7 +8,7 @@ use yii\helpers\Url;
             <!-- click battle -->
             <div class="click_battle_main">
                 <div class="main_title">
-                    <h2><b>клик-баттл</b><br/><strong>Настоящий киберспортсмен <br/>должен уметь </strong>быстро<strong> и </strong>метко<strong> кликать</strong><br/>Усердно тренируйся и выигрывай призы</h2>
+                    <h2><b>Анимированный тир</b><br/><strong>Стреляй по «врагам» и выигрывай призы</strong></h2>
                 </div>
                 <div class="cm_blocks">
                     <!-- block -->
@@ -18,7 +18,7 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/cm1.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Зарегистрируйся</strong> <br>через ВКонтакте или Facebook </b></p>
+                            <p><b><strong>Зарегистрируйся</strong> <br>через ВКонтакте, Facebook или Google</b></p>
                         </div>
                     </div>
                     <!-- /block -->
@@ -29,7 +29,8 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/cm2.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Выбери</strong> <br>«мишень» для тренировки</b></p>
+                            <p><b><strong>УБИВАЙ «ВРАГОВ», 
+</strong> <br>НО НЕ ТРОГАЙ «ДРУЗЕЙ»</b></p>
                         </div>
                     </div>
                     <!-- /block -->
@@ -40,7 +41,8 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/cm3.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Покажи, как быстро и метко </strong> <br>ты умеешь кликать  </b></p>
+                            <p><b><strong>Играй снова </strong> <br>и набирай баллы</b>
+                                <br>Баллы суммируются по всем твоим играм</p>
                         </div>
                     </div>
                     <!-- /block -->
@@ -49,9 +51,9 @@ use yii\helpers\Url;
                         <div class="cmb_num">
                             <p>04</p>
                         </div>
-                        <div class="cmb_img"><img src="/img/cm4.png" alt="img"></div>
+                        <div class="cmb_img"><img src="/img/ch4.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>Выиграй </strong> <br>топовые игровые мышки</b>
+                            <p><b><strong>Выиграй </strong> <br>Microsoft Xbox One S 500Gb</b>
                                 <br>а также 5 подарочных наборов AXE</p>
                         </div>
                     </div>

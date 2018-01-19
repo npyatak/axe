@@ -70,7 +70,7 @@ if($result) {
                             </p>
                         </div> -->
                         <div class="scr2_block_text">
-                            <h4>Челлендж:  </h4>
+                            <h4>Челлендж :  </h4>
                             <h3>на лучший игровой момент</h3>
                             <p><b>Главный приз:</b> Автор лучшего игрового момента получит Sony Playstation 4 Slim 500 GB
                             </p>
@@ -92,7 +92,7 @@ if($result) {
                             <p><b>Призы:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
                         </div> -->
                         <div class="scr2_block_text">
-                            <h4>Клик-баттл: </h4>
+                            <h4>Клик-баттл : </h4>
                             <h3>Тренируйся и выигрывай призы</h3>
                             <p><b>Главный приз:</b> 2 победителя Клик-баттла получат по топовой игровой мышке</p>
                             <div class="ch_buttons">
@@ -108,11 +108,14 @@ if($result) {
                             <img src="/img/24.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
-                            <h4>Запуск анимированого тира </h4>
-                            <h3>19 января 2018 г </h3>
+                            <h4>Анимированый тир : </h4>
+                            <h3>УБИВАЙ &laquo;ВРАГОВ&raquo;, НО НЕ ТРОГАЙ &laquo;ДРУЗЕЙ&raquo;</h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
                             </p>
-                            <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
+                            <div class="ch_buttons">
+                                <a href="<?=Url::toRoute(['shooting/rules']);?>" class="scr2_text_btn transition" data-event="shot_way" data-param="main">участвовать</a>
+                                <a href="<?=Url::toRoute(['shooting/rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
+                            </div>
                         </div>
                     </div>
                     <!-- /block -->
@@ -126,9 +129,9 @@ if($result) {
                 <br/>
                 <a href="#rules-challenge" class="scr2_bottom_button fancybox transition">Челлендж</a>
                 <br/>
-                <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition" data-event="clicker_way" data-param="fullrules">Клик-баттл</a>
-                <!---<br/>
-                <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Анимированный тир</a> -->
+                <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition" data-event="shot_way" data-param="fullrules">Клик-баттл</a>
+                <br/>
+                <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Анимированный тир</a> 
             </div>
         </div>
     </div>

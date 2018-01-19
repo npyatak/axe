@@ -13,11 +13,11 @@ use common\models\ClickbattleResult;
                     <div class="main_title">
                         <h2>
                             <?php if($user && $userResult):?>
-                                <b><strong>Рейтинг <br>Клик-баттла</strong><br>У тебя <?=$userResult;?> <?=ClickbattleResult::getScoreText($userResult);?></b>
+                                <b><strong>Рейтинг <br>Анимированного тира</strong><br>У тебя <?=$userResult;?> <?=ClickbattleResult::getScoreText($userResult);?></b>
                                 <br><strong><?=$userPlace;?> место</strong>
                                 <br>Попробуй сыграть еще раз <br>баллы суммируются по всем твоим играм
                             <?php else:?>
-                                <b><strong>Рейтинг Клик</strong>-баттла</b>
+                                <b><strong>Рейтинг</strong> Анимированного тира</b>
                             <?php endif;?>
                         </h2>
                     </div>

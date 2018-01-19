@@ -1,0 +1,169 @@
+#shoot-explosion {
+  background-image: url(../img/explosion.png);
+  height: 64px;
+  margin-left: -32px;
+  margin-top: -32px;
+  position: absolute;
+  width: 64px;
+  z-index: 3;
+}
+#shoot-explosion.state0 {
+  background-position: 0 0;
+}
+#shoot-explosion.state1 {
+  background-position: -64px 0;
+}
+#shoot-explosion.state2 {
+  background-position: -128px 0;
+}
+#shoot-explosion.state3 {
+  background-position: -192px 0;
+}
+#shoot-explosion.state4 {
+  background-position: -256px 0;
+}
+
+#shoot-explosion.state5 {
+  background-position: 0 -64px;
+}
+#shoot-explosion.state6 {
+  background-position: -64px -64px;
+}
+#shoot-explosion.state7 {
+  background-position: -128px -64px;
+}
+#shoot-explosion.state8 {
+  background-position: -192px -64px;
+}
+#shoot-explosion.state9 {
+  background-position: -256px -64px;
+}
+
+#shoot-explosion.state10 {
+  background-position: 0 -128px;
+}
+#shoot-explosion.state11 {
+  background-position: -64px -128px;
+}
+#shoot-explosion.state12 {
+  background-position: -128px -128px;
+}
+#shoot-explosion.state13 {
+  background-position: -192px -128px;
+}
+#shoot-explosion.state14 {
+  background-position: -256px -128px;
+}
+
+#shoot-explosion.state15 {
+  background-position: 0 -192px;
+}
+#shoot-explosion.state16 {
+  background-position: -64px -192px;
+}
+#shoot-explosion.state17 {
+  background-position: -128px -192px;
+}
+#shoot-explosion.state18 {
+  background-position: -192px -192px;
+}
+#shoot-explosion.state19 {
+  background-position: -256px -192px;
+}
+
+#shoot-explosion.state20 {
+  background-position: 0 -256px;
+}
+#shoot-explosion.state21 {
+  background-position: -64px -256px;
+}
+#shoot-explosion.state22 {
+  background-position: -128px -256px;
+}
+#shoot-explosion.state23 {
+  background-position: -192px -256px;
+}
+#shoot-explosion.state24 {
+  background-position: -256px -256px;
+}
+
+#shot_game_screen2 {
+  display: none;
+}
+#shot_game_screen3 {
+  display: none;
+}
+#shot_game_screen2 .sg_img {
+  cursor: default;
+}
+#shot_game_screen2 .game_warrior1 {
+  z-index: 2;
+}
+#shot_game_screen2 .game_warrior1 img {
+  margin-left: 15px;
+}
+#shot_game_screen2 .game_warrior2 {
+  z-index: 2;
+}
+#shot_game_screen2 .game_warrior3 img {
+  left: -24px;
+  position: absolute;
+  top: 15px;
+}
+#shot_game_screen2 .game_warrior4 {
+  z-index: 2;
+}
+#shot_game_screen2 .game_warrior5 img {
+  bottom: 2px;
+  right: 28px;
+}
+#shot_game_screen2 .game_warrior10 {
+  border-radius: 20px 20px 0 0;
+  bottom: 102px;
+  height: 90px;
+  left: 475px;
+  overflow: hidden;
+  width: 52px;
+  z-index: 2;
+}
+#shot_game_screen2 .game_warrior10 img {
+  position: absolute;
+  right: -21px;
+  top: 12px;
+}
+#shot_game_screen2 .game_warrior12 {
+  height: 96px;
+  left: 435px;
+  overflow: hidden;
+  top: 38px;
+  width: 55px;
+  z-index: 2;
+}
+#shot_game_screen2 .game_warrior12 > img {
+  position: absolute;
+  right: -24px;
+  top: 12px;
+}
+#shot_game_screen2 .game_warrior13 {
+  bottom: 102px;
+  height: 91px;
+  left: 328px;
+  overflow: hidden;
+  width: 53px;
+  z-index: 2;
+}
+#shot_game_screen2 .game_warrior13 > img {
+  position: absolute;
+  right: 0;
+  top: 12px;
+}
+
+#shot_game_screen2 .game_warrior15 {
+  width: 53px;
+}
+#shot_game_screen2 .game_warrior15 > img {
+  right: -7px;
+}
+
+
+
