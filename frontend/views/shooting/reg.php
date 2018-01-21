@@ -11,15 +11,15 @@ use yii\widgets\ActiveForm;
                 <div class="reg_screen_cell">
                 	<?php if(!$user):?>
 	                    <div class="main_title">
-	                        <h2><b><strong>Зарегистрируйся в проекте</strong> <br> УБИВАЙ «ВРАГОВ», НО НЕ ТРОГАЙ «ДРУЗЕЙ»
-  <br><b>и получи Microsoft Xbox One S 500 GB в подарок</b></h2>
+	                        <h2><b><strong>Зарегистрируйся в проекте</strong> <br> УБИВАЙ ТЕРРОРИСТОВ, НО НЕ ТРОГАЙ МИРНЫХ ЖИТЕЛЕЙ
+  <br><b>и получи Microsoft Xbox One S 500 GB</b></h2>
 	                    </div>
 	                    <div class="reg_screen_block">
                     		<?=$this->render('../site/_register', ['ref' => Url::toRoute(['shooting/index']), 'rules' => 'shooting']);?>
 	                    </div>
                 	<?php else:?>
 	                    <div class="main_title">
-	                        <h2><b>УБИВАЙ «ВРАГОВ», НО НЕ ТРОГАЙ «ДРУЗЕЙ»</b><br>и получи Microsoft Xbox One S 500 GB в подарок </h2>
+	                        <h2><b>УБИВАЙ ТЕРРОРИСТОВ, НО НЕ ТРОГАЙ МИРНЫХ ЖИТЕЛЕЙ</b><br>и получи Microsoft Xbox One S 500 GB</h2>
 	                    </div>
 	                    <div class="reg_screen_block">
 	                        <div class="reg_screen_check">

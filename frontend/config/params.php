@@ -37,7 +37,7 @@ return [
     ],
 
     'shooting' => [
-        'timeGame' => 120000,//время игры
+        'timeGame' => 12000,//время игры
         'timeLifeWarrior' => 1000,//время отображения warrior
         'timeBeforeShowWarrior' => 500,//время перед отображением следующего warrior
         'timeAnimationShowWarrior' => 200,//время анимации появления warrior

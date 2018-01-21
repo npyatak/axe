@@ -122,14 +122,15 @@ function startGame() {
     clearTimeout(endGameSetTimeoutId);
     $('#shot_game_screen2').hide();
     $('#shot_game_screen3').show();
-    $('#shot_game_screen3').find('.shot_screen_block h4').html('<b>Ты заработал</b> ' + userPoins + ' <b>баллов</b>');
-    $.ajax({
-      type: 'POST',
-      data: 'client_score=' + userPoins,
-      success: function (data) {
+    $('#shootingresult-client_score').val(userPoins);
+    //$('#shot_game_screen4').find('.shot_screen_block h4').html('<b>Ты заработал</b> ' + userPoins + ' <b>баллов</b>');
+    // $.ajax({
+    //   type: 'POST',
+    //   data: 'client_score=' + userPoins,
+    //   success: function (data) {
 
-      },
-    });
+    //   },
+    // });
   }, timeGame);
 }
 

@@ -147,6 +147,11 @@ p.text {
 .bame_el {
 	z-index: 0;
 }
+.g-recaptcha {
+	position: absolute;
+	left: 50%;
+	margin-left: -150px;
+}
 
 
 

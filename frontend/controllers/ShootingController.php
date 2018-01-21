@@ -22,6 +22,8 @@ class ShootingController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['shooting/reg']));
         }
+        $model = new ShootingResult;
+        $userPoints = false;
         $user = User::findOne(Yii::$app->user->id);
         $user->rules_shooting = 1;
         $user->save(false, ['rules_shooting']);
@@ -29,26 +31,44 @@ class ShootingController extends Controller
         $params = Yii::$app->params['shooting'];
 
         $post = Yii::$app->request->post();
-        if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($post) && $post['client_score']) {
-            $res = new ShootingResult;
-            $score = $post['client_score'];
-            if($score > 1000) {
-                $score = 1000;
-            } elseif ($score < 0) {
-                $score = 0;
+        if(!Yii::$app->user->isGuest/* && Yii::$app->request->isAjax*/ && isset($post) && isset($post['ShootingResult'])) {
+            $model->load($post);
+            $model->score = $model->client_score;
+            if($model->client_score > 1000) {
+                $model->score = 1000;
+            } elseif ($model->client_score < 0) {
+                $model->score = 0;
             }
-            $res->score = $score;
-            $res->client_score = $post['client_score'];
-            $res->user_id = Yii::$app->user->id;
-            $res->save();
+            $model->user_id = Yii::$app->user->id;
+            if($model->save()) {
+                return $this->redirect(['result']);
+            }
 
-            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ['status' => 'success'];
+            // Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            // return ['status' => 'success'];
         }
 
         return $this->render('index', [
+            'model' => $model,
             'user' => $user,
             'params' => $params,
+            'userPoints' => $userPoints,
+        ]);
+    }
+
+    public function actionResult() {
+        if(Yii::$app->user->isGuest) {
+            return $this->redirect(Url::toRoute(['shooting/reg']));
+        }
+
+        $result = ShootingResult::find()->where(['user_id' => Yii::$app->user->id])->orderBy('id DESC')->one();
+
+        if($result === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        return $this->render('result', [
+            'result' => $result,
         ]);
     }
 

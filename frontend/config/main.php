@@ -27,8 +27,8 @@ return [
         'reCaptcha' => [
             'name' => 'reCaptcha',
             'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
-            'siteKey' => '6LfAiiEUAAAAABkXoY9x31xnxi4_BPwz5wn7Tk5F',
-            'secret' => '6LfAiiEUAAAAAOaClCyM4rccuKqT4uM8lvJJiHgS',
+            'siteKey' => '6Le-xkEUAAAAAO7UVnnb8nJquxWLH4lNfkcf2H8C',
+            'secret' => '6Le-xkEUAAAAALmUprM1NEUkNfntHgUHLOOKxa6s',
         ],
         'assetManager' => [
             'bundles' => [

@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 \frontend\assets\ShootingAsset::register($this);
 ?>
@@ -10,7 +11,7 @@ use yii\helpers\Url;
 			<div class="reg_screen_table">
 				<div class="reg_screen_cell">
 					<div class="main_title">
-						<h2><b><strong>Анимированный тир</strong></b></h2>
+						<h2><b><strong>Тир</strong></b></h2>
 					</div>
 					<!-- start -->
 					<div class="shot_screen_game_start" id="shot_game_screen1">
@@ -18,7 +19,7 @@ use yii\helpers\Url;
 							<h3><b>Внимание!</b> для прохождения игры, Вам необходимо перевернуть телефон в горизонтальное положение.</h3>
 						</div>
 						<div class="shot_screen_block">
-							<h3>Убивай "врагов", но не трогай "друзей"</h3>
+							<h3>Убивай террористов, но не трогай мирных жителей</h3>
 							<h4> <b>Главный приз:</b> Самый меткий и быстрый стрелок получит <br> Microsoft Xbox One S 500 GB </h4>
 							<div class="shot_axe_label"><img src="img/axe.png" alt="img"></div>
 							<a href="#" class="shot_play_btn transition">Играть</a>
@@ -84,34 +85,18 @@ use yii\helpers\Url;
 					</div> -->
 					<!-- /warning message -->
 					<!-- end -->
-					<div class="shot_screen_game_start" id="shot_game_screen3">
-						<div class="shot_screen_block_alert">
-							<h3><b>Внимание!</b> для прохождения игры, Вам необходимо перевернуть телефон в горизонтальное положение.</h3>
-						</div>
+					<div class="shot_screen_game_start" id="shot_game_screen3" style="text-align: center;">
 						<div class="shot_screen_block">
-							<h3>TO BE CONTINUED...</h3>
-							<h4> <b>Ты заработал</b> 0 <b>баллов</b></h4>
-							<style>
-								.second_text_shoot_end {
-									font-family: BebasNeueRegular;
-									color: #777;
-									font-size: 24px;
-								}
-								.second_text_shoot_end2 {
-									font-family: BebasNeueRegular;
-									color: #777;
-									font-size: 18px;
-								}
-							</style>
-							<p><span class="second_text_shoot_end">Чем больше попыток – тем выше шансы получить главный приз</span></p>
-							<p><span class="second_text_shoot_end2">в рейтинге баллы суммируются по всем твоим играм</span></p>
-							<br/><br/><br/>
-							<div class="cb_reslt_buttons">
-								<a href="/shooting" class="transition cb_reslt_button hovered" data-event="clicker_way" data-param="play_again_game">Попробовать еще раз</a>
-								<a href="/shooting/rating" class="transition cb_reslt_button" data-event="clicker_way" data-param="rating_game">Рейтинг участников</a>
-							</div>
-						</div>
+	    					<?php $form = ActiveForm::begin(['id' => 'score_form']); ?>
+			    				<?= $form->field($model, 'client_score')->hiddenInput()->label(false) ?>
 
+			    				<h3>Подтвердите, что вы не робот для продолжения</h3>
+		                        <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(), [
+    								//'widgetOptions' => ['class' => 'col-sm-offset-3'],
+    								'jsCallback' => 'reCaptchaResponse',
+		                        ])->label(false) ?>
+	    					<?php ActiveForm::end(); ?>
+	    				</div>
 					</div>
 					<!-- /end -->
 				</div>
@@ -132,6 +117,10 @@ use yii\helpers\Url;
 	$(document).ready(function(e) {
 		ga('send', 'event', 'shot_way', 'game');
 	});
+
+	var reCaptchaResponse = function() {
+		$('#score_form').submit();
+	}
 ";
 
 $this->registerJs($script, yii\web\View::POS_END);?>

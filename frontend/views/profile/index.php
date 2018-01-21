@@ -127,7 +127,7 @@ if($result) {
                     <!-- block -->
                     <div class="user_challange_block filled">
                         <div class="ucb_challenge">
-                            <h4>Анимированный тир :<br></h4>
+                            <h4>Тир :<br></h4>
                             <p><b>Главный приз:</b> самый усидчивый снайпер получит Microsoft Xbox One S 500 GB </p>
                             <div class="ucb_challenge_buttons">
                                 <?php if($user && $user->rules_clickbattle):?>
