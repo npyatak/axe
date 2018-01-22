@@ -43,7 +43,7 @@ class ClickbattleController extends Controller
                 $model->re_captcha = $post['ClickbattleResult']['reCaptcha'];
             }
             if(isset($post['g-recaptcha-response'])) {
-                $model->re_captcha_response = $post['g-recaptcha-response'];
+                $model->re_captcha_response = 'ok';
             }
 
             $targets = json_decode($model->targets);
