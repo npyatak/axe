@@ -28,6 +28,9 @@ class ShootingController extends Controller
         $user->rules_shooting = 1;
         $user->save(false, ['rules_shooting']);
 
+        $gamesCount = ShootingResult::getUserGamesCount();
+        //print_r($gamesCount);exit;
+
         $params = Yii::$app->params['shooting'];
 
         $post = Yii::$app->request->post();
@@ -53,6 +56,7 @@ class ShootingController extends Controller
             'user' => $user,
             'params' => $params,
             'userPoints' => $userPoints,
+            'gamesCount' => $gamesCount,
         ]);
     }
 

@@ -123,6 +123,9 @@ function startGame() {
     $('#shot_game_screen2').hide();
     $('#shot_game_screen3').show();
     $('#shootingresult-client_score').val(userPoins);
+    if($('#shot_game_screen3').find('#shootingresult-recaptcha-recaptcha').length == 0) {
+      $('#score_form').submit();
+    }
     //$('#shot_game_screen4').find('.shot_screen_block h4').html('<b>Ты заработал</b> ' + userPoins + ' <b>баллов</b>');
     // $.ajax({
     //   type: 'POST',

@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 \frontend\assets\ClickbattleAsset::register($this);
 ?>
@@ -65,29 +66,22 @@ use yii\helpers\Url;
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                    <div class="cb_game_table" id="cb_game_table4">
+                    <div class="cb_game_table" id="cb_game_table4" style="text-align: center;">                    
                         <div class="cb_game_cell">
                             <div class="cb_game_reslt">
-                                <div class="cb_reslt_heading">
-                                    <h4>TO BE CONTINUED...</h4>
-                                    <p>Ты заработал <b id="score"></b></p>
-                                    <style>
-                            						.second_text_click_end {
-																	    			color: #777;
-																	    			font-size: 24px;
-																				}
-																				.second_text_click_end2 {
-																	    			color: #777;
-																	    			font-size: 18px;
-																				}
-                            				</style>
-                                    <p><span class="second_text_click_end">Чем больше попыток – тем выше шансы получить главный приз</span></p>
-                                    <p><span class="second_text_click_end2">в рейтинге баллы суммируются по всем твоим играм</span></p>
-                                </div>
-                                <div class="cb_reslt_buttons">
-                                    <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="transition cb_reslt_button hovered" data-event="clicker_way" data-param="play_again_game">Попробовать еще раз</a>
-                                    <a href="<?=Url::toRoute(['clickbattle/rating']);?>" class="transition cb_reslt_button" data-event="clicker_way" data-param="rating_game">Рейтинг участников</a>
-                                </div>
+                                <?php $form = ActiveForm::begin(['id' => 'score_form']); ?>
+                                    <?= $form->field($model, 'client_score')->hiddenInput()->label(false) ?>
+                                    <?= $form->field($model, 'clicks')->hiddenInput()->label(false) ?>
+                                    <?= $form->field($model, 'targets')->hiddenInput()->label(false) ?>
+
+                                    <?php if($params['gamesWithoutCaptcha'] < $gamesCount):?>
+                                        <h3>Подтверди, что ты не робот для продолжения</h3>
+                                        <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(), [
+                                            //'widgetOptions' => ['class' => 'col-sm-offset-3'],
+                                            'jsCallback' => 'reCaptchaResponse',
+                                        ])->label(false) ?>
+                                    <?php endif;?>
+                                <?php ActiveForm::end(); ?>
                             </div>
                         </div>
                     </div>
@@ -128,6 +122,10 @@ use yii\helpers\Url;
     $(document).ready(function(e) {
         ga('send', 'event', 'clicker_way', 'game');
     });
+    
+    var reCaptchaResponse = function() {
+        $('#score_form').submit();
+    }
 ";
 
 $this->registerJs($script, yii\web\View::POS_END);?>

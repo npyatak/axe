@@ -22,6 +22,9 @@ class ClickbattleController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['clickbattle/reg']));
         }
+        $model = new ClickbattleResult;
+        $gamesCount = ClickbattleResult::getUserGamesCount();
+
         $user = User::findOne(Yii::$app->user->id);
         $user->rules_clickbattle = 1;
         $user->save(false, ['rules_clickbattle']);
@@ -35,9 +38,9 @@ class ClickbattleController extends Controller
         }
 
         $post = Yii::$app->request->post();
-        if(!Yii::$app->user->isGuest && Yii::$app->request->isAjax && isset($post)) {
-            $targets = json_decode($post['targets']);
-            $clicks = json_decode($post['clicks']);
+        if(!Yii::$app->user->isGuest && $model->load($post)) {
+            $targets = json_decode($model->targets);
+            $clicks = json_decode($model->clicks);
 
             $targetArr = [];
             foreach ($targets as $key => $t) {
@@ -78,13 +81,13 @@ class ClickbattleController extends Controller
                 $score = 1500;
             }
 
-            $res = new ClickbattleResult;
-            $res->score = $score;
-            $res->client_score = $post['client_score'];
-            $res->user_id = Yii::$app->user->id;
-            $res->targets = $post['targets'];
-            $res->clicks = $post['clicks'];
-            $res->save();
+            $model->score = $score;
+            $model->user_id = Yii::$app->user->id;
+            $model->targets = $model->targets;
+            $model->clicks = $model->clicks;
+            if($model->save()) {
+                return $this->redirect(['result']);
+            }
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return ['status' => 'success', 'score' => $score];
@@ -94,6 +97,24 @@ class ClickbattleController extends Controller
             'data' => $data,
             'user' => $user,
             'params' => $params,
+            'model' => $model,
+            'gamesCount' => $gamesCount,
+        ]);
+    }
+
+    public function actionResult() {
+        if(Yii::$app->user->isGuest) {
+            return $this->redirect(Url::toRoute(['clickbattle/reg']));
+        }
+
+        $result = ClickbattleResult::find()->where(['user_id' => Yii::$app->user->id])->orderBy('id DESC')->one();
+
+        if($result === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        return $this->render('result', [
+            'result' => $result,
         ]);
     }
 

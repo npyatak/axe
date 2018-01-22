@@ -90,11 +90,13 @@ use yii\widgets\ActiveForm;
 	    					<?php $form = ActiveForm::begin(['id' => 'score_form']); ?>
 			    				<?= $form->field($model, 'client_score')->hiddenInput()->label(false) ?>
 
-			    				<h3>Подтвердите, что вы не робот для продолжения</h3>
-		                        <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(), [
-    								//'widgetOptions' => ['class' => 'col-sm-offset-3'],
-    								'jsCallback' => 'reCaptchaResponse',
-		                        ])->label(false) ?>
+			    				<?php if($params['gamesWithoutCaptcha'] < $gamesCount):?>
+				    				<h3>Подтверди, что ты не робот для продолжения</h3>
+			                        <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(), [
+	    								//'widgetOptions' => ['class' => 'col-sm-offset-3'],
+	    								'jsCallback' => 'reCaptchaResponse',
+			                        ])->label(false) ?>
+			                    <?php endif;?>
 	    					<?php ActiveForm::end(); ?>
 	    				</div>
 					</div>

@@ -30,7 +30,7 @@ use yii\helpers\Url;
                         <div class="cmb_img"><img src="/img/cm2.png" alt="img"></div>
                         <div class="cmb_text">
                             <p><b><strong>УБИВАЙ ТЕРРОРИСТОВ, 
-</strong> <br>НО НЕ ТРОГАЙ МИРНЫХ ЖИТЕЛЕЙ</b></p>
+                            </strong> <br>НО НЕ ТРОГАЙ МИРНЫХ ЖИТЕЛЕЙ</b></p>
                         </div>
                     </div>
                     <!-- /block -->
@@ -54,7 +54,6 @@ use yii\helpers\Url;
                         <div class="cmb_img"><img src="/img/ch4.png" alt="img"></div>
                         <div class="cmb_text">
                             <p><b><strong>Выиграй </strong> <br>Microsoft Xbox One S 500Gb</b>
-                                <br>а также 5 подарочных наборов AXE</p>
                         </div>
                     </div>
                     <!-- /block -->

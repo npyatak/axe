@@ -25,7 +25,7 @@ return [
     'mainPageVideoId' => 4,
 
     'clickbattle' => [
-        'endGameTime' => 60000,
+        'endGameTime' => 10000,
         //ограничение игры по времени 120 сек.
         'delayInterval' => 1000,
         //это время в миллисекундах от момента появления одной картинки, до её пропадания
@@ -34,6 +34,7 @@ return [
         'radius' => 20,
         //это радиус круга в пикселах в который и нужно попадать на png-картинке “враге”, которая сама по себе 70-70.
         'halfImageWidth' => 35,
+        'gamesWithoutCaptcha' => 11,
     ],
 
     'shooting' => [
@@ -44,6 +45,7 @@ return [
         'timeAnimationHideWarrior' => 200,//время анимации скрытия warrior
         'pointsPlus' => 10,//очков за верный выстрел
         'pointsMinus' => -10,//очков за не верный выстрел
+        'gamesWithoutCaptcha' => 11,
     ]
 
 ];

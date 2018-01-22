@@ -107,6 +107,11 @@ if(!(Yii::$app->controller->id === 'clickbattle' && Yii::$app->controller->actio
                                     <?php else:?>
                                         <li><a href="<?=Url::toRoute(['clickbattle/rules']);?>">Клик-баттл</a></li>
                                     <?php endif;?>
+                                    <?php if($user && $user->rules_shooting):?>
+                                        <li><a href="<?=Url::toRoute(['shooting/index']);?>" data-event="shot_way" data-param="menu">Тир</a></li>
+                                    <?php else:?>
+                                        <li><a href="<?=Url::toRoute(['shooting/rules']);?>">Тир</a></li>
+                                    <?php endif;?>
                                 </ul>
                             </li>
                             <li><a href="<?=Url::toRoute(['profile/index']);?>">Личный кабинет</a></li>

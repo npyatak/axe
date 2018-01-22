@@ -7,6 +7,7 @@ use Yii;
 class ClickbattleResult extends \yii\db\ActiveRecord
 {
     public $totalScore;
+    public $reCaptcha;
     /**
      * @inheritdoc
      */
@@ -26,6 +27,10 @@ class ClickbattleResult extends \yii\db\ActiveRecord
             [['ip'], 'string', 'max' => 255],
             [['targets', 'clicks'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'uncheckedMessage' => 'Пожалуйста, подтвердите, что вы не робот', 'skipOnEmpty' => function($model) {
+                $count = Yii::$app->params['shooting']['gamesWithoutCaptcha'];
+                return self::getUserGamesCount() < $count;
+            }],
         ];
     }
 
@@ -85,5 +90,9 @@ class ClickbattleResult extends \yii\db\ActiveRecord
         } else {
             return 'баллов';
         }
+    }
+
+    public function getUserGamesCount() {
+        return self::find()->where(['user_id' => Yii::$app->user->id])->count();
     }
 }
