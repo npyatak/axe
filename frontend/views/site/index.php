@@ -108,8 +108,8 @@ if($result) {
                             <img src="/img/24.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
-                            <h4>Анимированый тир : </h4>
-                            <h3>УБИВАЙ &laquo;ВРАГОВ&raquo;, НО НЕ ТРОГАЙ &laquo;ДРУЗЕЙ&raquo;</h3>
+                            <h4>Тир : </h4>
+                            <h3>УБИВАЙ ВРАГОВ, НО НЕ ТРОГАЙ мирных жителей</h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
                             </p>
                             <div class="ch_buttons">
@@ -130,8 +130,8 @@ if($result) {
                 <a href="#rules-challenge" class="scr2_bottom_button fancybox transition">Челлендж</a>
                 <br/>
                 <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition" data-event="shot_way" data-param="fullrules">Клик-баттл</a>
-                <br/>
-                <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Анимированный тир</a> 
+                <!-- <br/>
+                <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Тир</a>  -->
             </div>
         </div>
     </div>

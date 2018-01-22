@@ -153,6 +153,9 @@ function animateExplosion() {
 }
 
 $(document).ready(function() {
+  $('#shot_game_screen1').hide();
+  $('#shot_game_screen2').show();
+  startGame();
 
   if (typeof cookieSound !== 'undefined' && cookieSound == 1) {
     $('.sound-off').hide();

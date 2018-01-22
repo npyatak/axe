@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 							<h3><b>Внимание!</b> для прохождения игры, Вам необходимо перевернуть телефон в горизонтальное положение.</h3>
 						</div>
 						<div class="shot_screen_block">
-							<h3>Убивай террористов, но не трогай мирных жителей</h3>
+							<h3>Убивай врагов, но не трогай мирных жителей</h3>
 							<h4> <b>Главный приз:</b> Самый меткий и быстрый стрелок получит <br> Microsoft Xbox One S 500 GB </h4>
 							<div class="shot_axe_label"><img src="img/axe.png" alt="img"></div>
 							<a href="#" class="shot_play_btn transition">Играть</a>

@@ -39,6 +39,13 @@ class ClickbattleController extends Controller
 
         $post = Yii::$app->request->post();
         if(!Yii::$app->user->isGuest && $model->load($post)) {
+            if(isset($post['ClickbattleResult']['reCaptcha'])) {
+                $model->re_captcha = $post['ClickbattleResult']['reCaptcha'];
+            }
+            if(isset($post['g-recaptcha-response'])) {
+                $model->re_captcha_response = $post['g-recaptcha-response'];
+            }
+
             $targets = json_decode($model->targets);
             $clicks = json_decode($model->clicks);
 

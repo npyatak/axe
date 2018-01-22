@@ -138,7 +138,7 @@ if($result) {
                                 <?php endif;?>
                             </div>
                         </div>
-                        <!--<div class="clng_img"><img src="/img/24.png" alt="img"></div>-->
+                        <div class="clng_img"><img src="/img/clng4.png" alt="img"></div>
                     </div>
                     <!-- /block -->
                 </div>

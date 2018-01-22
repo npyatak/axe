@@ -34,8 +34,13 @@ class ShootingController extends Controller
         $params = Yii::$app->params['shooting'];
 
         $post = Yii::$app->request->post();
-        if(!Yii::$app->user->isGuest/* && Yii::$app->request->isAjax*/ && isset($post) && isset($post['ShootingResult'])) {
-            $model->load($post);
+        if(!Yii::$app->user->isGuest && $model->load($post)) {
+            if(isset($post['ShootingResult']['reCaptcha'])) {
+                $model->re_captcha = $post['ShootingResult']['reCaptcha'];
+            }
+            if(isset($post['g-recaptcha-response'])) {
+                $model->re_captcha_response = $post['g-recaptcha-response'];
+            }
             $model->score = $model->client_score;
             if($model->client_score > 1000) {
                 $model->score = 1000;
