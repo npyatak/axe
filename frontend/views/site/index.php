@@ -108,6 +108,21 @@ if($result) {
                             <img src="/img/24.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
+                            <h4>Запуск анимированого тира </h4>
+                            <h3>25 января 2018 г </h3>
+                            <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
+                            </p>
+                            <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
+                        </div>
+                    </div>
+                    <!-- /block -->
+
+                    <!-- block -->
+                    <!-- <div class="scr2_block">
+                        <div class="scr2_block_img">
+                            <img src="/img/24.png" alt="img">
+                        </div>
+                        <div class="scr2_block_text">
                             <h4>Тир : </h4>
                             <h3>УБИВАЙ ВРАГОВ, НО НЕ ТРОГАЙ мирных жителей</h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
@@ -117,7 +132,7 @@ if($result) {
                                 <a href="<?=Url::toRoute(['shooting/rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- /block -->
                 </div>
                 <!-- blocks -->
