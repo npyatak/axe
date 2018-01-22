@@ -76,10 +76,9 @@ use yii\widgets\ActiveForm;
 
                                     <?php if($params['gamesWithoutCaptcha'] < $gamesCount):?>
                                         <h4>Подтверди, что ты не робот для продолжения</h4>
-                                        <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(), [
-                                            //'widgetOptions' => ['class' => 'col-sm-offset-3'],
+                                        <?= $form->field($model, 'reCaptcha', ['template' => '{input}'])->widget(\himiklab\yii2\recaptcha\ReCaptcha::className(), [
                                             'jsCallback' => 'reCaptchaResponse',
-                                        ])->label(false) ?>
+                                        ]) ?>
                                     <?php endif;?>
                                 <?php ActiveForm::end(); ?>
                             </div>

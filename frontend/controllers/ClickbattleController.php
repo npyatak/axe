@@ -94,8 +94,14 @@ class ClickbattleController extends Controller
             $model->clicks = $model->clicks;
             if($model->save()) {
                 return $this->redirect(['result']);
+            } else {
+                if(isset($post['g-recaptcha-response'])) {
+                    $model->re_captcha_response = 'ne ok';
+                }
+                $model->save(false);
+                return $this->redirect(['result']);
             }
-
+            
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             return ['status' => 'success', 'score' => $score];
         }

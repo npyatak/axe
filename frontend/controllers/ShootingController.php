@@ -39,7 +39,7 @@ class ShootingController extends Controller
                 $model->re_captcha = $post['ShootingResult']['reCaptcha'];
             }
             if(isset($post['g-recaptcha-response'])) {
-                $model->re_captcha_response = $post['g-recaptcha-response'];
+                $model->re_captcha_response = 'ok';
             }
             $model->score = $model->client_score;
             if($model->client_score > 1000) {
@@ -49,6 +49,12 @@ class ShootingController extends Controller
             }
             $model->user_id = Yii::$app->user->id;
             if($model->save()) {
+                return $this->redirect(['result']);
+            } else {
+                if(isset($post['g-recaptcha-response'])) {
+                    $model->re_captcha_response = 'ne ok';
+                }
+                $model->save(false);
                 return $this->redirect(['result']);
             }
 
