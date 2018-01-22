@@ -25,7 +25,7 @@ return [
     'mainPageVideoId' => 4,
 
     'clickbattle' => [
-        'endGameTime' => 12000,
+        'endGameTime' => 120000,
         //ограничение игры по времени 120 сек.
         'delayInterval' => 1000,
         //это время в миллисекундах от момента появления одной картинки, до её пропадания
@@ -38,7 +38,7 @@ return [
     ],
 
     'shooting' => [
-        'timeGame' => 12000,//время игры
+        'timeGame' => 120000,//время игры
         'timeLifeWarrior' => 1000,//время отображения warrior
         'timeBeforeShowWarrior' => 500,//время перед отображением следующего warrior
         'timeAnimationShowWarrior' => 200,//время анимации появления warrior
