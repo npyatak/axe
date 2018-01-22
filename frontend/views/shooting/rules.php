@@ -8,7 +8,7 @@ use yii\helpers\Url;
             <!-- click battle -->
             <div class="click_battle_main">
                 <div class="main_title">
-                    <h2><b>Тир</b><br/><strong>Стреляй по террористам и выигрывай призы</strong></h2>
+                    <h2><b>Тир</b><br/><strong>Стреляй по врагам и выигрывай призы</strong></h2>
                 </div>
                 <div class="cm_blocks">
                     <!-- block -->
@@ -29,7 +29,7 @@ use yii\helpers\Url;
                         </div>
                         <div class="cmb_img"><img src="/img/cm2.png" alt="img"></div>
                         <div class="cmb_text">
-                            <p><b><strong>УБИВАЙ ТЕРРОРИСТОВ, 
+                            <p><b><strong>УБИВАЙ врагов, 
 </strong> <br>НО НЕ ТРОГАЙ МИРНЫХ ЖИТЕЛЕЙ</b></p>
                         </div>
                     </div>
@@ -54,7 +54,7 @@ use yii\helpers\Url;
                         <div class="cmb_img"><img src="/img/ch4.png" alt="img"></div>
                         <div class="cmb_text">
                             <p><b><strong>Выиграй </strong> <br>Microsoft Xbox One S 500Gb</b>
-                                <br>а также 5 подарочных наборов AXE</p>
+                                <!--<br>а также 5 подарочных наборов AXE</p>-->
                         </div>
                     </div>
                     <!-- /block -->
