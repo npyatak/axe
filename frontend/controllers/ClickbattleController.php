@@ -92,13 +92,14 @@ class ClickbattleController extends Controller
             $model->score = $score;
             $model->targets = $model->targets;
             $model->clicks = $model->clicks;
-            if($model->save()) {
-                return $this->redirect(['result']);
-            } else {
-                if($gamesCount > $params['gamesWithoutCaptcha']) {
-                    $model->re_captcha_response = 'ne ok';
-                }
-                $model->save(false);
+
+            $model->validate();
+            
+            if($gamesCount > $params['gamesWithoutCaptcha']) {
+                $model->re_captcha_response = json_encode($_POST['GoogleResponse']);
+            }
+
+            if($model->save(false)) {
                 return $this->redirect(['result']);
             }
         } else {
