@@ -23,9 +23,9 @@ class ClickbattleResult extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'created_at', 'client_score', 'score'], 'integer'],
+            [['user_id', 'created_at', 'updated_at', 'client_score', 'score'], 'integer'],
             [['ip'], 'string', 'max' => 255],
-            [['targets', 'clicks', 're_captcha', 're_captcha_response'], 'safe'],
+            [['targets', 'targets_server', 'clicks', 're_captcha', 're_captcha_response'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'uncheckedMessage' => 'Пожалуйста, подтвердите, что вы не робот', 'skipOnEmpty' => function($model) {
                 $count = Yii::$app->params['shooting']['gamesWithoutCaptcha'];
@@ -38,7 +38,6 @@ class ClickbattleResult extends \yii\db\ActiveRecord
         return [
             [
                 'class' => \yii\behaviors\TimestampBehavior::className(),
-                'updatedAtAttribute' => false
             ]
         ];
     }

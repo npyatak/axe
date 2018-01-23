@@ -22,7 +22,6 @@ class ClickbattleController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['clickbattle/reg']));
         }
-        $model = new ClickbattleResult;
         $gamesCount = ClickbattleResult::getUserGamesCount();
 
         $user = User::findOne(Yii::$app->user->id);
@@ -38,11 +37,13 @@ class ClickbattleController extends Controller
         }
 
         $post = Yii::$app->request->post();
-        if(!Yii::$app->user->isGuest && $model->load($post)) {
+        if(isset($post['ClickbattleResult'])) {
+            $model = ClickbattleResult::find()->where(['user_id' => Yii::$app->user->id])->orderBy('id DESC')->one();
+            $model->load($post);
             if(isset($post['ClickbattleResult']['reCaptcha'])) {
                 $model->re_captcha = $post['ClickbattleResult']['reCaptcha'];
             }
-            if(isset($post['g-recaptcha-response'])) {
+            if($gamesCount > $params['gamesWithoutCaptcha']) {
                 $model->re_captcha_response = 'ok';
             }
 
@@ -89,21 +90,23 @@ class ClickbattleController extends Controller
             }
 
             $model->score = $score;
-            $model->user_id = Yii::$app->user->id;
             $model->targets = $model->targets;
             $model->clicks = $model->clicks;
             if($model->save()) {
                 return $this->redirect(['result']);
             } else {
-                if(isset($post['g-recaptcha-response'])) {
+                if($gamesCount > $params['gamesWithoutCaptcha']) {
                     $model->re_captcha_response = 'ne ok';
                 }
                 $model->save(false);
                 return $this->redirect(['result']);
             }
-            
-            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ['status' => 'success', 'score' => $score];
+        } else {
+            $model = new ClickbattleResult;
+            $model->user_id = Yii::$app->user->id;
+            $model->targets_server = json_encode($data);
+            $model->score = 0;
+            $model->save();
         }
 
         return $this->render('index', [
