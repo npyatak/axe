@@ -23,6 +23,7 @@ class ClickbattleController extends CController
     {
         
         $results = ClickbattleResult::find()->asArray()
+            ->select(['user.id', 'user.surname','user.clickbattle_ban', 'clickbattle_result.id', 'clickbattle_result.user_id', 'clickbattle_result.targets_server', 'clickbattle_result.targets'])
             ->joinWith('user')
             ->where(['user.clickbattle_ban' => null])
             ->andWhere(['not', ['clickbattle_result.targets' => null]])
@@ -43,21 +44,12 @@ class ClickbattleController extends CController
                         break;
                     }
                     if($ts[$i]->x - 15 != $t[$i]->x || $ts[$i]->y + 15 != $t[$i]->y) {
-                        echo 'user_id = '.$r['user_id'].'. game_id = '.$r['id'];
+                        echo 'user: id = '.$r['user_id'].' surname = '.$r['user']['surname'].'. game_id = '.$r['id'];
                         echo '<br>';
                         break;
                     }
                 }
             }
-        }
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = Clickbattle::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
 }
