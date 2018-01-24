@@ -23,7 +23,7 @@ class ClickbattleResult extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'created_at', 'updated_at', 'client_score', 'score'], 'integer'],
+            [['user_id', 'created_at', 'updated_at', 'client_score', 'score', 'targets_type'], 'integer'],
             [['ip'], 'string', 'max' => 255],
             [['targets', 'targets_server', 'clicks', 're_captcha', 're_captcha_response'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],

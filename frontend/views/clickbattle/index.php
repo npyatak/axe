@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
                                     <div class="enemy_block_img">
                                         <img src="/img/tank.png" alt="img">
                                     </div>
-                                    <a href="#" data-icon="tank" class="enemy_block_button transition" data-event="clicker_way" data-param="play_tank">Выбрать</a>
+                                    <a href="#" data-icon="tank" class="enemy_block_button transition" data-type="1" data-event="clicker_way" data-param="play_tank">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                                 <!-- block -->
@@ -38,7 +38,7 @@ use yii\widgets\ActiveForm;
                                     <div class="enemy_block_img">
                                         <img src="/img/axe.png" alt="img">
                                     </div>
-                                    <a href="#" data-icon="axe" class="enemy_block_button transition" data-event="clicker_way" data-param="play_ork">Выбрать</a>
+                                    <a href="#" data-icon="axe" class="enemy_block_button transition" data-type="2" data-event="clicker_way" data-param="play_ork">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                                 <!-- block -->
@@ -46,7 +46,7 @@ use yii\widgets\ActiveForm;
                                     <div class="enemy_block_img">
                                         <img src="/img/weapon.png" alt="img">
                                     </div>
-                                    <a href="#" data-icon="weapon" class="enemy_block_button transition" data-event="clicker_way" data-param="play_ak47">Выбрать</a>
+                                    <a href="#" data-icon="weapon" class="enemy_block_button transition" data-type="3" data-event="clicker_way" data-param="play_ak47">Выбрать</a>
                                 </div>
                                 <!-- /block -->
                             </div>
@@ -73,6 +73,7 @@ use yii\widgets\ActiveForm;
                                     <?= $form->field($model, 'client_score')->hiddenInput()->label(false) ?>
                                     <?= $form->field($model, 'clicks')->hiddenInput()->label(false) ?>
                                     <?= $form->field($model, 'targets')->hiddenInput()->label(false) ?>
+                                    <?= $form->field($model, 'targets_type')->hiddenInput()->label(false) ?>
 
                                     <?php if($params['gamesWithoutCaptcha'] < $gamesCount):?>
                                         <h4>Подтверди, что ты не робот для продолжения</h4>
@@ -125,6 +126,10 @@ use yii\widgets\ActiveForm;
     var reCaptchaResponse = function() {
         $('#score_form').submit();
     }
+
+    $('.enemy_block_button').click(function() {
+        $('#clickbattleresult-targets_type').val($(this).data('type'));
+    })
 ";
 
 $this->registerJs($script, yii\web\View::POS_END);?>
