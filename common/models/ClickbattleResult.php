@@ -28,7 +28,7 @@ class ClickbattleResult extends \yii\db\ActiveRecord
             [['targets', 'targets_server', 'clicks', 're_captcha', 're_captcha_response'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['reCaptcha'], \frontend\components\ReCaptchaValidator::className(), 'uncheckedMessage' => 'Пожалуйста, подтвердите, что вы не робот', 'skipOnEmpty' => function($model) {
-                $count = Yii::$app->params['shooting']['gamesWithoutCaptcha'];
+                $count = Yii::$app->params['clickbattle']['gamesWithoutCaptcha'];
                 return self::getUserGamesCount() < $count;
             }],
         ];

@@ -30,8 +30,8 @@ use yii\helpers\Url;
 							<p><span class="second_text_shoot_end2">в рейтинге баллы суммируются по всем твоим играм</span></p>
 							<br/><br/><br/>
 							<div class="cb_reslt_buttons">
-								<a href="/shooting" class="transition cb_reslt_button hovered" data-event="clicker_way" data-param="play_again_game">Попробовать еще раз</a>
-								<a href="/shooting/rating" class="transition cb_reslt_button" data-event="clicker_way" data-param="rating_game">Рейтинг участников</a>
+								<a href="<?=Url::toRoute(['shooting/index']);?>" id="play_again" class="transition cb_reslt_button hovered" data-event="clicker_way" data-param="play_again_game">Попробовать еще раз</a>
+								<a href="<?=Url::toRoute(['shooting/rating']);?>" class="transition cb_reslt_button" data-event="clicker_way" data-param="rating_game">Рейтинг участников</a>
 							</div>
 						</div>
 
@@ -42,3 +42,19 @@ use yii\helpers\Url;
 		</div>
 	</div>
 </div>
+
+<?php $script = "
+	$('#play_again').click(function(e) {
+		elem = $(this);
+        $.ajax({
+        	url: '".Url::toRoute(['shooting/play-again'])."',
+            success: function(data) {
+                window.location.href = elem.attr('href');
+            }
+        });
+
+        return false;
+	})
+";
+
+$this->registerJs($script, yii\web\View::POS_END);?>

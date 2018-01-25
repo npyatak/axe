@@ -23,11 +23,11 @@ class ShootingResult extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'created_at', 'client_score', 'score'], 'integer'],
-            [['ip'], 'string'],
+            [['user_id', 'created_at', 'updated_at', 'client_score', 'score', 'play_again'], 'integer'],
+            [['ip', 'browser'], 'string'],
             [['re_captcha', 're_captcha_response'], 'safe'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(), 'uncheckedMessage' => 'Пожалуйста, подтвердите, что вы не робот', 'skipOnEmpty' => function($model) {
+            [['reCaptcha'], \frontend\components\ReCaptchaValidator::className(), 'uncheckedMessage' => 'Пожалуйста, подтвердите, что вы не робот', 'skipOnEmpty' => function($model) {
                 $count = Yii::$app->params['shooting']['gamesWithoutCaptcha'];
                 return self::getUserGamesCount() < $count;
             }],
@@ -38,7 +38,6 @@ class ShootingResult extends \yii\db\ActiveRecord
         return [
             [
                 'class' => \yii\behaviors\TimestampBehavior::className(),
-                'updatedAtAttribute' => false
             ]
         ];
     }
@@ -57,15 +56,9 @@ class ShootingResult extends \yii\db\ActiveRecord
         ];
     }
 
-    // public function afterSave($insert, $changedAttributes) {
-    //     $this->challenge->likes = self::find()->where(['challenge_id'=>$this->challenge->id])->count();
-    //     $this->challenge->save(false, ['likes']);
-
-    //     return parent::afterSave($insert, $changedAttributes);
-    // }
-
     public function beforeSave($insert) {
-        $this->ip = $_SERVER['REMOTE_ADDR'].' '.$_SERVER['HTTP_USER_AGENT'];
+        $this->ip = $_SERVER['REMOTE_ADDR'];
+        $this->browser = $_SERVER['HTTP_USER_AGENT'];
 
         return parent::beforeSave($insert);
     }

@@ -22,54 +22,108 @@ class ShootingController extends Controller
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['shooting/reg']));
         }
-        $model = new ShootingResult;
-        $userPoints = false;
+        $gamesCount = ShootingResult::getUserGamesCount();
+
         $user = User::findOne(Yii::$app->user->id);
         $user->rules_shooting = 1;
         $user->save(false, ['rules_shooting']);
 
-        $gamesCount = ShootingResult::getUserGamesCount();
-        //print_r($gamesCount);exit;
-
         $params = Yii::$app->params['shooting'];
 
         $post = Yii::$app->request->post();
-        if(!Yii::$app->user->isGuest && $model->load($post)) {
+        if(isset($post['ShootingResult'])) {
+            $model = ShootingResult::find()->where(['user_id' => Yii::$app->user->id])->orderBy('id DESC')->one();
+            $model->load($post);
             if(isset($post['ShootingResult']['reCaptcha'])) {
                 $model->re_captcha = $post['ShootingResult']['reCaptcha'];
             }
-            if(isset($post['g-recaptcha-response'])) {
+            if($gamesCount > $params['gamesWithoutCaptcha']) {
                 $model->re_captcha_response = 'ok';
             }
+
             $model->score = $model->client_score;
             if($model->client_score > 1000) {
                 $model->score = 1000;
             } elseif ($model->client_score < 0) {
                 $model->score = 0;
             }
-            $model->user_id = Yii::$app->user->id;
-            if($model->save()) {
-                return $this->redirect(['result']);
-            } else {
-                if(isset($post['g-recaptcha-response'])) {
-                    $model->re_captcha_response = 'ne ok';
-                }
-                $model->save(false);
-                return $this->redirect(['result']);
+
+            $model->validate();
+            
+            if($gamesCount > $params['gamesWithoutCaptcha']) {
+                $model->re_captcha_response = json_encode($_POST['GoogleResponse']);
             }
 
-            // Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            // return ['status' => 'success'];
+            if($model->save(false)) {
+                return $this->redirect(['result']);
+            }
+        } else {
+            $model = new ShootingResult;
+            $model->user_id = Yii::$app->user->id;
+            $model->score = 0;
+            $model->save();
         }
 
         return $this->render('index', [
-            'model' => $model,
             'user' => $user,
             'params' => $params,
-            'userPoints' => $userPoints,
+            'model' => $model,
             'gamesCount' => $gamesCount,
         ]);
     }
+
+    // public function actionIndex() {
+    //     if(Yii::$app->user->isGuest) {
+    //         return $this->redirect(Url::toRoute(['shooting/reg']));
+    //     }
+    //     $model = new ShootingResult;
+    //     $userPoints = false;
+    //     $user = User::findOne(Yii::$app->user->id);
+    //     $user->rules_shooting = 1;
+    //     $user->save(false, ['rules_shooting']);
+
+    //     $gamesCount = ShootingResult::getUserGamesCount();
+    //     //print_r($gamesCount);exit;
+
+    //     $params = Yii::$app->params['shooting'];
+
+    //     $post = Yii::$app->request->post();
+    //     if(!Yii::$app->user->isGuest && $model->load($post)) {
+    //         if(isset($post['ShootingResult']['reCaptcha'])) {
+    //             $model->re_captcha = $post['ShootingResult']['reCaptcha'];
+    //         }
+    //         if(isset($post['g-recaptcha-response'])) {
+    //             $model->re_captcha_response = 'ok';
+    //         }
+    //         $model->score = $model->client_score;
+    //         if($model->client_score > 1000) {
+    //             $model->score = 1000;
+    //         } elseif ($model->client_score < 0) {
+    //             $model->score = 0;
+    //         }
+    //         $model->user_id = Yii::$app->user->id;
+    //         if($model->save()) {
+    //             return $this->redirect(['result']);
+    //         } else {
+    //             if(isset($post['g-recaptcha-response'])) {
+    //                 $model->re_captcha_response = 'ne ok';
+    //             }
+    //             $model->save(false);
+    //             return $this->redirect(['result']);
+    //         }
+
+    //         // Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+    //         // return ['status' => 'success'];
+    //     }
+
+    //     return $this->render('index', [
+    //         'model' => $model,
+    //         'user' => $user,
+    //         'params' => $params,
+    //         'userPoints' => $userPoints,
+    //         'gamesCount' => $gamesCount,
+    //     ]);
+    // }
 
     public function actionResult() {
         if(Yii::$app->user->isGuest) {
@@ -109,7 +163,7 @@ class ShootingController extends Controller
             
             $results = ShootingResult::find()->asArray()
                 ->joinWith('user')
-                ->where(['user.clickbattle_ban' => null])
+                ->where(['user.shooting_ban' => null])
                 ->select(['sum(score) as score', 'user_id'])
                 ->groupBy('user_id')->orderBy('score DESC')
                 ->indexBy('user_id')
@@ -121,7 +175,7 @@ class ShootingController extends Controller
             'query' => ShootingResult::find()
                 ->select(['user.name', 'user.surname', 'user.city', 'shooting_result.*', 'sum(shooting_result.score) as totalScore'])
                 ->joinWith('user')
-                ->where(['user.clickbattle_ban' => null])
+                ->where(['user.shooting_ban' => null])
                 ->groupBy('user_id')
                 ->orderBy('totalScore'),
             'totalCount' => ShootingResult::find()
@@ -146,10 +200,18 @@ class ShootingController extends Controller
         ]);
     }
 
-    public function actionCreate($user_id, $score) {
-        $res = new ShootingResult;
-        $res->score = $score;
-        $res->user_id = $user_id;
-        $res->save();
+    public function actionPlayAgain() {
+        if(Yii::$app->request->isAjax && !Yii::$app->user->isGuest) {
+            $lastGame = ShootingResult::find()->where(['user_id' => Yii::$app->user->id])->orderBy('id DESC')->one();
+
+            if($lastGame === null) {
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
+            $lastGame->play_again = 1;
+            $lastGame->save(false, ['play_again']);
+
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ['status' => 'success'];
+        }
     }
 }
