@@ -46,7 +46,7 @@ return [
         'timeAnimationHideWarrior' => 200,//время анимации скрытия warrior
         'pointsPlus' => 10,//очков за верный выстрел
         'pointsMinus' => -10,//очков за не верный выстрел
-        'gamesWithoutCaptcha' => 2,
+        'gamesWithoutCaptcha' => 50,
     ]
 
 ];

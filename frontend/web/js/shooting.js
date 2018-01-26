@@ -41,7 +41,7 @@ var endGameSetTimeoutId;
 var leftTime = timeGame;
 var userPoins = 0;
 var gameWarriorsCount = $('#shot_game_screen2').find('.game_warriors').length;
-var warriorsIndexesPlusPoint = [0,2,4,8,11,12,13,14,15,17];
+var warriorsIndexesPlusPoint = [0,2,4,8,11,12,13,14,15];
 
 var cookieSound = getCookie("shootingsound");
 var shootAudio = document.createElement("audio");
