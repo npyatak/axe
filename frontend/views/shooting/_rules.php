@@ -1,3 +1,4 @@
+
 <div class="modal_rules" id="rules-shooting">
 <h2>ПРАВИЛА КОНКУРСА <br/>«Открой для себя мир киберспорта<br/>«Тир»</h2>
     <div class="my-modal-body">
