@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 							<div class="shot_axe_label"><img src="img/axe.png" alt="img"></div>
 							<a href="#" class="shot_play_btn transition">Играть</a>
 						</div>
-						<div class="ssgs_left"><img src="img/ss1.png" alt="img"></div>
+						<div class="ssgs_left"><img src="img/ss1_1.png" alt="img"></div>
 						<div class="ssgs_right"><img src="img/ss2.png" alt="img"></div>
 					</div>
 					<!-- /start -->
