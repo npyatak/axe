@@ -1,3 +1,29 @@
+.shoot-points {
+  font-family: 'BebasNeueBold';
+  font-weight: 700;
+  font-size: 18px;
+  height: 20px;
+  line-height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: absolute;
+  text-align: center;
+  transition: all 0.5s ease;
+  width: 20px;
+  z-index: 4;
+}
+#shoot-plus-points {
+  color: green;
+}
+#shoot-plus-points.animate {
+  transform: translate(22px, -80px) scale(1.7);
+}
+#shoot-minus-points {
+  color: red;
+}
+#shoot-minus-points.animate {
+  transform: translate(-22px, -80px) scale(1.7);
+}
 #shoot-explosion {
   background-image: url(../img/explosion.png);
   height: 64px;

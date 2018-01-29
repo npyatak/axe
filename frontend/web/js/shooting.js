@@ -1,3 +1,5 @@
+$('.shot_screen_game_wrapper img').on('dragstart', function(event) { event.preventDefault(); });
+
 //Get Cookie
 function getCookie(name) {
   var matches = document.cookie.match(new RegExp(
@@ -41,7 +43,7 @@ var endGameSetTimeoutId;
 var leftTime = timeGame;
 var userPoins = 0;
 var gameWarriorsCount = $('#shot_game_screen2').find('.game_warriors').length;
-var warriorsIndexesPlusPoint = [0,2,4,8,11,12,13,14,15,17];
+var warriorsIndexesPlusPoint = [0,2,4,8,11,12,13,14,15];
 
 var cookieSound = getCookie("shootingsound");
 var shootAudio = document.createElement("audio");
@@ -72,13 +74,18 @@ function clearGame() {
   $('#shot_game_screen2').find('.game_warriors').removeClass('active').removeClass('clicked').hide();
   $('.game_block_stat_res p').html(scoreText);
   $('.game_block_stat_time p').html(leftTime/1000 + ' сек');
+  $('#shoot-explosion').remove();
 }
 
 //Animate random warrior
 function animateRandomWarrior() {
   var randomWarriorIndex = Math.floor(Math.random() * gameWarriorsCount);
-  $('#shot_game_screen2').find('.game_warriors.active').removeClass('active').removeClass('clicked').fadeOut(timeAnimationHideWarrior);
-  var $randomWarrior = $('#shot_game_screen2').find('.game_warriors').eq(randomWarriorIndex).addClass('active').fadeIn(timeAnimationShowWarrior);
+  $('#shot_game_screen2').find('.game_warriors.active').fadeOut(timeAnimationHideWarrior, function() {
+    $(this).removeClass('active').removeClass('clicked');
+  });
+  var $randomWarrior = $('#shot_game_screen2').find('.game_warriors').eq(randomWarriorIndex).fadeIn(timeAnimationShowWarrior, function() {
+    $(this).addClass('active');
+  });
 }
 
 //Get score text
@@ -174,7 +181,7 @@ $(document).ready(function() {
   });
 
   //Shoot on warrior
-  $('#shot_game_screen2').find('.game_warriors').on('click', function(e) {
+  $('#shot_game_screen2').find('.game_warriors').on('mousedown', function(e) {
     if ($(this).hasClass('clicked')) {
     }
     else {
@@ -195,11 +202,25 @@ $(document).ready(function() {
       if ($.inArray(index, warriorsIndexesPlusPoint) !== -1) {//террористы
         //console.log('plus');
         userPoins += pointsPlus;
+        $(this).parent().append('<div id="shoot-plus-points" class="shoot-points" style="left: ' + (elemOffetLeft+x) + 'px; top: ' + (elemOffetTop+y) + 'px;">+' + pointsPlus + '</div>');
+        setTimeout(function () {
+          $('body').find('.shoot-points').addClass('animate');
+          pointsAnimationTimeoutId = setTimeout(function () {
+            $('#shoot-plus-points').remove();
+          }, timeBeforeShowWarrior);
+        }, 50);
       }
       else {
         //console.log('minus');
         if (userPoins > 0) {
           userPoins += pointsMinus;
+          $(this).parent().append('<div id="shoot-minus-points" class="shoot-points" style="left: ' + (elemOffetLeft+x) + 'px; top: ' + (elemOffetTop+y) + 'px;">' + pointsMinus + '</div>');
+          setTimeout(function () {
+            $('body').find('.shoot-points').addClass('animate');
+            pointsAnimationTimeoutId = setTimeout(function () {
+              $('#shoot-minus-points').remove();
+            }, timeBeforeShowWarrior);
+          }, 50);
         }
       }
       var scoreText = getScoreText(userPoins);
@@ -207,7 +228,7 @@ $(document).ready(function() {
     }
   });
 
-  //Sound toogle
+  //Sound toggle
   $('#shot_game_screen2').find('.game_block_sound p').on('click', function(event) {
     if ($(this).hasClass('sound-off')) {
       $('.sound-off').hide();

@@ -21,9 +21,10 @@ return [
         3 => ['src' => 'https://www.youtube.com/embed/hct3ON6faYE', 'sub_title' => 'Выпуск 3', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v3.jpg'],
         4 => ['src' => 'https://www.youtube.com/embed/emhhF5u8Ggg', 'sub_title' => 'Выпуск 4', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v4.jpg'],
         5 => ['src' => 'https://www.youtube.com/embed/oSZu_enkcyI', 'sub_title' => 'Выпуск 5', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v5.jpg'],
+        6 => ['src' => 'https://www.youtube.com/embed/o6M7qji9fvw', 'sub_title' => 'Выпуск 6', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v6.jpg'],
 
     ], 
-    'mainPageVideoId' => 5,
+    'mainPageVideoId' => 6,
 
     'clickbattle' => [
         'endGameTime' => 60000,
@@ -46,7 +47,7 @@ return [
         'timeAnimationHideWarrior' => 200,//время анимации скрытия warrior
         'pointsPlus' => 10,//очков за верный выстрел
         'pointsMinus' => -10,//очков за не верный выстрел
-        'gamesWithoutCaptcha' => 2,
+        'gamesWithoutCaptcha' => 50,
     ]
 
 ];
