@@ -72,59 +72,6 @@ class ShootingController extends Controller
         ]);
     }
 
-    // public function actionIndex() {
-    //     if(Yii::$app->user->isGuest) {
-    //         return $this->redirect(Url::toRoute(['shooting/reg']));
-    //     }
-    //     $model = new ShootingResult;
-    //     $userPoints = false;
-    //     $user = User::findOne(Yii::$app->user->id);
-    //     $user->rules_shooting = 1;
-    //     $user->save(false, ['rules_shooting']);
-
-    //     $gamesCount = ShootingResult::getUserGamesCount();
-    //     //print_r($gamesCount);exit;
-
-    //     $params = Yii::$app->params['shooting'];
-
-    //     $post = Yii::$app->request->post();
-    //     if(!Yii::$app->user->isGuest && $model->load($post)) {
-    //         if(isset($post['ShootingResult']['reCaptcha'])) {
-    //             $model->re_captcha = $post['ShootingResult']['reCaptcha'];
-    //         }
-    //         if(isset($post['g-recaptcha-response'])) {
-    //             $model->re_captcha_response = 'ok';
-    //         }
-    //         $model->score = $model->client_score;
-    //         if($model->client_score > 1000) {
-    //             $model->score = 1000;
-    //         } elseif ($model->client_score < 0) {
-    //             $model->score = 0;
-    //         }
-    //         $model->user_id = Yii::$app->user->id;
-    //         if($model->save()) {
-    //             return $this->redirect(['result']);
-    //         } else {
-    //             if(isset($post['g-recaptcha-response'])) {
-    //                 $model->re_captcha_response = 'ne ok';
-    //             }
-    //             $model->save(false);
-    //             return $this->redirect(['result']);
-    //         }
-
-    //         // Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-    //         // return ['status' => 'success'];
-    //     }
-
-    //     return $this->render('index', [
-    //         'model' => $model,
-    //         'user' => $user,
-    //         'params' => $params,
-    //         'userPoints' => $userPoints,
-    //         'gamesCount' => $gamesCount,
-    //     ]);
-    // }
-
     public function actionResult() {
         if(Yii::$app->user->isGuest) {
             return $this->redirect(Url::toRoute(['shooting/reg']));

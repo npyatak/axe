@@ -195,11 +195,4 @@ class ClickbattleController extends Controller
             'userPlace' => $userPlace,
         ]);
     }
-
-    public function actionCreate($user_id, $score) {
-        $res = new ClickbattleResult;
-        $res->score = $score;
-        $res->user_id = $user_id;
-        $res->save();
-    }
 }
