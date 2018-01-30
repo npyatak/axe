@@ -125,7 +125,7 @@ if($result) {
                     </div>
                     <!-- /block -->
                     <!-- block -->
-                     <div class="user_challange_block filled">
+                     <!-- <div class="user_challange_block filled">
                         <div class="ucb_challenge">
                             <h4>Тир :<br></h4>
                             <p><b>Главный приз:</b> самый усидчивый снайпер получит Microsoft Xbox One S 500 GB </p>
@@ -139,13 +139,13 @@ if($result) {
                             </div>
                         </div>
                         <div class="clng_img"><img src="/img/clng4.png" alt="img"></div>
-                    </div> 
-                    <!--<div class="user_challange_block">
+                    </div>  -->
+                    <div class="user_challange_block">
                         <div class="ucb_title">
                             <p>Запуск анимированного Тира
-                                <br><b>25 января 2018г </b></p>
+                                <br><b>30 января 2018г </b></p>
                         </div>
-                    </div>-->
+                    </div>
 
                     <!-- /block -->
                 </div>

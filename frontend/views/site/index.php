@@ -102,21 +102,21 @@ if($result) {
                         </div>
                     </div>
                     <!-- /block -->                    
-                    <!--<div class="scr2_block">
+                    <div class="scr2_block">
                         <div class="scr2_block_img">
                             <img src="/img/24.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
                             <h4>Запуск анимированого тира </h4>
-                            <h3>25 января 2018 г <br/></h3>
+                            <h3>30 января 2018 г <br/></h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
                             </p>
                             <p></p>
                         </div>
-                    </div>-->
+                    </div>
 
                     <!-- block -->
-                    <div class="scr2_block">
+                    <!-- <div class="scr2_block">
                         <div class="scr2_block_img">
                             <img src="/img/24.png" alt="img">
                         </div>
@@ -130,7 +130,7 @@ if($result) {
                                 <a href="<?=Url::toRoute(['shooting/rating']);?>" class="scr2_bottom_button transition">рейтинг участников</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- /block -->
                 </div>
                 <!-- blocks -->
@@ -143,8 +143,8 @@ if($result) {
                 <a href="#rules-challenge" class="scr2_bottom_button fancybox transition">Челлендж</a>
                 <br/>
                 <a href="#rules-clickbattle" class="scr2_bottom_button fancybox transition" data-event="shot_way" data-param="fullrules">Клик-баттл</a>
-                <br/>
-                <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Тир</a>
+                <!-- <br/>
+                <a href="#rules-shooting" class="scr2_bottom_button fancybox transition">Тир</a> -->
             </div>
         </div>
     </div>
