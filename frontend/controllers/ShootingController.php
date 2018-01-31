@@ -106,7 +106,9 @@ class ShootingController extends Controller
         $userResult = null;
         if(!Yii::$app->user->isGuest) {
             $user = User::findOne(Yii::$app->user->id);
-            $userResult = ShootingResult::find()->where(['user_id' => $user->id])->asArray()->sum('score');       
+            if(!$user->shooting_ban) {
+                $userResult = ShootingResult::find()->where(['user_id' => $user->id])->asArray()->sum('score');       
+            }
             
             $results = ShootingResult::find()->asArray()
                 ->joinWith('user')
