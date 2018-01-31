@@ -127,12 +127,11 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
                             <img src="/img/24.png" alt="img">
                         </div>
                         <div class="scr2_block_text">
-                            <h4>Запуск анимированого тира </h4>
-                            <h3>19 января 2018 г <br/>&nbsp;</h3>
+                            <h4>Тир </h4>
+                            <h3>Убивай врагов, но не<br/> трогай мирных жителей</h3>
                             <p><b>Призы:</b> Самый меткий и быстрый стрелок получит Microsoft Xbox One S 500 GB
                             </p>
-                            <p>&nbsp;</p>
-                            <!-- <a href="#" class="scr2_text_btn transition">Пройти тест</a> -->
+                            <a href="/shooting/rules" class="scr2_text_btn transition">Играть</a>
                         </div>
                     </div>
                     <!-- /block -->

@@ -12,10 +12,10 @@ class ShootingAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/shooting.css?v=29012018_1',
+        'css/shooting.css?v=30012018_1',
     ];
     public $js = [
-        'js/shooting.js?v=29012018_1',
+        'js/shooting.js?v=30012018_1',
     ];
     public $depends = [
         'frontend\assets\AppAsset',

@@ -40,14 +40,14 @@ return [
     ],
 
     'shooting' => [
-        'timeGame' => 120000,//время игры
+        'timeGame' => 60000,//время игры
         'timeLifeWarrior' => 1000,//время отображения warrior
         'timeBeforeShowWarrior' => 500,//время перед отображением следующего warrior
         'timeAnimationShowWarrior' => 200,//время анимации появления warrior
         'timeAnimationHideWarrior' => 200,//время анимации скрытия warrior
         'pointsPlus' => 10,//очков за верный выстрел
         'pointsMinus' => -10,//очков за не верный выстрел
-        'gamesWithoutCaptcha' => 50,
+        'gamesWithoutCaptcha' => 47,
     ]
 
 ];
