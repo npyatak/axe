@@ -15,7 +15,7 @@ class ShootingAsset extends AssetBundle
         'css/shooting.css?v=30012018_1',
     ];
     public $js = [
-        'js/shooting.js?v=30012018_1',
+        'js/shooting.js?v=09022018_3',
     ];
     public $depends = [
         'frontend\assets\AppAsset',

@@ -22,9 +22,11 @@ return [
         4 => ['src' => 'https://www.youtube.com/embed/emhhF5u8Ggg', 'sub_title' => 'Выпуск 4', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v4.jpg'],
         5 => ['src' => 'https://www.youtube.com/embed/oSZu_enkcyI', 'sub_title' => 'Выпуск 5', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v5.jpg'],
         6 => ['src' => 'https://www.youtube.com/embed/o6M7qji9fvw', 'sub_title' => 'Выпуск 6', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v6.jpg'],
+        7 => ['src' => 'https://www.youtube.com/embed/j5VEnaqL3HY', 'sub_title' => 'Выпуск 7', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v7.jpg'],
+        8 => ['src' => 'https://www.youtube.com/embed/C1u4hYAQVUs', 'sub_title' => 'Выпуск 8', 'title' => 'Открой мир киберспорта с AXE и Любовью Киберспортивной', 'img' => '/img/vdo_v8.jpg'],
 
     ], 
-    'mainPageVideoId' => 6,
+    'mainPageVideoId' => 8,
 
     'clickbattle' => [
         'endGameTime' => 60000,
