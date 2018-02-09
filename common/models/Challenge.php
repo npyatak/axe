@@ -211,6 +211,10 @@ class Challenge extends \yii\db\ActiveRecord
     }
 
     public function userCanVote() {
+        if(time() > 1518382799) {
+            return false;
+        }
+        
         if($this->_lastUserVotes === null) {
             $this->_lastUserVotes = ChallengeVote::find()
                 ->select(['challenge_id', 'max(created_at) as created_at'])

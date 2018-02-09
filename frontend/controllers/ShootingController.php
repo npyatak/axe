@@ -113,6 +113,7 @@ class ShootingController extends Controller
             $results = ShootingResult::find()->asArray()
                 ->joinWith('user')
                 ->where(['user.shooting_ban' => null])
+                ->andWhere(['<', 'shooting_result.created_at', 1518382799])
                 ->select(['sum(score) as score', 'user_id'])
                 ->groupBy('user_id')->orderBy('score DESC')
                 ->indexBy('user_id')
@@ -125,10 +126,12 @@ class ShootingController extends Controller
                 ->select(['user.name', 'user.surname', 'user.city', 'shooting_result.*', 'sum(shooting_result.score) as totalScore'])
                 ->joinWith('user')
                 ->where(['user.shooting_ban' => null])
+                ->andWhere(['<', 'shooting_result.created_at', 1518382799])
                 ->groupBy('user_id')
                 ->orderBy('totalScore'),
             'totalCount' => ShootingResult::find()
                 ->select(['shooting_result.*', 'sum(shooting_result.score) as totalScore'])
+                ->where(['<', 'shooting_result.created_at', 1518382799])
                 ->groupBy('user_id')
                 ->orderBy('totalScore')
                 ->count(),

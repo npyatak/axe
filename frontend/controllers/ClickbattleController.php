@@ -160,6 +160,7 @@ class ClickbattleController extends Controller
             $results = ClickbattleResult::find()->asArray()
                 ->joinWith('user')
                 ->where(['user.clickbattle_ban' => null])
+                ->andWhere(['<', 'clickbattle_result.created_at', 1518382799])
                 ->select(['sum(score) as score', 'user_id'])
                 ->groupBy('user_id')->orderBy('score DESC')
                 ->indexBy('user_id')
@@ -172,10 +173,12 @@ class ClickbattleController extends Controller
                 ->select(['user.name', 'user.surname', 'user.city', 'clickbattle_result.*', 'sum(clickbattle_result.score) as totalScore'])
                 ->joinWith('user')
                 ->where(['user.clickbattle_ban' => null])
+                ->andWhere(['<', 'clickbattle_result.created_at', 1518382799])
                 ->groupBy('user_id')
                 ->orderBy('totalScore'),
             'totalCount' => ClickbattleResult::find()
                 ->select(['clickbattle_result.*', 'sum(clickbattle_result.score) as totalScore'])
+                ->where(['<', 'clickbattle_result.created_at', 1518382799])
                 ->groupBy('user_id')
                 ->orderBy('totalScore')
                 ->count(),
