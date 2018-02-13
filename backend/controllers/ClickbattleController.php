@@ -50,6 +50,8 @@ class ClickbattleController extends CController
                     }
                 }
             }
+            $t = null;
+            $ts = null;
         }
     }
 }
