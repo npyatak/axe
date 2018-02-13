@@ -23,9 +23,16 @@ $this->registerMetaTag(['property' => 'og:type', 'content' => 'website'], 'og:ty
         <div class="row">
             <div class="frame_block">
                 <div class="main_title">
+                        <h2>
+                            Уважаемые участники!<br>Конкурс завершен!<br>В ближайшее время будут опубликованы <br>призеры и победители.
+                                
+                        </h2>
+                    </div>
+                    
+                    <!--<div class="main_title">
                     <h2><b><strong>Голосуй</strong> <br> за лучший игровой момент </b><br>участвуй в розыгрыше Sony Playstation 4 Slim 500 GB</h2>
                     <p style="color: #ffe;">Один пользователь может проголосовать за любое понравившееся видео один раз в день</p>
-                </div>
+                </div>-->
                 <div class="ch_cp_sort clearfix">
                     <div class="ch_cp_sort_selects">
                         <a href="<?=Url::current(['id' => null, 'sort' => $sort == '-created_at' ? 'created_at' : '-created_at']);?>" class="ch_cp_sort_btn <?=in_array($sort, ['-created_at', 'created_at']) ? 'active' : '';?>">По дате <span><i class="zmdi zmdi-caret-right-circle"></i></span></a>

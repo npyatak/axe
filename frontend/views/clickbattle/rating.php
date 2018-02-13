@@ -12,6 +12,13 @@ use common\models\ClickbattleResult;
                 <div class="ch_res_content">
                     <div class="main_title">
                         <h2>
+                            Уважаемые участники!<br>Конкурс завершен!<br>В ближайшее время будут опубликованы <br>призеры и победители.
+                                
+                        </h2>
+                    </div>
+                    
+                    <!--<div class="main_title">
+                        <h2>
                             <?php if($user && $userResult):?>
                                 <b><strong>Рейтинг <br>Клик-баттла</strong><br>У тебя <?=$userResult;?> <?=ClickbattleResult::getScoreText($userResult);?></b>
                                 <br><strong><?=$userPlace;?> место</strong>
@@ -20,7 +27,7 @@ use common\models\ClickbattleResult;
                                 <b><strong>Рейтинг Клик</strong>-баттла</b>
                             <?php endif;?>
                         </h2>
-                    </div>
+                    </div>-->
                     <div class="cmb_buttons">
                         <?php if($user && $user->rules_clickbattle):?>
                     	   <a href="<?=Url::toRoute(['clickbattle/index']);?>" class="scr2_text_btn transition" data-event="clicker_way" data-param="play_again_rating">Играть ещё</a>

@@ -13,15 +13,15 @@ class ClickbattleAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css',
-        'css/libs.min.css?v=25012018_1',
-        'css/main_clicker.css?v=25012018_1',
-        'css/site.css?v=25012018_1',
+        'css/libs.min.css?v=11022018_2',
+        'css/main_clicker.css?v=11022018_2',
+        'css/site.css?v=11022018_2',
     ];
     public $js = [
-        'js/libs.min.js?v=25012018_1',
-        'js/common.js?v=25012018_1',
-        'js/phaser.min.js?v=25012018_1',
-        'js/clickbattle.js?v=25012018_1',
+        'js/libs.min.js?v=11022018_2',
+        'js/common.js?v=11022018_2',
+        'js/phaser.min.js?v=11022018_2',
+        'js/clickbattle.js?v=11022018_2',
         'js/js.cookie.js',
     ];
     public $depends = [
