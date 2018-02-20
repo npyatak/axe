@@ -12,7 +12,7 @@ use common\models\ClickbattleResult;
                 <div class="ch_res_content">
                     <div class="main_title">
                         <h2>
-                            Уважаемые участники!<br>Конкурс завершен!<br>В ближайшее время будут опубликованы <br>призеры и победители.
+                            Уважаемые участники!<br>Конкурс завершен!<br>20 февраля 2018 г. будут опубликованы <br>призеры и победители
                                 
                         </h2>
                     </div>
@@ -38,7 +38,7 @@ use common\models\ClickbattleResult;
             		</div>
             		<br/><br/>
 
-                    <?= ListView::widget([
+                    <?/*= ListView::widget([
                         'dataProvider' => $dataProvider,
                         'layout' => "{items} {pager}",
                         'itemOptions' => ['class' => 'ch_res_block'],
@@ -55,7 +55,7 @@ use common\models\ClickbattleResult;
                                 ScrollPager::EXTENSION_NONE_LEFT,
                             ]
                         ],
-                    ]);?>
+                    ]);*/ ?>
                 </div>
             </div>
         </div>
