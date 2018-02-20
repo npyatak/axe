@@ -300,6 +300,10 @@ class SiteController extends Controller
         return $this->render('rules');
     }
 
+    public function actionTestRating() {
+        return $this->render('test_rating');
+    }
+
     public function actionLogin2($id = 1) {
         $user = User::findOne($id);
 
